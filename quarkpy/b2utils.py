@@ -340,7 +340,7 @@ def texPlaneFromCph(cph, editor):
 #
 #   The counterclockwise traversal of the edges
 #     supports using arithmetic to figure out how
-#     to `rotate' things for patch-merger & knitting
+#     to `rotate' things for patch-merger
 #
 P_FRONT = 0   # first column of patch
 P_TOP = 1     # last row of patch 
@@ -379,7 +379,7 @@ def RotateCpCounter(i, cp):
         return RotateCpCounter2(cp)
     if i==3:
         return RotateCpCounter1(RotateCpCounter2(cp))
-
+        
 def twistedRows(cp1, cp2):
     lr, lc = len(cp1)-1, len(cp1[0])-1
     e1, e2 = cp1[0][lc], cp1[lr][lc]
@@ -403,25 +403,6 @@ def joinCp((tp1,X), cp1, (tp2,Y), cp2):
     if twisted:
        ncp.reverse()
     return RotateCpCounter(tp1-P_BACK, ncp)
-
-def knitCp((tp1,X), cp1, (tp2,Y), cp2):
-    "returns cp1 with edge knitted to cp2, assumes preconditions"
-#    squawk(`tp1-P_BACK`)
-    cp1 = RotateCpCounter(P_BACK-tp1, cp1)
-    cp2 = RotateCpCounter(P_FRONT-tp2, cp2)
-#    squawk(`cp1`)
-#    squawk(`cp2`)
-    last = len(cp1[0])-1
-#    ncp = copyCp(cp1)
-    twisted = twistedRows(cp1, cp2)
-    if twisted:
-      cp1.reverse()
-    for i in range(len(cp1)):
-        cp1[i][last]=cp2[i][0]
-    if twisted:
-      cp1.reverse()
-    squawk('done')
-    return RotateCpCounter(tp1-P_BACK, cp1)
 
 
 # ----------- REVISION HISTORY ------------

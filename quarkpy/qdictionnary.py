@@ -12,7 +12,7 @@ Dictionnary of all strings used within the program
 
 
 Strings = {
-        0: "quarksnapshot_20000901",
+        0: "REL6_1-pre-1",
 	1: "  QuArK - Quake Army Knife      %s    by Armin Rigo     -  logo McKay & Brian",
 
 	2: "&New %s",
@@ -660,7 +660,6 @@ Strings = {
         5457: "Pasting...",
         5458: "Searching add-ons...",
 
-        5503: "'%s' is a Half-Life Model which cannot be read (yet)",
 	5504: "No texture image//Missing or invalid %s",
 	5505: "'%s' is not a WAD file//%d should be %d",
 	5506: "'%s' is not a PACK file//%d should be %d",
@@ -878,9 +877,6 @@ Strings = {
 #
 #
 #$Log$
-#Revision 1.19  2000/08/20 11:08:22  aiv
-#Added Error Code 5503
-#
 #Revision 1.18  2000/07/28 15:10:58  alexander
 #set snapshot name
 #

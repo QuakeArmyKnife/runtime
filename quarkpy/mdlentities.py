@@ -34,7 +34,6 @@ MT_SKINGROUP   = 2
 MT_SKIN        = 3      # not used
 MT_TAGGROUP    = 4      # AiV
 MT_BONEGROUP   = 5      # AiV
-MT_MISCGROUP   = 6      # AiV
 
 #
 # Entity Manager base class, followed by subclasses.
@@ -86,39 +85,14 @@ class EntityManager:
 class GroupType(EntityManager):
     "Generic Model object type."
 
-class MiscGroupType(EntityManager):
-    "Misc. Object Group."
-
 class FrameGroupType(EntityManager):
     "Model Frame Group."
 
 class SkinGroupType(EntityManager):
     "Model Skin Group."
 
-def ShowHideComp(x):
-    editor = mapeditor()
-    if editor is None: return
-    obj = editor.layout.explorer.uniquesel
-    if obj is None: return
-    obj.showhide(x)
-    editor.invalidateviews(1)
-
-def ShowComp(m):
-    ShowHideComp(1)
-
-def HideComp(m):
-    ShowHideComp(0)
- 
 class ComponentType(EntityManager):
     "Model Component."
-
-    def menu(o, editor):
-        import qmenu
-        SC1 = qmenu.item("&Show Component", ShowComp)
-        HC1 = qmenu.item("&Hide Component", HideComp)
-        import mdlmenus
-        return CallManager("menubegin", o, editor) + mdlmenus.BaseMenu([o], editor) + [SC1, HC1]
- 
 
     def handles(o, editor, view):
         frame = o.currentframe
@@ -144,16 +118,27 @@ class FrameType(EntityManager):
         for i in range(len(h)):
             item = h[i]
             item.frame = o
-            item.index = i
-            item.editor = editor
+            item.i = i
         return h
 
 
 class SkinType(EntityManager):
     "Model Skin."
 
+# AiV
+
+class TagGroupType(EntityManager):
+    "Tag Group."
+
+class BoneGroupType(EntityManager):
+    "Bone Group."
+
 class TagType(EntityManager):
     "Tag"
+
+    def handlesopt(o, editor):
+        vtx = o.position
+        map(mdlhandles.VertexHandle, vtx)
 
 class BoneType(EntityManager):
     "Bone"
@@ -167,11 +152,13 @@ Mapping = {
     ":mc": ComponentType(),
     ":mf": FrameType(),
     ".pcx": SkinType(),
+# AiV
     ".jpg": SkinType(),
     ":tag": TagType(),
-    ":bone": BoneType() }
+    ":bf": BoneType() }
+#/AiV
 
-Generics = [GroupType(), FrameGroupType(), SkinGroupType(), SkinGroupType(), MiscGroupType(), MiscGroupType()]  # AiV
+Generics = [GroupType(), FrameGroupType(), SkinGroupType(), SkinGroupType(), TagGroupType(), BoneGroupType()]  # AiV
 
 #
 # Use the function below to call a method of the Entity Manager classes.

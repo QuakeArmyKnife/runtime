@@ -30,15 +30,8 @@ QQRKSRC1
 //$Header$
 // ----------- REVISION HISTORY ------------
 //$Log$
-//
 //Revision 1.46.2.1  2000/08/26 09:44:48  tiglari
 //fixed default texture for SoF
-//
-//Revision 1.48  2000/08/25 18:01:06  decker_dk
-//Added Typ='EDL' functionality specialy for QuakeCtx:form
-//
-//Revision 1.47  2000/08/21 20:58:21  aiv
-//Added Skin form for model editor
 //
 //Revision 1.46  2000/07/28 15:09:48  alexander
 //set snapshot name
@@ -133,7 +126,7 @@ QQRKSRC1
   {
     General:config =     // ":config" objects are displayed in the Configuration dialog box
     {
-      Version = "quarksnapshot_20000901"
+      Version = "REL6_1-pre-1"
       InternalVersion = '6.00011'
       TextureBrowser = "Texture Browser..."
       NewMapItems = "New Map Items..."
@@ -2667,12 +2660,12 @@ QQRKSRC1
       }
       SourceDir: = {
         Txt = "Source directory"
-        Typ = "EDL" // "EDL" = Editfield-Directorypath-Lastfolderonly
+        Typ = "ED"
         Hint = "QuArK will look there for files like textures, 3D models, etc. Must be the name of a subdirectory directly the game path"
       }
       GameDir: = {
         Txt = "Game directory"
-        Typ = "EDL" // "EDL" = Editfield-Directorypath-Lastfolderonly
+        Typ = "ED"
         Hint = "QuArK will run the game with this as '-game' or '+set game' command-line parameter"
       }
     }
@@ -2870,25 +2863,6 @@ QQRKSRC1
       quark: = {
         Typ = "E R"    // Edit Read-only
         Txt = "Designed for QuArK version"
-      }
-    }
-    Skin:form =     // form on the polyhedrons page
-    {
-      Style = "1"
-      header: = {
-        Typ = "S"
-        Txt = "%s"   // caption text is found in the object put in the form
-        //Bold = "0"
-      }
-      triangles: = {
-        Typ = "E-R"      // edit, read only
-        Txt = "Triangles :"
-        Hint = "The number of triangle this component has|Number of triangles"
-      }
-      ownedby: = {
-        Typ = "E-R"
-        Txt = "Owned by :"
-        Hint = "The 'parent' component in the tree view"
       }
     }
   }
