@@ -190,10 +190,8 @@ def cpFrom2Rows(row0, row2, bulge=None):
     return cp
 
 
-def b2From2Rows(row0, row2, texface, name, bulge=None, subdivide=1, subfunc=None):
+def b2From2Rows(row0, row2, texface, name, bulge=None):
      cp = cpFrom2Rows(row0, row2, bulge)
-     if subdivide>1:
-         cp = subdivideRows(subdivide,cp, subfunc)
      b2 = quarkx.newobj(name+":b2")
      b2["tex"] = texface["tex"]
      b2.cp = texcpFromFace(cp, texface, None)
@@ -342,7 +340,7 @@ def texPlaneFromCph(cph, editor):
 #
 #   The counterclockwise traversal of the edges
 #     supports using arithmetic to figure out how
-#     to `rotate' things for patch-merger & knitting
+#     to `rotate' things for patch-merger
 #
 P_FRONT = 0   # first column of patch
 P_TOP = 1     # last row of patch 
@@ -381,7 +379,7 @@ def RotateCpCounter(i, cp):
         return RotateCpCounter2(cp)
     if i==3:
         return RotateCpCounter1(RotateCpCounter2(cp))
-
+        
 def twistedRows(cp1, cp2):
     lr, lc = len(cp1)-1, len(cp1[0])-1
     e1, e2 = cp1[0][lc], cp1[lr][lc]
@@ -406,109 +404,11 @@ def joinCp((tp1,X), cp1, (tp2,Y), cp2):
        ncp.reverse()
     return RotateCpCounter(tp1-P_BACK, ncp)
 
-def knitCp((tp1,X), cp1, (tp2,Y), cp2):
-    "returns cp1 with edge knitted to cp2, assumes preconditions"
-#    squawk(`tp1-P_BACK`)
-    cp1 = RotateCpCounter(P_BACK-tp1, cp1)
-    cp2 = RotateCpCounter(P_FRONT-tp2, cp2)
-#    squawk(`cp1`)
-#    squawk(`cp2`)
-    last = len(cp1[0])-1
-#    ncp = copyCp(cp1)
-    twisted = twistedRows(cp1, cp2)
-    if twisted:
-      cp1.reverse()
-    for i in range(len(cp1)):
-        cp1[i][last]=cp2[i][0]
-    if twisted:
-      cp1.reverse()
-    squawk('done')
-    return RotateCpCounter(tp1-P_BACK, cp1)
-    
-def b2Point(u, p0, p1, p2):
-    return u*u*(p0-2*p1+p2)+u*(-2*p0+2*p1)+p0
-#    return (1-u)*(1-u)*p0 + 2*u*(1-u)*p1 + p2*u*u
-    
-#
-# This does 1 seg with 3 cp's, the crappy way.
-#
-def subdivideLine(n, p0, p1, p2):
-    "for n>=1, return 1+2n-tuple defining bezier quilt mesh line"
-#    squawk('subdiv '+`n`)
-    if n < 1: return
-    if n==1: return [p0, p1, p2]
-    retval = [p0]
-    last = p0
-    for i in range(n):
-        q = b2Point((i+.5)/n, p0, p1, p2)
-        p = b2Point((i+1.0)/n, p0, p1,p2)
-        m = b2midcp(last,q,p)
-        retval.append(m)
-        retval.append(p)
-        last = p
-    return retval
-
-#
-# This is supposed to do a whole 1+2*n line
-#
-def subdivideRow(n, row, subfunc=None):
-    if subfunc==None:
-        subfunc=subdivideLine
-    length = len(row)
-    result = [row[0]]
-    for i in range(0,length-1,2):
-#       squawk(`i`)
-#       squawk(`result`)
-       line = subfunc(n, row[i], row[i+1], row[i+2])
-#       squawk(`line`)
-       result = result + subfunc(n, row[i], row[i+1], row[i+2])[1:]
-#    squawk(`result`)
-    return  result
-    
-
-def subdivideRows(n, cp, func=None):
-    return map(lambda row,n=n,f=func:subdivideRow(n, row,f),cp)
-
-
-def subdivideColumns(n, cp, func=None):
-    return transposeCp(subdivideRows(n,transposeCp(cp),func))
-    
-
-#
-# Attempt at a better circle approximation.
-#  the idea is to think of the b2 curve as an approximation
-#  to an image of a quarter-circle.
-# 
-#
-def arcSubdivideLine(n, p0, p1, p2):
-    mat = matrix_u_v(p0-p1, p2-p1)
-    halfpi = math.pi/2.0
-    points = [quarkx.vect(1,0,0)]
-    last = points[0]
-    lastdir = quarkx.vect(-1,0,0)
-    for i in range(n):
-        a = halfpi*(i+1)/n
-        next = quarkx.vect(1.0-math.sin(a), 1.0-math.cos(a), 0)
-        nextdir = quarkx.vect(-math.cos(a), math.sin(a), 0)
-        mid = intersectionPoint2d(last,lastdir, next, nextdir)
-        points.append(mid)
-        points.append(next)
-        last = next
-        lastdir = nextdir
-    points = map (lambda v,mat=mat,d=p1:d+mat*v, points)
-    return points
-    
 
 # ----------- REVISION HISTORY ------------
 #
 #
 #$Log$
-#Revision 1.14  2000/09/02 11:22:35  tiglari
-#generalized subdivideRows/Columns to arbitrary quilts
-#
-#Revision 1.13  2000/08/23 12:12:34  tiglari
-#Added support for edge knitting; fixed join bug
-#
 #Revision 1.12  2000/07/24 12:47:40  tiglari
 #listCP function added
 #

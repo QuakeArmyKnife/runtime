@@ -201,42 +201,12 @@ def cyclenext(i, len):
 def cycleprev(i, len):
     return (i-1)%len
 
-def projectpointtoplane(p,n1,o2,n2):
-  "project point to plane at o2 with normal n2 along normal n1"
-  v1 = o2-p
-  v2 = v1*n2
-  v3 = n1*n2
-  v4 = v2/v3
-  v5 = v4*n1
-  return p + v5
 
-def matrix_u_v(u,v):
-    return quarkx.matrix((u.x, v.x, 0),
-                         (u.y, v.y, 0),
-                         (u.z, v.z, 1))
-                         
-def intersectionPoint2d(p0, d0, p1, d1):
-    "intersection in 2D plane, point, direction"
-    for v in p0, d0, p1, d1:
-        if v.z != 0.0:
-            return None
-    det = d0.x*d1.y-d1.x*d0.y
-    if det==0.0:
-        return 0  # lines paralell
-    s = (p0.y*d1.x - p1.y*d1.x - d1.y*p0.x +d1.y*p1.x)/det
-    return p0+s*d0
-        
 
 # ----------- REVISION HISTORY ------------
 #
 #
 #$Log$
-#Revision 1.5  2000/08/21 11:25:16  tiglari
-#added projectpointtoplane (from plugins.maptagside)
-#
-#Revision 1.4  2000/07/29 02:04:54  tiglari
-#added cyclenext, cycleprev
-#
 #Revision 1.3  2000/07/24 09:06:56  tiglari
 #findlabelled added for finding items on menus (for face/texture revamp)
 #

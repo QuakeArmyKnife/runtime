@@ -30,30 +30,11 @@ QQRKSRC1
 //$Header$
 // ----------- REVISION HISTORY ------------
 //$Log$
-//Revision 1.53  2000/09/04 21:20:28  tiglari
-//additions to dup column specifics, for more options
-//
-//Revision 1.52  2000/09/02 11:19:11  tiglari
-//added subdivide specific for arch/cap
-//
-//Revision 1.51  2000/09/02 06:13:04  tiglari
-//detail specifics for cap duplicator (python not yet implemented)
-//
-//Revision 1.50  2000/09/01 11:12:55  tiglari
-//Put some bevel specifics onto a details button in the form.
-//
-//Revision 1.49  2000/09/01 00:49:02  alexander
-//merged in tiglaris default sof sky fix from rel6_1 branch
-//
+//Revision 1.46.2.2  2000/09/01 01:47:27  alexander
+//set name
 //
 //Revision 1.46.2.1  2000/08/26 09:44:48  tiglari
 //fixed default texture for SoF
-//
-//Revision 1.48  2000/08/25 18:01:06  decker_dk
-//Added Typ='EDL' functionality specialy for QuakeCtx:form
-//
-//Revision 1.47  2000/08/21 20:58:21  aiv
-//Added Skin form for model editor
 //
 //Revision 1.46  2000/07/28 15:09:48  alexander
 //set snapshot name
@@ -148,7 +129,7 @@ QQRKSRC1
   {
     General:config =     // ":config" objects are displayed in the Configuration dialog box
     {
-      Version = "quarksnapshot_20000910"
+      Version = "REL6_1-pre-2"
       InternalVersion = '6.00011'
       TextureBrowser = "Texture Browser..."
       NewMapItems = "New Map Items..."
@@ -2618,23 +2599,6 @@ QQRKSRC1
     {
       out: = {Txt="copy objects" Cap="outside" Typ="X" Hint="if checked, the duplicator or digger works with objects besides instead of only inside"}
     }
-    capdetails:form =
-    {
-      faceonly: = {Txt="&" Typ="X"
-               Hint = "if checked, only the top and bottom faces are produced, no inner curve"}
-      nofront = {Txt="&" Typ="X"
-               Hint = "if checked, front face is not produced"}
-      noback: = {Txt="&" Typ="X"
-               Hint = "if checked, back face is not produced"}
-      noinner = {Txt="&" Typ="X"
-               Hint = "if checked, inner face is not produced (thick bevels only)"}
-      noouter: = {Txt="&" Typ="X"
-               Hint = "if checked, outer face is not produced (thick bevels only)"}
-      leftside: = {Txt="&" Typ="X"
-               Hint = "if checked, left side is produced"}
-      rightside: = {Txt="&" Typ="X"
-               Hint = "if checked, right side is produced"}
-    }
     dup cap:form =
     {
       inverse: = {Txt="&" Typ="X"
@@ -2643,38 +2607,14 @@ QQRKSRC1
                Hint = "if checked, the whole thing is upside-down"}
       thick: = {Txt ="&" Typ="EF1"
                 Hint = "if a nonzero value is given, an enclosed curve with thickness is produced"}
-      subdivide: = {Txt ="&" Typ="EF1"
-                Hint = "integer value, generate n patches along each side of curve"}
       stretchtex: = {Txt="&" Typ="X"
                Hint = "if checked, texture on top/bottom is stretched to cover entire curved face." $0D "Otherwise complex things are done to make it easier to align the curve's texture with the sides."}
       open: = {Txt="&" Typ="X"
                Hint = "if checked, front and back are open"}
-      more: = {
-       Typ="B"
-       Txt="details"
-       Cap="Push"
-       Form="capdetails:form"
-       Hint="specifics for more detailed control over generation of patches"
-      }
+      faceonly: = {Txt="&" Typ="X"
+               Hint = "if checked, only the front and back faces are produced, no inner curve"}
       macro: = {Txt = "&" Typ = "ESR"
                  Hint = "This one is not for you, Saruman"}
-    }
-    beveldetails:form =
-    {
-      faceonly: = {Txt="&" Typ="X"
-               Hint = "if checked, only the top and bottom faces are produced, no inner curve"}
-      notop = {Txt="&" Typ="X"
-               Hint = "if checked, top face is not produced"}
-      nobottom: = {Txt="&" Typ="X"
-               Hint = "if checked, bottom face is not produced"}
-      noinner = {Txt="&" Typ="X"
-               Hint = "if checked, inner face is not produced (thick bevels only)"}
-      noouter: = {Txt="&" Typ="X"
-               Hint = "if checked, outer face is not produced (thick bevels only)"}
-      leftend: = {Txt="&" Typ="X"
-               Hint = "if checked, left end is produced"}
-      rightend: = {Txt="&" Typ="X"
-               Hint = "if checked, right end is produced"}
     }
     dup bevel:form =
     {
@@ -2684,19 +2624,12 @@ QQRKSRC1
                Hint = "if checked, curve goes from back to left side rather than back to right side"}
       thick: = {Txt ="&" Typ="EF1"
                 Hint = "if a nonzero value is given, an enclosed curve with thickness is produced"}
-      subdivide: = {Txt ="&" Typ="EF1"
-                Hint = "integer value, generate n patches along curve"}
       stretchtex: = {Txt="&" Typ="X"
                Hint = "if checked, texture on back is stretched to cover entire curved face." $0D "Otherwise complex things are done to make it easier to align the curve's texture with the sides."}
       open: = {Txt="&" Typ="X"
                Hint = "if checked, top and bottom are open"}
-      more: = {
-       Typ="B"
-       Txt="details"
-       Cap="Push"
-       Form="beveldetails:form"
-       Hint="specifics for more detailed control over generation of patches"
-      }
+      faceonly: = {Txt="&" Typ="X"
+               Hint = "if checked, only the top and bottom faces are produced, no inner curve"}
       macro: = {Txt = "&" Typ = "ESR"
                  Hint = "This one is not for you, Saruman"}
     }
@@ -2706,10 +2639,6 @@ QQRKSRC1
                Hint = "if checked, concave surface of curve is outer and has texture"}
       thick: = {Txt ="&" Typ="EF1"
                 Hint = "if a nonzero value is given, an enclosed curve with thickness is produced"}
-      subdivide: = {Txt ="&" Typ="EF1"
-                Hint = "integer value, generate n patches along curve"}
-      circle:= {Txt="&" Typ="X"
-               }
       stretchtex: = {Txt="&" Typ="X"
                Hint = "if checked, texture on back is stretched to cover entire column." $0D "Otherwise complex things are done so that if" $0D "the the texture on the back face is wrapped around the brush," $0D "this wrapping will also appear aroudn the column"}
       open: = {Txt="&" Typ="X"
@@ -2719,13 +2648,6 @@ QQRKSRC1
                        $0D " e.g. 0 1 for upward pointing cone"}
       bulge:= {Txt="&" Typ="EF002"
                Hint = "height, width of bulge, proportional, .5 1=straight"}
-      more: = {
-       Typ="B"
-       Txt="details"
-       Cap="Push"
-       Form="beveldetails:form"
-       Hint="specifics for more detailed control over generation of patches"
-      }
       macro: = {Txt = "&" Typ = "ESR"
                  Hint = "This one is not for you, Saruman"}
     }
@@ -2741,12 +2663,12 @@ QQRKSRC1
       }
       SourceDir: = {
         Txt = "Source directory"
-        Typ = "EDL" // "EDL" = Editfield-Directorypath-Lastfolderonly
+        Typ = "ED"
         Hint = "QuArK will look there for files like textures, 3D models, etc. Must be the name of a subdirectory directly the game path"
       }
       GameDir: = {
         Txt = "Game directory"
-        Typ = "EDL" // "EDL" = Editfield-Directorypath-Lastfolderonly
+        Typ = "ED"
         Hint = "QuArK will run the game with this as '-game' or '+set game' command-line parameter"
       }
     }
@@ -2944,25 +2866,6 @@ QQRKSRC1
       quark: = {
         Typ = "E R"    // Edit Read-only
         Txt = "Designed for QuArK version"
-      }
-    }
-    Skin:form =     // form on the polyhedrons page
-    {
-      Style = "1"
-      header: = {
-        Typ = "S"
-        Txt = "%s"   // caption text is found in the object put in the form
-        //Bold = "0"
-      }
-      triangles: = {
-        Typ = "E-R"      // edit, read only
-        Txt = "Triangles :"
-        Hint = "The number of triangle this component has|Number of triangles"
-      }
-      ownedby: = {
-        Typ = "E-R"
-        Txt = "Owned by :"
-        Hint = "The 'parent' component in the tree view"
       }
     }
   }
