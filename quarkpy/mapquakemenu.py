@@ -115,7 +115,7 @@ class BuildPgmConsole_Advanced(qquake.BatchConsole):
                 mapholes.LoadLinFile(self.editor, self.bspfile_wo_ext+'.'+ext)
         else:
             print "ERROR: Unknown action \"" + action + "\" for extension \"" + ext + "\""
-
+    
     def FileHasContent(self, ext, attr, filename):
         if (ext[:1] != gExt_MustNotExist):
             return 0
@@ -127,8 +127,7 @@ class BuildPgmConsole_Advanced(qquake.BatchConsole):
             for line in data:
                 if string.strip(line)!='':
                     return 1
-        return 0 # not actually necessary because Python functions returns None by default        
-
+        
     def close(self):
         errorfoundandprintet = 0
         for ext, action in self.checkextensions:
@@ -610,6 +609,9 @@ def QuakeMenu(editor):
 #
 #
 #$Log$
+#Revision 1.26.2.1  2002/10/11 10:58:20  tiglari
+#updates by Decker, transferred from main branch
+#
 #Revision 1.27  2002/08/09 10:01:45  decker_dk
 #Fixed problem, when "warning about missing textures and do you want to continue"
 #never continued regarding pressing OK or Cancel. The if-statement checked for MR_YES

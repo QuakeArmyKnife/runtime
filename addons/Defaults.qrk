@@ -25,42 +25,58 @@ QQRKSRC1
 // Please see file TECHINFO.TXT for more information
 // about this file format.
 
+
 //$Header$
 
+
 //$Log$
-//Revision 1.204  2003/01/06 23:18:57  tiglari
+//Revision 1.192.2.14  2003/01/08 23:08:39  tiglari
+//AlwaysWriteThreeFields support
+//
+//Revision 1.192.2.13  2003/01/06 23:11:18  tiglari
 //defaults for wall maker altered again, hints enhanced
 //
-//Revision 1.203  2003/01/03 23:44:01  rowdy
-//removed duplicate Faces entry in AuxKey form definition
+//Revision 1.192.2.12  2003/01/02 22:30:51  tiglari
+//add nolinear specific to path dup to make linear mappings work
+//update wallmaker form+prefab to encourage extruded version
+//  and improve help
 //
-//Revision 1.201  2002/12/29 12:43:18  decker_dk
-//Altered the PluginInfo:form to use the new Memo-field type.
+//Revision 1.192.2.11  2003/01/01 06:52:23  tiglari
+//add nonintegral specific to group form
 //
-//Revision 1.200  2002/12/25 21:27:26  tiglari
-//shift Genesis3D to the  bottom of the games list
+//Revision 1.192.2.10  2002/12/30 01:48:21  tiglari
+//remove 'use integral vertices as threepoints' map option (confusing, unnecessary,
+//  since non-integral face finder-fixer does the job better)
 //
-//Revision 1.199  2002/12/25 21:25:07  tiglari
-//add pts loading to Q1, Hx2, HL
+//Revision 1.192.2.9  2002/12/24 12:04:53  tiglari
+//add PTS loading to Q1, Hx2, HL build defaults
 //
-//Revision 1.198  2002/12/18 00:52:37  tiglari
-//Preliminary crap Genesis3D support, copy of Q1
+//Revision 1.192.2.8  2002/12/15 13:04:08  tiglari
+//restore Mohaa and SoF2
 //
-//Revision 1.197  2002/06/18 11:51:49  tiglari
-//fix SOF2 gamecode
-//
-//Revision 1.196  2002/06/16 10:01:46  tiglari
+//Revision 1.192.2.7  2002/06/16 10:00:47  tiglari
 //restore StupidBuildToolKludge for STVEF
 //
-//Revision 1.195  2002/06/09 02:33:01  tiglari
-//add SoF2 :form and :config
+//Revision 1.192.2.6  2002/06/16 08:26:10  tiglari
+//add :form for SoF2 (not functional unless config is also added)
 //
-//Revision 1.194  2002/05/19 04:39:54  tiglari
-//add some hotkeys (Select Tagged Faces and Zoom to Selection)
+//Revision 1.192.2.5  2002/06/04 08:37:15  tiglari
+//update version
 //
-//Revision 1.193  2002/05/16 09:08:28  tiglari
-//Update version to 6.4 alpha (no diff from 6,3 yet)
+//Revision 1.192.2.4  2002/05/28 10:12:35  tiglari
+//Mohaa removed due to too many issues (esp. terrain system)
 //
+//Revision 1.192.2.3  2002/05/24 22:17:35  tiglari
+//update version
+//
+//Revision 1.192.2.2  2002/05/23 22:45:15  tiglari
+//remove moddir .. from q3map command line; this lets it compile for both earlier
+// and later versions of q3map (moddir doesn't seem to work for some of them)
+//
+//Revision 1.192.2.1  2002/05/19 05:00:38  tiglari
+//Add some hot keys (absence thereof construed elastically as bugs)
+//
+
 //Revision 1.192  2002/05/13 12:02:37  tiglari
 //update version
 //
@@ -661,7 +677,7 @@ QQRKSRC1
   {
     General:config =     // ":config" objects are displayed in the Configuration dialog box
     {
-      Version = "QuArK 6.4 alpha"
+      Version = "QuArK 6.3"
       InternalVersion = '6.2'
       TextureBrowser = "Texture Browser..."
       NewMapItems = "New Map Items..."
@@ -925,7 +941,6 @@ QQRKSRC1
         Form = "GameQuake1"
         PlayerClass = "X"
       }
-
       Hexen II:config =
       {
         Game = "Hexen II"
@@ -1343,11 +1358,11 @@ QQRKSRC1
 
         MapCommentsPrefix = "//"
         OutputMapFormat = "Brush Primitives"
-        StupidBuildToolKludge = "1" //those guys should get shot for that
         AlwaysWriteThreeFields = "1"
+        StupidBuildToolKludge = "1" //those guys should get shot for that
         SupportsBrushPrim = "1"
         BuildPgm1  = "Q3MAP.EXE"
-        BuildArgs1 = "-moddir .."
+        BuildArgs1 = ""
         BuildCheck1= "+BSP,-LIN{LoadLinFile}"
         BuildPgm2  = "Q3MAP.EXE"
         BuildArgs2 = "-vis -saveprt"
@@ -1629,6 +1644,138 @@ QQRKSRC1
         3DLight = '512'
         PakExtra1 = ".aas"  // PAK extra files into pak file (ie maps/mapname.aas)
       }
+
+      JK2:config =
+      {
+        Game = "JK2"
+        Code = "f" // Hardcoded value in Setup.PAS
+        Program = "JK2MP.EXE +set sv_pure 0"
+
+        Directory = "\Star Wars JK II Jedi Outcast\GameData"
+        CheckDirectory = "JK2MP.EXE"
+
+        CD = ""
+        CDDir = ""
+
+        MapLimit = '65536 65536 65536'
+
+        MapCommentsPrefix = "//"
+        OutputMapFormat="Classic Quake"
+        AlwaysWriteThreeFields = "1"
+
+        StupidBuildToolKludge = "1" // GTKRadiant's Q3MAP.EXE seems to work, when '-game wolf' and -fs_basepath <gamepath>' are applied.
+        BuildPgm1  = "SOF2MAP.EXE"
+        BuildArgs1 = "-bsp"
+        BuildCheck1= "+BSP,-LIN{LoadLinFile}"
+        BuildPgm2  = "SOF2MAP.EXE"
+        BuildArgs2 = "-vis -saveprt"
+        BuildPgm3  = "SOF2MAP.EXE"
+        BuildArgs3 = "-light"
+        BuildPgm4  = "SOF2MAP.EXE"
+        BuildArgs4 = "-all"
+        
+        TexturesPath = "textures/"
+        ShadersPath = "shaders/"
+        Q2TexFlags = "1"
+
+        BezierPatchSupport = "1" // this game supports bezier-patches
+        BezierPatchPluginPrefixes = "MB2" // Prefix of the MB2*.PY files. You can also specify the value: "MB2"$0D"MB3"$0D"MB4"
+
+        DefaultTexture = "yavin/woodwall_moss"
+        DefaultTextureTrigger = "system/trigger"
+        DefaultTextureOrigin = "system/origin"
+        DefaultTextureClip = "system/clip"
+        DefaultTextureCaulk = "system/caulk"
+        DefaultTextureScale = "0.5"
+
+        TextureFormat = ".tga"                  // primary texture fileextension
+        TextureFileExtensions = ".tga,.jpg"     // possible texture fileextensions
+        TextureWriteFormat = ".tga"
+        TextureShaders = "shaders/quark.shader"
+
+        BaseDir = "base"
+        tmpQuArK = "tmpQuArK"
+
+        Palette = ":pics/colormap.pcx"
+        ExtraCmdLine = "+set fs_game %s"
+        RunMapCmdLine = " +devmap %s"
+        AddOns = "DataJK2.qrk"$0D"Q3ArchLib.qrk"
+        AlwaysPak = ""
+        PakExt = ".pk3"
+        PakFormat = "*.PK3"
+        Console = "1"
+        Form = "GameJK2"
+        LightFactor = '0.9'
+        3DLight = '512'
+        PakExtra1 = ".nav"  // PAK extra files into pak file (ie maps/mapname.nav)
+      }
+
+      
+      SoF2:config =
+      {
+        Game = "SoF2"
+        Code = "h" // Hardcoded value in Setup.PAS
+        Program = "SoF2MP.EXE +set sv_pure 0"
+
+        Directory = "\SoF2"
+        CheckDirectory = "SoF2MP.EXE"
+
+        CD = ""
+        CDDir = ""
+
+        MapLimit = '65536 65536 65536'
+
+        MapCommentsPrefix = "//"
+        OutputMapFormat="Classic Quake"
+        AlwaysWriteThreeFields = "1"
+
+        StupidBuildToolKludge = "1" // GTKRadiant's Q3MAP.EXE seems to work, when '-game wolf' and -fs_basepath <gamepath>' are applied.
+        BuildPgm1  = "SOF2MAP.EXE"
+        BuildArgs1 = "-bsp"
+        BuildCheck1= "+BSP,-LIN{LoadLinFile}"
+        BuildPgm2  = "SOF2MAP.EXE"
+        BuildArgs2 = "-vis -saveprt"
+        BuildPgm3  = "SOF2MAP.EXE"
+        BuildArgs3 = "-light"
+        BuildPgm4  = "SOF2MAP.EXE"
+        BuildArgs4 = "-all"
+        
+        TexturesPath = "textures/"
+        ShadersPath = "shaders/"
+        Q2TexFlags = "1"
+
+        BezierPatchSupport = "1" // this game supports bezier-patches
+        BezierPatchPluginPrefixes = "MB2" // Prefix of the MB2*.PY files. You can also specify the value: "MB2"$0D"MB3"$0D"MB4"
+
+        DefaultTexture = "jordan/wall_stucco02"
+        DefaultTextureTrigger = "tools/_trigger"
+        DefaultTextureOrigin = "tools/_origin"
+        DefaultTextureClip = "tools/_clip"
+        DefaultTextureCaulk = "tools/_caulk"
+        DefaultTextureScale = "0.5"
+
+        TextureFormat = ".tga"                  // primary texture fileextension
+        TextureFileExtensions = ".tga,.jpg"     // possible texture fileextensions
+        TextureWriteFormat = ".tga"
+        TextureShaders = "shaders/quark.shader"
+
+        BaseDir = "base"
+        tmpQuArK = "tmpQuArK"
+
+        Palette = ":pics/colormap.pcx"
+        ExtraCmdLine = "+set fs_game %s"
+        RunMapCmdLine = " +devmap %s"
+        AddOns = "DataSoF2.qrk"$0D"Q3ArchLib.qrk"
+        AlwaysPak = ""
+        PakExt = ".pk3"
+        PakFormat = "*.PK3"
+        Console = "1"
+        Form = "GameSoF2"
+        LightFactor = '0.9'
+        3DLight = '512'
+        PakExtra1 = ".nav"  // PAK extra files into pak file (ie maps/mapname.nav)
+      }
+
       MOHAA:config =
       {
         Game = "MOHAA"
@@ -1697,184 +1844,7 @@ QQRKSRC1
       //PakExtra1 = ".aas"  // PAK extra files into pak file (ie maps/mapname.aas)
       }
 
-      JK2:config =
-      {
-        Game = "JK2"
-        Code = "f" // Hardcoded value in Setup.PAS
-        Program = "JK2MP.EXE +set sv_pure 0"
 
-        Directory = "\Star Wars JK II Jedi Outcast\GameData"
-        CheckDirectory = "JK2MP.EXE"
-
-        CD = ""
-        CDDir = ""
-
-        MapLimit = '65536 65536 65536'
-
-        MapCommentsPrefix = "//"
-        OutputMapFormat="Classic Quake"
-        AlwaysWriteThreeFields = "1"
-
-        StupidBuildToolKludge = "1" // GTKRadiant's Q3MAP.EXE seems to work, when '-game wolf' and -fs_basepath <gamepath>' are applied.
-        BuildPgm1  = "SOF2MAP.EXE"
-        BuildArgs1 = "-bsp"
-        BuildCheck1= "+BSP,-LIN{LoadLinFile}"
-        BuildPgm2  = "SOF2MAP.EXE"
-        BuildArgs2 = "-vis -saveprt"
-        BuildPgm3  = "SOF2MAP.EXE"
-        BuildArgs3 = "-light"
-        BuildPgm4  = "SOF2MAP.EXE"
-        BuildArgs4 = "-all"
-
-        TexturesPath = "textures/"
-        ShadersPath = "shaders/"
-        Q2TexFlags = "1"
-
-        BezierPatchSupport = "1" // this game supports bezier-patches
-        BezierPatchPluginPrefixes = "MB2" // Prefix of the MB2*.PY files. You can also specify the value: "MB2"$0D"MB3"$0D"MB4"
-
-        DefaultTexture = "yavin/woodwall_moss"
-        DefaultTextureTrigger = "system/trigger"
-        DefaultTextureOrigin = "system/origin"
-        DefaultTextureClip = "system/clip"
-        DefaultTextureCaulk = "system/caulk"
-        DefaultTextureScale = "0.5"
-
-        TextureFormat = ".tga"                  // primary texture fileextension
-        TextureFileExtensions = ".tga,.jpg"     // possible texture fileextensions
-        TextureWriteFormat = ".tga"
-        TextureShaders = "shaders/quark.shader"
-
-        BaseDir = "base"
-        tmpQuArK = "tmpQuArK"
-
-        Palette = ":pics/colormap.pcx"
-        ExtraCmdLine = "+set fs_game %s"
-        RunMapCmdLine = " +devmap %s"
-        AddOns = "DataJK2.qrk"$0D"Q3ArchLib.qrk"
-        AlwaysPak = ""
-        PakExt = ".pk3"
-        PakFormat = "*.PK3"
-        Console = "1"
-        Form = "GameJK2"
-        LightFactor = '0.9'
-        3DLight = '512'
-        PakExtra1 = ".nav"  // PAK extra files into pak file (ie maps/mapname.nav)
-      }
-
-      SoF2:config =
-      {
-        Game = "SoF2"
-        Code = "h" // Hardcoded value in Setup.PAS
-        Program = "SoF2MP.EXE +set sv_pure 0"
-
-        Directory = "\SoF2"
-        CheckDirectory = "SoF2MP.EXE"
-
-        CD = ""
-        CDDir = ""
-
-        MapLimit = '65536 65536 65536'
-
-        MapCommentsPrefix = "//"
-        OutputMapFormat="Classic Quake"
-        AlwaysWriteThreeFields = "1"
-
-        StupidBuildToolKludge = "1" // GTKRadiant's Q3MAP.EXE seems to work, when '-game wolf' and -fs_basepath <gamepath>' are applied.
-        BuildPgm1  = "SOF2MAP.EXE"
-        BuildArgs1 = "-bsp"
-        BuildCheck1= "+BSP,-LIN{LoadLinFile}"
-        BuildPgm2  = "SOF2MAP.EXE"
-        BuildArgs2 = "-vis -saveprt"
-        BuildPgm3  = "SOF2MAP.EXE"
-        BuildArgs3 = "-light"
-        BuildPgm4  = "SOF2MAP.EXE"
-        BuildArgs4 = "-all"
-
-        TexturesPath = "textures/"
-        ShadersPath = "shaders/"
-        Q2TexFlags = "1"
-
-        BezierPatchSupport = "1" // this game supports bezier-patches
-        BezierPatchPluginPrefixes = "MB2" // Prefix of the MB2*.PY files. You can also specify the value: "MB2"$0D"MB3"$0D"MB4"
-
-        DefaultTexture = "jordan/wall_stucco02"
-        DefaultTextureTrigger = "tools/_trigger"
-        DefaultTextureOrigin = "tools/_origin"
-        DefaultTextureClip = "tools/_clip"
-        DefaultTextureCaulk = "tools/_caulk"
-        DefaultTextureScale = "0.5"
-
-        TextureFormat = ".tga"                  // primary texture fileextension
-        TextureFileExtensions = ".tga,.jpg"     // possible texture fileextensions
-        TextureWriteFormat = ".tga"
-        TextureShaders = "shaders/quark.shader"
-
-        BaseDir = "base"
-        tmpQuArK = "tmpQuArK"
-
-        Palette = ":pics/colormap.pcx"
-        ExtraCmdLine = "+set fs_game %s"
-        RunMapCmdLine = " +devmap %s"
-        AddOns = "DataSoF2.qrk"$0D"Q3ArchLib.qrk"
-        AlwaysPak = ""
-        PakExt = ".pk3"
-        PakFormat = "*.PK3"
-        Console = "1"
-        Form = "GameSoF2"
-        LightFactor = '0.9'
-        3DLight = '512'
-        PakExtra1 = ".nav"  // PAK extra files into pak file (ie maps/mapname.nav)
-      }
-
-      Genesis3D:config =
-      {
-        Game = "Genesis3D"
-        Code = "4" // Hardcoded value in Setup.PAS
-
-        Program = "Quake.EXE"
-
-        Directory = "\Quake"
-        CheckDirectory = "QUAKE.EXE"
-
-        MapCommentsPrefix = "//"
-
-        OutputMapFormat = "Classic Quake"
-        BuildPgm1  = "TXQBSP.EXE"
-        BuildArgs1 = ""
-        BuildCheck1= "+BSP,+PRT"
-        BuildPgm2  = "RVIS.EXE"
-        BuildArgs2 = ""
-        BuildPgm3  = "ARGHLITE.EXE"
-        BuildArgs3 = ""
-
-        DefaultTexture = "bricka2_2"
-        DefaultTextureTrigger = "trigger"
-        DefaultTextureClip = "clip"
-
-        WateryTex = "*"
-        TextureFormat = ".wad_D"
-        TextureWriteFormat = ".wad_D"
-        TextureWad = "gfx/QuArK.wad"
-
-        BaseDir = "id1"
-        tmpQuArK = "tmpQuArK"
-
-        MapHoles = ".pts"
-        Palette = "gfx/palette.lmp"
-        Gradient = "gfx/colormap.lmp"
-        UnifiedPalette = "1"
-        ExtraCmdLine = "-game %s"
-        RunMapCmdLine = " +map %s"
-        AddOns = "DataGen3D.qrk"    // list of files to use as add-ons for Quake 1 (separator is the character $0D hex., example : "first.qrk"$0D"second.qrk"$0D"third.qrk"
-        AlwaysPak = ""
-        PakExt = ".pak"
-        LightFactor = '0.9'
-        3DLight = '512'
-        Console = "1"
-        Form = "GameQuake1"
-        PlayerClass = "X"
-      }
 
     }
 
@@ -1949,6 +1919,7 @@ QQRKSRC1
         DisableFPCoord          = ""
 // Experimental; disable in distributions:
 //        UseIntetralVertices     = ""
+//        DontWriteNullThreeFields = ""
         AutoCheckMap            = "1"
         EntityLinesDispersion   = "1"
         CompassNumbers          = "1"
@@ -3587,7 +3558,6 @@ QQRKSRC1
       t_GameBuildPgms=!
     }
 
-
     GameTorque:form =
     {
       Style = "3"
@@ -3950,6 +3920,12 @@ QQRKSRC1
          "If map-editor has started, new assignment will apply on"
           $0D"next QuArK restart. Otherwise when map-editor is started."
        }
+       Select Faces: = {
+         Txt = "&R" Typ = "R"
+         Hint = "If this key is down, a mouseclick will select only faces."$0D
+         "If map-editor has started, new assignment will apply on"
+          $0D"next QuArK restart. Otherwise when map-editor is started."
+       }
        Select Brushes: = {
          Txt = "&R" Typ = "R"
          Hint = "If this key is down, a mouseclick will select only brushes."$0D
@@ -4178,7 +4154,7 @@ QQRKSRC1
       L0: = {Typ="S" Bold="0" Txt="configuration page for each game."}
       Sep0: = {Typ="S" Txt = ""}
       L0: = {Typ="S" Txt="---- troubleshooting options ----"}
-      Bilinear: = { Typ="X" Txt="Bilinear Filtering" Cap="Enabled" }
+      Bilinear: = { Typ="X" Txt="Bilinear Filtering" Cap="Enabled" }  
       DoubleBuffer: = { Typ="X" Txt="Double buffering" Cap="Enabled" }
       SupportsGDI:  = { Typ="X" Txt="'Supports GDI' flag" Cap="Enabled" }
       AllowsGDI:    = { Typ="X" Txt="Over-the-scene lines+icons" Cap="Enabled" }
@@ -4273,7 +4249,8 @@ QQRKSRC1
       DisableMapComments:       = {Typ="X" Txt="   ``"                          Cap="Don't write comments in .map files"   }
 //      DisableEnhTex:          = {Typ="X" Txt="   ``"                          Cap="Don't write //TX# in .map files"      }
       DisableFPCoord:           = {Typ="X" Txt="   ``"                          Cap="Don't write floating-point coords"    }
-      UseIntegralVertices:      = {Typ="X" Txt="   ``"                          Cap="Use Integral Vertices as Threepoints" }
+      UseIntegralVertices:    = {Typ="X" Txt="   ``"                          Cap="Use Integral Vertices as Threepoints" }
+//      DontWriteNullThreeFields: = {Typ="X" Txt="   ``"                          Cap="Don't write the three fields when they'e all 0" }
     }
     MapBuilding:form =
     {
@@ -4487,6 +4464,7 @@ QQRKSRC1
           _color = ""          // the button deletes this Specific
         }
       }
+      nonintegral = {Txt="nonintegral" Typ="X" Hint="Contained nonintegral faces won't be found by nonintegral face-finder."}
       usercenterform = !
       sep1:  = {Typ="S" Txt = ""}
       neg:   = {Txt="Neg. polys" Cap="Negative" Typ="X" Hint="polyhedrons in negative groups dig the map"}
@@ -4519,6 +4497,7 @@ QQRKSRC1
     Default:p:form = // form for polys
     {
        neg: = {Txt="&" Typ="X" Hint="if checked, brush is negative"}
+       plug: = {Txt="&" Typ="X" Hint="if checked, brush is a 'plug' for the wallmaker (extruded or mitered)"}
     }
     linearform:incl = {
 //       scale: = {Txt="&" Typ="EF03"  Hint="X Y Z axis scaling" }
@@ -4714,6 +4693,7 @@ QQRKSRC1
       squarend: = {Txt="&" Typ="X"     Hint="if checked, path segments have squared, disconnnected ends, rather than joining at `elbows'"}
       setback:  = {Txt="&" Typ="EF001" Hint="if squarend is checked, this specifies how far back the segment ends are pulled" $0D "back from elbow-joins"}
       level: = {Txt="&" Typ="X"     Hint="if checked, rotation on two axes won't twist a segment, but also they won't join smoothly."}
+      nolinear: = {Txt="&" Typ="X"     Hint="Must be checked for linear mappings to work on the duplicator."}
       elbows: =
        {Txt= "&" Typ="P" Macro="instances" Cap="push" Hint="Push to add an elbow duplicator"}
     }
@@ -4769,7 +4749,7 @@ QQRKSRC1
       {
          Txt="&"
          Typ="X"
-         Hint="If this is checked, corners will be mitered" $0D " outsides of shapes may need touching up"
+         Hint="If this is checked, corners will be mitered; best for final build." $0D "Outsides of shapes may need touching up."
       }
       extrude: =
       {
@@ -4781,7 +4761,7 @@ QQRKSRC1
       {
          Txt="&"
          Typ="X"
-         Hint="If this is checked, brushes are made solid, no wall made." $0D " (simpler processing for quicker editing)"
+         Hint="If this is checked, brushes are made solid, no wall made." $0D " Best for fast reshaping of complex forms, then uncheck again to restore interiors."
       }
       depth: =
       {
@@ -4790,7 +4770,6 @@ QQRKSRC1
          Hint="thickness of walls"
       }
     }
-
     dup extruder:form = {
       type: =
       {
@@ -4862,7 +4841,7 @@ QQRKSRC1
       Game: = {
         Txt = "Based on game"
         Typ = "CL"
-        Items = "Quake 1"$0D"Quake 2"$0D"Hexen II"$0D"Heretic II"$0D"Half-Life"$0D"Sin"$0D"KingPin"$0D"SOF"$0D"Quake 3"$0D"STVEF"$0D"Crystal Space"$0D"RTCW"$0D"MOHAA"$0D"JK2"$0D"SoF2"
+        Items = "Quake 1"$0D"Quake 2"$0D"Hexen II"$0D"Heretic II"$0D"Half-Life"$0D"Sin"$0D"KingPin"$0D"SOF"$0D"Quake 3"$0D"STVEF"$0D"Crystal Space"$0D"RTCW"$0D"MOHAA"$0D"JK2"
         Hint = "the game this TC is based on"
       }
       SourceDir: = {
@@ -5190,7 +5169,7 @@ QQRKSRC1
         Txt = "Plug-in name"
       }
       desc: = {
-        Typ = "M R"    // Memo/Multiline-text Read-only
+        Typ = "E R"    // Edit Read-only
         Txt = "Description"
       }
       date: = {
@@ -5603,7 +5582,7 @@ QQRKSRC1
         }
         Hollow Maker:d =
         {
-          ;desc = "polyhedrons inside are automatically made hollow"
+          ;desc = "polyhedrons inside are automatically made hollow; you should probably be using the wallmaker instead"
           ;incl = "defpoly"
           macro = "hollow maker"
           depth = "8"
@@ -5614,6 +5593,7 @@ QQRKSRC1
           ;incl = "defpoly"
           macro = "wall maker"
           depth = "8"
+          miter = "1"
         }
 //  UserCenterHandle stuff better, methinks
 //        Origin Duplicator:d =
@@ -5632,6 +5612,7 @@ QQRKSRC1
             target        = "dpath1"
             speeddraw     = "0"
             scaletexture  = "0"
+            nolinear      = "1"
             Template:g =
             {
               cube:p =

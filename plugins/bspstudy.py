@@ -160,7 +160,7 @@ def CheckPlanesClick(m):
         # Names and list-indexes of close planes
         #
         ran = range(len(pack.closeones))
-        pack.slist = map(lambda obj,num:"%d) %s"(num+1,obj.shortname), pack.closeones, ran)
+        pack.slist = map(lambda obj,num:"%d) %s"(num,obj.shortname), pack.closeones, ran)
         pack.klist = map(lambda d:`d`, ran)
         self.src["closeplanes$Items"] = string.join(pack.slist, "\015")
         self.src["closeplanes$Values"] = string.join(pack.klist, "\015")
@@ -556,7 +556,6 @@ class NodeType(quarkpy.mapentities.GroupType):
             editor.ok(undo,"Add bbox Poly")
 
         polyItem=qmenu.item("Add BBox poly", bboxPoly)
-
 
 #
 #  hmm this one doesn't actually seem to be so straightforward

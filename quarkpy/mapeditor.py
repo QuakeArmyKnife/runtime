@@ -350,6 +350,9 @@ def autosave(editor):
 #
 #
 #$Log$
+#Revision 1.4  2002/05/18 09:53:14  tiglari
+#support Radiant-style dragging for frozen selections
+#
 #Revision 1.3  2002/05/15 00:10:06  tiglari
 #Write map-reading errors to console
 #

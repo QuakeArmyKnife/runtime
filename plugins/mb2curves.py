@@ -343,10 +343,6 @@ def bevelImages(o, editor, inverse=0, lower=0, left=0, standup=0, open=0, thick=
       else:
           newside.distortion(fdict["r"].normal,pd["trb"])
       cp2 = texcpFromFace(cp, newside, editor)
-      debug("cp: ")
-      writecps(cp)
-#      debug("cp2: ")
-#      writecps(cp2)
       for index in range(3):
         cp[index][2]=cp2[index][2]
 

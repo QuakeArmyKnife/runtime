@@ -225,6 +225,9 @@ quarkpy.mapentities.EntityLinesMapping.update({
 # ----------- REVISION HISTORY ------------
 #
 # $Log$
+# Revision 1.3  2002/12/29 12:45:17  decker_dk
+# A description in the plugin-infoarea, about what the black/red colors of the jump-archs mean.
+#
 # Revision 1.2  2002/12/28 14:03:54  decker_dk
 # Added some jump-arch kindof entity-lines for 'trigger_push' and 'target_push'. Some of the math ain't correct.
 #

@@ -548,6 +548,7 @@ def moveselection(editor, text, offset=None, matrix=None, origin=None, inflate=N
                 new.translate(offset)     # offset the objects
             if matrix:
                 if direct:
+#                    debug('applylinear')
                     import mapduplicator
                     mapduplicator.DupManager(new).applylinear(matrix, 1)
                 else:

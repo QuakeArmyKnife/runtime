@@ -234,6 +234,10 @@ quarkpy.mapsearch.items.append(quarkpy.qmenu.item("Search/replace textures...", 
 
 # ----------- REVISION HISTORY ------------
 # $Log$
+# Revision 1.8  2002/06/10 09:27:39  decker_dk
+# Updated to allow only search-for-texture, without replacing any.
+# TODO: Switch to specify search (and replace) for brushes that have the texture either on _all_ its faces _or_ only partly.
+#
 # Revision 1.7  2002/05/16 03:05:41  tiglari
 # If just a face is selected, the texture on the face is loaded into the dialog
 #  (bug report from fpbrowser)

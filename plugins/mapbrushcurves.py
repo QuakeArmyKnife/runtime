@@ -670,6 +670,9 @@ quarkpy.mapentities.PolyhedronType.menu = newpolymenu
 
 # ----------- REVISION HISTORY ------------
 #$Log$
+#Revision 1.13.6.1  2002/10/11 10:57:45  tiglari
+#updates by Decker, transferred from main branch
+#
 #Revision 1.14  2002/08/09 09:59:02  decker_dk
 #Fixed a problem, where the bevelImage() could end up using a face without a
 #texture-name attached. Look for "DECKER 2002-08-09"

@@ -287,6 +287,7 @@ quarkpy.mapsearch.items.append(qmenu.item('Find &Thin Faces', thinClick,
   "|This identifies brushes with faces that are suspiciously thin."))
 
 #$Log$
+#
 #Revision 1.3  2001/06/17 21:10:56  tiglari
 #fix button captions
 #

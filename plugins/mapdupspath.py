@@ -858,6 +858,10 @@ quarkpy.mapduplicator.DupCodes.update({
 
 # ----------- REVISION HISTORY ------------
 #$Log$
+#Revision 1.47  2002/08/04 11:49:24  decker_dk
+#Fixed some code that would cause dissociate images to produce an incorrect result.
+#Found by quantum_red in QuArK-forum date: 2002-07-30 subject: "Texture Alignment Problem".
+#
 #Revision 1.46  2001/10/22 10:15:48  tiglari
 #live pointer hunt, revise icon loading
 #

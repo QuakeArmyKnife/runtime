@@ -183,7 +183,7 @@ class VtxDragDlg(quarkpy.dlgclasses.LiveEditDlg):
 #
 def rotateFace(face, mvtx, delta, pivot, pivot2):
     "rotates face from mvtx by delta around pivots"
-#    debug('delta: '+`delta`)
+    debug('delta: '+`delta`)
     #
     # Much more laborious than Tim Smith's maphandles
     #  method, but seems to prevent `drifting' of supposedly

@@ -4,6 +4,9 @@ QQRKSRC1
 //$Header$
 // ----------- REVISION HISTORY ------------
 //$Log$
+//Revision 1.5  2002/05/05 10:18:18  tiglari
+//Texture flags
+//
 //Revision 1.4  2002/05/01 00:16:41  tiglari
 //change deathmatch to start in default map; add texture flag info.
 // The delphi needs to be changed to write them as text

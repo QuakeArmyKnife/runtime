@@ -526,9 +526,6 @@ def writecps(cp):
 #
 #
 #$Log$
-#Revision 1.17.10.1  2002/12/29 02:57:59  tiglari
-#texcpfromface now uses threepoints(6) to avoid recentering tex coords
-#
 #Revision 1.17  2001/03/20 11:01:51  tiglari
 #credit added
 #

@@ -29,8 +29,8 @@
 ##########################################################
 
 
-#$Header$
 
+#$Header$
 
 Info = {
    "plug-in":       "Mad Selector",
@@ -985,8 +985,9 @@ quarkpy.mapoptions.items.append(mennosel)
 #
 #
 # $Log$
-# Revision 1.19  2002/05/18 22:38:31  tiglari
-# remove debug statement
+
+# Revision 1.18.2.1  2002/05/18 22:45:55  tiglari
+# remove debug statements
 #
 # Revision 1.18  2002/03/30 02:49:50  tiglari
 # fixed bug whereby selection menu wasn't enabling/disabling properly

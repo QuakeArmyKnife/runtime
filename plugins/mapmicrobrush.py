@@ -275,7 +275,7 @@ quarkpy.mapsearch.items.append(qmenu.item('Find &Microbrushes', thinClick,
  "|This identifies brushes that are suspiciously small, at least in one dimension."))
 
 #$Log$
-#Revision 1.6  2002/05/21 09:16:16  tiglari
+#Revision 1.5.4.1  2002/05/21 09:15:35  tiglari
 #fix problems with selection dialog: the first of two with identical names was
 # always being chosen, and first item on list wouldn't load
 #

@@ -1872,9 +1872,6 @@ for menitem, keytag in [(menselecttagged, "Select Tagged Faces")]:
 
 # ----------- REVISION HISTORY ------------
 #$Log$
-#Revision 1.20.2.4  2003/01/01 05:08:33  tiglari
-#remove debug comments
-#
 #Revision 1.20.2.3  2002/12/30 05:04:13  tiglari
 #remove 'to mirror' option - doesn't seem to be necessary
 #
