@@ -1,5 +1,5 @@
 QQRKSRC1
-// This file has been written by QuArK quarksnapshot_20001015
+// This file has been written by QuArK Version 5.9
 // It's the text version of file: UserData Half-Life.qrk
 
 {
@@ -64,11 +64,6 @@ QQRKSRC1
       LIGHT1 = "1"
       LIGHTCmd = "-extra"
       RunGame = "1"
-      ExportMapFile = "1"
-      BuildPgm1 = "1"
-      BuildPgm2 = "1"
-      BuildPgm3 = "1"
-      BuildPgm4 = "1"
     }
     item: =
     {
@@ -79,10 +74,6 @@ QQRKSRC1
       QBSP1 = "1"
       LIGHT1 = "1"
       RunGame = "1"
-      BuildPgm1 = "1"
-      BuildPgm2 = "1"
-      BuildPgm4 = "1"
-      ExportMapFile = "1"
     }
     item: =
     {
@@ -94,9 +85,6 @@ QQRKSRC1
       QBSP1 = "1"
       LIGHT1 = "1"
       RunGame = "1"
-      ExportMapFile = "1"
-      BuildPgm1 = "1"
-      BuildPgm2 = "1"
     }
     item: =
     {
@@ -116,11 +104,6 @@ QQRKSRC1
       LIGHT1 = "1"
       LIGHTCmd = "-extra"
       Pause = "1"
-      ExportMapFile = "1"
-      Textures = "1"
-      BuildPgm1 = "1"
-      BuildPgm2 = "1"
-      BuildPgm3 = "1"
     }
     item: =
     {
@@ -137,15 +120,12 @@ QQRKSRC1
       QCSG1 = "1"
       QBSP1 = "1"
       Pause = "1"
-      BuildPgm1 = "1"
-      BuildPgm2 = "1"
     }
     item: =
     {
       Txt = "&VIS (visibility list)"
       VIS1 = "1"
       Pause = "1"
-      BuildPgm3 = "1"
     }
     item: =
     {
@@ -153,7 +133,6 @@ QQRKSRC1
       LIGHT1 = "1"
       LIGHTCmd = "-extra"
       Pause = "1"
-      BuildPgm4 = "1"
     }
     item: =
     {
@@ -165,8 +144,6 @@ QQRKSRC1
       QCSG1 = "1"
       QCSGCmd = "-onlyents"
       Pause = "1"
-      BuildPgm1 = "1"
-      BuildArgs1 = "-onlyents"
     }
   }
 }

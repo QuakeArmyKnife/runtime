@@ -20,88 +20,100 @@ import qmenu
 import qquake
 
 
-# Constants for BuildCheck extensions!
-gExt_GotToExist     = "+"
-gExt_MustNotExist   = "-"
-gExt_Controllers    = gExt_GotToExist + gExt_MustNotExist
-gExt_ValidExtChars  = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-gExt_AllCharacters  = " " + gExt_Controllers + gExt_ValidExtChars
 
-
-def CreateCheckFileExtensionArray(instring):
-
-    def FindSingleExtension(instring):
-        # Must start with a 'gExt_Controllers' character!
-        if (not instring[:1] in gExt_Controllers):
-            return None
-        # Find next char not in 'gExt_ValidExtChars', or end-of-line
-        for i in range(1, len(instring)):
-            if (instring[i] not in gExt_ValidExtChars):
-                return instring[0:i]
-        return instring[0:]
-
-    # Remove all unnessary characters
-    reducedstring = filter(lambda d: d in gExt_AllCharacters, instring)
-    extlist = []
-    for i in range(0, len(reducedstring)):
-        res = FindSingleExtension(reducedstring[i:])
-        if (res is not None):
-            extlist = extlist + [string.upper(res)]
-    return extlist
-
-
-
-class BuildPgmConsole(qquake.BatchConsole):
-    "StdOut console for programs that build files."
+class BspConsole(qquake.BatchConsole):
+    "StdOut console for programs that modify a .bsp file."
 
     def __init__(self, cmdline, currentdir, bspfile, editor, next):
         qquake.BatchConsole.__init__(self, cmdline, currentdir, next)
-
-
-
-class BuildPgmConsole_Advanced(qquake.BatchConsole):
-    "StdOut console for programs that build files."
-
-    def __init__(self, cmdline, currentdir, bspfile, editor, next, checkextensions):
-        qquake.BatchConsole.__init__(self, cmdline, currentdir, next)
-        self.checkextensions = checkextensions
-        # Remove file-extension
         try:
-            self.bspfile_wo_ext = bspfile[:string.rindex(bspfile, ".")]
-        except:
-            self.bspfile_wo_ext = bspfile
-        # Initial check for files with checkextensions
-        for ext in self.checkextensions:
-            try:
-                workfile = self.bspfile_wo_ext + "." + ext[1:]
-                attr = quarkx.getfileattr(workfile)
-                if (attr!=FA_FILENOTFOUND) and (attr&FA_ARCHIVE):
-                    quarkx.setfileattr(workfile, attr-FA_ARCHIVE)
-            except quarkx.error:
-                pass
+            attr = quarkx.getfileattr(bspfile)
+            if (attr!=FA_FILENOTFOUND) and (attr&FA_ARCHIVE):
+                quarkx.setfileattr(bspfile, attr-FA_ARCHIVE)
+        except quarkx.error:
+            pass
+        self.bspfile = bspfile
 
     def close(self):
-        errorlineprintet = 0
-        for ext in self.checkextensions:
-            errortext = None
-            workfile = self.bspfile_wo_ext + "." + ext[1:]
-            attr = quarkx.getfileattr(workfile)
-            if ((ext[:1] == gExt_GotToExist) and ((attr==FA_FILENOTFOUND) or not (attr&FA_ARCHIVE))):
-                errortext = "Build failed, because it did not create the (%s) file: " % ext + workfile
-            elif ((ext[:1] == gExt_MustNotExist) and ((attr!=FA_FILENOTFOUND) and (attr&FA_ARCHIVE))):
-                errortext = "Build failed, because it created the (%s) file: " % ext + workfile
-            # Was error found?
-            if (errortext is not None):
-                if (not errorlineprintet):
-                    print "!-!"*26
-                    errorlineprintet = 1
-                print errortext
-        if (errorlineprintet):
-            # Error occured!
+        attr = quarkx.getfileattr(self.bspfile)
+        if (attr==FA_FILENOTFOUND) or not (attr&FA_ARCHIVE):
+            print "-"*79
+            print "Failed to build the file", self.bspfile
             quarkx.console()
             del self.next
         else:
             qquake.BatchConsole.close(self)
+            return 1
+
+
+
+class QBSPConsole(BspConsole):
+    "BspConsole for the program QBSP."
+
+    def __init__(self, cmdline, currentdir, bspfile, editor, next):
+        BspConsole.__init__(self, cmdline, currentdir, bspfile, editor, next)
+        self.editor = editor
+        self.linfile = bspfile[:-4] + ".lin"
+        try:
+            attr = quarkx.getfileattr(self.linfile)
+            if (attr!=FA_FILENOTFOUND) and (attr&FA_ARCHIVE):
+                quarkx.setfileattr(self.linfile, attr-FA_ARCHIVE)
+        except quarkx.error:
+            pass
+
+
+    def close(self):
+        if BspConsole.close(self):
+            attr = quarkx.getfileattr(self.linfile)
+            if (attr!=FA_FILENOTFOUND) and (attr&FA_ARCHIVE):
+                if self.editor is None:
+                    print "NOTE: QBSP has found a hole in this map"
+                else:
+                    import mapholes
+                    mapholes.LoadLinFile(self.editor, self.linfile)
+        self.editor = None
+
+
+class BSPC_Console(qquake.BatchConsole):
+    "StdOut console for programs that make an .aas from .bsp file."
+
+    def __init__(self, cmdline, currentdir, bspfile, editor, next):
+        qquake.BatchConsole.__init__(self, cmdline + ".bsp", currentdir, next)
+        try:
+            attr = quarkx.getfileattr(bspfile)
+            if (attr!=FA_FILENOTFOUND) and (attr&FA_ARCHIVE):
+                quarkx.setfileattr(bspfile, attr-FA_ARCHIVE)
+        except quarkx.error:
+            pass
+        self.aasfile = bspfile[:-4] + ".aas"
+
+        self.editor = editor
+        self.linfile = bspfile[:-4] + ".lin"
+        try:
+            attr = quarkx.getfileattr(self.linfile)
+            if (attr!=FA_FILENOTFOUND) and (attr&FA_ARCHIVE):
+                quarkx.setfileattr(self.linfile, attr-FA_ARCHIVE)
+        except quarkx.error:
+            pass
+
+    def close(self):
+        attr = quarkx.getfileattr(self.aasfile)
+        if (attr==FA_FILENOTFOUND) or not (attr&FA_ARCHIVE):
+            print "-"*79
+            print "Failed to build the file", self.aasfile
+            quarkx.console()
+            del self.next
+
+            attr = quarkx.getfileattr(self.linfile)
+            if (attr!=FA_FILENOTFOUND) and (attr&FA_ARCHIVE):
+                if self.editor is None:
+                    print "NOTE: BSPC has found a hole in this map"
+                else:
+                    import mapholes
+                    mapholes.LoadLinFile(self.editor, self.linfile)
+        else:
+            qquake.BatchConsole.close(self)
+            return 1
 
 
 class CloseConsole:
@@ -125,8 +137,6 @@ def writemapfile(root, mapname, selonly, wadfile, hxstr=None):
         saveflags = saveflags | SO_DISABLEENHTEX
     if MapOption("DisableFPCoord"):
         saveflags = saveflags | SO_DISABLEFPCOORD
-    if MapOption("EnableBrushPrim"):
-        saveflags = saveflags | SO_ENABLEBRUSHPRIM
     if selonly:
         saveflags = saveflags | SO_SELONLY
     m = quarkx.newfileobj(mapname+'.map')
@@ -152,12 +162,12 @@ def filesformap(map):
     return [map+".bsp", map+mapholes]
 
 
-#def FirstBuildCmd():
-#    setup = quarkx.setupsubset()
-#    if setup["FirstBuildCmd"]:
-#        return setup["FirstBuildCmd"]
-#    else:
-#        return "QBSP1"
+def FirstBuildCmd():
+    setup = quarkx.setupsubset()
+    if setup["FirstBuildCmd"]:
+        return setup["FirstBuildCmd"]
+    else:
+        return "QBSP1"
 
 
 def qmenuitem1click(m):
@@ -166,7 +176,7 @@ def qmenuitem1click(m):
     if m.info["SelOnly"] and not len(editor.layout.explorer.sellist):
         quarkx.msgbox(Strings[223], MT_ERROR, MB_OK)
         return
-    if MapOption("AutoCheckMap", SS_MAP):
+    if MapOption("AutoCheckMap", SS_MAP) and m.info[FirstBuildCmd()]:
         import mapsearch
         if mapsearch.CheckMap() == 0:
             return
@@ -181,37 +191,27 @@ def RebuildAndRun(maplist, editor, runquake, text, forcepak, extracted, cfgfile,
     #
     # Turn the "extracted" to lowercase.
     #
+
     for i in range(len(extracted)):
         extracted[i] = string.lower(extracted[i])
 
     #
     # First, extract all textures and compute .map file names.
     #
+
     if editor is None:
         texsrc = None
     else:
         texsrc = editor.TexSource
-
     setup = quarkx.setupsubset()
     newlist = []
     textures = {}
     texwarning = 0
-    texwarninglist = ""
     gameneedwad = setup["GameNeedWad"]
-
     for mapfileobject, root, buildmode in maplist:
         map = string.lower(checkfilename(mapfileobject["FileName"] or mapfileobject.shortname))
         mapinfo = {"map": map}
-        if buildmode["ExportMapFile"] or\
-           buildmode["BuildPgm1"] or\
-           buildmode["BuildPgm2"] or\
-           buildmode["BuildPgm3"] or\
-           buildmode["BuildPgm4"] or\
-           buildmode["BuildPgm5"] or\
-           buildmode["BuildPgm6"] or\
-           buildmode["BuildPgm7"] or\
-           buildmode["BuildPgm8"] or\
-           buildmode["BuildPgm9"]:
+        if buildmode["QCSG1"] or buildmode["QBSP1"] or buildmode["VIS1"] or buildmode["LIGHT1"] or buildmode["BSPC1"]:
             bspfile = quarkx.outputfile("maps/%s.bsp" % map)
             if bspfile in extracted:
                 continue
@@ -230,9 +230,6 @@ def RebuildAndRun(maplist, editor, runquake, text, forcepak, extracted, cfgfile,
                 t1 = quarkx.loadtexture(t)
                 if t1 is None:
                     texwarning = texwarning + 1
-                    if len(texwarninglist):
-                        texwarninglist = texwarninglist + ", "
-                    texwarninglist = texwarninglist + "%s" % t
                 elif (t1.type == '.wl') and t1["h"]:        # Half-Life texture link
                     wadlist["../"+t1["s"]+"/"+t1["d"]+".wad"] = None
                 else:
@@ -255,9 +252,7 @@ def RebuildAndRun(maplist, editor, runquake, text, forcepak, extracted, cfgfile,
                     texlist.append(t)
 
     if texwarning:
-        errtext = Strings[-103] % texwarning
-        errtext = errtext + "\n\n" + texwarninglist
-        if quarkx.msgbox(errtext, MT_WARNING, MB_OK_CANCEL) != MR_YES:
+        if quarkx.msgbox(Strings[-103] % texwarning, MT_WARNING, MB_OK_CANCEL) != MR_YES:
             return
 
     texcount = None
@@ -280,6 +275,7 @@ def RebuildAndRun(maplist, editor, runquake, text, forcepak, extracted, cfgfile,
     #
     # Precompute a few variables.
     #
+
     tmpquark = quarkx.outputfile("")
     if tmpquark[-1]=='\\':
         tmpquark = tmpquark[:-1]
@@ -295,6 +291,7 @@ def RebuildAndRun(maplist, editor, runquake, text, forcepak, extracted, cfgfile,
             extracted.append(string.lower(hxstrfile))
         except:
             pass
+    firstcmd = FirstBuildCmd()
 
     if runquake or len(extracted):
         if runquake:    # if we have to run the game
@@ -319,73 +316,45 @@ def RebuildAndRun(maplist, editor, runquake, text, forcepak, extracted, cfgfile,
     for mapfileobject, root, buildmode, mapinfo in newlist:
 
         map = mapinfo["map"]
-        bspfile = quarkx.outputfile("./maps/%s.bsp" % map)
+        mapcmd = "./maps/" + map
+        bspfile = quarkx.outputfile("maps/%s.bsp" % map)
 
-        if setup["StupidBuildToolKludge"]:
-            # stupid tool that wants to run in the base dir
-            toolworkdir = setup["Directory"] + "/" + setup["BaseDir"]
-            argument_mappath = "../tmpquark/maps"
-            argument_mapfile = "../tmpquark/maps/%s.map" % map
-            argument_file    = "../tmpquark/maps/%s" % map
-        else:
-            # clever tool that can run anywhere
-            toolworkdir = tmpquark
-            argument_mappath = "./maps"
-            argument_mapfile = "./maps/%s.map" % map
-            argument_file    = "./maps/%s" % map
+        for pgrm, console in (("BSPC", BSPC_Console),\
+                              ("LIGHT", BspConsole),\
+                              ("VIS", BspConsole),\
+                              ("QBSP", QBSPConsole),\
+                              ("QCSG", BspConsole)):
+            pgrm1 = pgrm+"1"
 
-        for pgrmnbr in range(9,0,-1):
-            pgrmx = "BuildPgm%d" % pgrmnbr
+            if buildmode[pgrm1]:    # prepare to run this program
 
-            if buildmode[pgrmx]:        # Should this program be run?
-                cmdline = setup[pgrmx]
-
-                console = BuildPgmConsole_Advanced
-
-                # Check first Default build-tool directory
-                try:
-                    cmdline2 = setup["BuildPgmsDir"] + "\\" + cmdline
-                    if (not quarkx.getfileattr(cmdline2)==FA_FILENOTFOUND):
-                        # Success, use this build-tool!
-                        cmdline = cmdline2
-                except:
-                    pass
+                cmdline = setup[pgrm1]
 
                 if (not cmdline) or (quarkx.getfileattr(cmdline)==FA_FILENOTFOUND):
-                    desc = setup["BuildDesc%d" % pgrmnbr] or cmdline or pgrmx
+                    desc = setup[pgrm+"Desc"] or pgrm
                     missing = "     %s\n%s" % (desc, missing)
                 else:
-                    # Prepare to run this program
-                    cmdline = '"%s"' % cmdline
-                    pgrmcmd = "BuildArgs%d" % pgrmnbr
-
-                    # Create list of file-extensions to check for existance/non-existance after build
-                    checkextensions = []
-                    p1 = setup["BuildCheck%d" % pgrmnbr]
-                    if p1: checkextensions = CreateCheckFileExtensionArray(p1)
-
-                    # Fixed command-line arguments
-                    p1 = setup[pgrmcmd]
-                    if p1: cmdline = cmdline + " " + p1
-
-                    # Additional command-line arguments
-                    p1 = buildmode[pgrmcmd]
-                    if p1: cmdline = cmdline + " " + p1
-
-                    # Search and replace any user-variable
-                    newcmdline = cmdline
-                    newcmdline = string.replace(newcmdline, "%mappath%", argument_mappath)
-                    newcmdline = string.replace(newcmdline, "%mapfile%", argument_mapfile)
-                    newcmdline = string.replace(newcmdline, "%file%",    argument_file)
-
-                    # If user-variable were not replaced, automatically append map-filename
-                    if (newcmdline == cmdline):
-                        cmdline = cmdline + " " + argument_mapfile
+                    if setup["StupidBuildToolKludge"]:
+                        # stupid tool that wants to run in the base dir
+                        toolworkdir = setup["Directory"] + "\\" + setup["BaseDir"]
+                        cmdline = '"%s"' % cmdline
+                        pgrmcmd = pgrm+"Cmd"
+                        p1 = setup[pgrmcmd]
+                        if p1: cmdline = cmdline + " " + p1
+                        p1 = buildmode[pgrmcmd]
+                        if p1: cmdline = cmdline + " " + p1
+                        next = console(cmdline + " ..\\tmpquark" + mapcmd, toolworkdir, bspfile, editor, next)
                     else:
-                        cmdline = newcmdline
-
-                    # Put this build-program last in execution queue
-                    next = console(cmdline, toolworkdir, bspfile, editor, next, checkextensions)
+                        # clever tool that can run anywhere
+                        cmdline = '"%s"' % cmdline
+                        pgrmcmd = pgrm+"Cmd"
+                        p1 = setup[pgrmcmd]
+                        if p1: cmdline = cmdline + " " + p1
+                        p1 = buildmode[pgrmcmd]
+                        if p1: cmdline = cmdline + " " + p1
+                        next = console(cmdline + " " + mapcmd, tmpquark, bspfile, editor, next)
+            if pgrm1 == firstcmd:
+                break
 
         if missing:
             msg = "%s\n%s" % (missing, Strings[5586])
@@ -393,7 +362,7 @@ def RebuildAndRun(maplist, editor, runquake, text, forcepak, extracted, cfgfile,
                 quarkx.openconfigdlg(":")
             return
 
-        if buildmode["ExportMapFile"]:
+        if buildmode[firstcmd]:    # if we have to run QBSP
             hxstr = writemapfile(root, map, buildmode["SelOnly"], mapinfo["wad"], hxstr)
 
     if hxstr:
@@ -467,7 +436,8 @@ def Customize1Click(mnu):
     newsep = quarkx.newobj("-.toolbar")
     newsep[";desc"] = "create a new separator"
     newsep["Form"] = "CustomQuakeMenuSep"
-    if quarkx.openconfigdlg("Customize %s menu" % gamename, group, [newsep, newitem]):
+    if quarkx.openconfigdlg("Customize %s menu" % gamename, group,
+     [newsep, newitem]):
         for i in range(ud.itemcount-1, -1, -1):
             ud.removeitem(i)
         for ci in group.subitems:
@@ -489,7 +459,7 @@ def QuakeMenu(editor):
     sc = {}
     isbsp = "Bsp" in editor.fileobject.classes   # some items don't apply for BSP files
     gamename = quarkx.setupsubset().shortname
-    #firstcmd = FirstBuildCmd()
+    firstcmd = FirstBuildCmd()
     sourcename = "UserData %s.qrk" % gamename
     ud = LoadPoolObj(sourcename, quarkx.openfileobj, sourcename)
     ud = ud.findname("Menu.qrk")
@@ -501,10 +471,9 @@ def QuakeMenu(editor):
             else:
                 m = qmenu.item(txt, qmenuitem1click, "|The commands in this menu lets you run your map with the game. The most common commands are the first few ones, which lets you try your map as a one-step operation.\n\nBefore a map can be played, it must be compiled (translated into a .bsp file). This is done by other programs that QuArK will call for you. See the Configuration dialog box, under the page of this game, where you must tell QuArK where these programs are installed. The programs themselves are available in Build Packs, one for each game you want to make maps for, and that can be downloaded from http://www.planetquake.com/quark (page Armin's News).")
                 m.info = p
-                #if isbsp and p[firstcmd]:
-                #    m.state = qmenu.disabled
-                #elif p["Shortcut"]:
-                if p["Shortcut"]:
+                if isbsp and p[firstcmd]:
+                    m.state = qmenu.disabled
+                elif p["Shortcut"]:
                     sc[p["Shortcut"]] = m
                 items.append(m)
         items.append(qmenu.sep)
@@ -517,18 +486,6 @@ def QuakeMenu(editor):
 #
 #
 #$Log$
-#Revision 1.12  2000/10/26 18:15:45  tiglari
-#Enable Brush Primitives support
-#
-#Revision 1.11  2000/10/19 19:00:42  decker_dk
-#Fix if 'BuildPgmsDir' was not filled out
-#
-#Revision 1.10  2000/10/09 18:18:02  decker_dk
-#Build-Tool Controllers
-#
-#Revision 1.9  2000/07/24 23:58:11  alexander
-#added: .lin file processing for bspc leaks
-#
 #Revision 1.8  2000/07/03 14:10:50  alexander
 #fixed: removed unnecessary dialogs when extract textures
 #

@@ -34,7 +34,6 @@ MT_SKINGROUP   = 2
 MT_SKIN        = 3      # not used
 MT_TAGGROUP    = 4      # AiV
 MT_BONEGROUP   = 5      # AiV
-MT_MISCGROUP   = 6      # AiV
 
 #
 # Entity Manager base class, followed by subclasses.
@@ -49,8 +48,8 @@ class EntityManager:
 
     def drawback(o, editor, view, mode):
         "Called to draw a background for the object 'o'."
-        view.drawmap(o, mode)  # draw a dark background for "o"
-#        pass
+        #view.drawmap(o, mode)  # draw a dark background for "o"
+        pass
 
     def drawsel(o, view, mode):
         "Called to draw the object 'o' selected."
@@ -86,39 +85,14 @@ class EntityManager:
 class GroupType(EntityManager):
     "Generic Model object type."
 
-class MiscGroupType(EntityManager):
-    "Misc. Object Group."
-
 class FrameGroupType(EntityManager):
     "Model Frame Group."
 
 class SkinGroupType(EntityManager):
     "Model Skin Group."
 
-def ShowHideComp(x):
-    editor = mapeditor()
-    if editor is None: return
-    obj = editor.layout.explorer.uniquesel
-    if obj is None: return
-    obj.showhide(x)
-    editor.invalidateviews(1)
-
-def ShowComp(m):
-    ShowHideComp(1)
-
-def HideComp(m):
-    ShowHideComp(0)
- 
 class ComponentType(EntityManager):
     "Model Component."
-
-    def menu(o, editor):
-        import qmenu
-        SC1 = qmenu.item("&Show Component", ShowComp)
-        HC1 = qmenu.item("&Hide Component", HideComp)
-        import mdlmenus
-        return CallManager("menubegin", o, editor) + mdlmenus.BaseMenu([o], editor) + [SC1, HC1]
- 
 
     def handles(o, editor, view):
         frame = o.currentframe
@@ -144,37 +118,30 @@ class FrameType(EntityManager):
         for i in range(len(h)):
             item = h[i]
             item.frame = o
-            item.index = i
-            item.hint = "Vertex %s"%item.index
+            item.i = i
         return h
 
 
 class SkinType(EntityManager):
     "Model Skin."
 
+# AiV
+
+class TagGroupType(EntityManager):
+    "Tag Group."
+
+class BoneGroupType(EntityManager):
+    "Bone Group."
+
 class TagType(EntityManager):
     "Tag"
 
+    def handlesopt(o, editor):
+        vtx = o.position
+        map(mdlhandles.VertexHandle, vtx)
+
 class BoneType(EntityManager):
     "Bone"
-
-    def handlesopt(o, editor):
-        start_p = o.start_point
-        end_p = o.end_point
-        h = []
-        if not o["start_point"] is None:
-          s = mdlhandles.BoneHandle(start_p)
-          s.hint = "Start of %s"%o.shortname
-	  s.bone = o
-	  s.s_or_e = 0
-	  h = h + [ s ]
-        e = mdlhandles.BoneHandle(end_p) 
-        e.hint = "End of %s"%o.shortname
-	e.bone = o
-	e.s_or_e = 1
-	h = h + [e]
-	return h
-    
 # /AiV
 
 #
@@ -185,11 +152,13 @@ Mapping = {
     ":mc": ComponentType(),
     ":mf": FrameType(),
     ".pcx": SkinType(),
+# AiV
     ".jpg": SkinType(),
     ":tag": TagType(),
-    ":bone": BoneType() }
+    ":bf": BoneType() }
+#/AiV
 
-Generics = [GroupType(), FrameGroupType(), SkinGroupType(), SkinGroupType(), MiscGroupType(), MiscGroupType()]  # AiV
+Generics = [GroupType(), FrameGroupType(), SkinGroupType(), SkinGroupType(), TagGroupType(), BoneGroupType()]  # AiV
 
 #
 # Use the function below to call a method of the Entity Manager classes.
@@ -233,9 +202,6 @@ def LoadEntityForm(sl):
 #
 #
 #$Log$
-#Revision 1.5  2000/08/21 21:33:04  aiv
-#Misc. Changes / bugfixes
-#
 #Revision 1.2  2000/06/02 16:00:22  alexander
 #added cvs headers
 #

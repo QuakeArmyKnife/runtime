@@ -1,9 +1,10 @@
 QQRKSRC1
-// This file has been written by QuArK quarksnapshot_20001015
+// This file has been written by QuArK Version 5.10
 // It's the text version of file: UserData KingPin.qrk
 
 {
   Description = "Custom configuration file for Kingpin"
+
   MapObjPanel.qrk =
   {
     cube: =
@@ -50,6 +51,7 @@ QQRKSRC1
       }
     }
   }
+
   Menu.qrk =
   {
     item: =
@@ -63,10 +65,6 @@ QQRKSRC1
       LIGHT1 = "1"
       LIGHTCmd = "-extra"
       RunGame = "1"
-      ExportMapFile = "1"
-      BuildPgm1 = "1"
-      BuildPgm2 = "1"
-      BuildPgm3 = "1"
     }
     item: =
     {
@@ -77,9 +75,6 @@ QQRKSRC1
       QBSP1 = "1"
       LIGHT1 = "1"
       RunGame = "1"
-      BuildPgm1 = "1"
-      BuildPgm3 = "1"
-      ExportMapFile = "1"
     }
     item: =
     {
@@ -91,9 +86,6 @@ QQRKSRC1
       QBSP1 = "1"
       LIGHT1 = "1"
       RunGame = "1"
-      BuildPgm1 = "1"
-      BuildPgm3 = "1"
-      ExportMapFile = "1"
     }
     item: =
     {
@@ -113,11 +105,6 @@ QQRKSRC1
       LIGHT1 = "1"
       LIGHTCmd = "-extra"
       Pause = "1"
-      ExportMapFile = "1"
-      Textures = "1"
-      BuildPgm1 = "1"
-      BuildPgm2 = "1"
-      BuildPgm3 = "1"
     }
     item: =
     {
@@ -134,14 +121,12 @@ QQRKSRC1
       QCSG1 = "1"
       QBSP1 = "1"
       Pause = "1"
-      BuildPgm1 = "1"
     }
     item: =
     {
       Txt = "&VIS (visibility list)"
       VIS1 = "1"
       Pause = "1"
-      BuildPgm2 = "1"
     }
     item: =
     {
@@ -149,7 +134,6 @@ QQRKSRC1
       LIGHT1 = "1"
       LIGHTCmd = "-extra"
       Pause = "1"
-      BuildPgm3 = "1"
     }
     item: =
     {
@@ -161,8 +145,6 @@ QQRKSRC1
       QCSG1 = "1"
       QCSGCmd = "-onlyents"
       Pause = "1"
-      BuildPgm1 = "1"
-      BuildArgs1 = "-onlyents"
     }
   }
 }

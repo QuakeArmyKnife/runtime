@@ -12,7 +12,7 @@ Dictionnary of all strings used within the program
 
 
 Strings = {
-        0: "quarksnapshot_20001015",
+        0: "REL6_1-pre-3",
 	1: "  QuArK - Quake Army Knife      %s    by Armin Rigo     -  logo McKay & Brian",
 
 	2: "&New %s",
@@ -97,7 +97,7 @@ Strings = {
 	257: "QuArK has found %d invalid polyhedron face(s) in this file. Look for the \042broken face\042 icons in the list.",
 	# 258: "Polyhedrons with the 'origin' content flag are not allowed in 'worldspawn'. Ignored.",
 
-    # Rowdy
+    # Rowdy    
     260: "\042patchDef2\042 expected",
     261: "bezier",
     #262: "JPG image",
@@ -252,7 +252,6 @@ Strings = {
 	804: "Quake 3 Shaders (*.shader)|*.shader",
  	805: "Quake 3 .md3 file (*.md3)|*.md3",
 	806: "SoF Texture (*.m32)|*.m32",
-	807: "3d studio file (*.3ds)|*.3ds",
 
 	809: "Invalid version number in Quake's original Progs.dat",
 
@@ -267,7 +266,7 @@ Strings = {
         2432: "This model contains no data to save",
         2433: "Internal error : Invalid packed model structure//Please report : %s",
         2434: "The current structure of this model is invalid. It cannot be saved in %s format.",
-        2435: "The model contains no skin and the skin size is unspecified",
+        2435: "The model contains no skin and the skin size is unspecified",  
 
 	3001: "Esc",
 	3002: "1",
@@ -434,7 +433,7 @@ Strings = {
 	4202: "'['",
 	4203: "']'",
 
-        4416: "Cannot set this attribute to screen panel objects",
+        4416: "Cannot set this attribute to screen panel objects", 
         4417: "QuArK file object expected",
         4418: "Cannot load bitmap file '%s'",
         4419: "Invalid dock position",
@@ -544,9 +543,8 @@ Strings = {
         5175: "Shader list (Quake 3)",
         5176: ".md3 file",
         5177: "M32 Texture (SoF)",
-        5178: "3d studio file",
 
-        5183: "File corruption in '%s'. You can try to continue to load it, but Warning ! This will likely cause serious troubles like mess in the object trees !\n\nThis error message may be displayed several times per file.\n\nReally continue ?",
+        5183: "File corruption in '%s'. You can try to continue to load it, but Warning ! This will likely cause serious troubles like mess in the object trees !\n\nThis error message may be displayed several times per file.\n\nReally continue ?",  
 	5184: "'%s' is not a QuArK-5 file",
 	5185: "'%s' was created with a more recent version of QuArK",
 	5186: "'%s' is invalid (the end of the file seems to be missing)",
@@ -662,9 +660,8 @@ Strings = {
         5457: "Pasting...",
         5458: "Searching add-ons...",
 
-        5503: "'%s' is a Half-Life Model which cannot be read (yet)",
 	5504: "No texture image//Missing or invalid %s",
-    5505: "'%s' is not a WAD file//%d should be %d or %d",
+	5505: "'%s' is not a WAD file//%d should be %d",
 	5506: "'%s' is not a PACK file//%d should be %d",
 	# 5507: "Internal error N - this program is buggy !//Acces without FNode",
 	5508: "Files names in PACK files are limited to %d characters, including the path. '%s' is too long",
@@ -880,20 +877,14 @@ Strings = {
 #
 #
 #$Log$
-#Revision 1.23  2000/09/25 00:11:19  alexander
+#Revision 1.18.2.3  2000/10/15 20:06:10  alexander
+#merged bsp v46 error message fix
+#
+#Revision 1.18.2.2  2000/09/10 14:39:14  alexander
 #set name
 #
-#Revision 1.22  2000/09/14 17:59:17  decker_dk
-#Altered msg #5505
-#
-#Revision 1.21  2000/09/10 13:02:12  alexander
+#Revision 1.18.2.1  2000/09/01 01:49:09  alexander
 #set name
-#
-#Revision 1.20  2000/09/01 00:49:52  alexander
-#set name
-#
-#Revision 1.19  2000/08/20 11:08:22  aiv
-#Added Error Code 5503
 #
 #Revision 1.18  2000/07/28 15:10:58  alexander
 #set snapshot name

@@ -26,34 +26,7 @@ QQRKSRC1
 //
 //   This file is maintained by Decker, send bug-reports to decker@post1.tele.dk.
 //
-//$Header$
-// ----------- REVISION HISTORY ------------
-//$Log$
-//Revision 1.21  2000/10/21 19:48:19  decker_dk
-//Counter-Strike, Arg! and Opposing Force
-//
-//Revision 1.20  2000/09/21 18:00:39  decker_dk
-//Added CVS revision-history
-//
-// ----------- MANUAL REVISION HISTORY ------------
-//
-// 2000-10-30   [TFC] Updated TFC texture-links for Half-Life patch 1.1.0.4
-//
-// 2000-10-21   [OP4] Updated OP4CTF texture-links for Opposing Force patch 1.1.0.3
-//              [ARG] Added "Arg! The Pirates Strike Back" entities and texture-links, which were supplied by Fredrik
-//                     "Stedden" Stedenfeldt (Thanks to Fredrik "Stedden" Stedenfeldt)
-//              [CS] Updated func_vehicle and misc. for Counter-Strike vehicles (Thanks to Fredrik "Stedden" Stedenfeldt)
-//
-// 2000-09-06   [CS] Added func_vehicle, func_vehiclecontrols and texture-links (Thanks to Fredrik "Stedden" Stedenfeldt)
-//
-// 2000-08-25   [TFC] Misc. changes
-//              [CS] Updated a little, but it does not seem to be beta7.0 entities...?
-//
-// 2000-08-15   [-] Texture conflict were not completly resolved. Now I've removed references to CLIP/HINT in all
-//                   .WAD files except HALFLIFE.WAD.
-//
-// 2000-08-05   [-] Hopefully resolved conflict of CLIP/ORIGIN/AAATRIGGER textures between HALFLIFE.WAD and TFC.WAD
-//
+// History
 // 2000-07-08   [TFC] Updated texture links
 //
 // 2000-06-14   [OP4] Added OP4 CTF entities and textures
@@ -741,13 +714,6 @@ QQRKSRC1
                 info_target:e           = { origin="0 0 0" ;desc = "Camera Non-moving Target" }
                 func_train:b            = {                ;desc = "Camera Moving Target (func_train)" ;incl="defpoly" }
         }
-        CS Drivable Vehicles.qtxfolder  = {
-                func_vehicle:b          = { t_orig_ang=!   ;desc = "Drivable Vehicle" ;incl="defpoly" target="vehicle1_start" targetname="vehicle1" }
-                func_vehiclecontrols:b  = { origin="0 0 0" ;desc = "Drivable Vehicle Controls" ;incl="defpoly" target="vehicle1" }
-                path_track:e            = { origin="0 0 0"   ;desc = "First Train Track Path" targetname="vehicle1_start" target="vehicle1_middle" }
-                path_track:e            = { origin="64 0 0"  ;desc = "Middle Train Track Path" targetname="vehicle1_middle" target="vehicle1_end" }
-                path_track:e            = { origin="32 32 0" ;desc = "End Train Track Path, links the path_tracks together" targetname="vehicle1_end" target="vehicle1_start" }
-	}
     }
 
     Jailbreak Entities.qtxfolder =
@@ -1011,27 +977,6 @@ QQRKSRC1
 		info_captureitem:e	= {t_orig_ang=!	;desc="Capture item" model="models/filecabinet.mdl" }
 		info_areaname:b		= {		;desc="Area Identifier" ;incl="trigpoly" }
 	}
-    }
-
-    Arg! The Pirates Strike Back Entities.qtxfolder =
-    {
-        ;desc = "Send additions/corrections to stedden@avalanchedesign.nu"
-
-        ARG Entities.qtxfolder = {
-                info_player_deathmatch:e = { t_orig_ang=! ;desc = "Deathmatch start" }
-                weapon_longsword:e       = { t_orig_ang=! ;desc = "Long Sword" }
-                weapon_tucan:e           = { t_orig_ang=! ;desc = "Evil Tucan" }
-                weapon_bsword:e          = { t_orig_ang=! ;desc = "Broad Sword" }
-                weapon_cocogrenade:e     = { t_orig_ang=! ;desc = "Coco Grenade" }
-                weapon_whiskey:e         = { t_orig_ang=! ;desc = "Whiskey" }
-                weapon_tdagger:e         = { t_orig_ang=! ;desc = "Throwing Dagger" }
-                weapon_fishingrod:e      = { t_orig_ang=! ;desc = "Fishing Rod" }
-                weapon_ndagger:e         = { t_orig_ang=! ;desc = "Normal Dagger" }
-                weapon_mop:e             = { t_orig_ang=! ;desc = "Deck Mop" }
-                weapon_flute:e           = { t_orig_ang=! ;desc = "Flute" }
-                weaponbox:e              = { t_orig_ang=! ;desc = "Weapon/Ammo Container" }
-                world_items:e            = { t_orig_ang=! ;desc = "World Items" }
-        }
     }
    }
   }
@@ -1516,10 +1461,10 @@ QQRKSRC1
         f_info_activation_criteria:form = {
                 t_team_no = !
                 t_playerclass = !
-                t_activation_criteria = !
                 goal_activation: = { Typ="X1" Cap="Player touch" Txt="Activated by" }
                 goal_activation: = { Typ="X2" Cap="Detpack explosion" Txt="Activated by" }
                 goal_activation: = { Typ="X4" Cap="Yes, activator must NOT match criteria" Txt="Invert Activation Criteria" }
+                t_activation_criteria = !
         }
         f_info_activation_effects:form = {
                 t_owned_by = !
@@ -1549,13 +1494,11 @@ QQRKSRC1
                 goal_effects: = { Typ="X64" Cap="Yes, check each ply" Txt="Individual ply affect-check" }
         }
         f_info_activation_result:form = {
-                t_activation_result = !
                 goal_result: = { Typ="X2" Cap="Yes, apply to Activator" Txt="Apply modif. of affected goals" }
-                goal_result: = { Typ="X64" Cap="Yes, remove SG & dispensers"   Txt="Removes all SentryGuns and Dispensers in map" }
+                t_activation_result = !
         }
         f_timer_activation_result:form = {
                 t_activation_result = !
-                goal_result: = { Typ="X64" Cap="Yes" Txt="If individually in group fails criteria" }
         }
         f_item_activation_criteria:form = {
                 t_playerclass = !
@@ -1563,7 +1506,6 @@ QQRKSRC1
                 t_activation_criteria = !
         }
         f_item_activation_effects:form = {
-                t_activation_effects = !
                 goal_activation: = { Typ="X512" Cap="Yes, glow when not carried" Txt="Glow not carried" }
                 goal_activation: = { Typ="X1024" Cap="Yes, keep effects" Txt="If item gets taken..." }
                 items: = { Typ="X131072" Txt="Carried item light up..." Cap="'Blue' icon" Hint="Affects 'items' specific" }
@@ -1574,11 +1516,10 @@ QQRKSRC1
                 items: = { Typ="X1048576" Txt="Carried item light up..." Cap="'Invulnerability' icon" Hint="Affects 'items' specific" }
                 items: = { Typ="X2097152" Txt="Carried item light up..." Cap="'Radsuit' icon" Hint="Affects 'items' specific" }
                 items: = { Typ="X4194304" Txt="Carried item light up..." Cap="'Quad' icon" Hint="Affects 'items' specific" }
+                t_activation_effects = !
         }
         f_item_activation_result:form = {
-                t_activation_result = !
                 goal_result: = { Typ="X2" Cap="Yes, don't apply bonuses to Activator" Txt="Don't apply bonuses of activated goals" }
-                goal_result: = { Typ="X64" Cap="Yes, remove SG & dispensers"   Txt="Removes all SentryGuns and Dispensers in map" }
                 goal_activation: = { Typ="X1" Cap="Yes, make player glow" Txt="Glow carrier" }
                 goal_activation: = { Typ="X2" Cap="Yes, half-speed" Txt="Slowdown carrier" }
                 goal_activation: = { Typ="X4" Cap="Yes, drop item" Txt="Drop item when carrier killed" }
@@ -1593,6 +1534,7 @@ QQRKSRC1
                 pain_finished: = { Txt="...then activate Goal No" }
                 speed: = { Txt="If all items in Group No carried by one player..." }
                 attack_finished: = { Txt="...then activate Goal No" }
+                t_activation_result = !
         }
         f_ammo_armor_health_powerups:form = {
                 t_ammo_armor = !
@@ -1618,10 +1560,13 @@ QQRKSRC1
                 noise1: = { Txt="Team 1 classmenu String" Hint="" }
                 ammo_shells: = { Txt="Limit lives to" Hint="0 = Unlimited" }
                 ammo_medikit: = { Txt="Limit no of players to" Hint="0 = Unlimited" }
-//              team1_allies: = { Typ="X1" Cap="Blue"   Txt="Team 1 allied with Blue" }
-                team1_allies: = { Typ="X2" Cap="Red"    Txt="Team 1 allied with Red" }
-                team1_allies: = { Typ="X4" Cap="Yellow" Txt="Team 1 allied with Yellow" }
-                team1_allies: = { Typ="X8" Cap="Green"  Txt="Team 1 allied with Green" }
+                team1_allies: = { Typ="C" Txt="Team 1 are allied with" Hint=""
+                        items = "(none)"$0D
+                                "Team 2 (Red)"$0D
+                                "Team 3 (Yellow)"$0D
+                                "Team 4 (Green)"
+                        values = ""$0D"2"$0D"3"$0D"4"
+                }
         }
         f_team2:form = {
                 maxammo_nails: = { Typ="C" Txt="Team 2 consists of" Hint=""
@@ -1643,10 +1588,13 @@ QQRKSRC1
                 noise2: = { Txt="Team 2 classmenu String" Hint="" }
                 ammo_nails: = { Txt="Limit lives to" Hint="0 = Unlimited" }
                 ammo_detpack: = { Txt="Limit no of players to" Hint="0 = Unlimited" }
-                team2_allies: = { Typ="X1" Cap="Blue"   Txt="Team 2 allied with Blue" }
-//              team2_allies: = { Typ="X2" Cap="Red"    Txt="Team 2 allied with Red" }
-                team2_allies: = { Typ="X4" Cap="Yellow" Txt="Team 2 allied with Yellow" }
-                team2_allies: = { Typ="X8" Cap="Green"  Txt="Team 2 allied with Green" }
+                team2_allies: = { Typ="C" Txt="Team 2 are allied with" Hint=""
+                        items = "(none)"$0D
+                                "Team 1 (Blue)"$0D
+                                "Team 3 (Yellow)"$0D
+                                "Team 4 (Green)"
+                        values = ""$0D"1"$0D"3"$0D"4"
+                }
         }
         f_team3:form = {
                 maxammo_rockets: = { Typ="C" Txt="Team 3 consists of" Hint=""
@@ -1668,10 +1616,13 @@ QQRKSRC1
                 noise3: = { Txt="Team 3 classmenu String" Hint="" }
                 ammo_rockets: = { Txt="Limit lives to" Hint="0 = Unlimited" }
                 maxammo_medikit: = { Txt="Limit no of players to" Hint="0 = Unlimited" }
-                team3_allies: = { Typ="X1" Cap="Blue"   Txt="Team 3 allied with Blue" }
-                team3_allies: = { Typ="X2" Cap="Red"    Txt="Team 3 allied with Red" }
-//              team3_allies: = { Typ="X4" Cap="Yellow" Txt="Team 3 allied with Yellow" }
-                team3_allies: = { Typ="X8" Cap="Green"  Txt="Team 3 allied with Green" }
+                team3_allies: = { Typ="C" Txt="Team 3 are allied with" Hint=""
+                        items = "(none)"$0D
+                                "Team 1 (Blue)"$0D
+                                "Team 2 (Red)"$0D
+                                "Team 4 (Green)"
+                        values = ""$0D"1"$0D"2"$0D"4"
+                }
         }
         f_team4:form = {
                 maxammo_cells: = { Typ="C" Txt="Team 4 consists of" Hint=""
@@ -1693,10 +1644,13 @@ QQRKSRC1
                 noise4: = { Txt="Team 4 classmenu String" Hint="" }
                 ammo_cells: = { Txt="Limit lives to" Hint="0 = Unlimited" }
                 maxammo_detpack: = { Txt="Limit no of players to" Hint="0 = Unlimited" }
-                team4_allies: = { Typ="X1" Cap="Blue"   Txt="Team 4 allied with Blue" }
-                team4_allies: = { Typ="X2" Cap="Red"    Txt="Team 4 allied with Red" }
-                team4_allies: = { Typ="X4" Cap="Yellow" Txt="Team 4 allied with Yellow" }
-//              team4_allies: = { Typ="X8" Cap="Green"  Txt="Team 4 allied with Green" }
+                team4_allies: = { Typ="C" Txt="Team 4 are allied with" Hint=""
+                        items = "(none)"$0D
+                                "Team 1 (Blue)"$0D
+                                "Team 2 (Red)"$0D
+                                "Team 3 (Yellow)"
+                        values = ""$0D"1"$0D"2"$0D"3"
+                }
         }
         f_infogoal_messages:form = {
                 t_goal_messages = !
@@ -1708,11 +1662,10 @@ QQRKSRC1
         f_tfc_trigger_activation_criteria:form = {
                 t_team_no = !
                 t_playerclass = !
-                t_activation_criteria = !
 //              goal_activation: = { Typ="X1" Cap="Player touch" Txt="Activated by" }
 //              goal_activation: = { Typ="X2" Cap="Detpack explosion" Txt="Activated by" }
                 goal_activation: = { Typ="X4" Cap="Yes, activator must NOT match criteria" Txt="Invert Activation Criteria" }
-                goal_activation: = { Typ="X8" Cap="Activate if Engineer Spanner" Txt="Activate if hit by Engineer Spanner" }
+                t_activation_criteria = !
         }
         f_tfc_trigger_activation_effects:form = {
                 t_owned_by = !
@@ -13103,18 +13056,20 @@ values=
         }
         hostage_entity:form = {
                 t_cs_html = !
-                t_player = !
+                bbox = '-16 -16 0 16 16 72'
                 model: = { txt="&" Hint="" }
                 gravity: = { txt="&" Hint="" }
         }
         info_hostage_rescue:form = {
                 t_cs_html = !
+                bbox = '-8 -8 -8 8 8 8'
         }
         func_hostage_rescue:form = {
                 t_cs_html = !
         }
         info_bomb_target:form = {
                 t_cs_html = !
+                bbox = '-8 -8 -8 8 8 8'
         }
         func_bomb_target:form = {
                 t_cs_html = !
@@ -13151,10 +13106,9 @@ values=
                               "weapon_flashbang"$0D
                               "weapon_hegrenade"$0D
                               "item_kevlar"$0D
-                              "item_assaultsuit"$0D
-                              "weapon_smokegrenade"
+                              "item_assaultsuit"
                         values= "0"$0D "1"$0D "2"$0D "3"$0D "4"$0D "5"$0D "6"$0D "7"$0D "8"$0D "9"$0D
-                               "10"$0D"11"$0D"12"$0D"13"$0D"14"$0D"15"$0D"16"$0D"17"$0D"18"
+                               "10"$0D"11"$0D"12"$0D"13"$0D"14"$0D"15"$0D"16"$0D"17"
                 }
                 count: = { txt="&" Hint="Count" }
         }
@@ -13168,36 +13122,6 @@ values=
                 }
                 bombradius: = { txt="&" hint="Bomb Radius" }
         }
-        func_vehiclecontrols:form = {
-                t_target = !
-        }
-	func_vehicle:form = {
-		spawnflags: = { Typ="X1" Cap="No Pitch (X-rot)" Txt="&" }
-		spawnflags: = { Typ="X2" Cap="No User Control" Txt="&" }
-		spawnflags: = { Typ="X8" Cap="Passable" Txt="&" }
-		sounds: = { Typ="C" Txt="&" Hint="Sound"
-			Items = "(none)"$0D
-				"Car 1"$0D
-				"Car 2"$0D
-				"Truck 1"$0D
-				"Truck 2"$0D
-				"Boat 1"$0D
-				"Boat 2"
-			Values = ""$0D"1"$0D"2"$0D"3"$0D"4"$0D"5"$0D"6"
-		}
-		length: = { Txt="&" Hint="Length of the vehicle" }
-		width: = { Txt="&" Hint="Width of the vehicle" }
-		height: = { Txt="&" Hint="Height above track" }
-		startspeed: = { Txt="&" Hint="Initial speed" }
-		acceleration: = { Txt="&" Hint="Acceleration (1-10)" }
-		speed: = { Txt="&" Hint="Speed (units per second)" }
-		dmg: = { Txt="&" Hint="Damage on crush" }
-		volume: = { Txt="&" Hint="Volume (10 = loudest)" }
-		bank: = { Txt="&" Hint="Bank angle on turns" }
-		t__minlight = !
-		t_rendermode = !
-                t_angles = !
-	}
 
 //
 // Jailbreak
@@ -14101,7 +14025,7 @@ values=
 	info_player_upko:form = { t_player=! }
 	info_player_usa:form = { t_player=! }
 	info_player_sotd:form = { t_player=! }
-//        func_vehicle:form = { t_targetname=! }
+	func_vehicle:form = { t_targetname=! }
 	func_wheel:form = {
 		t_target=!
 		wheeltype: = {txt="&" typ="C" hint="WheelType"
@@ -14168,67 +14092,6 @@ values=
 		message: = {txt="&" hint="Optional .wav (path/file)" }
 		t_rendermode=!
 	}
-
-//
-// Arg! The Pirates Strike Back
-//
-        t_arg_html:incl = {
-                HTML = "http://www.planethalflife.com/arg/"
-        }
-
-        info_player_deathmatch:form = {
-                t_arg_html = !
-                Help = "This entity sets the deathmatch multiplayer start points"
-                t_player = !
-                t_target = !
-                t_master = !
-        }
-        weapon_longsword:form      = { t_weapon = ! t_arg_html = ! }
-        weapon_tucan:form          = { t_weapon = ! t_arg_html = ! }
-        weapon_bsword:form         = { t_weapon = ! t_arg_html = ! }
-        weapon_cocogrenade:form    = { t_weapon = ! t_arg_html = ! }
-
-        weapon_whiskey:form = {
-                t_arg_html = !
-                t_weapon = !
-                sequence: = { Typ="C" Txt="&" Hint="Placement"
-                        Items = "Normal (flat)"$0D
-                                "Realistic (tilted)"$0D
-                        Values = "0"$0D"1"
-                }
-        }
-
-        weapon_tdagger:form = {
-                t_arg_html = !
-                t_weapon = !
-                sequence: = { Typ="C" Txt="&" Hint="Placement"
-                        Items = "Normal (flat)"$0D
-                                "Realistic (tilted)"$0D
-                        Values = "0"$0D"1"
-                }
-        }
-        weapon_fishingrod:form     = { t_weapon = ! t_arg_html = ! }
-        weapon_ndagger:form        = { t_weapon = ! t_arg_html = ! }
-        weapon_mop:form            = { t_weapon = ! t_arg_html = ! }
-        weapon_flute:form          = { t_weapon = ! t_arg_html = ! }
-
-        weaponbox:form = {
-                t_arg_html = !
-                bbox = '-16 -16 0 16 16 32'
-                color = '0 128 0'
-        }
-
-        world_items:form = {
-                t_arg_html = !
-                t_weapon = !
-                type: = { Typ="C" txt="&"
-                        Items = "Battery"$0D
-                                "Antidote"$0D
-                                "Security Card"$0D
-                                "Suit"
-                        Values = "44"$0D"42"$0D"43"$0D"45"
-                }
-        }
 
 /////////////////////
   }
@@ -18282,13 +18145,13 @@ values=
         {XENO_6.wl = { t_xe = ! }
         {XENO_6B.wl = { t_xe = ! }
        }
-//       Xeno Extra.txlist =
-//       {
-//        AAATRIGGER.wl = { t_xe = ! }
-//        BLACK.wl = { t_xe = ! }
-//        CLIP.wl = { t_xe = ! }
-//        ORIGIN.wl = { t_xe = ! }
-//       }
+       Xeno Extra.txlist =
+       {
+        AAATRIGGER.wl = { t_xe = ! }
+        BLACK.wl = { t_xe = ! }
+        CLIP.wl = { t_xe = ! }
+        ORIGIN.wl = { t_xe = ! }
+       }
       }
     }
   }
@@ -18597,7 +18460,7 @@ values=
           AAA_PUSH2.wl = { t_op4_OPFOR = ! }
           AAA_WALL.wl = { t_op4_OPFOR = ! }
           AAA_TRIGGER.wl = { t_op4_OPFOR = ! }
-//          HINT.wl = { t_op4_OPFOR = ! }
+          HINT.wl = { t_op4_OPFOR = ! }
         }
         BootCamp.txlist =
         {
@@ -18979,59 +18842,48 @@ values=
         box_snw_05.wl = { t_op4_OP4CTF = ! }
         caution_grn_01.wl = { t_op4_OP4CTF = ! }
         caution_grn_02.wl = { t_op4_OP4CTF = ! }
-        caution_org_02.wl = { t_op4_OP4CTF = ! }
         caution_org_01.wl = { t_op4_OP4CTF = ! }
-        conc_strp_01.wl = { t_op4_OP4CTF = ! }
-        conc_strp_02.wl = { t_op4_OP4CTF = ! }
+        caution_org_02.wl = { t_op4_OP4CTF = ! }
         conc_strp_03.wl = { t_op4_OP4CTF = ! }
         conc_strp_04.wl = { t_op4_OP4CTF = ! }
         conc_strp_05.wl = { t_op4_OP4CTF = ! }
-        conc_top_01.wl = { t_op4_OP4CTF = ! }
-        conc_top_02.wl = { t_op4_OP4CTF = ! }
-        conc_wall_01.wl = { t_op4_OP4CTF = ! }
-        conc_wall_02.wl = { t_op4_OP4CTF = ! }
-        conc_wall_03.wl = { t_op4_OP4CTF = ! }
-        conc_wall_04.wl = { t_op4_OP4CTF = ! }
-        conc_wall_05.wl = { t_op4_OP4CTF = ! }
-        conc_wall_06.wl = { t_op4_OP4CTF = ! }
-        conc_wall_07.wl = { t_op4_OP4CTF = ! }
-        conc_wall_08.wl = { t_op4_OP4CTF = ! }
-        conc_wall_09.wl = { t_op4_OP4CTF = ! }
+        conc_strp_01.wl = { t_op4_OP4CTF = ! }
+        conc_strp_02.wl = { t_op4_OP4CTF = ! }
         concrete_01.wl = { t_op4_OP4CTF = ! }
         concrete_02.wl = { t_op4_OP4CTF = ! }
         concrete_gen_01.wl = { t_op4_OP4CTF = ! }
-        concrete_grn_04.wl = { t_op4_OP4CTF = ! }
-        concrete_grn_05.wl = { t_op4_OP4CTF = ! }
-        concrete_grn_06.wl = { t_op4_OP4CTF = ! }
-        concrete_grn_01.wl = { t_op4_OP4CTF = ! }
-        concrete_grn_02.wl = { t_op4_OP4CTF = ! }
-        concrete_grn_03.wl = { t_op4_OP4CTF = ! }
-        concrete_grn_10.wl = { t_op4_OP4CTF = ! }
         concrete_grn_11.wl = { t_op4_OP4CTF = ! }
         concrete_grn_12.wl = { t_op4_OP4CTF = ! }
-        concrete_grn_07.wl = { t_op4_OP4CTF = ! }
+        concrete_grn_10.wl = { t_op4_OP4CTF = ! }
+        concrete_grn_03.wl = { t_op4_OP4CTF = ! }
+        concrete_grn_04.wl = { t_op4_OP4CTF = ! }
+        concrete_grn_01.wl = { t_op4_OP4CTF = ! }
+        concrete_grn_02.wl = { t_op4_OP4CTF = ! }
+        concrete_grn_05.wl = { t_op4_OP4CTF = ! }
         concrete_grn_08.wl = { t_op4_OP4CTF = ! }
         concrete_grn_09.wl = { t_op4_OP4CTF = ! }
-        concrete_org_08.wl = { t_op4_OP4CTF = ! }
-        concrete_org_07.wl = { t_op4_OP4CTF = ! }
-        concrete_org_09.wl = { t_op4_OP4CTF = ! }
+        concrete_grn_06.wl = { t_op4_OP4CTF = ! }
+        concrete_grn_07.wl = { t_op4_OP4CTF = ! }
         concrete_org_11.wl = { t_op4_OP4CTF = ! }
-        concrete_org_10.wl = { t_op4_OP4CTF = ! }
-        concrete_org_06.wl = { t_op4_OP4CTF = ! }
-        concrete_org_02.wl = { t_op4_OP4CTF = ! }
-        concrete_org_01.wl = { t_op4_OP4CTF = ! }
-        concrete_org_03.wl = { t_op4_OP4CTF = ! }
-        concrete_org_05.wl = { t_op4_OP4CTF = ! }
-        concrete_org_04.wl = { t_op4_OP4CTF = ! }
         concrete_org_12.wl = { t_op4_OP4CTF = ! }
+        concrete_org_10.wl = { t_op4_OP4CTF = ! }
+        concrete_org_03.wl = { t_op4_OP4CTF = ! }
+        concrete_org_04.wl = { t_op4_OP4CTF = ! }
+        concrete_org_01.wl = { t_op4_OP4CTF = ! }
+        concrete_org_02.wl = { t_op4_OP4CTF = ! }
+        concrete_org_05.wl = { t_op4_OP4CTF = ! }
+        concrete_org_08.wl = { t_op4_OP4CTF = ! }
+        concrete_org_09.wl = { t_op4_OP4CTF = ! }
+        concrete_org_06.wl = { t_op4_OP4CTF = ! }
+        concrete_org_07.wl = { t_op4_OP4CTF = ! }
+        crate_grn_04.wl = { t_op4_OP4CTF = ! }
         crate_grn_01.wl = { t_op4_OP4CTF = ! }
         crate_grn_02.wl = { t_op4_OP4CTF = ! }
         crate_grn_03.wl = { t_op4_OP4CTF = ! }
-        crate_grn_04.wl = { t_op4_OP4CTF = ! }
+        crate_org_04.wl = { t_op4_OP4CTF = ! }
         crate_org_01.wl = { t_op4_OP4CTF = ! }
         crate_org_02.wl = { t_op4_OP4CTF = ! }
         crate_org_03.wl = { t_op4_OP4CTF = ! }
-        crate_org_04.wl = { t_op4_OP4CTF = ! }
         door_grn_01.wl = { t_op4_OP4CTF = ! }
         door_grn_02.wl = { t_op4_OP4CTF = ! }
         door_grn_03.wl = { t_op4_OP4CTF = ! }
@@ -19048,12 +18900,6 @@ values=
         door_org_06.wl = { t_op4_OP4CTF = ! }
         door_org_07.wl = { t_op4_OP4CTF = ! }
         door_org_08.wl = { t_op4_OP4CTF = ! }
-        jungle_floor_02.wl = { t_op4_OP4CTF = ! }
-        jungle_strip.wl = { t_op4_OP4CTF = ! }
-        jungle_strip_01.wl = { t_op4_OP4CTF = ! }
-        jungle_wall_05.wl = { t_op4_OP4CTF = ! }
-        jungle_wall_04.wl = { t_op4_OP4CTF = ! }
-        jungle_wall_03.wl = { t_op4_OP4CTF = ! }
         lgeneric86.wl = { t_op4_OP4CTF = ! }
         lgeneric86r.wl = { t_op4_OP4CTF = ! }
         light2a.wl = { t_op4_OP4CTF = ! }
@@ -19063,8 +18909,8 @@ values=
         light_orange.wl = { t_op4_OP4CTF = ! }
         mtl_snw_a_01.wl = { t_op4_OP4CTF = ! }
         mtlwall_brn_01.wl = { t_op4_OP4CTF = ! }
-        mtlwall_grn_01.wl = { t_op4_OP4CTF = ! }
         mtlwall_grn_02.wl = { t_op4_OP4CTF = ! }
+        mtlwall_grn_01.wl = { t_op4_OP4CTF = ! }
         mtlwall_gry_01.wl = { t_op4_OP4CTF = ! }
         mtlwall_org_02.wl = { t_op4_OP4CTF = ! }
         mtlwall_org_01.wl = { t_op4_OP4CTF = ! }
@@ -19077,49 +18923,42 @@ values=
         pipe_org_02.wl = { t_op4_OP4CTF = ! }
         rock_brn_01.wl = { t_op4_OP4CTF = ! }
         rock_brn_01a.wl = { t_op4_OP4CTF = ! }
-        rock_crunchy_01.wl = { t_op4_OP4CTF = ! }
-        rock_sandy_02.wl = { t_op4_OP4CTF = ! }
-        rock_sandy_05.wl = { t_op4_OP4CTF = ! }
-        rock_snowy_01.wl = { t_op4_OP4CTF = ! }
         rock_snowy_02.wl = { t_op4_OP4CTF = ! }
-        rock_unwtr_01.wl = { t_op4_OP4CTF = ! }
+        rock_snowy_01.wl = { t_op4_OP4CTF = ! }
         rock_unwtr_02.wl = { t_op4_OP4CTF = ! }
-        rocky_grass_01.wl = { t_op4_OP4CTF = ! }
-        sand_01.wl = { t_op4_OP4CTF = ! }
-        sand_strip.wl = { t_op4_OP4CTF = ! }
-        sand_strip_01.wl = { t_op4_OP4CTF = ! }
-        sign_arrow_01.wl = { t_op4_OP4CTF = ! }
+        rock_unwtr_01.wl = { t_op4_OP4CTF = ! }
+        sign_arrow_05.wl = { t_op4_OP4CTF = ! }
         sign_arrow_02.wl = { t_op4_OP4CTF = ! }
+        sign_arrow_01.wl = { t_op4_OP4CTF = ! }
         sign_arrow_03.wl = { t_op4_OP4CTF = ! }
         sign_arrow_04.wl = { t_op4_OP4CTF = ! }
-        sign_arrow_05.wl = { t_op4_OP4CTF = ! }
         sign_bd_grn.wl = { t_op4_OP4CTF = ! }
         sign_bd_orng.wl = { t_op4_OP4CTF = ! }
-        sign_biodrn_grn.wl = { t_op4_OP4CTF = ! }
         sign_biodrn_orn.wl = { t_op4_OP4CTF = ! }
+        sign_biodrn_grn.wl = { t_op4_OP4CTF = ! }
         sign_crate_01.wl = { t_op4_OP4CTF = ! }
         sign_grn_01.wl = { t_op4_OP4CTF = ! }
         sign_grn_02.wl = { t_op4_OP4CTF = ! }
         sign_grn_03.wl = { t_op4_OP4CTF = ! }
-        sign_grn_lft_03.wl = { t_op4_OP4CTF = ! }
         sign_grn_lft_01.wl = { t_op4_OP4CTF = ! }
         sign_grn_lft_02.wl = { t_op4_OP4CTF = ! }
-        sign_grn_rt_03.wl = { t_op4_OP4CTF = ! }
+        sign_grn_lft_03.wl = { t_op4_OP4CTF = ! }
         sign_grn_rt_01.wl = { t_op4_OP4CTF = ! }
+        sign_grn_rt_03.wl = { t_op4_OP4CTF = ! }
         sign_grn_rt_02.wl = { t_op4_OP4CTF = ! }
-        sign_mortar_grn.wl = { t_op4_OP4CTF = ! }
         sign_mortar_org.wl = { t_op4_OP4CTF = ! }
+        sign_mortar_grn.wl = { t_op4_OP4CTF = ! }
         sign_obs_grn.wl = { t_op4_OP4CTF = ! }
         sign_obs_orng.wl = { t_op4_OP4CTF = ! }
         sign_org_01.wl = { t_op4_OP4CTF = ! }
         sign_org_02.wl = { t_op4_OP4CTF = ! }
         sign_org_03.wl = { t_op4_OP4CTF = ! }
-        sign_org_lft_01.wl = { t_op4_OP4CTF = ! }
         sign_org_lft_02.wl = { t_op4_OP4CTF = ! }
+        sign_org_lft_01.wl = { t_op4_OP4CTF = ! }
         sign_org_lft_03.wl = { t_op4_OP4CTF = ! }
-        sign_org_rt_03.wl = { t_op4_OP4CTF = ! }
-        sign_org_rt_02.wl = { t_op4_OP4CTF = ! }
         sign_org_rt_01.wl = { t_op4_OP4CTF = ! }
+        sign_org_rt_02.wl = { t_op4_OP4CTF = ! }
+        sign_org_rt_03.wl = { t_op4_OP4CTF = ! }
         sign_pipe_01.wl = { t_op4_OP4CTF = ! }
         sign_vent_grn.wl = { t_op4_OP4CTF = ! }
         sign_vent_org.wl = { t_op4_OP4CTF = ! }
@@ -19144,15 +18983,9 @@ values=
         wall_pipe_g_01.wl = { t_op4_OP4CTF = ! }
         wall_pipe_g_02.wl = { t_op4_OP4CTF = ! }
         wall_pipe_g_03.wl = { t_op4_OP4CTF = ! }
-        wall_pipe_o_03.wl = { t_op4_OP4CTF = ! }
-        wall_pipe_o_02.wl = { t_op4_OP4CTF = ! }
         wall_pipe_o_01.wl = { t_op4_OP4CTF = ! }
-        xeno_grapple_os.wl = { t_op4_OP4CTF = ! }
-        xeno_grapple_gs.wl = { t_op4_OP4CTF = ! }
-        xeno_grapple_7g.wl = { t_op4_OP4CTF = ! }
-        xeno_grapple_7o.wl = { t_op4_OP4CTF = ! }
-        {jungle_can_02.wl = { t_op4_OP4CTF = ! }
-        {jungle_can_01.wl = { t_op4_OP4CTF = ! }
+        wall_pipe_o_02.wl = { t_op4_OP4CTF = ! }
+        wall_pipe_o_03.wl = { t_op4_OP4CTF = ! }
       }
     }
   }
@@ -19167,16 +19000,16 @@ values=
 
         // Raw definition of WAD3 files
         t_tfc:incl = { s = "tfc" d = "tfc" h = "C" }
-        t_tfc2:incl = { s = "tfc" d = "tfc2" h = "C" }
 
     TFC Textures.qtxfolder =
     {
       TFC.txlist =
       {
-        -1BLUEBASE.wl = { t_tfc = ! }
-        -0BLUEBASE.wl = { t_tfc = ! }
-        -2BLUEBASE.wl = { t_tfc = ! }
-        -3BLUEBASE.wl = { t_tfc = ! }
+        AD_TF2.wl = { t_tfc = ! }
+      -2BLUEBASE.wl = { t_tfc = ! }
+      -3BLUEBASE.wl = { t_tfc = ! }
+      -1BLUEBASE.wl = { t_tfc = ! }
+      -0BLUEBASE.wl = { t_tfc = ! }
         BRICK2.wl = { t_tfc = ! }
         BRICK6.wl = { t_tfc = ! }
         BRIDGE.wl = { t_tfc = ! }
@@ -19207,6 +19040,7 @@ values=
         CABLEWALL4RED.wl = { t_tfc = ! }
         CABLEWALL5BLUE.wl = { t_tfc = ! }
         CABLEWALL5RED.wl = { t_tfc = ! }
+        CANALMAP.wl = { t_tfc = ! }
         CANAL_WALL2A.wl = { t_tfc = ! }
         CANYONSASPHALT.wl = { t_tfc = ! }
         CANYONSBBASE.wl = { t_tfc = ! }
@@ -19215,10 +19049,11 @@ values=
         CANYONSCRETE1.wl = { t_tfc = ! }
         CANYONSMUD1.wl = { t_tfc = ! }
         CANYONSRBASE.wl = { t_tfc = ! }
-        CANYONSSAND1.wl = { t_tfc = ! }
-        CANYONSSAND2.wl = { t_tfc = ! }
         CANYONSSAND3.wl = { t_tfc = ! }
         CANYONSSAND4.wl = { t_tfc = ! }
+        CANYONSSAND1.wl = { t_tfc = ! }
+        CANYONSSAND2.wl = { t_tfc = ! }
+        CLIP.wl = { t_tfc = ! }
         COMP9ABLU.wl = { t_tfc = ! }
         COMP9ARED.wl = { t_tfc = ! }
         COMP9BBLU.wl = { t_tfc = ! }
@@ -19247,12 +19082,20 @@ values=
         DOOR_RED2.wl = { t_tfc = ! }
         DOUBLE_ASPHALT.wl = { t_tfc = ! }
         DOUBLE_ASPHALT2.wl = { t_tfc = ! }
-        DOUBLE_BLUE1.wl = { t_tfc = ! }
         DOUBLE_BLUE2.wl = { t_tfc = ! }
+        DOUBLE_BLUE1.wl = { t_tfc = ! }
         DOUBLE_CEIL1.wl = { t_tfc = ! }
         DOUBLE_RED1.wl = { t_tfc = ! }
         DOUBLE_RED2.wl = { t_tfc = ! }
         DOUBLE_TRIM1.wl = { t_tfc = ! }
+        DUSTBOWL1.wl = { t_tfc = ! }
+        DUSTBOWL2.wl = { t_tfc = ! }
+      +AELEV1.wl = { t_tfc = ! }
+      +0ELEV1.wl = { t_tfc = ! }
+      +0ELEV2.wl = { t_tfc = ! }
+      +AELEV2.wl = { t_tfc = ! }
+      +AELEV3.wl = { t_tfc = ! }
+      +0ELEV3.wl = { t_tfc = ! }
         GATE01.wl = { t_tfc = ! }
         GATE02.wl = { t_tfc = ! }
         GATE03.wl = { t_tfc = ! }
@@ -19260,6 +19103,7 @@ values=
         GATEBLUEMETAL.wl = { t_tfc = ! }
         GATEREDFLR.wl = { t_tfc = ! }
         GATEREDMETAL.wl = { t_tfc = ! }
+        HINT.wl = { t_tfc = ! }
         KAMI_WALL1.wl = { t_tfc = ! }
         KCHOLDER.wl = { t_tfc = ! }
         KEEP01.wl = { t_tfc = ! }
@@ -19273,6 +19117,7 @@ values=
         KEEP11.wl = { t_tfc = ! }
         KEEP12.wl = { t_tfc = ! }
         KEEP13.wl = { t_tfc = ! }
+        MAP.wl = { t_tfc = ! }
         OFF_DR1.wl = { t_tfc = ! }
         OFF_DR2.wl = { t_tfc = ! }
         OFF_DR3.wl = { t_tfc = ! }
@@ -19295,22 +19140,33 @@ values=
         OUT_WALL6C2A.wl = { t_tfc = ! }
         OUT_WALL6C3.wl = { t_tfc = ! }
         OUT_WALL6C4.wl = { t_tfc = ! }
+        PGTOWERSIGN.wl = { t_tfc = ! }
+        POPDOG_FRONT_RE.wl = { t_tfc = ! }
+        POPDOG_FRONT_GR.wl = { t_tfc = ! }
+        POPDOG_LEFT_GR.wl = { t_tfc = ! }
+        POPDOG_LEFT_RED.wl = { t_tfc = ! }
+        POPDOG_RIGHT_RE.wl = { t_tfc = ! }
+        POPDOG_RIGHT_GR.wl = { t_tfc = ! }
+        POPDOG_TOP_B.wl = { t_tfc = ! }
+        POPDOG_TOP_RED.wl = { t_tfc = ! }
+        POPDOG_TOP_GREE.wl = { t_tfc = ! }
         POWERUP_BLUE.wl = { t_tfc = ! }
         POWERUP_BLUE2.wl = { t_tfc = ! }
         POWERUP_FLOOR1.wl = { t_tfc = ! }
         POWERUP_PLASTER.wl = { t_tfc = ! }
         POWERUP_RED.wl = { t_tfc = ! }
         POWERUP_RED2.wl = { t_tfc = ! }
-        POWERUP_STUCCO1.wl = { t_tfc = ! }
         POWERUP_STUCCO2.wl = { t_tfc = ! }
-        POWERUP_WALL1.wl = { t_tfc = ! }
-        POWERUP_WALL2.wl = { t_tfc = ! }
+        POWERUP_STUCCO1.wl = { t_tfc = ! }
         POWERUP_WALL3.wl = { t_tfc = ! }
+        POWERUP_WALL2.wl = { t_tfc = ! }
+        POWERUP_WALL1.wl = { t_tfc = ! }
         POWER_CEILING1.wl = { t_tfc = ! }
-        -1REDBASE.wl = { t_tfc = ! }
-        -3REDBASE.wl = { t_tfc = ! }
-        -2REDBASE.wl = { t_tfc = ! }
-        -0REDBASE.wl = { t_tfc = ! }
+        RADSIGN.wl = { t_tfc = ! }
+      -3REDBASE.wl = { t_tfc = ! }
+      -0REDBASE.wl = { t_tfc = ! }
+      -1REDBASE.wl = { t_tfc = ! }
+      -2REDBASE.wl = { t_tfc = ! }
         ROAD1.wl = { t_tfc = ! }
         ROAD1_LOWCAP.wl = { t_tfc = ! }
         ROAD1_TOPCAP.wl = { t_tfc = ! }
@@ -19318,35 +19174,17 @@ values=
         ROCK1B.wl = { t_tfc = ! }
         ROCK2A.wl = { t_tfc = ! }
         ROCK2B.wl = { t_tfc = ! }
+        ROCK_SIGN1.wl = { t_tfc = ! }
+        ROCK_SIGN2.wl = { t_tfc = ! }
+        ROCK_SIGN3.wl = { t_tfc = ! }
+        ROCK_SIGN4.wl = { t_tfc = ! }
+        ROCK_SIGN5.wl = { t_tfc = ! }
+        ROCK_SIGN6.wl = { t_tfc = ! }
+        ROCK_SIGN7.wl = { t_tfc = ! }
+        ROCK_SIGN8.wl = { t_tfc = ! }
         RUBBLE1.wl = { t_tfc = ! }
         RUBBLE_WALK.wl = { t_tfc = ! }
         SIDEWALK1.wl = { t_tfc = ! }
-        SILO_BLUE.wl = { t_tfc = ! }
-        SILO_BLUE2.wl = { t_tfc = ! }
-        SILO_RED.wl = { t_tfc = ! }
-        SILO_RED2.wl = { t_tfc = ! }
-        STEAL01.wl = { t_tfc = ! }
-        STEAL02.wl = { t_tfc = ! }
-        STEAL03.wl = { t_tfc = ! }
-        STEAL05A.wl = { t_tfc = ! }
-        STEAL05B.wl = { t_tfc = ! }
-        STEAL06.wl = { t_tfc = ! }
-        STEAL07.wl = { t_tfc = ! }
-        STEAL07A.wl = { t_tfc = ! }
-        STEAL08.wl = { t_tfc = ! }
-        +0~TNNL_LGT5.wl = { t_tfc = ! }
-        TRAIN_BED1.wl = { t_tfc = ! }
-        TRAIN_TRACK1.wl = { t_tfc = ! }
-        TRAIN_TRACK2.wl = { t_tfc = ! }
-        TRAIN_TRACK3.wl = { t_tfc = ! }
-        UNDERWATERROCK.wl = { t_tfc = ! }
-        WAR_BLUEDOOR.wl = { t_tfc = ! }
-        WAR_REDDOOR.wl = { t_tfc = ! }
-        W_WINDOW1.wl = { t_tfc = ! }
-        W_WINDOW3.wl = { t_tfc = ! }
-      }
-      TFC Signs.txlist =
-      {
         SIGN_ARW1.wl = { t_tfc = ! }
         SIGN_ARW2.wl = { t_tfc = ! }
         SIGN_ARW3.wl = { t_tfc = ! }
@@ -19357,9 +19195,9 @@ values=
         SIGN_ARW8.wl = { t_tfc = ! }
         SIGN_BASE.wl = { t_tfc = ! }
         SIGN_BAT.wl = { t_tfc = ! }
-        SIGN_BLUEARW1.wl = { t_tfc = ! }
-        SIGN_BLUEARW2.wl = { t_tfc = ! }
         SIGN_BLUEARW3.wl = { t_tfc = ! }
+        SIGN_BLUEARW2.wl = { t_tfc = ! }
+        SIGN_BLUEARW1.wl = { t_tfc = ! }
         SIGN_BLUEBASE.wl = { t_tfc = ! }
         SIGN_BLUECAP.wl = { t_tfc = ! }
         SIGN_CAPT.wl = { t_tfc = ! }
@@ -19380,9 +19218,9 @@ values=
         SIGN_LOW.wl = { t_tfc = ! }
         SIGN_RAMP1.wl = { t_tfc = ! }
         SIGN_RAMP2.wl = { t_tfc = ! }
-        SIGN_REDARW1.wl = { t_tfc = ! }
-        SIGN_REDARW2.wl = { t_tfc = ! }
         SIGN_REDARW3.wl = { t_tfc = ! }
+        SIGN_REDARW2.wl = { t_tfc = ! }
+        SIGN_REDARW1.wl = { t_tfc = ! }
         SIGN_REDBASE.wl = { t_tfc = ! }
         SIGN_REDCAP.wl = { t_tfc = ! }
         SIGN_RESUP1.wl = { t_tfc = ! }
@@ -19391,21 +19229,19 @@ values=
         SIGN_TEAM2.wl = { t_tfc = ! }
         SIGN_UP.wl = { t_tfc = ! }
         SIGN_WATER1.wl = { t_tfc = ! }
-        DUSTBOWL1.wl = { t_tfc = ! }
-        PGTOWERSIGN.wl = { t_tfc = ! }
-        RADSIGN.wl = { t_tfc = ! }
-        ROCK_SIGN1.wl = { t_tfc = ! }
-        ROCK_SIGN2.wl = { t_tfc = ! }
-        ROCK_SIGN3.wl = { t_tfc = ! }
-        ROCK_SIGN4.wl = { t_tfc = ! }
-        ROCK_SIGN5.wl = { t_tfc = ! }
-        ROCK_SIGN6.wl = { t_tfc = ! }
-        ROCK_SIGN7.wl = { t_tfc = ! }
-        ROCK_SIGN8.wl = { t_tfc = ! }
-        TEAM1A.wl = { t_tfc = ! }
-        TEAM2A.wl = { t_tfc = ! }
-        TEAM3A.wl = { t_tfc = ! }       // Don't ask why this is Green and Team 3 is Yellow
-        TEAM4A.wl = { t_tfc = ! }       // and this is Yellow and Team 4 is Green!
+        SILO_BLUE.wl = { t_tfc = ! }
+        SILO_BLUE2.wl = { t_tfc = ! }
+        SILO_RED.wl = { t_tfc = ! }
+        SILO_RED2.wl = { t_tfc = ! }
+        STEAL01.wl = { t_tfc = ! }
+        STEAL02.wl = { t_tfc = ! }
+        STEAL03.wl = { t_tfc = ! }
+        STEAL05A.wl = { t_tfc = ! }
+        STEAL05B.wl = { t_tfc = ! }
+        STEAL06.wl = { t_tfc = ! }
+        STEAL07.wl = { t_tfc = ! }
+        STEAL07A.wl = { t_tfc = ! }
+        STEAL08.wl = { t_tfc = ! }
         S_ALLEYWAY.wl = { t_tfc = ! }
         S_B_DOO1.wl = { t_tfc = ! }
         S_B_DOOR2.wl = { t_tfc = ! }
@@ -19421,445 +19257,88 @@ values=
         S_R_QUARTERS.wl = { t_tfc = ! }
         S_R_SECURITYCON.wl = { t_tfc = ! }
         S_STAIRS.wl = { t_tfc = ! }
-        S_STORAGEAREA1.wl = { t_tfc = ! }
         S_STORAGEAREA2.wl = { t_tfc = ! }
+        S_STORAGEAREA1.wl = { t_tfc = ! }
         S_STREET.wl = { t_tfc = ! }
         S_STREETACCESS.wl = { t_tfc = ! }
-      }
-      TFC Misc.txlist =
-      {
-        +0ELEV1.wl = { t_tfc = ! }
-        +AELEV1.wl = { t_tfc = ! }
-        +AELEV2.wl = { t_tfc = ! }
-        +0ELEV2.wl = { t_tfc = ! }
-        +0ELEV3.wl = { t_tfc = ! }
-        +AELEV3.wl = { t_tfc = ! }
-        MAP.wl = { t_tfc = ! }
-        POPDOG_FRONT_GR.wl = { t_tfc = ! }
-        POPDOG_FRONT_RE.wl = { t_tfc = ! }
-        POPDOG_LEFT_GR.wl = { t_tfc = ! }
-        POPDOG_LEFT_RED.wl = { t_tfc = ! }
-        POPDOG_RIGHT_GR.wl = { t_tfc = ! }
-        POPDOG_RIGHT_RE.wl = { t_tfc = ! }
-        POPDOG_TOP_B.wl = { t_tfc = ! }
-        POPDOG_TOP_GREE.wl = { t_tfc = ! }
-        POPDOG_TOP_RED.wl = { t_tfc = ! }
-        AD_TF2.wl = { t_tfc = ! }
-        CANALMAP.wl = { t_tfc = ! }
-        +0_CLOSED.wl = { t_tfc = ! }
-        +A_CLOSED.wl = { t_tfc = ! }
-        +A_OPEN.wl = { t_tfc = ! }
-        +0_OPEN.wl = { t_tfc = ! }
+        TEAM1A.wl = { t_tfc = ! }
+        TEAM2A.wl = { t_tfc = ! }
+        TEAM3A.wl = { t_tfc = ! }
+        TEAM4A.wl = { t_tfc = ! }
+     +0~TNNL_LGT5.wl = { t_tfc = ! }
+        TRAIN_BED1.wl = { t_tfc = ! }
+        TRAIN_TRACK3.wl = { t_tfc = ! }
+        TRAIN_TRACK2.wl = { t_tfc = ! }
+        TRAIN_TRACK1.wl = { t_tfc = ! }
+        UNDERWATERROCK.wl = { t_tfc = ! }
         WAR01.wl = { t_tfc = ! }
         WARPATH_SCORE.wl = { t_tfc = ! }
-        +0WAR_FLAG.wl = { t_tfc = ! }
-        +AWAR_FLAG.wl = { t_tfc = ! }
-        DUSTBOWL2.wl = { t_tfc = ! }
+        WAR_BLUEDOOR.wl = { t_tfc = ! }
+      +AWAR_FLAG.wl = { t_tfc = ! }
+      +0WAR_FLAG.wl = { t_tfc = ! }
+        WAR_REDDOOR.wl = { t_tfc = ! }
+        W_WINDOW1.wl = { t_tfc = ! }
+        W_WINDOW3.wl = { t_tfc = ! }
+      +0_CLOSED.wl = { t_tfc = ! }
+      +A_CLOSED.wl = { t_tfc = ! }
+      +0_OPEN.wl = { t_tfc = ! }
+      +A_OPEN.wl = { t_tfc = ! }
       }
-      TFC2.txlist =
+      Signs.txlist =
       {
-        CRATE1.wl = { t_tfc2 = ! }
-        CRATE1A.wl = { t_tfc2 = ! }
-        EASTALLFLR01.wl = { t_tfc2 = ! }
-        EASTALLFLR01B.wl = { t_tfc2 = ! }
-        EASTALLFLR01C.wl = { t_tfc2 = ! }
-        EASTALLFLR01D.wl = { t_tfc2 = ! }
-        EASTALLFLR01F.wl = { t_tfc2 = ! }
-        EASTALLFLR02.wl = { t_tfc2 = ! }
-        EASTBPLSTR.wl = { t_tfc2 = ! }
-        EASTBRICK1.wl = { t_tfc2 = ! }
-        EASTBRICK1D.wl = { t_tfc2 = ! }
-        EASTBUSH1.wl = { t_tfc2 = ! }
-        EASTBUSH2.wl = { t_tfc2 = ! }
-        EASTCARPET2.wl = { t_tfc2 = ! }
-        EASTCARPET2A.wl = { t_tfc2 = ! }
-        EASTCARPET2B.wl = { t_tfc2 = ! }
-        EASTCARPET3A.wl = { t_tfc2 = ! }
-        EASTCARPET3B.wl = { t_tfc2 = ! }
-        EASTCARPET3C.wl = { t_tfc2 = ! }
-        EASTCARPET3D.wl = { t_tfc2 = ! }
-        EASTCRATELGSD.wl = { t_tfc2 = ! }
-        EASTCRATELGTP.wl = { t_tfc2 = ! }
-        EASTCRATELGTP2.wl = { t_tfc2 = ! }
-        EASTCRATESM.wl = { t_tfc2 = ! }
-        EASTCRETE1.wl = { t_tfc2 = ! }
-        EASTCRETE1B.wl = { t_tfc2 = ! }
-        EASTCRETE1C.wl = { t_tfc2 = ! }
-        EASTCRETEBIG.wl = { t_tfc2 = ! }
-        EASTDOOR1.wl = { t_tfc2 = ! }
-        EASTDOOR2.wl = { t_tfc2 = ! }
-        EASTFLAT1.wl = { t_tfc2 = ! }
-        EASTFLOOR5.wl = { t_tfc2 = ! }
-        EASTGUTTER1A.wl = { t_tfc2 = ! }
-        EASTGUTTER1B.wl = { t_tfc2 = ! }
-        EASTPLSTR1.wl = { t_tfc2 = ! }
-        EASTPLSTR2B.wl = { t_tfc2 = ! }
-        EASTPLSTRBLU.wl = { t_tfc2 = ! }
-        EASTPLSTRPLN.wl = { t_tfc2 = ! }
-        EASTPLSTRRED.wl = { t_tfc2 = ! }
-        EASTROOFEND.wl = { t_tfc2 = ! }
-        EASTROOFTOP.wl = { t_tfc2 = ! }
-        EASTSTEP1.wl = { t_tfc2 = ! }
-        EASTTRIM01.wl = { t_tfc2 = ! }
-        EASTTRIM02.wl = { t_tfc2 = ! }
-        EASTTRIMBLUE01.wl = { t_tfc2 = ! }
-        EASTTRIMRED01.wl = { t_tfc2 = ! }
-        EASTWDWDJ0.wl = { t_tfc2 = ! }
-        EASTWDWDJ1.wl = { t_tfc2 = ! }
-        EASTWDWDJ2.wl = { t_tfc2 = ! }
-        EASTWNDWB0.wl = { t_tfc2 = ! }
-        EASTWNDWB0C.wl = { t_tfc2 = ! }
-        EASTWNDWB1.wl = { t_tfc2 = ! }
-        EASTWNDWBTALL.wl = { t_tfc2 = ! }
-        EASTWNDWN0.wl = { t_tfc2 = ! }
-        EASTWNDWN0B.wl = { t_tfc2 = ! }
-        EASTWNDWN0C.wl = { t_tfc2 = ! }
-        EASTWNDWN1.wl = { t_tfc2 = ! }
-        EASTWNDWN1B.wl = { t_tfc2 = ! }
-        EASTWNDWN1D.wl = { t_tfc2 = ! }
-        EASTWNDWNTALL.wl = { t_tfc2 = ! }
-        EASTWNDWR0.wl = { t_tfc2 = ! }
-        EASTWNDWR0B.wl = { t_tfc2 = ! }
-        EASTWNDWR1.wl = { t_tfc2 = ! }
-        EASTWNDWRTALL.wl = { t_tfc2 = ! }
-        EASTWOOD01.wl = { t_tfc2 = ! }
-        EASTWOOD02.wl = { t_tfc2 = ! }
-        EASTWOOD03.wl = { t_tfc2 = ! }
-        EASTWOOD04.wl = { t_tfc2 = ! }
-        E_FLOOR3.wl = { t_tfc2 = ! }
-        E_FLOOR5.wl = { t_tfc2 = ! }
-        E_FLOOR6.wl = { t_tfc2 = ! }
-        E_WALL_WHITE1.wl = { t_tfc2 = ! }
-        E_WALL_WHITE2.wl = { t_tfc2 = ! }
-        FL_TILE1.wl = { t_tfc2 = ! }
-        FL_TILE2.wl = { t_tfc2 = ! }
-        FUSEBOX1.wl = { t_tfc2 = ! }
-        GLUE_GREENMTL.wl = { t_tfc2 = ! }
-        GLUE_GREYMTL.wl = { t_tfc2 = ! }
-        GLUE_PLASTER1.wl = { t_tfc2 = ! }
-        GLUE_RUST1.wl = { t_tfc2 = ! }
-        GREYWOOD.wl = { t_tfc2 = ! }
-        IN_CURB1.wl = { t_tfc2 = ! }
-        IN_CURB2.wl = { t_tfc2 = ! }
-        IN_DOOR10.wl = { t_tfc2 = ! }
-        IN_DOOR2.wl = { t_tfc2 = ! }
-        IN_DOOR3.wl = { t_tfc2 = ! }
-        IN_DOOR4.wl = { t_tfc2 = ! }
-        IN_DOOR5.wl = { t_tfc2 = ! }
-        IN_DOOR6.wl = { t_tfc2 = ! }
-        IN_DOOR7.wl = { t_tfc2 = ! }
-        IN_DOOR8.wl = { t_tfc2 = ! }
-        IN_DOOR9.wl = { t_tfc2 = ! }
-        IN_DUMPSTER1.wl = { t_tfc2 = ! }
-        IN_DUMPSTER2.wl = { t_tfc2 = ! }
-        IN_FLOOR1.wl = { t_tfc2 = ! }
-        IN_FLOOR2.wl = { t_tfc2 = ! }
-        IN_FLOOR3.wl = { t_tfc2 = ! }
-        IN_FLOOR4.wl = { t_tfc2 = ! }
-        IN_FLOOR5.wl = { t_tfc2 = ! }
-        IN_FLOOR6.wl = { t_tfc2 = ! }
-        IN_FLOOR7.wl = { t_tfc2 = ! }
-        IN_LIGHT1.wl = { t_tfc2 = ! }
-        IN_LIGHT2.wl = { t_tfc2 = ! }
-        IN_LIGHTBULB.wl = { t_tfc2 = ! }
-        IN_METAL_RAIL1.wl = { t_tfc2 = ! }
-        IN_METAL_RAIL2.wl = { t_tfc2 = ! }
-        IN_METAL_RUS1.wl = { t_tfc2 = ! }
-        IN_METAL_RUSTY1.wl = { t_tfc2 = ! }
-        IN_METAL_RUSTY2.wl = { t_tfc2 = ! }
-        IN_PANEL5.wl = { t_tfc2 = ! }
-        IN_TRANS1.wl = { t_tfc2 = ! }
-        IN_TRANS2.wl = { t_tfc2 = ! }
-        IN_TRANS3.wl = { t_tfc2 = ! }
-        IN_TRANS4.wl = { t_tfc2 = ! }
-        IN_WALL16.wl = { t_tfc2 = ! }
-        IN_WALL17.wl = { t_tfc2 = ! }
-        IN_WALL18.wl = { t_tfc2 = ! }
-        IN_WALL19.wl = { t_tfc2 = ! }
-        IN_WALL22.wl = { t_tfc2 = ! }
-        IN_WALL23.wl = { t_tfc2 = ! }
-        IN_WALL24.wl = { t_tfc2 = ! }
-        IN_WALL25.wl = { t_tfc2 = ! }
-        IN_WALL26.wl = { t_tfc2 = ! }
-        IN_WALL27.wl = { t_tfc2 = ! }
-        IN_WALL28.wl = { t_tfc2 = ! }
-        IN_WALL29.wl = { t_tfc2 = ! }
-        IN_WALL30.wl = { t_tfc2 = ! }
-        IN_WINDOW1.wl = { t_tfc2 = ! }
-        IN_WINDOW10A.wl = { t_tfc2 = ! }
-        IN_WINDOW10B.wl = { t_tfc2 = ! }
-        IN_WINDOW10C.wl = { t_tfc2 = ! }
-        IN_WINDOW10D.wl = { t_tfc2 = ! }
-        IN_WINDOW11.wl = { t_tfc2 = ! }
-        IN_WINDOW12.wl = { t_tfc2 = ! }
-        IN_WINDOW13.wl = { t_tfc2 = ! }
-        IN_WINDOW14.wl = { t_tfc2 = ! }
-        IN_WINDOW2.wl = { t_tfc2 = ! }
-        IN_WINDOW4.wl = { t_tfc2 = ! }
-        IN_WINDOW5.wl = { t_tfc2 = ! }
-        IN_WINDOW6.wl = { t_tfc2 = ! }
-        IN_WINDOW8.wl = { t_tfc2 = ! }
-        IN_WINDOWSTRIP1.wl = { t_tfc2 = ! }
-        ITAL_CARPET.wl = { t_tfc2 = ! }
-        ITAL_SIGN1.wl = { t_tfc2 = ! }
-        ITAL_SIGN2.wl = { t_tfc2 = ! }
-        ITAL_SIGN3.wl = { t_tfc2 = ! }
-        ITAL_SIGN4.wl = { t_tfc2 = ! }
-        ITAL_WALK1.wl = { t_tfc2 = ! }
-        ITAL_WALK1A.wl = { t_tfc2 = ! }
-        ITAL_WALL1.wl = { t_tfc2 = ! }
-        ITAL_WALL1B.wl = { t_tfc2 = ! }
-        ITAL_WALL1C.wl = { t_tfc2 = ! }
-        ITAL_WALL3A.wl = { t_tfc2 = ! }
-        ITAL_WALL3B.wl = { t_tfc2 = ! }
-        ITAL_WALL4A.wl = { t_tfc2 = ! }
-        ITAL_WALL4B.wl = { t_tfc2 = ! }
-        ITAL_WALL4C.wl = { t_tfc2 = ! }
-        ITAL_WALL4D.wl = { t_tfc2 = ! }
-        ITAL_WALL5.wl = { t_tfc2 = ! }
-        ITAL_WALL5A.wl = { t_tfc2 = ! }
-        ITAL_WIN1.wl = { t_tfc2 = ! }
-        ITAL_WIN2.wl = { t_tfc2 = ! }
-        ITAL_WIN3.wl = { t_tfc2 = ! }
-        ITAL_WIN4.wl = { t_tfc2 = ! }
-        I_CHURCH1.wl = { t_tfc2 = ! }
-        I_CHURCH1A.wl = { t_tfc2 = ! }
-        I_CHURCH2.wl = { t_tfc2 = ! }
-        I_CHURCH2A.wl = { t_tfc2 = ! }
-        I_CHURCH3.wl = { t_tfc2 = ! }
-        I_CHURCH4.wl = { t_tfc2 = ! }
-        I_CHURCH5.wl = { t_tfc2 = ! }
-        I_DOOR_BLUE1.wl = { t_tfc2 = ! }
-        I_DOOR_WOOD1.wl = { t_tfc2 = ! }
-        I_FLOOR1.wl = { t_tfc2 = ! }
-        I_FLOOR2.wl = { t_tfc2 = ! }
-        I_FOUNT1.wl = { t_tfc2 = ! }
-        I_FOUNT2.wl = { t_tfc2 = ! }
-        I_GRATE1.wl = { t_tfc2 = ! }
-        I_GROUND1.wl = { t_tfc2 = ! }
-        I_GROUND2.wl = { t_tfc2 = ! }
-        I_GROUND3.wl = { t_tfc2 = ! }
-        I_GROUND4.wl = { t_tfc2 = ! }
-        I_ROOFEDGE1.wl = { t_tfc2 = ! }
-        I_ROOF_TILE1.wl = { t_tfc2 = ! }
-        I_ROOF_TILE2.wl = { t_tfc2 = ! }
-        I_ROOF_TILE3.wl = { t_tfc2 = ! }
-        I_ROUGH1.wl = { t_tfc2 = ! }
-        I_ROUGH1A.wl = { t_tfc2 = ! }
-        I_ROUGH1B.wl = { t_tfc2 = ! }
-        I_ROUGHLOW1.wl = { t_tfc2 = ! }
-        I_ROUGHLOW1B.wl = { t_tfc2 = ! }
-        I_ROUGHSIGN1.wl = { t_tfc2 = ! }
-        I_ROUGHSIGN2.wl = { t_tfc2 = ! }
-        I_TRIM1.wl = { t_tfc2 = ! }
-        I_TRIM2.wl = { t_tfc2 = ! }
-        I_TRIM3.wl = { t_tfc2 = ! }
-        I_TRIM4.wl = { t_tfc2 = ! }
-        I_WALL1.wl = { t_tfc2 = ! }
-        I_WALL2.wl = { t_tfc2 = ! }
-        I_WALL2A.wl = { t_tfc2 = ! }
-        I_WALL2B.wl = { t_tfc2 = ! }
-        I_WALL3.wl = { t_tfc2 = ! }
-        I_WALL4.wl = { t_tfc2 = ! }
-        I_WALL5.wl = { t_tfc2 = ! }
-        I_WALL6.wl = { t_tfc2 = ! }
-        I_WALL7.wl = { t_tfc2 = ! }
-        I_WALL8.wl = { t_tfc2 = ! }
-        I_WALL9.wl = { t_tfc2 = ! }
-        I_WALL_BASE1.wl = { t_tfc2 = ! }
-        I_WALL_BASE10.wl = { t_tfc2 = ! }
-        I_WALL_BASE11.wl = { t_tfc2 = ! }
-        I_WALL_BASE2.wl = { t_tfc2 = ! }
-        I_WALL_BASE3.wl = { t_tfc2 = ! }
-        I_WALL_BASE4.wl = { t_tfc2 = ! }
-        I_WALL_BASE5.wl = { t_tfc2 = ! }
-        M_ASPHALT1.wl = { t_tfc2 = ! }
-        M_ASPHALT2.wl = { t_tfc2 = ! }
-        M_ASPHALT3.wl = { t_tfc2 = ! }
-        M_CARPET2.wl = { t_tfc2 = ! }
-        M_CEILING3.wl = { t_tfc2 = ! }
-        M_CEILING4.wl = { t_tfc2 = ! }
-        M_FLOOR12.wl = { t_tfc2 = ! }
-        M_FLOOR13.wl = { t_tfc2 = ! }
-        M_FLOOR14.wl = { t_tfc2 = ! }
-        M_FLOOR17.wl = { t_tfc2 = ! }
-        M_FLOOR18.wl = { t_tfc2 = ! }
-        M_FLOOR19.wl = { t_tfc2 = ! }
-        M_FLOOR7.wl = { t_tfc2 = ! }
-        M_FLOOR8.wl = { t_tfc2 = ! }
-        M_STEP1.wl = { t_tfc2 = ! }
-        M_WALL2.wl = { t_tfc2 = ! }
-        M_WALL3.wl = { t_tfc2 = ! }
-        M_WALL4.wl = { t_tfc2 = ! }
-        M_WALL5.wl = { t_tfc2 = ! }
-        M_WALL6.wl = { t_tfc2 = ! }
-        M_WALL7.wl = { t_tfc2 = ! }
-        M_WALL8.wl = { t_tfc2 = ! }
-        M_WALL_INNER2.wl = { t_tfc2 = ! }
-        M_WALL_STU2.wl = { t_tfc2 = ! }
-        M_WALL_STU2A.wl = { t_tfc2 = ! }
-        M_WOOD1.wl = { t_tfc2 = ! }
-        M_WOOD2.wl = { t_tfc2 = ! }
-        OUT_ASPHALT1.wl = { t_tfc2 = ! }
-        OUT_ASPHALT2.wl = { t_tfc2 = ! }
-        OUT_ASPHALT3.wl = { t_tfc2 = ! }
-        OUT_ASPHALT4.wl = { t_tfc2 = ! }
-        OUT_ASPHALT5.wl = { t_tfc2 = ! }
-        OUT_ASPHALT6.wl = { t_tfc2 = ! }
-        OUT_ASPHALT7.wl = { t_tfc2 = ! }
-        OUT_ASPHALT8.wl = { t_tfc2 = ! }
-        OUT_ASPHALT9.wl = { t_tfc2 = ! }
-        OUT_BRICKS1.wl = { t_tfc2 = ! }
-        OUT_BRICKS2.wl = { t_tfc2 = ! }
-        OUT_CONCRETE1.wl = { t_tfc2 = ! }
-        OUT_CONCRETE2.wl = { t_tfc2 = ! }
-        OUT_DIRT1.wl = { t_tfc2 = ! }
-        OUT_DIRT2.wl = { t_tfc2 = ! }
-        OUT_DIRTSAND2C.wl = { t_tfc2 = ! }
-        OUT_DRAIN.wl = { t_tfc2 = ! }
-        OUT_FENCE1.wl = { t_tfc2 = ! }
-        OUT_FENCE2.wl = { t_tfc2 = ! }
-        OUT_FENCE3.wl = { t_tfc2 = ! }
-        OUT_FLAGS1.wl = { t_tfc2 = ! }
-        OUT_FLAGS2.wl = { t_tfc2 = ! }
-        OUT_FLAGS3.wl = { t_tfc2 = ! }
-        OUT_GLUE.wl = { t_tfc2 = ! }
-        OUT_GRANITE1A.wl = { t_tfc2 = ! }
-        OUT_GRANITE1B.wl = { t_tfc2 = ! }
-        OUT_GRANITE1C.wl = { t_tfc2 = ! }
-        OUT_GRANITE1D.wl = { t_tfc2 = ! }
-        OUT_GRATING1.wl = { t_tfc2 = ! }
-        OUT_GRATING2.wl = { t_tfc2 = ! }
-        OUT_GRAVEL3.wl = { t_tfc2 = ! }
-        OUT_GRND1.wl = { t_tfc2 = ! }
-        OUT_GRND2.wl = { t_tfc2 = ! }
-        OUT_GROUND1.wl = { t_tfc2 = ! }
-        OUT_GROUND2.wl = { t_tfc2 = ! }
-        OUT_GROUND3.wl = { t_tfc2 = ! }
-        OUT_GROUND4.wl = { t_tfc2 = ! }
-        OUT_GROUND5.wl = { t_tfc2 = ! }
-        OUT_GROUND9.wl = { t_tfc2 = ! }
-        OUT_HAY1.wl = { t_tfc2 = ! }
-        OUT_MANHOLE1.wl = { t_tfc2 = ! }
-        OUT_MANHOLE2.wl = { t_tfc2 = ! }
-        OUT_ROCK4.wl = { t_tfc2 = ! }
-        OUT_ROCK5.wl = { t_tfc2 = ! }
-        OUT_SAND1.wl = { t_tfc2 = ! }
-        OUT_SIDEWALK1.wl = { t_tfc2 = ! }
-        OUT_SIDEWALK2.wl = { t_tfc2 = ! }
-        OUT_SIDEWALK3.wl = { t_tfc2 = ! }
-        OUT_SIDEWALK4.wl = { t_tfc2 = ! }
-        OUT_SIDEWALK5.wl = { t_tfc2 = ! }
-        OUT_SIDEWALK5A.wl = { t_tfc2 = ! }
-        OUT_SIDEWALK6.wl = { t_tfc2 = ! }
-        OUT_SIDEWALK6A.wl = { t_tfc2 = ! }
-        OUT_SIDEWALK6B.wl = { t_tfc2 = ! }
-        OUT_SIDEWALK7.wl = { t_tfc2 = ! }
-        OUT_STONES1.wl = { t_tfc2 = ! }
-        OUT_STONES1A.wl = { t_tfc2 = ! }
-        OUT_STREET1.wl = { t_tfc2 = ! }
-        OUT_STREET2.wl = { t_tfc2 = ! }
-        OUT_STREET3.wl = { t_tfc2 = ! }
-        OUT_TILEROCK2.wl = { t_tfc2 = ! }
-        ROAD_1.wl = { t_tfc2 = ! }
-        ROCK_GREY.wl = { t_tfc2 = ! }
-        SANDBAG1A.wl = { t_tfc2 = ! }
-        SANDBAG1B.wl = { t_tfc2 = ! }
-        SANDBAG2A.wl = { t_tfc2 = ! }
-        SANDBAG2B.wl = { t_tfc2 = ! }
-        SLATE_ROOF_1.wl = { t_tfc2 = ! }
-        TELEPHONEPOLE.wl = { t_tfc2 = ! }
-        TESTLIGHT1.wl = { t_tfc2 = ! }
-        WALL_BRICK1.wl = { t_tfc2 = ! }
-        WALL_BRICK1A.wl = { t_tfc2 = ! }
-        WALL_BRICK2.wl = { t_tfc2 = ! }
-        WALL_BRICK2A.wl = { t_tfc2 = ! }
-        WALL_BRICK3.wl = { t_tfc2 = ! }
-        WALL_BRICK3A.wl = { t_tfc2 = ! }
-        WALL_BRICK4.wl = { t_tfc2 = ! }
-        WALL_BRICK4A.wl = { t_tfc2 = ! }
-        WALL_BRICK5.wl = { t_tfc2 = ! }
-        WALL_BRICK5A.wl = { t_tfc2 = ! }
-        WALL_BRICK6.wl = { t_tfc2 = ! }
-        WALL_BRICK7.wl = { t_tfc2 = ! }
-        WALL_CRETE1.wl = { t_tfc2 = ! }
-        WALL_STONE_SM.wl = { t_tfc2 = ! }
-        WALL_STONE_SM2.wl = { t_tfc2 = ! }
-        WAR_BLUE1.wl = { t_tfc2 = ! }
-        WAR_BLUE2.wl = { t_tfc2 = ! }
-        WAR_RED1.wl = { t_tfc2 = ! }
-        WAR_RED2.wl = { t_tfc2 = ! }
-        WAR_SAND1.wl = { t_tfc2 = ! }
-        WAR_SAND1A.wl = { t_tfc2 = ! }
-        WET_WALK1.wl = { t_tfc2 = ! }
-        WET_WALK2.wl = { t_tfc2 = ! }
-        WOOD1.wl = { t_tfc2 = ! }
-        WOOD2.wl = { t_tfc2 = ! }
+        CANALMAP.wl = { t_tfc = ! }
+        TEAM1A.wl = { t_tfc = ! }
+        TEAM2A.wl = { t_tfc = ! }
+        TEAM3A.wl = { t_tfc = ! }       // Don't ask why this is Green and Team 3 is Yellow
+        TEAM4A.wl = { t_tfc = ! }       // and this is Yellow and Team 4 is Green!
+        SIGN_ARW1.wl = { t_tfc = ! }
+        SIGN_ARW2.wl = { t_tfc = ! }
+        SIGN_ARW3.wl = { t_tfc = ! }
+        SIGN_ARW4.wl = { t_tfc = ! }
+        SIGN_ARW5.wl = { t_tfc = ! }
+        SIGN_ARW6.wl = { t_tfc = ! }
+        SIGN_ARW7.wl = { t_tfc = ! }
+        SIGN_ARW8.wl = { t_tfc = ! }
+        SIGN_BASE.wl = { t_tfc = ! }
+        SIGN_BAT.wl = { t_tfc = ! }
+        SIGN_CAPT.wl = { t_tfc = ! }
+        SIGN_CMD1.wl = { t_tfc = ! }
+        SIGN_CMD2.wl = { t_tfc = ! }
+        SIGN_CMD3.wl = { t_tfc = ! }
+        SIGN_CMD4.wl = { t_tfc = ! }
+        SIGN_CMD5.wl = { t_tfc = ! }
+        SIGN_CMD6.wl = { t_tfc = ! }
+        SIGN_CMD7.wl = { t_tfc = ! }
+        SIGN_CMD8.wl = { t_tfc = ! }
+        SIGN_CONT.wl = { t_tfc = ! }
+        SIGN_ELEV.wl = { t_tfc = ! }
+        SIGN_ENT.wl = { t_tfc = ! }
+        SIGN_FLAG.wl = { t_tfc = ! }
+        SIGN_FLAG2.wl = { t_tfc = ! }
+        SIGN_HELP.wl = { t_tfc = ! }
+        SIGN_LOW.wl = { t_tfc = ! }
+        SIGN_RAMP1.wl = { t_tfc = ! }
+        SIGN_RAMP2.wl = { t_tfc = ! }
+        SIGN_RESUP1.wl = { t_tfc = ! }
+        SIGN_TEAM1.wl = { t_tfc = ! }
+        SIGN_TEAM2.wl = { t_tfc = ! }
+        SIGN_UP.wl = { t_tfc = ! }
+        SIGN_WATER1.wl = { t_tfc = ! }
+        ROCK_SIGN1.wl = { t_tfc = ! }
+        ROCK_SIGN2.wl = { t_tfc = ! }
+        ROCK_SIGN3.wl = { t_tfc = ! }
+        ROCK_SIGN4.wl = { t_tfc = ! }
+        ROCK_SIGN5.wl = { t_tfc = ! }
+        ROCK_SIGN6.wl = { t_tfc = ! }
+        ROCK_SIGN7.wl = { t_tfc = ! }
+        ROCK_SIGN8.wl = { t_tfc = ! }
       }
-      TFC2 Signs.txlist =
-      {
-        SIGN_BLUEARR1.wl = { t_tfc2 = ! }
-        SIGN_BLUEARR2.wl = { t_tfc2 = ! }
-        SIGN_BLUEARR3.wl = { t_tfc2 = ! }
-        SIGN_BLUEBAT1.wl = { t_tfc2 = ! }
-        SIGN_BLUEBAT2.wl = { t_tfc2 = ! }
-        SIGN_BLUECAP1.wl = { t_tfc2 = ! }
-        SIGN_BLUECAP2.wl = { t_tfc2 = ! }
-        SIGN_BLUEFLAG1.wl = { t_tfc2 = ! }
-        SIGN_BLUEFLAG2.wl = { t_tfc2 = ! }
-        SIGN_BLUELEFT1.wl = { t_tfc2 = ! }
-        SIGN_BLUELEFT2.wl = { t_tfc2 = ! }
-        SIGN_BLUERIGHT1.wl = { t_tfc2 = ! }
-        SIGN_BLUERIGHT2.wl = { t_tfc2 = ! }
-        SIGN_BLUESUP1.wl = { t_tfc2 = ! }
-        SIGN_BLUESUP2.wl = { t_tfc2 = ! }
-        SIGN_CAP1.wl = { t_tfc2 = ! }
-        SIGN_CAP2.wl = { t_tfc2 = ! }
-        SIGN_CAP3.wl = { t_tfc2 = ! }
-        SIGN_FLAGROOM1.wl = { t_tfc2 = ! }
-        SIGN_FLAGROOM2.wl = { t_tfc2 = ! }
-        SIGN_FLAGS1.wl = { t_tfc2 = ! }
-        SIGN_FLAGS2.wl = { t_tfc2 = ! }
-        SIGN_FLAGS3.wl = { t_tfc2 = ! }
-        SIGN_GRENS.wl = { t_tfc2 = ! }
-        SIGN_REDARR1.wl = { t_tfc2 = ! }
-        SIGN_REDARR2.wl = { t_tfc2 = ! }
-        SIGN_REDARR3.wl = { t_tfc2 = ! }
-        SIGN_REDBAT1.wl = { t_tfc2 = ! }
-        SIGN_REDBAT2.wl = { t_tfc2 = ! }
-        SIGN_REDCAP1.wl = { t_tfc2 = ! }
-        SIGN_REDCAP2.wl = { t_tfc2 = ! }
-        SIGN_REDFLAG1.wl = { t_tfc2 = ! }
-        SIGN_REDFLAG2.wl = { t_tfc2 = ! }
-        SIGN_REDLEFT1.wl = { t_tfc2 = ! }
-        SIGN_REDLEFT2.wl = { t_tfc2 = ! }
-        SIGN_REDRIGHT1.wl = { t_tfc2 = ! }
-        SIGN_REDRIGHT2.wl = { t_tfc2 = ! }
-        SIGN_REDSUP1.wl = { t_tfc2 = ! }
-        SIGN_REDSUP2.wl = { t_tfc2 = ! }
-        WAR_BLUE.wl = { t_tfc2 = ! }
-        WAR_RED.wl = { t_tfc2 = ! }
-      }
-      TFC2 Misc.txlist =
-      {
-        +0ITAL_CAP.wl = { t_tfc2 = ! }
-        +AITAL_CAP.wl = { t_tfc2 = ! }
-        +0ITAL_CAP1.wl = { t_tfc2 = ! }
-        +AITAL_CAP1.wl = { t_tfc2 = ! }
-        +0ITAL_CAP2.wl = { t_tfc2 = ! }
-        +AITAL_CAP2.wl = { t_tfc2 = ! }
-        +0ITAL_CAP3.wl = { t_tfc2 = ! }
-        +AITAL_CAP3.wl = { t_tfc2 = ! }
-        +0ITAL_CAP4.wl = { t_tfc2 = ! }
-        +AITAL_CAP4.wl = { t_tfc2 = ! }
-        WARMAP.wl = { t_tfc2 = ! }
-        {EASTLINE1.wl = { t_tfc2 = ! }
-        {EASTLINE2.wl = { t_tfc2 = ! }
-        {EASTLINE3.wl = { t_tfc2 = ! }
-        {EASTRAIL1.wl = { t_tfc2 = ! }
-        {EASTWNDWN2.wl = { t_tfc2 = ! }
-        {WOODRAIL.wl = { t_tfc2 = ! }
-      }
+ //     Extra.txlist =
+ //     {
+ //       SKY.wl = { t_tfc = ! }
+ //       CLIP.wl = { t_tfc = ! }
+ //       AAATRIGGER.wl = { t_tfc = ! }
+ //     }
     }
   }
 
@@ -20256,26 +19735,17 @@ values=
         t_cs_decals:incl = { s = "cstrike" d = "decals" h = "C" }
         t_cs_cstrike:incl = { s = "cstrike" d = "cstrike" h = "C" }
         t_cs_cs_assault:incl = { s = "cstrike" d = "cs_assault" h = "C" }
-        t_cs_cs_747:incl = { s = "cstrike" d = "cs_747" h = "C" }
-        t_cs_as_riverside:incl = { s = "cstrike" d = "as_riverside" h = "C" }
+    t_cs_cs_747:incl = { s = "cstrike" d = "cs_747" h = "C" }
+    t_cs_as_riverside:incl = { s = "cstrike" d = "as_riverside" h = "C" }
         t_cs_cs_dust:incl = { s = "cstrike" d = "cs_dust" h = "C" }
         t_cs_jos:incl = { s = "cstrike" d = "jos" h = "C" }
-//        t_cs_2maps:incl = { s = "cstrike" d = "2maps" h = "C" }
-        t_cs_tswad:incl = { s = "cstrike" d = "tswad" h = "C" }
+    t_cs_2maps:incl = { s = "cstrike" d = "2maps" h = "C" }
+    t_cs_tswad:incl = { s = "cstrike" d = "tswad" h = "C" }
         t_cs_n0th1ng:incl = { s = "cstrike" d = "n0th1ng" h = "C" }
         t_cs_cs_bdog:incl = { s = "cstrike" d = "cs_bdog" h = "C" }
-        t_cs_Es_frantic:incl = { s = "cstrike" d = "Es_frantic" h = "C" }
-        t_cs_ajamedia:incl = { s = "cstrike" d = "ajamedia" h = "C" }
+    t_cs_Es_frantic:incl = { s = "cstrike" d = "Es_frantic" h = "C" }
+    t_cs_ajamedia:incl = { s = "cstrike" d = "ajamedia" h = "C" }
         t_cs_prodigy:incl = { s = "cstrike" d = "prodigy" h = "C" }
-// "Stedden" begin
-        t_cs_as_tundra:incl = { s = "cstrike" d ="as_tundra" h = "C" }
-        t_cs_cs_cbble:incl = { s = "cstrike" d ="cs_cbble" h = "C" }
-        t_cs_cs_office:incl = { s = "cstrike" d ="cs_office" h = "C" }
-        t_cs_de_aztec:incl = { s = "cstrike" d ="de_aztec" h = "C" }
-        t_cs_de_vegas:incl = { s = "cstrike" d ="de_vegas" h = "C" }
-        t_cs_es_trinity:incl = { s = "cstrike" d ="es_trinity" h = "C" }
-        t_cs_itsItaly:incl = { s = "cstrike" d ="itsItaly" h = "C" }
-// "Stedden" end
 
     CounterStrike Textures.qtxfolder =
     {
@@ -20499,12 +19969,12 @@ values=
         curtain2.wl = { t_cs_cs_747 = ! }
         curtain3.wl = { t_cs_cs_747 = ! }
         curtain4.wl = { t_cs_cs_747 = ! }
-//        freezer_bx3.wl = { t_cs_cs_747 = ! }
+        freezer_bx3.wl = { t_cs_cs_747 = ! }
         cstrike_airpl2.wl = { t_cs_cs_747 = ! }
         curtain1_256.wl = { t_cs_cs_747 = ! }
-//        freezer_bx5.wl = { t_cs_cs_747 = ! }
+        freezer_bx5.wl = { t_cs_cs_747 = ! }
         freezer_bx3_x4.wl = { t_cs_cs_747 = ! }
-//        freezer_bx9.wl = { t_cs_cs_747 = ! }
+        freezer_bx9.wl = { t_cs_cs_747 = ! }
         freezer_bx5_x2.wl = { t_cs_cs_747 = ! }
         freezer_bx9_x16.wl = { t_cs_cs_747 = ! }
         overhead_x4.wl = { t_cs_cs_747 = ! }
@@ -20612,34 +20082,33 @@ values=
       }
       cs_dust.txlist =
       {
-        -0Sand.wl = { t_cs_cs_dust = ! }
-        -0SandRock.wl = { t_cs_cs_dust = ! }
         -0csSandWall.wl = { t_cs_cs_dust = ! }
+        -0Sand.wl = { t_cs_cs_dust = ! }
         -1Sand.wl = { t_cs_cs_dust = ! }
-        -1SandRock.wl = { t_cs_cs_dust = ! }
         -1csSandWall.wl = { t_cs_cs_dust = ! }
         -2Sand.wl = { t_cs_cs_dust = ! }
-        -2SandRock.wl = { t_cs_cs_dust = ! }
         -3Sand.wl = { t_cs_cs_dust = ! }
-        MltryCrteSd.wl = { t_cs_cs_dust = ! }
-        MltryCrteSd2.wl = { t_cs_cs_dust = ! }
-        MltryCrteTp.wl = { t_cs_cs_dust = ! }
+        SandRoad.wl = { t_cs_cs_dust = ! }
+        SandTrim.wl = { t_cs_cs_dust = ! }
+        SandWllWndw.wl = { t_cs_cs_dust = ! }
         SandCCrete.wl = { t_cs_cs_dust = ! }
         SandCrtLrgSd.wl = { t_cs_cs_dust = ! }
         SandCrtLrgTp.wl = { t_cs_cs_dust = ! }
         SandCrtSmSd.wl = { t_cs_cs_dust = ! }
         SandCrtSmTp.wl = { t_cs_cs_dust = ! }
-        SandRoad.wl = { t_cs_cs_dust = ! }
-        SandRoadTgt.wl = { t_cs_cs_dust = ! }
-        SandRoadTgtA.wl = { t_cs_cs_dust = ! }
-        SandRoadTgtB.wl = { t_cs_cs_dust = ! }
-        SandTrim.wl = { t_cs_cs_dust = ! }
         SandWllDoor.wl = { t_cs_cs_dust = ! }
+        -0SandRock.wl = { t_cs_cs_dust = ! }
+        -1SandRock.wl = { t_cs_cs_dust = ! }
+        -2SandRock.wl = { t_cs_cs_dust = ! }
+        MltryCrteSd.wl = { t_cs_cs_dust = ! }
+        MltryCrteTp.wl = { t_cs_cs_dust = ! }
+        MltryCrteSd2.wl = { t_cs_cs_dust = ! }
+        SandRoadTgt.wl = { t_cs_cs_dust = ! }
         SandWllDoor2.wl = { t_cs_cs_dust = ! }
-        SandWllWndw.wl = { t_cs_cs_dust = ! }
         SandWllWndw2.wl = { t_cs_cs_dust = ! }
         SandWllWndw3.wl = { t_cs_cs_dust = ! }
         csSandWall2.wl = { t_cs_cs_dust = ! }
+        djSmartie.wl = { t_cs_cs_dust = ! }
       }
       jos.txlist =
       {
@@ -20668,23 +20137,21 @@ values=
         -1jbDrtyBrick1.wl = { t_cs_jos = ! }
         jbRockA.wl = { t_cs_jos = ! }
       }
-// "Stedden" begin
-//      2maps.txlist =
-//      {
-//        buildbackwall.wl = { t_cs_2maps = ! }
-//        bcontainer1.wl = { t_cs_2maps = ! }
-//        bcontainer2.wl = { t_cs_2maps = ! }
-//        bcontainer3.wl = { t_cs_2maps = ! }
-//        door_garage.wl = { t_cs_2maps = ! }
-//        DOCKS_BRDWNDW.wl = { t_cs_2maps = ! }
-//        grassanddirtful.wl = { t_cs_2maps = ! }
-//        s_storagearea1.wl = { t_cs_2maps = ! }
-//        canyonscliff.wl = { t_cs_2maps = ! }
-//        s_storagearea2.wl = { t_cs_2maps = ! }
-//        s_streetaccess.wl = { t_cs_2maps = ! }
-//        Blue.wl = { t_cs_2maps = ! }
-//      }
-// "Stedden" end
+      2maps.txlist =
+      {
+        buildbackwall.wl = { t_cs_2maps = ! }
+        bcontainer1.wl = { t_cs_2maps = ! }
+        bcontainer2.wl = { t_cs_2maps = ! }
+        bcontainer3.wl = { t_cs_2maps = ! }
+        door_garage.wl = { t_cs_2maps = ! }
+        DOCKS_BRDWNDW.wl = { t_cs_2maps = ! }
+        grassanddirtful.wl = { t_cs_2maps = ! }
+        s_storagearea1.wl = { t_cs_2maps = ! }
+        canyonscliff.wl = { t_cs_2maps = ! }
+        s_storagearea2.wl = { t_cs_2maps = ! }
+        s_streetaccess.wl = { t_cs_2maps = ! }
+        Blue.wl = { t_cs_2maps = ! }
+      }
       tswad.txlist =
       {
         TSBGVENT.wl = { t_cs_tswad = ! }
@@ -20756,7 +20223,7 @@ values=
         CinderBlock01.wl = { t_cs_cs_bdog = ! }
         Tracks01.wl = { t_cs_cs_bdog = ! }
         Gravel01.wl = { t_cs_cs_bdog = ! }
-//        hint.wl = { t_cs_cs_bdog = ! }
+        hint.wl = { t_cs_cs_bdog = ! }
         Tracks02.wl = { t_cs_cs_bdog = ! }
         Brick04_sm.wl = { t_cs_cs_bdog = ! }
         Brick05_sm.wl = { t_cs_cs_bdog = ! }
@@ -20897,485 +20364,6 @@ values=
         crate-thanks2.wl = { t_cs_prodigy = ! }
         crate-thanks1.wl = { t_cs_prodigy = ! }
       }
-
-// "Stedden" begin
-        as_tundra.txlist =
-	{
-	-0Rock.wl = { t_cs_as_tundra = ! }
-	-0WntrWll.wl = { t_cs_as_tundra = ! }
-	-1Rock.wl = { t_cs_as_tundra = ! }
-	-2Rock.wl = { t_cs_as_tundra = ! }
-	-3Rock.wl = { t_cs_as_tundra = ! }
-	snowing.wl = { t_cs_as_tundra = ! }
-	wntrapc_back1.wl = { t_cs_as_tundra = ! }
-	wntrapc_btile1.wl = { t_cs_as_tundra = ! }
-	wntrapc_frnt1.wl = { t_cs_as_tundra = ! }
-	wntrapc_side1.wl = { t_cs_as_tundra = ! }
-	wntrapc_top1.wl = { t_cs_as_tundra = ! }
-	WntrCCrete.wl = { t_cs_as_tundra = ! }
-	WntrCrtLid.wl = { t_cs_as_tundra = ! }
-	WntrCrtLrg.wl = { t_cs_as_tundra = ! }
-	WntrIce.wl = { t_cs_as_tundra = ! }
-	WntrSnow.wl = { t_cs_as_tundra = ! }
-	WntrTrim.wl = { t_cs_as_tundra = ! }
-	WntrWndw.wl = { t_cs_as_tundra = ! }
-	}
-
-	cs_cbble.txlist =
-	{
-	CastleWindow2.wl = { t_cs_cs_cbble = ! }
-	-0CastWllFung.wl = { t_cs_cs_cbble = ! }
-	-1CastWll.wl = { t_cs_cs_cbble = ! }
-	-1CastWllFung.wl = { t_cs_cs_cbble = ! }
-	-2CastWll.wl = { t_cs_cs_cbble = ! }
-	CastleBgArch.wl = { t_cs_cs_cbble = ! }
-	CastleSmArch.wl = { t_cs_cs_cbble = ! }
-	CastleWindow.wl = { t_cs_cs_cbble = ! }
-	-0CastWll.wl = { t_cs_cs_cbble = ! }
-	-3Rock.wl = { t_cs_cs_cbble = ! }
-	-1Rock.wl = { t_cs_cs_cbble = ! }
-	-2Rock.wl = { t_cs_cs_cbble = ! }
-	-0Rock.wl = { t_cs_cs_cbble = ! }
-	CastSign1.wl = { t_cs_cs_cbble = ! }
-	CastSignSm1.wl = { t_cs_cs_cbble = ! }
-	CastSignSm2.wl = { t_cs_cs_cbble = ! }
-	CastSignSm3.wl = { t_cs_cs_cbble = ! }
-	CastSignSm4.wl = { t_cs_cs_cbble = ! }
-	CastleBgArchFng.wl = { t_cs_cs_cbble = ! }
-	CastSign2.wl = { t_cs_cs_cbble = ! }
-	CastSign1b.wl = { t_cs_cs_cbble = ! }
-	CastCrnR.wl = { t_cs_cs_cbble = ! }
-	CastCrnL.wl = { t_cs_cs_cbble = ! }
-	CastFlt.wl = { t_cs_cs_cbble = ! }
-	CastleWindow3.wl = { t_cs_cs_cbble = ! }
-	CstlCbbl.wl = { t_cs_cs_cbble = ! }
-	CstlCncr.wl = { t_cs_cs_cbble = ! }
-	CstlDr1.wl = { t_cs_cs_cbble = ! }
-	CstlDr2.wl = { t_cs_cs_cbble = ! }
-	CstlDr3.wl = { t_cs_cs_cbble = ! }
-	CstlDr4.wl = { t_cs_cs_cbble = ! }
-	CstlMld.wl = { t_cs_cs_cbble = ! }
-	CstlGrass.wl = { t_cs_cs_cbble = ! }
-	emerglightb.wl = { t_cs_cs_cbble = ! }
-	EMERGLIGHTB2.wl = { t_cs_cs_cbble = ! }
-	emerglightc.wl = { t_cs_cs_cbble = ! }
-	clayTile1.wl = { t_cs_cs_cbble = ! }
-	CstlDr2Big.wl = { t_cs_cs_cbble = ! }
-	+0smLight1.wl = { t_cs_cs_cbble = ! }
-	CastSign3.wl = { t_cs_cs_cbble = ! }
-	CastYummy.wl = { t_cs_cs_cbble = ! }
-	CastSignFood.wl = { t_cs_cs_cbble = ! }
-	tsibeam.wl = { t_cs_cs_cbble = ! }
-	tsmoss.wl = { t_cs_cs_cbble = ! }
-	tsvent.wl = { t_cs_cs_cbble = ! }
-	djCrateSd1.wl = { t_cs_cs_cbble = ! }
-	djCrateSd2.wl = { t_cs_cs_cbble = ! }
-	djCrateSd3.wl = { t_cs_cs_cbble = ! }
-	djCrateSm.wl = { t_cs_cs_cbble = ! }
-	djCrateSmTp.wl = { t_cs_cs_cbble = ! }
-	djCrateTop.wl = { t_cs_cs_cbble = ! }
-	{cstrike_le6lad.wl = { t_cs_cs_cbble = ! }
-	}
-
-	cs_office.txlist =
-	{
-	conc33.wl = { t_cs_cs_office = ! }
-	Core_Urban_023.wl = { t_cs_cs_office = ! }
-	Core_Urban_026.wl = { t_cs_cs_office = ! }
-	Core_Urban_027.wl = { t_cs_cs_office = ! }
-	Core_Urban_028.wl = { t_cs_cs_office = ! }
-	Core_Urban_036.wl = { t_cs_cs_office = ! }
-	Core_Urban_040.wl = { t_cs_cs_office = ! }
-	painting01.wl = { t_cs_cs_office = ! }
-	painting02.wl = { t_cs_cs_office = ! }
-	painting03.wl = { t_cs_cs_office = ! }
-	painting04.wl = { t_cs_cs_office = ! }
-	painting05.wl = { t_cs_cs_office = ! }
-	painting06.wl = { t_cs_cs_office = ! }
-	painting07.wl = { t_cs_cs_office = ! }
-	painting08.wl = { t_cs_cs_office = ! }
-	painting09.wl = { t_cs_cs_office = ! }
-	painting10.wl = { t_cs_cs_office = ! }
-	painting11.wl = { t_cs_cs_office = ! }
-	painting12.wl = { t_cs_cs_office = ! }
-	painting13.wl = { t_cs_cs_office = ! }
-	painting14.wl = { t_cs_cs_office = ! }
-	painting15.wl = { t_cs_cs_office = ! }
-	painting16.wl = { t_cs_cs_office = ! }
-	painting17.wl = { t_cs_cs_office = ! }
-	painting18.wl = { t_cs_cs_office = ! }
-	painting19.wl = { t_cs_cs_office = ! }
-	painting20.wl = { t_cs_cs_office = ! }
-	Core_Urban_051.wl = { t_cs_cs_office = ! }
-	Core_Urban_054.wl = { t_cs_cs_office = ! }
-	Core_Urban_055.wl = { t_cs_cs_office = ! }
-	Core_Urban_059.wl = { t_cs_cs_office = ! }
-	Core_Urban_061.wl = { t_cs_cs_office = ! }
-	Core_Urban_066.wl = { t_cs_cs_office = ! }
-	Core_Urban_067.wl = { t_cs_cs_office = ! }
-	Core_Urban_090.wl = { t_cs_cs_office = ! }
-	Core_Urban_093.wl = { t_cs_cs_office = ! }
-	Core_Urban_111.wl = { t_cs_cs_office = ! }
-	Core_Urban_117.wl = { t_cs_cs_office = ! }
-	Core_Urban_120.wl = { t_cs_cs_office = ! }
-	Core_Urban_136.wl = { t_cs_cs_office = ! }
-	Core_Urban_141.wl = { t_cs_cs_office = ! }
-	Core_Urban_143.wl = { t_cs_cs_office = ! }
-	Core_Urban_151.wl = { t_cs_cs_office = ! }
-	Core_Urban_152.wl = { t_cs_cs_office = ! }
-	Core_Urban_153.wl = { t_cs_cs_office = ! }
-	Core_Urban_173.wl = { t_cs_cs_office = ! }
-	Core_Urban_192.wl = { t_cs_cs_office = ! }
-	Core_Urban_198.wl = { t_cs_cs_office = ! }
-	Core_Urban_204.wl = { t_cs_cs_office = ! }
-	Core_Urban_020.wl = { t_cs_cs_office = ! }
-	Core_Urban_144.wl = { t_cs_cs_office = ! }
-	Core_Urban_135.wl = { t_cs_cs_office = ! }
-	Core_Urban_142.wl = { t_cs_cs_office = ! }
-	jbRockA.wl = { t_cs_cs_office = ! }
-	lthr_cch4.wl = { t_cs_cs_office = ! }
-	CpMonitor.wl = { t_cs_cs_office = ! }
-	CpMonitor2.wl = { t_cs_cs_office = ! }
-	lthr_cch.wl = { t_cs_cs_office = ! }
-	lthr_cch2.wl = { t_cs_cs_office = ! }
-	lthr_cch3.wl = { t_cs_cs_office = ! }
-	Smoe_Urban_059.wl = { t_cs_cs_office = ! }
-	sign_PrdgyInc.wl = { t_cs_cs_office = ! }
-	sign_Prsdnt.wl = { t_cs_cs_office = ! }
-	keyboard_white.wl = { t_cs_cs_office = ! }
-	Core_Urban_086.wl = { t_cs_cs_office = ! }
-	brdly3_top1.wl = { t_cs_cs_office = ! }
-	brdly3_btile1.wl = { t_cs_cs_office = ! }
-	brdly3_frnt1.wl = { t_cs_cs_office = ! }
-	brdly3_side1.wl = { t_cs_cs_office = ! }
-	brdly3_back1.wl = { t_cs_cs_office = ! }
-	snow.wl = { t_cs_cs_office = ! }
-	snow_rockcliff4.wl = { t_cs_cs_office = ! }
-	cpucase.wl = { t_cs_cs_office = ! }
-	CpMonitor20001.wl = { t_cs_cs_office = ! }
-	hobrock.wl = { t_cs_cs_office = ! }
-	calendar1.wl = { t_cs_cs_office = ! }
-	CpMonitor3.wl = { t_cs_cs_office = ! }
-	magcover1.wl = { t_cs_cs_office = ! }
-	magcover2.wl = { t_cs_cs_office = ! }
-	Graph.wl = { t_cs_cs_office = ! }
-	magcover3.wl = { t_cs_cs_office = ! }
-	magcover4.wl = { t_cs_cs_office = ! }
-	katie_poster.wl = { t_cs_cs_office = ! }
-	edge.wl = { t_cs_cs_office = ! }
-	CrdBrdTop.wl = { t_cs_cs_office = ! }
-	CrdBrdSde2.wl = { t_cs_cs_office = ! }
-	CrdBrdSde1.wl = { t_cs_cs_office = ! }
-	of_crate03top.wl = { t_cs_cs_office = ! }
-	of_crate03d.wl = { t_cs_cs_office = ! }
-	of_crate03c.wl = { t_cs_cs_office = ! }
-	of_crate03b.wl = { t_cs_cs_office = ! }
-	of_crate03a.wl = { t_cs_cs_office = ! }
-	of_crate02b.wl = { t_cs_cs_office = ! }
-	of_crate02a.wl = { t_cs_cs_office = ! }
-	of_crate01b.wl = { t_cs_cs_office = ! }
-	of_crate01a.wl = { t_cs_cs_office = ! }
-	of_crate01c.wl = { t_cs_cs_office = ! }
-	of_crate01d.wl = { t_cs_cs_office = ! }
-	+0of_easter.wl = { t_cs_cs_office = ! }
-	+1of_easter.wl = { t_cs_cs_office = ! }
-	of_got_milk.wl = { t_cs_cs_office = ! }
-	of_billboard.wl = { t_cs_cs_office = ! }
-	}
-
-	de_aztec.txlist =
-	{
-	AzTrim.wl = { t_cs_de_aztec = ! }
-	-0AzWll.wl = { t_cs_de_aztec = ! }
-	-1AzMoss.wl = { t_cs_de_aztec = ! }
-	-1AzWll.wl = { t_cs_de_aztec = ! }
-	AzGrnd.wl = { t_cs_de_aztec = ! }
-	-0AzMoss.wl = { t_cs_de_aztec = ! }
-	WoodCrateSdSm.wl = { t_cs_de_aztec = ! }
-	WoodCrateLidSm.wl = { t_cs_de_aztec = ! }
-	WoodCrateSd.wl = { t_cs_de_aztec = ! }
-	WoodCrateLid.wl = { t_cs_de_aztec = ! }
-	-0AzDirt.wl = { t_cs_de_aztec = ! }
-	AzRoad.wl = { t_cs_de_aztec = ! }
-	-1AzDirt.wl = { t_cs_de_aztec = ! }
-	-2AzDirt.wl = { t_cs_de_aztec = ! }
-	-3AzDirt.wl = { t_cs_de_aztec = ! }
-	AzGrass.wl = { t_cs_de_aztec = ! }
-	AzStatC.wl = { t_cs_de_aztec = ! }
-	AzStatB.wl = { t_cs_de_aztec = ! }
-	AzStatA.wl = { t_cs_de_aztec = ! }
-	MADE_BY_ME.wl = { t_cs_de_aztec = ! }
-	CastSign1.wl = { t_cs_de_aztec = ! }
-	CastSign1b.wl = { t_cs_de_aztec = ! }
-	special_thanks.wl = { t_cs_de_aztec = ! }
-	thanks.wl = { t_cs_de_aztec = ! }
-	}
-
-	de_vegas.txlist =
-	{
-	{pylon.wl = { t_cs_de_vegas = ! }
-	beize.wl = { t_cs_de_vegas = ! }
-	+0lv_sign_hax.wl = { t_cs_de_vegas = ! }
-	+0lv_sign_si.wl = { t_cs_de_vegas = ! }
-	+1lv_sign_hax.wl = { t_cs_de_vegas = ! }
-	+1lv_sign_si.wl = { t_cs_de_vegas = ! }
-	+2lv_sign_hax.wl = { t_cs_de_vegas = ! }
-	+3lv_sign_hax.wl = { t_cs_de_vegas = ! }
-	+4lv_sign_hax.wl = { t_cs_de_vegas = ! }
-	+5lv_sign_hax.wl = { t_cs_de_vegas = ! }
-	+6lv_sign_hax.wl = { t_cs_de_vegas = ! }
-	+7lv_sign_hax.wl = { t_cs_de_vegas = ! }
-	+8lv_sign_hax.wl = { t_cs_de_vegas = ! }
-	lv_trim_wood.wl = { t_cs_de_vegas = ! }
-	lv_hotel.wl = { t_cs_de_vegas = ! }
-	b_cp_v1.wl = { t_cs_de_vegas = ! }
-	b_cp_v10.wl = { t_cs_de_vegas = ! }
-	b_cp_v14.wl = { t_cs_de_vegas = ! }
-	b_cp_v18.wl = { t_cs_de_vegas = ! }
-	b_cp_v33c.wl = { t_cs_de_vegas = ! }
-	lv_marble_trim.wl = { t_cs_de_vegas = ! }
-	lv_marb_trim.wl = { t_cs_de_vegas = ! }
-	C1A1_FLR2B_MCL.wl = { t_cs_de_vegas = ! }
-	CHAOS_SI_WALL2.wl = { t_cs_de_vegas = ! }
-	flowers.wl = { t_cs_de_vegas = ! }
-	MoneyFront.wl = { t_cs_de_vegas = ! }
-	MoneySide.wl = { t_cs_de_vegas = ! }
-	MoneySingle.wl = { t_cs_de_vegas = ! }
-	MoneyTop.wl = { t_cs_de_vegas = ! }
-	lv_plaster.wl = { t_cs_de_vegas = ! }
-	lv_wallpaper.wl = { t_cs_de_vegas = ! }
-	lv_mahog05.wl = { t_cs_de_vegas = ! }
-	lv_mahog04.wl = { t_cs_de_vegas = ! }
-	lv_mahog03.wl = { t_cs_de_vegas = ! }
-	lv_mahog01.wl = { t_cs_de_vegas = ! }
-	lv_mahog02.wl = { t_cs_de_vegas = ! }
-	lv_wallppr_trim.wl = { t_cs_de_vegas = ! }
-	b_cp_v17ab.wl = { t_cs_de_vegas = ! }
-	b_cp_v23a.wl = { t_cs_de_vegas = ! }
-	b_cp_v24b.wl = { t_cs_de_vegas = ! }
-	b_cp_v41n.wl = { t_cs_de_vegas = ! }
-	B_rc_v4y.wl = { t_cs_de_vegas = ! }
-	B_sr_26a.wl = { t_cs_de_vegas = ! }
-	bl_rc_c11.wl = { t_cs_de_vegas = ! }
-	C_pv_m1.wl = { t_cs_de_vegas = ! }
-	c_tn_m3c01.wl = { t_cs_de_vegas = ! }
-	c_tn_m3c02.wl = { t_cs_de_vegas = ! }
-	mz_comando2.wl = { t_cs_de_vegas = ! }
-	lv_wood_flr2.wl = { t_cs_de_vegas = ! }
-	lv_coil.wl = { t_cs_de_vegas = ! }
-	lv_dbldrs.wl = { t_cs_de_vegas = ! }
-	lv_sphinx.wl = { t_cs_de_vegas = ! }
-	lv_bricktrim.wl = { t_cs_de_vegas = ! }
-	lv_craparch.wl = { t_cs_de_vegas = ! }
-	lv_wallpanel.wl = { t_cs_de_vegas = ! }
-	lv_wallpaper2.wl = { t_cs_de_vegas = ! }
-	lv_marble.wl = { t_cs_de_vegas = ! }
-	+0mc_monitor.wl = { t_cs_de_vegas = ! }
-	+1mc_monitor.wl = { t_cs_de_vegas = ! }
-	lv_crete_trim.wl = { t_cs_de_vegas = ! }
-	lv_roulette2.wl = { t_cs_de_vegas = ! }
-	lv_chipred_top.wl = { t_cs_de_vegas = ! }
-	lv_chipred_side.wl = { t_cs_de_vegas = ! }
-	lv_chipblu_side.wl = { t_cs_de_vegas = ! }
-	lv_chipblue_top.wl = { t_cs_de_vegas = ! }
-	+0lv_fruit1.wl = { t_cs_de_vegas = ! }
-	+0lv_fruit3.wl = { t_cs_de_vegas = ! }
-	+1lv_fruit1.wl = { t_cs_de_vegas = ! }
-	+1lv_fruit3.wl = { t_cs_de_vegas = ! }
-	+2lv_fruit3.wl = { t_cs_de_vegas = ! }
-	+3lv_fruit3.wl = { t_cs_de_vegas = ! }
-	+4lv_fruit3.wl = { t_cs_de_vegas = ! }
-	+5lv_fruit3.wl = { t_cs_de_vegas = ! }
-	+6lv_fruit3.wl = { t_cs_de_vegas = ! }
-	lv_fruitpanel2.wl = { t_cs_de_vegas = ! }
-	lv_fruitpanel4.wl = { t_cs_de_vegas = ! }
-	lv_fruitpanel5.wl = { t_cs_de_vegas = ! }
-	lv_sign_secur.wl = { t_cs_de_vegas = ! }
-	lv_sign_rooms1.wl = { t_cs_de_vegas = ! }
-	lv_sign_rooms2.wl = { t_cs_de_vegas = ! }
-	lv_sign_elev.wl = { t_cs_de_vegas = ! }
-	lv_sign_man.wl = { t_cs_de_vegas = ! }
-	lv_sign_staff.wl = { t_cs_de_vegas = ! }
-	lv_grottypaper.wl = { t_cs_de_vegas = ! }
-	lv_speaker.wl = { t_cs_de_vegas = ! }
-	lv_panelling.wl = { t_cs_de_vegas = ! }
-	lv_fruit2panel1.wl = { t_cs_de_vegas = ! }
-	lv_fruit3panel4.wl = { t_cs_de_vegas = ! }
-	lv_fruit3panel3.wl = { t_cs_de_vegas = ! }
-	lv_fruit3panel2.wl = { t_cs_de_vegas = ! }
-	lv_fruit3panel1.wl = { t_cs_de_vegas = ! }
-	lv_fruit2panel5.wl = { t_cs_de_vegas = ! }
-	lv_fruit2panel3.wl = { t_cs_de_vegas = ! }
-	lv_fruit2panel2.wl = { t_cs_de_vegas = ! }
-	lv_fruit3panel5.wl = { t_cs_de_vegas = ! }
-	lv_fruit2panel4.wl = { t_cs_de_vegas = ! }
-	lv_babylon.wl = { t_cs_de_vegas = ! }
-	lv_sign_lounge.wl = { t_cs_de_vegas = ! }
-	scrollsign.wl = { t_cs_de_vegas = ! }
-	scrollsign1.wl = { t_cs_de_vegas = ! }
-	lv_churchill.wl = { t_cs_de_vegas = ! }
-	}
-
-	es_trinity.txlist =
-	{
-	horny_angel.wl = { t_cs_es_trinity = ! }
-	-0rosewood.wl = { t_cs_es_trinity = ! }
-	-1rosewood.wl = { t_cs_es_trinity = ! }
-	-2rosewood.wl = { t_cs_es_trinity = ! }
-	-3rosewood.wl = { t_cs_es_trinity = ! }
-	woodgrain.wl = { t_cs_es_trinity = ! }
-	woodgrain_dark.wl = { t_cs_es_trinity = ! }
-	{fence5.wl = { t_cs_es_trinity = ! }
-	drystonewall.wl = { t_cs_es_trinity = ! }
-	drystonewall3.wl = { t_cs_es_trinity = ! }
-	grass_edge.wl = { t_cs_es_trinity = ! }
-	grass_edge2.wl = { t_cs_es_trinity = ! }
-	grass6.wl = { t_cs_es_trinity = ! }
-	grass8.wl = { t_cs_es_trinity = ! }
-	grass9.wl = { t_cs_es_trinity = ! }
-	roundbale.wl = { t_cs_es_trinity = ! }
-	-0grey_rock4.wl = { t_cs_es_trinity = ! }
-	-0grey_smooth.wl = { t_cs_es_trinity = ! }
-	-1grey_rock4.wl = { t_cs_es_trinity = ! }
-	-1grey_smooth.wl = { t_cs_es_trinity = ! }
-	-2grey_rock4.wl = { t_cs_es_trinity = ! }
-	-2grey_smooth.wl = { t_cs_es_trinity = ! }
-	-3grey_rock4.wl = { t_cs_es_trinity = ! }
-	church_brick2.wl = { t_cs_es_trinity = ! }
-	DOGVENBRICKBASE.wl = { t_cs_es_trinity = ! }
-	DOGVENBRICKIVY2.wl = { t_cs_es_trinity = ! }
-	DOGVENBRICKIVY4.wl = { t_cs_es_trinity = ! }
-	REDVENBRICKBASE.wl = { t_cs_es_trinity = ! }
-	REDVENBRICKWIN1.wl = { t_cs_es_trinity = ! }
-	VENWINDOW.wl = { t_cs_es_trinity = ! }
-	embankment.wl = { t_cs_es_trinity = ! }
-	dirt1.wl = { t_cs_es_trinity = ! }
-	heavenabstract.wl = { t_cs_es_trinity = ! }
-	hedge1.wl = { t_cs_es_trinity = ! }
-	wood_planks1.wl = { t_cs_es_trinity = ! }
-	VENGREYFENCE.wl = { t_cs_es_trinity = ! }
-	VENGREYFENCEIVY.wl = { t_cs_es_trinity = ! }
-	sign_trinity.wl = { t_cs_es_trinity = ! }
-	SLTanbrick1.wl = { t_cs_es_trinity = ! }
-	SLTanbrick2.wl = { t_cs_es_trinity = ! }
-	SLTanbrick4.wl = { t_cs_es_trinity = ! }
-	castle_ivy_righ.wl = { t_cs_es_trinity = ! }
-	tree_bark_red.wl = { t_cs_es_trinity = ! }
-	bark5.wl = { t_cs_es_trinity = ! }
-	grey_tiles.wl = { t_cs_es_trinity = ! }
-	cadgeorge.wl = { t_cs_es_trinity = ! }
-	cadclock.wl = { t_cs_es_trinity = ! }
-	dm_slate.wl = { t_cs_es_trinity = ! }
-	painting01.wl = { t_cs_es_trinity = ! }
-	pipes1.wl = { t_cs_es_trinity = ! }
-	crate_trac.wl = { t_cs_es_trinity = ! }
-	jbRockA.wl = { t_cs_es_trinity = ! }
-	SandCrtLrgTp.wl = { t_cs_es_trinity = ! }
-	}
-
-	itsItaly.txlist =
-	{
-	brickPath.wl = { t_cs_itsItaly = ! }
-	spadish.wl = { t_cs_itsItaly = ! }
-	oldWood.wl = { t_cs_itsItaly = ! }
-	groutTiles.wl = { t_cs_itsItaly = ! }
-	concrete.wl = { t_cs_itsItaly = ! }
-	windowWhite.wl = { t_cs_itsItaly = ! }
-	windowHalf.wl = { t_cs_itsItaly = ! }
-	woodedWindow.wl = { t_cs_itsItaly = ! }
-	shutteredWindow.wl = { t_cs_itsItaly = ! }
-	floweredWindow.wl = { t_cs_itsItaly = ! }
-	hotSHEEP.wl = { t_cs_itsItaly = ! }
-	rockWall.wl = { t_cs_itsItaly = ! }
-	brickGrass.wl = { t_cs_itsItaly = ! }
-	drkWood.wl = { t_cs_itsItaly = ! }
-	-0bStucco.wl = { t_cs_itsItaly = ! }
-	-1bStucco.wl = { t_cs_itsItaly = ! }
-	-2bStucco.wl = { t_cs_itsItaly = ! }
-	-0gryStucco.wl = { t_cs_itsItaly = ! }
-	-1gryStucco.wl = { t_cs_itsItaly = ! }
-	-2gryStucco.wl = { t_cs_itsItaly = ! }
-	sndcblStone.wl = { t_cs_itsItaly = ! }
-	-0rockCobbleST.wl = { t_cs_itsItaly = ! }
-	-1rockCobbleST.wl = { t_cs_itsItaly = ! }
-	gryStuccoTrim.wl = { t_cs_itsItaly = ! }
-	bStuccoTrim.wl = { t_cs_itsItaly = ! }
-	-0sandyBrick.wl = { t_cs_itsItaly = ! }
-	-1sandyBrick.wl = { t_cs_itsItaly = ! }
-	wlStuccoTrim.wl = { t_cs_itsItaly = ! }
-	oakDoor.wl = { t_cs_itsItaly = ! }
-	oldDoor.wl = { t_cs_itsItaly = ! }
-	-0wlStucco.wl = { t_cs_itsItaly = ! }
-	-1wlStucco.wl = { t_cs_itsItaly = ! }
-	-2wlStucco.wl = { t_cs_itsItaly = ! }
-	-3wlStucco.wl = { t_cs_itsItaly = ! }
-	wlStuccoBrdr.wl = { t_cs_itsItaly = ! }
-	wlStuccoWnd.wl = { t_cs_itsItaly = ! }
-	clayRoofSide.wl = { t_cs_itsItaly = ! }
-	gryStuccoBrdr.wl = { t_cs_itsItaly = ! }
-	bStuccoBrdr.wl = { t_cs_itsItaly = ! }
-	crateBox.wl = { t_cs_itsItaly = ! }
-	crateBoxLabel.wl = { t_cs_itsItaly = ! }
-	bStuccoWnd.wl = { t_cs_itsItaly = ! }
-	{wineRack.wl = { t_cs_itsItaly = ! }
-	pebbleCobble.wl = { t_cs_itsItaly = ! }
-	bigCrate0.wl = { t_cs_itsItaly = ! }
-	bigCrate1.wl = { t_cs_itsItaly = ! }
-	64crate0.wl = { t_cs_itsItaly = ! }
-	64crate1.wl = { t_cs_itsItaly = ! }
-	bigCrateTop.wl = { t_cs_itsItaly = ! }
-	64crateTop.wl = { t_cs_itsItaly = ! }
-	redRug.wl = { t_cs_itsItaly = ! }
-	blueRug.wl = { t_cs_itsItaly = ! }
-	whiteRockWall.wl = { t_cs_itsItaly = ! }
-	bigCrate2.wl = { t_cs_itsItaly = ! }
-	muralLong.wl = { t_cs_itsItaly = ! }
-	muralArc.wl = { t_cs_itsItaly = ! }
-	{ornateGate.wl = { t_cs_itsItaly = ! }
-	rWallgBrick.wl = { t_cs_itsItaly = ! }
-	-0brockWall.wl = { t_cs_itsItaly = ! }
-	-1brockWall.wl = { t_cs_itsItaly = ! }
-	-2brockWall.wl = { t_cs_itsItaly = ! }
-	~redRug.wl = { t_cs_itsItaly = ! }
-	~blueRug.wl = { t_cs_itsItaly = ! }
-	mktFloor.wl = { t_cs_itsItaly = ! }
-	-0clayRoof.wl = { t_cs_itsItaly = ! }
-	-1clayRoof.wl = { t_cs_itsItaly = ! }
-	-2clayRoof.wl = { t_cs_itsItaly = ! }
-	redHangingRug.wl = { t_cs_itsItaly = ! }
-	magHangingRug.wl = { t_cs_itsItaly = ! }
-	blueHangingRug.wl = { t_cs_itsItaly = ! }
-	ccWall.wl = { t_cs_itsItaly = ! }
-	wlPaper.wl = { t_cs_itsItaly = ! }
-	{hangingIvy2.wl = { t_cs_itsItaly = ! }
-	{hangingIvy1.wl = { t_cs_itsItaly = ! }
-	painting1.wl = { t_cs_itsItaly = ! }
-	painting2.wl = { t_cs_itsItaly = ! }
-	fishBox.wl = { t_cs_itsItaly = ! }
-	wBarrelTop.wl = { t_cs_itsItaly = ! }
-	bStuccoPost.wl = { t_cs_itsItaly = ! }
-	bStuccoWidePost.wl = { t_cs_itsItaly = ! }
-	wBarrelSide.wl = { t_cs_itsItaly = ! }
-	wlPaper1.wl = { t_cs_itsItaly = ! }
-	muralbStucco.wl = { t_cs_itsItaly = ! }
-	pileOlemons.wl = { t_cs_itsItaly = ! }
-	pileOtomatoes.wl = { t_cs_itsItaly = ! }
-	bakeryWindow.wl = { t_cs_itsItaly = ! }
-	oldRadio.wl = { t_cs_itsItaly = ! }
-	stoneWall.wl = { t_cs_itsItaly = ! }
-	painting4.wl = { t_cs_itsItaly = ! }
-	painting5.wl = { t_cs_itsItaly = ! }
-	painting6.wl = { t_cs_itsItaly = ! }
-	chestDrawers.wl = { t_cs_itsItaly = ! }
-	wdnDrawers.wl = { t_cs_itsItaly = ! }
-	sideLight.wl = { t_cs_itsItaly = ! }
-	panelWood.wl = { t_cs_itsItaly = ! }
-	gryStuccoSpade.wl = { t_cs_itsItaly = ! }
-	{wineRack1.wl = { t_cs_itsItaly = ! }
-	{wineRack2.wl = { t_cs_itsItaly = ! }
-	sheepKing.wl = { t_cs_itsItaly = ! }
-	}
-// "Stedden" end
 
     }
   }
@@ -21915,76 +20903,4 @@ values=
     }
   }
 
-//
-// Arg! textures
-//
-  ARGtextures.qtx =
-  {
-    ToolBox = "Texture Browser..."
-    Root = "Arg! Textures.qtxfolder"
-
-        // Raw definition of WAD3 files
-        t_arg_arg:incl = { s = "arg" d = "arg" h = "C" }
-        t_arg_acz-arg:incl = { s = "arg" d = "acz-arg" h = "C" }
-
-    Arg! Textures.qtxfolder =
-    {
-      arg.txlist =
-      {
-        KANNON.wl = { t_arg_arg = ! }
-        INTROGRASS.wl = { t_arg_arg = ! }
-        PILLAR_GRVL.wl = { t_arg_arg = ! }
-        {BRIDGE.wl = { t_arg_arg = ! }
-        {stupidpirate.wl = { t_arg_arg = ! }
-        {ropeladder.wl = { t_arg_arg = ! }
-        betterope.wl = { t_arg_arg = ! }
-        sailpatches.wl = { t_arg_arg = ! }
-        boatpaint.wl = { t_arg_arg = ! }
-        boatpaint2.wl = { t_arg_arg = ! }
-        boatpaint3.wl = { t_arg_arg = ! }
-        CaveRok.wl = { t_arg_arg = ! }
-        wood_tiled.wl = { t_arg_arg = ! }
-        wood_tiled2.wl = { t_arg_arg = ! }
-        -0Cliff.wl = { t_arg_arg = ! }
-        -1Cliff.wl = { t_arg_arg = ! }
-        -2Cliff.wl = { t_arg_arg = ! }
-        -3Cliff.wl = { t_arg_arg = ! }
-        CliffGrass.wl = { t_arg_arg = ! }
-        Cliff2Grass.wl = { t_arg_arg = ! }
-        {nevrflag.wl = { t_arg_arg = ! }
-        +0Fog.wl = { t_arg_arg = ! }
-        +1Fog.wl = { t_arg_arg = ! }
-        +2Fog.wl = { t_arg_arg = ! }
-        Grave.wl = { t_arg_arg = ! }
-        RBGrave.wl = { t_arg_arg = ! }
-        CBGrave.wl = { t_arg_arg = ! }
-        ZGrave.wl = { t_arg_arg = ! }
-      }
-      acz-arg.txlist =
-      {
-        sign01.wl = { t_arg_acz-arg = ! }
-        canvas01.wl = { t_arg_acz-arg = ! }
-        clover01.wl = { t_arg_acz-arg = ! }
-        flag01.wl = { t_arg_acz-arg = ! }
-        flag02.wl = { t_arg_acz-arg = ! }
-        grass01.wl = { t_arg_acz-arg = ! }
-        grass02.wl = { t_arg_acz-arg = ! }
-        grass03.wl = { t_arg_acz-arg = ! }
-        grass04.wl = { t_arg_acz-arg = ! }
-        ground01.wl = { t_arg_acz-arg = ! }
-        ground02.wl = { t_arg_acz-arg = ! }
-        misc01.wl = { t_arg_acz-arg = ! }
-        picture01.wl = { t_arg_acz-arg = ! }
-        rust01.wl = { t_arg_acz-arg = ! }
-        sign02.wl = { t_arg_acz-arg = ! }
-        wall01.wl = { t_arg_acz-arg = ! }
-        wall02.wl = { t_arg_acz-arg = ! }
-        wood01.wl = { t_arg_acz-arg = ! }
-        wood02.wl = { t_arg_acz-arg = ! }
-        map01.wl = { t_arg_acz-arg = ! }
-        net01.wl = { t_arg_acz-arg = ! }
-        map02.wl = { t_arg_acz-arg = ! }
-      }
-    }
-  }
 }

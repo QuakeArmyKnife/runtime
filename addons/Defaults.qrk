@@ -30,67 +30,14 @@ QQRKSRC1
 //$Header$
 // ----------- REVISION HISTORY ------------
 //$Log$
-//Revision 1.65  2000/10/28 19:28:34  decker_dk
-//Some more comments reg. user-variables for build-tool controllers
-//
-//Revision 1.64  2000/10/27 20:42:28  decker_dk
-//Crystal Space .QRK files
-//
-//Revision 1.63  2000/10/26 16:53:03  tiglari
-//enable brush primitives item added
-//
-//Revision 1.62  2000/10/16 22:32:58  aiv
-//added compression options to memory options (CompressionBufferSize and CompressionLevel)
-//
-//Revision 1.61  2000/10/15 16:49:12  alexander
-//rename StarTrek EF to STVEF
-//
-//Revision 1.60  2000/10/15 16:08:03  alexander
+//Revision 1.46.2.3  2000/09/10 14:38:30  alexander
 //set name
 //
-//Revision 1.59  2000/10/10 07:46:17  tiglari
-//"C" code for circle-strafe selection added to map and model mouse modes
-//
-//Revision 1.58  2000/10/09 18:16:11  decker_dk
-//Build-Tool Controllers (and commented CrystalSpace)
-//
-//Revision 1.57  2000/09/25 00:09:28  alexander
+//Revision 1.46.2.2  2000/09/01 01:47:27  alexander
 //set name
-//
-//Revision 1.56  2000/09/18 01:28:03  alexander
-//added Texture Write Format setup entries (needed because texture aliasing)
-//added StarTrek EF support
-//
-//Revision 1.55  2000/09/17 14:59:29  alexander
-//committed convex' generalization of texture format aliasing
-//
-//Revision 1.54  2000/09/10 13:01:23  alexander
-//set name
-//
-//Revision 1.53  2000/09/04 21:20:28  tiglari
-//additions to dup column specifics, for more options
-//
-//Revision 1.52  2000/09/02 11:19:11  tiglari
-//added subdivide specific for arch/cap
-//
-//Revision 1.51  2000/09/02 06:13:04  tiglari
-//detail specifics for cap duplicator (python not yet implemented)
-//
-//Revision 1.50  2000/09/01 11:12:55  tiglari
-//Put some bevel specifics onto a details button in the form.
-//
-//Revision 1.49  2000/09/01 00:49:02  alexander
-//merged in tiglaris default sof sky fix from rel6_1 branch
-//
 //
 //Revision 1.46.2.1  2000/08/26 09:44:48  tiglari
 //fixed default texture for SoF
-//
-//Revision 1.48  2000/08/25 18:01:06  decker_dk
-//Added Typ='EDL' functionality specialy for QuakeCtx:form
-//
-//Revision 1.47  2000/08/21 20:58:21  aiv
-//Added Skin form for model editor
 //
 //Revision 1.46  2000/07/28 15:09:48  alexander
 //set snapshot name
@@ -185,7 +132,7 @@ QQRKSRC1
   {
     General:config =     // ":config" objects are displayed in the Configuration dialog box
     {
-      Version = "quarksnapshot_20001015"
+      Version = "REL6_1-pre-3"
       InternalVersion = '6.00011'
       TextureBrowser = "Texture Browser..."
       NewMapItems = "New Map Items..."
@@ -273,8 +220,6 @@ QQRKSRC1
         UndoBufferSize = '3.0'     // MB
         GameFiles = '30'
         GameBufferSize = '10.0'     // MB
-        CompressionBufferSize = '16' // KBytes
-        CompressionLevel = '9' // Where else to put this?
         Form = "GeneralMemory"
       }
       QuakeC:config =
@@ -358,18 +303,14 @@ QQRKSRC1
         Code = "1"
         Directory = "\Quake"
         Program = "Quake"
-
-        BuildPgm1  = "QBSP.EXE"
-        BuildArgs1 = ""
-        BuildCheck1= "+BSP,-PRT"
-        BuildPgm2  = "VIS.EXE"
-        BuildArgs2 = ""
-        BuildPgm3  = "LIGHT.EXE"
-        BuildArgs3 = ""
-
+        QBSP1 = "QBSP.EXE"
+        QBSPCmd = ""
+        VIS1 = "VIS.EXE"
+        VISCmd = ""
+        LIGHT1 = "LIGHT.EXE"
+        LIGHTCmd = ""
         TextureDef = "bricka2_2"
         TriggerTextureDef = "trigger"
-        ClipTextureDef = "clip"
         BaseDir = "id1"
         tmpQuArK = "tmpQuArK"
         TextureWad = "gfx/QuArK.wad"
@@ -390,7 +331,6 @@ QQRKSRC1
         Form = "GameQuake1"
         PlayerClass = "X"
         TextureFormat = ".wad_D"
-        TextureWriteFormat = ".wad_D"
       }
       Hexen II:config =
       {
@@ -398,18 +338,14 @@ QQRKSRC1
         Code = "2"
         Directory = "\Hexen II"
         Program = "H2"
-
-        BuildPgm1  = "QBSP.EXE"
-        BuildArgs1 = ""
-        BuildCheck1= "+BSP,-PRT"
-        BuildPgm2  = "VIS.EXE"
-        BuildArgs2 = ""
-        BuildPgm3  = "LIGHT.EXE"
-        BuildArgs3 = ""
-
+        QBSP1 = "QBSP.EXE"
+        QBSPCmd = ""
+        VIS1 = "VIS.EXE"
+        VISCmd = ""
+        LIGHT1 = "LIGHT.EXE"
+        LIGHTCmd = ""
         TextureDef = "rtex215"
         TriggerTextureDef = "rtex215" //FIXME
-        ClipTextureDef = "clip" //FIXME
         BaseDir = "data1"
         tmpQuArK = "tmpQuArK"
         TextureWad = "gfx/QuArK.wad"
@@ -433,7 +369,6 @@ QQRKSRC1
         HxStrings = "strings.txt"
         PlayerClass = "1"
         TextureFormat = ".wad_D"
-        TextureWriteFormat = ".wad_D"
       }
       Quake 2:config =
       {
@@ -443,15 +378,15 @@ QQRKSRC1
         CD = ""
         CDDir = "Install\Data"
         Program = "Quake2"
-
-        BuildPgm1  = "TXQBSP3.EXE"
-        BuildArgs1 = ""
-        BuildCheck1= "+BSP,-LIN"
-        BuildPgm2  = "TIMVIS3.EXE"
-        BuildArgs2 = ""
-        BuildPgm3  = "ARGHRAD.EXE"
-        BuildArgs3 = "-gamedir .. -moddir ."
-
+        QBSP1 = "TXQBSP3.EXE"
+        QBSPCmd = ""
+        VIS1 = "TIMVIS3.EXE"
+        VISCmd = ""
+        LIGHT1 = "ARGHRAD.EXE"
+        LIGHTCmd = "-gamedir .. -moddir ."
+        QBSPDesc = "QBSP3"
+        VISDesc = "QVIS3"
+        LIGHTDesc = "QRAD3"
         BaseDir = "baseq2"
         tmpQuArK = "tmpQuArK"
         Palette = "pics/colormap.pcx"
@@ -470,12 +405,9 @@ QQRKSRC1
         Form = "GameQuake2"
         TextureDef = "e1u1/damage1_1"
         TriggerTextureDef = "e1u1/trigger"
-        OriginTextureDef = "e1u1/origin"
-        ClipTextureDef = "e1u1/clip"
         LightFactor = '0.9'
         3DLight = '512'
         TextureFormat = ".wal"
-        TextureWriteFormat = ".wal"
       }
       Heretic II:config =
       {
@@ -485,15 +417,15 @@ QQRKSRC1
         //CD = ""
         //CDDir = "Install\Data"
         Program = "Heretic2"
-
-        BuildPgm1  = "TXQBSP3.EXE"
-        BuildArgs1 = ""
-        BuildCheck1= "+BSP,-LIN"
-        BuildPgm2  = "TIMVIS3.EXE"
-        BuildArgs2 = ""
-        BuildPgm3  = "ARGHRAD.EXE"
-        BuildArgs3 = "-gamedir .. -moddir ."
-
+        QBSP1 = "TXQBSP3.EXE"
+        QBSPCmd = ""
+        VIS1 = "TIMVIS3.EXE"
+        VISCmd = ""
+        LIGHT1 = "ARGHRAD.EXE"
+        LIGHTCmd = "-gamedir .. -moddir ."
+        QBSPDesc = "QBSP3"
+        VISDesc = "QVIS3"
+        LIGHTDesc = "QRAD3"
         BaseDir = "base"
         tmpQuArK = "tmpQuArK"
         Palette = ":pics/colormap.pcx"    //  ":" means that the palette is stored in DataHr2.qrk
@@ -511,12 +443,10 @@ QQRKSRC1
         Form = "GameHeretic2"
         TextureDef = "andoria/sstone"
         TriggerTextureDef = "andoria/sstone" //FIXME
-        ClipTextureDef = "andoria/clip" //FIXME
         LightFactor = '0.9'
         3DLight = '512'
         walTrick = "1"
         TextureFormat = ".m8"
-        TextureWriteFormat = ".m8"
       }
       Half-Life:config =
       {
@@ -524,22 +454,16 @@ QQRKSRC1
         Code = "3"
         Directory = "\Sierra\Half-Life"
         Program = "HL -console -dev -zone 1024 +set sv_cheats 1"
-
-        BuildPgm1  = "HLCSG.EXE"
-        BuildArgs1 = ""
-        BuildCheck1= "+BSP"
-        BuildPgm2  = "HLBSP.EXE"
-        BuildArgs2 = ""
-        BuildCheck2= "+BSP,+PRT"
-        BuildPgm3  = "HLVIS.EXE"
-        BuildArgs3 = ""
-        BuildPgm4  = "HLRAD.EXE"
-        BuildArgs4 = ""
-
+        QCSG1 = "QCSG.EXE"
+        QCSGCmd = ""
+        QBSP1 = "QBSP2.EXE"
+        QBSPCmd = ""
+        VIS1 = "VIS.EXE"
+        VISCmd = ""
+        LIGHT1 = "QRAD.EXE"
+        LIGHTCmd = ""
         TextureDef = "FIFTIES_WALL14Y"
         TriggerTextureDef = "AAATRIGGER"
-        OriginTextureDef = "ORIGIN"
-        ClipTextureDef = "CLIP"
         BaseDir = "valve"
         tmpQuArK = "tmpQuArK"
         TextureWad = "?"     // variable (the map name is used)
@@ -559,12 +483,11 @@ QQRKSRC1
         3DLight = '512'
         CheckDirectory = "HL.EXE"
         Console = "1"
-//        SpecialCustomQuakeMenu = "CustomQuakeMenuQCSG"           //enable special form
-//        FirstBuildCmd  = "QCSG1" //command that must be run first
+        SpecialCustomQuakeMenu = "CustomQuakeMenuQCSG"           //enable special form
+        FirstBuildCmd  = "QCSG1" //command that must be run first
         Form = "GameHalfLife"
         PlayerClass = "X"
         TextureFormat = ".wad3_C"
-        TextureWriteFormat = ".wad3_C"
       }
       Sin:config =
       {
@@ -574,15 +497,15 @@ QQRKSRC1
         CD = ""
         CDDir = "Setup\Data"
         Program = "Sin"
-
-        BuildPgm1  = "QBSP3.EXE"
-        BuildArgs1 = ""
-        BuildCheck1= "+BSP,-LIN"
-        BuildPgm2  = "QVIS3.EXE"
-        BuildArgs2 = ""
-        BuildPgm3  = "QRAD3.EXE"
-        BuildArgs3 = ""
-
+        QBSP1 = "QBSP3.EXE"
+        QBSPCmd = ""
+        VIS1 = "QVIS3.EXE"
+        VISCmd = ""
+        LIGHT1 = "QRAD3.EXE"
+        LIGHTCmd = ""
+        QBSPDesc = "QBSP3"
+        VISDesc = "QVIS3"
+        LIGHTDesc = "QRAD3"
         BaseDir = "base"
         tmpQuArK = "tmpQuArK"
         Palette = ":pics/colormap.pcx"
@@ -601,11 +524,9 @@ QQRKSRC1
         Form = "GameSin"
         TextureDef = "intro/wl_outbrick1a"
         TriggerTextureDef = "intro/wl_outbrick1a" //FIXME
-        ClipTextureDef = "intro/clip" //FIXME
         LightFactor = '0.9'
         3DLight = '512'
         TextureFormat = ".swl"
-        TextureWriteFormat = ".swl"
       }
       KingPin:config =
       {
@@ -615,15 +536,15 @@ QQRKSRC1
         CD = ""
         CDDir = "Install\Data"
         Program = "KingPin"
-
-        BuildPgm1  = "kpbsp.EXE"
-        BuildArgs1 = ""
-        BuildCheck1= "+BSP,-LIN"
-        BuildPgm2  = "kpvis.EXE"
-        BuildArgs2 = ""
-        BuildPgm3  = "kprad.EXE"
-        BuildArgs3 = "-gamedir .. -moddir ."
-
+        QBSP1 = "kpbsp.EXE"
+        QBSPCmd = ""
+        VIS1 = "kpvis.EXE"
+        VISCmd = ""
+        LIGHT1 = "kprad.EXE"
+        LIGHTCmd = "-gamedir .. -moddir ."
+        QBSPDesc = "QBSP3"
+        VISDesc = "QVIS3"
+        LIGHTDesc = "QRAD3"
         BaseDir = "main"
         tmpQuArK = "tmpQuArK"
         Palette = "pics/colormap.pcx"
@@ -643,12 +564,10 @@ QQRKSRC1
         TextureDef = "bricks/b_cp_v10x"
         TriggerTextureDef = "common/0_trigger"
         OriginTextureDef = "common/0_origin"
-        ClipTextureDef = "common/0_clip"
         LightFactor = '0.90000' //adjust radius around light that it shows how far the light goes
         3DLight = '512'
         walTrick = "1"
         TextureFormat = ".tga"
-        TextureWriteFormat = ".tga"
       }
       SOF:config =
       {
@@ -659,15 +578,15 @@ QQRKSRC1
         CDDir = "Install\Data"
         Program = "sof"
         StupidBuildToolKludge = "1" //those guys should get shot for that
-
-        BuildPgm1  = "sofbsp.EXE"
-        BuildArgs1 = ""
-        BuildCheck1= "+BSP,-LIN"
-        BuildPgm2  = "sofvis.EXE"
-        BuildArgs2 = ""
-        BuildPgm3  = "sofarghrad.EXE"
-        BuildArgs3 = "-gamedir .. -moddir ."
-
+        QBSP1 = "sofbsp.EXE"
+        QBSPCmd = ""
+        VIS1 = "sofvis.EXE"
+        VISCmd = ""
+        LIGHT1 = "sofarghrad.EXE"
+        LIGHTCmd = "-gamedir .. -moddir ."
+        QBSPDesc = "SOFBSP"
+        VISDesc = "QVIS3"
+        LIGHTDesc = "QRAD3"
         BaseDir = "base"
         tmpQuArK = "tmpQuArK"
         //Palette = "pics/colormap.pcx"
@@ -683,16 +602,14 @@ QQRKSRC1
         CheckDirectory = "sof.EXE"
         Console = "1"
         Form = "GameSOF"
-//        SpecialCustomQuakeMenu = "CustomQuakeMenuSOF"  //enable special form
+        SpecialCustomQuakeMenu = "CustomQuakeMenuSOF"  //enable special form
         TextureDef = "armory/1_2_subfloor1"
         TriggerTextureDef = "armory/trigger"
         OriginTextureDef = "armory/origin"
-        ClipTextureDef = "armory/clip"
         LightFactor = '0.90000'
         3DLight = '512'
         walTrick = "1"     // FIXME is that needed ?
         TextureFormat = ".m32"
-        TextureWriteFormat = ".m32"
       }
       Quake 3:config =
       {
@@ -703,18 +620,18 @@ QQRKSRC1
         CDDir = "Install\Data"
         Program = "Quake3 +set sv_pure 0"
         StupidBuildToolKludge = "1" //those guys should get shot for that
-
-        BuildPgm1  = "Q3MAP.EXE"
-        BuildArgs1 = ""
-        BuildCheck1= "+BSP,-LIN"
-        BuildPgm2  = "Q3MAP.EXE"
-        BuildArgs2 = "-vis"
-        BuildPgm3  = "Q3MAP.EXE"
-        BuildArgs3 = "-light"
-        BuildPgm4  = "BSPC.EXE"
-        BuildArgs4 = "-bsp2aas %file%.BSP  -output %mappath%"
-        BuildCheck4= "+AAS"
-
+        QBSP1 = "Q3MAP.EXE"
+        QBSPCmd = ""
+        VIS1 = "Q3MAP.EXE"
+        VISCmd = "-vis"
+        LIGHT1 = "Q3MAP.EXE"
+        LIGHTCmd = "-light"
+        BSPC1 = "BSPC.EXE"
+        BSPCCmd = ""
+        QBSPDesc = "Q3MAP"
+        VISDesc = "Q3MAP w/vis"
+        LIGHTDesc = "Q3MAP w/light"
+        BSPCDesc = "BSPC -bsp2aas"
         BaseDir = "baseq3"
         tmpQuArK = "tmpQuArK"
         Palette = ":pics/colormap.pcx"
@@ -733,99 +650,15 @@ QQRKSRC1
         CheckDirectory = "QUAKE3.EXE"
         Console = "1"
         Form = "GameQuake3"
-//        SpecialCustomQuakeMenu = "CustomQuakeMenuBSPC"           //enable special form
+        SpecialCustomQuakeMenu = "CustomQuakeMenuBSPC"           //enable special form
         TextureDef = "base_wall/basewall03"
         TriggerTextureDef = "common/trigger"
-        OriginTextureDef = "common/origin"
-        ClipTextureDef = "common/clip"
         LightFactor = '0.9'
         3DLight = '512'
-        TextureFormat = ".tga,.jpg"
-        TextureWriteFormat = ".tga"
+        TextureFormat = ".tga"
         TextureShaders = "scripts/quark.shader"
       }
-      STVEF:config =
-      {
-        Game = "STVEF"
-        Code = "b"
-        Directory = ""
-        CD = ""
-        CDDir = "Setup\BaseEF"
-        Program = "stvoy +set sv_pure 0"
-        StupidBuildToolKludge = "1" //those guys should get shot for that
-
-        BuildPgm1  = "Q3MAP.EXE"
-        BuildArgs1 = ""
-        BuildCheck1= "+BSP,-LIN"
-        BuildPgm2  = "Q3MAP.EXE"
-        BuildArgs2 = "-vis"
-        BuildPgm3  = "Q3MAP.EXE"
-        BuildArgs3 = "-light"
-        BuildPgm4  = "BSPC.EXE"
-        BuildArgs4 = "-bsp2aas"
-        BuildCheck4= "+AAS"
-
-        BaseDir = "baseEF"
-        tmpQuArK = "tmpQuArK"
-        Palette = ":pics/colormap.pcx"
-        //Gradient = "pics/colormap.pcx"
-        //ExtractFiles = "pics/colormap.pcx"
-        Q2TexPath = "textures/"
-        Q3ShaderPath = "scripts/" //DECKER
-        Q2TexFlags = "1"
-        ShadersPath = "scripts/"
-        ExtraCmdLine = "+set fs_game %s"
-        RunMapCmdLine = " +map %s"
-        AddOns = "DataSTVEF.qrk"
-        AlwaysPak = ""
-        PakExt = ".pk3"
-        PakFormat = "*.PK3"
-        CheckDirectory = "stvoy.exe"
-        Console = "1"
-        Form = "GameSTVEF"
-//        SpecialCustomQuakeMenu = "CustomQuakeMenuBSPC"           //enable special form
-        TextureDef = "base_wall/basewall03"
-        TriggerTextureDef = "common/trigger"
-        ClipTextureDef = "common/clip"
-        LightFactor = '0.9'
-        3DLight = '512'
-        TextureFormat = ".tga,.jpg"
-        TextureWriteFormat = ".tga"
-        TextureShaders = "scripts/quark.shader"
-      }
-    //pm CrystalSpace *******************************************
-    CrystalSpace:config =
-    {
-      Game = "Crystal Space"
-      Code = "c"
-      Directory = "/quark2cs_511/"
-      Program = "walktest.exe"
-
-      BuildPgm1 = "MAP2CS.EXE"
-
-      TextureDef = "intro/wl_outbrick1a"
-      BaseDir = "data"
-      tmpQuArK = "data"
-      TextureWad = "?"  // variable (the map name is used)
-      Palette = ":pics/colormap.pcx"
-      Q2TexPath = "textures/"
-      Q2TexFlags = "1"
-      ExtraCmdLine = ""
-      RunMapCmdLine = " %s"
-      AddOns = "DataCS.qrk"
-      AlwaysPak = ""
-      PakExt = ".csz"
-      LightFactor = '0.90000'
-      3DLight = '512'
-      CheckDirectory = "WALKTEST.EXE"
-      Console = "1"
-      Form = "GameCrystalSpace"
-      PlayerClass = "X"
-      TextureFormat = ".wad3_C"
     }
-    //pm CrystalSpace *******************************************
-    }
-
     Map:config =
     {
       Mouse:config =
@@ -840,7 +673,7 @@ QQRKSRC1
         MiddleShift = ""
         MiddleCtrl  = "-"
         LeftDrag        = "RS"
-        LeftDragShift   = "C"
+        LeftDragShift   = ""
         LeftDragCtrl    = "RST"
         RightDrag       = "S"
         RightDragShift  = "Z"
@@ -971,7 +804,7 @@ QQRKSRC1
         MiddleShift = ""
         MiddleCtrl  = "-"
         LeftDrag        = "RS"
-        LeftDragShift   = "C"
+        LeftDragShift   = ""
         LeftDragCtrl    = "RST"
         RightDrag       = "S"
         RightDragShift  = "Z"
@@ -1135,97 +968,9 @@ QQRKSRC1
         Hint = "If non-zero, some handles are not displayed immediately but after this delay (seconds)"
       }
     }
-
-        GameBuildPgm:incl = {
-                Typ="EP"
-                Txt="...program-executable (path optional)"
-                DefExt="exe"
-        }
-        GameBuildArgs:incl = {
-                Typ="E"
-                Txt="...fixed command-line arguments"
-                Hint="Use the following user-variables, which will be automatically"
-                  $0D"replaced at run-time. If at least one of these are used, QuArK"
-                  $0D"will _not_ append a '<path>/<mapfile>' to the command-line arg.,"
-                  $0D"so you better remember to do this yourself."
-                  $0D
-                  $0D"%file%    - Gives the map's path and filename without extension"
-                  $0D"%mappath% - Gives the map's path with ending backslash"
-                  $0D"%mapfile% - Gives the map's path and filename with .MAP extension"
-                  $0D
-                  $0D"Examples:"
-                  $0D"  BSPC.EXE -bps2aas %file%.BSP -output %mappath%"
-                  $0D"  VIS.EXE -fast %file%"
-                  $0D"  QRAD3.EXE -threads 4 %file%"
-        }
-        GameBuildCheck:incl = {
-                Typ="C"
-                Txt="...at program end, check these file-extensions:"
-                Items = ""
-                     $0D"+BSP"
-                     $0D"+BSP,+PRT"
-                     $0D"+BSP,-LIN"
-                     $0D"+AAS"
-                Hint="Here you list which file-extensions that should exist or not exist,"
-                  $0D"after the build-program have ended."$0D
-                  $0D"Example; to make sure that a .BSP file have been created, and _no_"
-                  $0D".LIN file exists, this field should contain:     +BSP,-LIN"$0D
-                  $0D"A prefixed '+' means 'must exist'"
-                  $0D"A prefixed '-' means 'must not exist'"
-        }
-        GameBuildPgms:incl = {
-                sep:        = {Typ="S" Txt="1st program"}
-                BuildPgm1:  = {GameBuildPgm=!}
-                BuildArgs1: = {GameBuildArgs=!}
-                BuildCheck1:= {GameBuildCheck=!}
-                sep:        = {Typ="S" Txt="2nd program"}
-                BuildPgm2:  = {GameBuildPgm=!}
-                BuildArgs2: = {GameBuildArgs=!}
-                BuildCheck2:= {GameBuildCheck=!}
-                sep:        = {Typ="S" Txt="3rd program"}
-                BuildPgm3:  = {GameBuildPgm=!}
-                BuildArgs3: = {GameBuildArgs=!}
-                BuildCheck3:= {GameBuildCheck=!}
-                sep:        = {Typ="S" Txt="4th program"}
-                BuildPgm4:  = {GameBuildPgm=!}
-                BuildArgs4: = {GameBuildArgs=!}
-                BuildCheck4:= {GameBuildCheck=!}
-                sep:        = {Typ="S" Txt="5th program"}
-                BuildPgm5:  = {GameBuildPgm=!}
-                BuildArgs5: = {GameBuildArgs=!}
-                BuildCheck5:= {GameBuildCheck=!}
-                sep:        = {Typ="S" Txt="6th program"}
-                BuildPgm6:  = {GameBuildPgm=!}
-                BuildArgs6: = {GameBuildArgs=!}
-                BuildCheck6:= {GameBuildCheck=!}
-                sep:        = {Typ="S" Txt="7th program"}
-                BuildPgm7:  = {GameBuildPgm=!}
-                BuildArgs7: = {GameBuildArgs=!}
-                BuildCheck7:= {GameBuildCheck=!}
-                sep:        = {Typ="S" Txt="8th program"}
-                BuildPgm8:  = {GameBuildPgm=!}
-                BuildArgs8: = {GameBuildArgs=!}
-                BuildCheck8:= {GameBuildCheck=!}
-                sep:        = {Typ="S" Txt="9th program"}
-                BuildPgm9:  = {GameBuildPgm=!}
-                BuildArgs9: = {GameBuildArgs=!}
-                BuildCheck9:= {GameBuildCheck=!}
-        }
     GameQuake1:form =
     {
       Style = "3"
-      sep: = {Typ="S" Txt="---- Game Settings ----"}
-      Program: = {
-        Typ = "C"     // combo box
-        Txt = "Quake command-line"
-        Items = "Quake"
-             $0D"Quake -listen 4"
-             $0D"GLQuake"
-             $0D"GLQuake -listen 4"
-             $0D"WinQuake"
-             $0D"WinQuake -listen 4"
-             $0D"WinDed"
-      }
       Directory: =
       {
         Txt = "Directory of Quake 1"
@@ -1257,8 +1002,48 @@ QQRKSRC1
         cmd:macro = {Typ="M" Msg="GAM1"}    // switches to Quake 1
         cmd:macro = {Typ="M" Msg="OUTP"}    // opens "Output directories" dialog box
       }
-      sep: = {Typ="S"}
-      sep: = {Typ="S" Txt="---- Map-editor Settings ----"}
+      Sep1: = {Typ="S"}    // separator
+      Program: = {
+        Typ = "C"     // combo box
+        Txt = "Quake command-line"
+        Items = "Quake"     $0D "Quake -listen 4"    $0D
+                "GLQuake"   $0D "GLQuake -listen 4"  $0D
+                "WinQuake"  $0D "WinQuake -listen 4" $0D
+                "WinDed"
+      }
+      QBSP1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QBSP"
+        DefExt = "exe"
+      }
+      QBSPCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      VIS1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to VIS"
+        DefExt = "exe"
+      }
+      VISCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      LIGHT1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to LIGHT"
+        DefExt = "exe"
+      }
+      LIGHTCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      Console: = {
+        Typ = "X"
+        Txt = "Run these programs..."
+        Cap = "in QuArK's console"
+      }
+      Sep2: = {Typ="S"}    // separator
       TextureDef: =
       {
         Txt = "Default texture"
@@ -1273,37 +1058,16 @@ QQRKSRC1
         Hint = "Default trigger texture when new brush-entities request it"
         GameCfg = "Quake 1"
       }
-      ClipTextureDef: =
-      {
-        Txt = "Default clip texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default clip texture when new brush-entities request it"
-        GameCfg = "Quake 1"
-      }
       3DLight: =
       {
         Txt = "Game Light saturation"
         Typ = "EF1"
         Hint = "Currently only for the OpenGL viewer. Larger values make darker scenes."
       }
-      sep:        = {Typ="S"}
-      sep:        = {Typ="S" Txt="---- Build Programs Execution Sequence ----"}
-      Console:    = {Typ="X" Txt="Run these build-programs..." Cap="in QuArK's console"}
-      BuildPgmsDir:={Typ="ED" Txt="Default directory of build-programs" Hint="This directory is searched to find a build-program,"$0D"if the build-program does not have an absolute path specified."}
-      GameBuildPgms=!
     }
     GameHexenII:form =
     {
       Style = "3"
-      sep: = {Typ="S" Txt="---- Game Settings ----"}
-      Program: = {
-        Typ = "C"     // combo box
-        Txt = "Hexen II command-line"
-        Items = "H2"
-             $0D"H2 -listen 8"
-             $0D"GLH2"
-             $0D"GLH2 -listen 8"
-      }
       Directory: =
       {
         Txt = "Directory of Hexen II"
@@ -1335,6 +1099,13 @@ QQRKSRC1
         cmd:macro = {Typ="M" Msg="GAM2"}    // switches to Hexen II
         cmd:macro = {Typ="M" Msg="OUTP"}    // opens "Output directories" dialog box
       }
+      Sep1: = {Typ="S"}    // separator
+      Program: = {
+        Typ = "C"     // combo box
+        Txt = "Hexen II command-line"
+        Items = "H2"   $0D "H2 -listen 8"    $0D
+                "GLH2" $0D "GLH2 -listen 8"
+      }
       PlayerClass: = {
         Typ = "CL"
         Txt = "Player class"
@@ -1344,8 +1115,39 @@ QQRKSRC1
              $0D "Necromancer"
              $0D "Assassin"
       }
-      sep: = {Typ="S"}
-      sep: = {Typ="S" Txt="---- Map-editor Settings ----"}
+      QBSP1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QBSP"
+        DefExt = "exe"
+      }
+      QBSPCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      VIS1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to VIS"
+        DefExt = "exe"
+      }
+      VISCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      LIGHT1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to LIGHT"
+        DefExt = "exe"
+      }
+      LIGHTCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      Console: = {
+        Typ = "X"
+        Txt = "Run these programs..."
+        Cap = "in QuArK's console"
+      }
+      Sep2: = {Typ="S"}    // separator
       TextureDef: =
       {
         Txt = "Default texture"
@@ -1360,34 +1162,16 @@ QQRKSRC1
         Hint = "Default trigger texture when new brush-entities request it"
         GameCfg = "Hexen II"
       }
-      ClipTextureDef: =
-      {
-        Txt = "Default clip texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default clip texture when new brush-entities request it"
-        GameCfg = "Hexen II"
-      }
       3DLight: =
       {
         Txt = "Game Light saturation"
         Typ = "EF1"
         Hint = "Currently only for the OpenGL viewer. Larger values make darker scenes."
       }
-      sep:        = {Typ="S"}
-      sep:        = {Typ="S" Txt="---- Build Programs Execution Sequence ----"}
-      Console:    = {Typ="X" Txt="Run these build-programs..." Cap="in QuArK's console"}
-      BuildPgmsDir:={Typ="ED" Txt="Default directory of build-programs" Hint="This directory is searched to find a build-program,"$0D"if the build-program does not have an absolute path specified."}
-      GameBuildPgms=!
     }
     GameQuake2:form =
     {
       Style = "3"
-      sep: = {Typ="S" Txt="---- Game Settings ----"}
-      Program: = {
-        Typ = "C"     // combo box
-        Txt = "Quake 2 command-line"
-        Items = "Quake2"
-      }
       Directory: =
       {
         Txt = "Directory of Quake 2"
@@ -1426,8 +1210,45 @@ QQRKSRC1
         cmd:macro = {Typ="M" Msg="GAMA"}    // switches to Quake 2
         cmd:macro = {Typ="M" Msg="OUTP"}    // opens "Output directories" dialog box
       }
-      sep: = {Typ="S"}
-      sep: = {Typ="S" Txt="---- Map-editor Settings ----"}
+      Sep1: = {Typ="S"}    // separator
+      Program: = {
+        Typ = "C"     // combo box
+        Txt = "Quake 2 command-line"
+        Items = "Quake2"
+      }
+      QBSP1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QBSP3"
+        DefExt = "exe"
+      }
+      QBSPCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      VIS1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QVIS3"
+        DefExt = "exe"
+      }
+      VISCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      LIGHT1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QRAD3"
+        DefExt = "exe"
+      }
+      LIGHTCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      Console: = {
+        Typ = "X"
+        Txt = "Run these programs..."
+        Cap = "in QuArK's console"
+      }
+      Sep2: = {Typ="S"}    // separator
       TextureDef: =
       {
         Txt = "Default texture"
@@ -1442,41 +1263,16 @@ QQRKSRC1
         Hint = "Default trigger texture when new brush-entities request it"
         GameCfg = "Quake 2"
       }
-      ClipTextureDef: =
-      {
-        Txt = "Default clip texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default clip texture when new brush-entities request it"
-        GameCfg = "Quake 2"
-      }
-      OriginTextureDef: =
-      {
-        Txt = "Default origin texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default origin texture when new brush-entities request it"
-        GameCfg = "Quake 2"
-      }
       3DLight: =
       {
         Txt = "Game Light saturation"
         Typ = "EF1"
         Hint = "Currently only for the OpenGL viewer. Larger values make darker scenes."
       }
-      sep:        = {Typ="S"}
-      sep:        = {Typ="S" Txt="---- Build Programs Execution Sequence ----"}
-      Console:    = {Typ="X" Txt="Run these build-programs..." Cap="in QuArK's console"}
-      BuildPgmsDir:={Typ="ED" Txt="Default directory of build-programs" Hint="This directory is searched to find a build-program,"$0D"if the build-program does not have an absolute path specified."}
-      GameBuildPgms=!
     }
     GameHeretic2:form =
     {
       Style = "3"
-      sep: = {Typ="S" Txt="---- Game Settings ----"}
-      Program: = {
-        Typ = "C"     // combo box
-        Txt = "Heretic II command-line"
-        Items = "Heretic2"
-      }
       Directory: =
       {
         Txt = "Directory of Heretic II"
@@ -1515,8 +1311,51 @@ QQRKSRC1
         cmd:macro = {Typ="M" Msg="GAMB"}    // switches to Hr2
         cmd:macro = {Typ="M" Msg="OUTP"}    // opens "Output directories" dialog box
       }
-      sep: = {Typ="S"}
-      sep: = {Typ="S" Txt="---- Map-editor Settings ----"}
+      Sep1: = {Typ="S"}    // separator
+      Program: = {
+        Typ = "C"     // combo box
+        Txt = "Heretic II command-line"
+        Items = "Heretic2"
+      }
+      QBSP1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QBSP3"
+        DefExt = "exe"
+      }
+      QBSPCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      walTrick: = {
+        Typ = "X"
+        Txt = "This version of qbsp3 wants"
+        Cap = ".WAL texture files"
+        Hint = "check this to have QuArK write both .WAL and .M8 textures (most versions of QBSP3 can't read .M8 textures)"
+      }
+      VIS1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QVIS3"
+        DefExt = "exe"
+      }
+      VISCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      LIGHT1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QRAD3"
+        DefExt = "exe"
+      }
+      LIGHTCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      Console: = {
+        Typ = "X"
+        Txt = "Run these programs..."
+        Cap = "in QuArK's console"
+      }
+      Sep2: = {Typ="S"}    // separator
       TextureDef: =
       {
         Txt = "Default texture"
@@ -1531,35 +1370,16 @@ QQRKSRC1
         Hint = "Default trigger texture when new brush-entities request it"
         GameCfg = "Heretic II"
       }
-      ClipTextureDef: =
-      {
-        Txt = "Default clip texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default clip texture when new brush-entities request it"
-        GameCfg = "Heretic II"
-      }
       3DLight: =
       {
         Txt = "Game Light saturation"
         Typ = "EF1"
         Hint = "Currently only for the OpenGL viewer. Larger values make darker scenes."
       }
-      sep:        = {Typ="S"}
-      sep:        = {Typ="S" Txt="---- Build Programs Execution Sequence ----"}
-      Console:    = {Typ="X" Txt="Run these build-programs..." Cap="in QuArK's console"}
-      BuildPgmsDir:={Typ="ED" Txt="Default directory of build-programs" Hint="This directory is searched to find a build-program,"$0D"if the build-program does not have an absolute path specified."}
-      GameBuildPgms=!
     }
     GameHalfLife:form =
     {
       Style = "3"
-      sep: = {Typ="S" Txt="---- Game Settings ----"}
-      Program: = {
-        Typ = "C"     // combo box
-        Txt = "Half-Life command-line"
-        Items = "HL"
-             $0D"HL -console -dev -zone 1024 +set sv_cheats 1"
-      }
       Directory: =
       {
         Txt = "Directory of Half-Life"
@@ -1591,8 +1411,54 @@ QQRKSRC1
         cmd:macro = {Typ="M" Msg="GAM3"}    // switches to Half-Life
         cmd:macro = {Typ="M" Msg="OUTP"}    // opens "Output directories" dialog box
       }
-      sep: = {Typ="S"}
-      sep: = {Typ="S" Txt="---- Map-editor Settings ----"}
+      Sep1: = {Typ="S"}    // separator
+      Program: = {
+        Typ = "C"     // combo box
+        Txt = "Half-Life command-line"
+        Items = "HL"  $0D "HL -console -dev -zone 1024 +set sv_cheats 1"
+      }
+      QCSG1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QCSG"
+        DefExt = "exe"
+      }
+      QCSGCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      QBSP1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QBSP2"
+        DefExt = "exe"
+      }
+      QBSPCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      VIS1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to VIS"
+        DefExt = "exe"
+      }
+      VISCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      LIGHT1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QRAD"
+        DefExt = "exe"
+      }
+      LIGHTCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      Console: = {
+        Typ = "X"
+        Txt = "Run these programs..."
+        Cap = "in QuArK's console"
+      }
+      Sep2: = {Typ="S"}    // separator
       TextureDef: =
       {
         Txt = "Default texture"
@@ -1607,41 +1473,16 @@ QQRKSRC1
         Hint = "Default trigger texture when new brush-entities request it"
         GameCfg = "Half-Life"
       }
-      ClipTextureDef: =
-      {
-        Txt = "Default clip texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default clip texture when new brush-entities request it"
-        GameCfg = "Half-Life"
-      }
-      OriginTextureDef: =
-      {
-        Txt = "Default origin texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default origin texture when new brush-entities request it"
-        GameCfg = "Half-Life"
-      }
       3DLight: =
       {
         Txt = "Game Light saturation"
         Typ = "EF1"
         Hint = "Currently only for the OpenGL viewer. Larger values make darker scenes."
       }
-      sep:        = {Typ="S"}
-      sep:        = {Typ="S" Txt="---- Build Programs Execution Sequence ----"}
-      Console:    = {Typ="X" Txt="Run these build-programs..." Cap="in QuArK's console"}
-      BuildPgmsDir:={Typ="ED" Txt="Default directory of build-programs" Hint="This directory is searched to find a build-program,"$0D"if the build-program does not have an absolute path specified."}
-      GameBuildPgms=!
     }
     GameSin:form =
     {
       Style = "3"
-      sep: = {Typ="S" Txt="---- Game Settings ----"}
-      Program: = {
-        Typ = "C"     // combo box
-        Txt = "Sin command-line"
-        Items = "Sin"
-      }
       Directory: =
       {
         Txt = "Directory of Sin"
@@ -1680,8 +1521,45 @@ QQRKSRC1
         cmd:macro = {Typ="M" Msg="GAMC"}    // switches to Sin
         cmd:macro = {Typ="M" Msg="OUTP"}    // opens "Output directories" dialog box
       }
-      sep: = {Typ="S"}
-      sep: = {Typ="S" Txt="---- Map-editor Settings ----"}
+      Sep1: = {Typ="S"}    // separator
+      Program: = {
+        Typ = "C"     // combo box
+        Txt = "Sin command-line"
+        Items = "Sin"
+      }
+      QBSP1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QBSP3"
+        DefExt = "exe"
+      }
+      QBSPCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      VIS1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QVIS3"
+        DefExt = "exe"
+      }
+      VISCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      LIGHT1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to QRAD3"
+        DefExt = "exe"
+      }
+      LIGHTCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      Console: = {
+        Typ = "X"
+        Txt = "Run these programs..."
+        Cap = "in QuArK's console"
+      }
+      Sep2: = {Typ="S"}    // separator
       TextureDef: =
       {
         Txt = "Default texture"
@@ -1696,36 +1574,16 @@ QQRKSRC1
         Hint = "Default trigger texture when new brush-entities request it"
         GameCfg = "Sin"
       }
-      ClipTextureDef: =
-      {
-        Txt = "Default clip texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default clip texture when new brush-entities request it"
-        GameCfg = "Sin"
-      }
       3DLight: =
       {
         Txt = "Game Light saturation"
         Typ = "EF1"
         Hint = "Currently only for the OpenGL viewer. Larger values make darker scenes."
       }
-      sep:        = {Typ="S"}
-      sep:        = {Typ="S" Txt="---- Build Programs Execution Sequence ----"}
-      Console:    = {Typ="X" Txt="Run these build-programs..." Cap="in QuArK's console"}
-      BuildPgmsDir:={Typ="ED" Txt="Default directory of build-programs" Hint="This directory is searched to find a build-program,"$0D"if the build-program does not have an absolute path specified."}
-      GameBuildPgms=!
     }
     GameKingPin:form =
     {
       Style = "3"
-      sep: = {Typ="S" Txt="---- Game Settings ----"}
-      Program: =
-      {
-        Typ = "C"
-        Txt = "KingPin command-line"
-        Items = "KingPin"
-             $0D"KingPin +set developer 1"
-      }
       Directory: =
       {
         Txt = "Directory of KingPin"
@@ -1757,12 +1615,63 @@ QQRKSRC1
         cmd:macro = { Typ = "M" Msg = "GAMD" } // switches to KingPin (cmd=GAM, game=D)
         cmd:macro = { Typ = "M" Msg = "OUTP" }
       }
-      sep: = {Typ="S"}
-      sep: = {Typ="S" Txt="---- Map-editor Settings ----"}
+      Sep1: = {Typ = "S"} // separator
+      Program: =
+      {
+        Typ = "C"
+        Txt = "KingPin command-line"
+        Items = "KingPin"$0D"KingPin  +set developer 1"
+      }
+      QBSP1: =
+      {
+        Typ = "EP"
+        Txt = "Path to QBSP2"
+        DefExt = "exe"
+      }
+      QBSPCmd: =
+      {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      walTrick: = {
+        Typ = "X"
+        Txt = "This version of qbsp3 wants"
+        Cap = ".WAL texture files"
+        Hint = "check this to have QuArK write both .WAL and .TGA textures (kpBSP can't read .TGA textures)"
+      }
+      VIS1: =
+      {
+        Typ = "EP"
+        Txt = "Path to VIS"
+        DefExt = "exe"
+      }
+      VISCmd: =
+      {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      LIGHT1: =
+      {
+        Typ = "EP"
+        Txt = "Path to QRAD"
+        DefExt = "exe"
+      }
+      LIGHTCmd: =
+      {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      Console: =
+      {
+        Typ = "X"
+        Txt = "Run these programs..."
+        Cap = "in QuArK's console"
+      }
+      Sep2: = {Typ = "S"} // separator
       TextureDef: =
       {
         Txt = "Default texture"
-        Typ = "ET"      // Edit Texture
+        Typ = "ET"
         Hint = "Default texture when inserting polyhedrons in maps"
         GameCfg = "KingPin"
       }
@@ -1771,13 +1680,6 @@ QQRKSRC1
         Txt = "Default trigger texture"
         Typ = "ET"      // Edit Texture
         Hint = "Default trigger texture when new brush-entities request it"
-        GameCfg = "KingPin"
-      }
-      ClipTextureDef: =
-      {
-        Txt = "Default clip texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default clip texture when new brush-entities request it"
         GameCfg = "KingPin"
       }
       OriginTextureDef: =
@@ -1791,31 +1693,13 @@ QQRKSRC1
       {
         Txt = "Game Light saturation"
         Typ = "EF1"
-        Hint = "Currently only for the OpenGL viewer. Larger values make darker scenes."
+        Hint = "Currently only for the OpenGL viewer. Larger values make darke"
+         "r scenes."
       }
-      sep:        = {Typ="S"}
-      sep:        = {Typ="S" Txt="---- Build Programs Execution Sequence ----"}
-      Console:    = {Typ="X" Txt="Run these build-programs..." Cap="in QuArK's console"}
-      BuildPgmsDir:={Typ="ED" Txt="Default directory of build-programs" Hint="This directory is searched to find a build-program,"$0D"if the build-program does not have an absolute path specified."}
-      walTrick: = {
-        Typ = "X"
-        Txt = "This version of qbsp3 wants"
-        Cap = ".WAL texture files"
-        Hint = "check this to have QuArK write both .WAL and .TGA textures (kpBSP can't read .TGA textures)"
-      }
-      GameBuildPgms=!
     }
     GameSOF:form =
     {
       Style = "3"
-      sep: = {Typ="S" Txt="---- Game Settings ----"}
-      Program: =
-      {
-        Typ = "C"
-        Txt = "SOF command-line"
-        Items = "SOF"
-             $0D"SOF +set console 1"
-      }
       Directory: =
       {
         Txt = "Directory of SOF"
@@ -1847,12 +1731,63 @@ QQRKSRC1
         cmd:macro = { Typ = "M" Msg = "GAME" } // switches to SOF (cmd=GAM, game=E)
         cmd:macro = { Typ = "M" Msg = "OUTP" }
       }
-      sep: = {Typ="S"}
-      sep: = {Typ="S" Txt="---- Map-editor Settings ----"}
+      Sep1: = {Typ = "S"} // separator
+      Program: =
+      {
+        Typ = "C"
+        Txt = "SOF command-line"
+        Items = "SOF"$0D"SOF  +set console 1"
+      }
+      QBSP1: =
+      {
+        Typ = "EP"
+        Txt = "Path to SOFBSP"
+        DefExt = "exe"
+      }
+      QBSPCmd: =
+      {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      walTrick: = { //FIXME ! is this needed ?
+        Typ = "X"
+        Txt = "This version of qbsp wants"
+        Cap = ".WAL texture files"
+        Hint = "check this to have QuArK write both .WAL and .TGA textures (kpBSP can't read .TGA textures)"
+      }
+      VIS1: =
+      {
+        Typ = "EP"
+        Txt = "Path to VIS"
+        DefExt = "exe"
+      }
+      VISCmd: =
+      {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      LIGHT1: =
+      {
+        Typ = "EP"
+        Txt = "Path to QRAD"
+        DefExt = "exe"
+      }
+      LIGHTCmd: =
+      {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      Console: =
+      {
+        Typ = "X"
+        Txt = "Run these programs..."
+        Cap = "in QuArK's console"
+      }
+      Sep2: = {Typ = "S"} // separator
       TextureDef: =
       {
         Txt = "Default texture"
-        Typ = "ET"      // Edit Texture
+        Typ = "ET"
         Hint = "Default texture when inserting polyhedrons in maps"
         GameCfg = "SOF"
       }
@@ -1861,13 +1796,6 @@ QQRKSRC1
         Txt = "Default trigger texture"
         Typ = "ET"      // Edit Texture
         Hint = "Default trigger texture when new brush-entities request it"
-        GameCfg = "SOF"
-      }
-      ClipTextureDef: =
-      {
-        Txt = "Default clip texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default clip texture when new brush-entities request it"
         GameCfg = "SOF"
       }
       OriginTextureDef: =
@@ -1881,29 +1809,13 @@ QQRKSRC1
       {
         Txt = "Game Light saturation"
         Typ = "EF1"
-        Hint = "Currently only for the OpenGL viewer. Larger values make darker scenes."
+        Hint = "Currently only for the OpenGL viewer. Larger values make darke"
+         "r scenes."
       }
-      sep:        = {Typ="S"}
-      sep:        = {Typ="S" Txt="---- Build Programs Execution Sequence ----"}
-      Console:    = {Typ="X" Txt="Run these build-programs..." Cap="in QuArK's console"}
-      BuildPgmsDir:={Typ="ED" Txt="Default directory of build-programs" Hint="This directory is searched to find a build-program,"$0D"if the build-program does not have an absolute path specified."}
-      walTrick: = { //FIXME ! is this needed ?
-        Typ = "X"
-        Txt = "This version of qbsp wants"
-        Cap = ".WAL texture files"
-        Hint = "check this to have QuArK write both .WAL and .TGA textures (kpBSP can't read .TGA textures)"
-      }
-      GameBuildPgms=!
     }
     GameQuake3:form =
     {
       Style = "3"
-      sep: = {Typ="S" Txt="---- Game Settings ----"}
-      Program: = {
-        Typ = "C"     // combo box
-        Txt = "Quake 3 command-line"
-        Items = "Quake3"
-      }
       Directory: =
       {
         Txt = "Directory of Quake 3"
@@ -1916,7 +1828,7 @@ QQRKSRC1
         Txt = "Quake 3 CD-ROM drive"
         Typ = "ED"      // Edit Directory
         Hint = "If you installed Quake 3 minimally, this is the drive of the CD-ROM."
-        CheckFile = "INSTALL\DATA\BASEQ3\PAK0.PK3"
+        CheckFile = "INSTALL\DATA\BASEQ3\PAK0.PAK"
       }
       AddOns:tbbtn =       // button (don't forget :tbbtn for all the action buttons !)
       {
@@ -1942,117 +1854,67 @@ QQRKSRC1
         cmd:macro = {Typ="M" Msg="GAMa"}    // switches to Quake 3 (cmd=GAM, game=a)
         cmd:macro = {Typ="M" Msg="OUTP"}    // opens "Output directories" dialog box
       }
-      sep: = {Typ="S"}
-      sep: = {Typ="S" Txt="---- Map-editor Settings ----"}
-      TextureDef: =
-      {
-        Txt = "Default texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default texture when inserting polyhedrons in maps"
-        GameCfg = "Quake 3"
-      }
-      TriggerTextureDef: =
-      {
-        Txt = "Default trigger texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default trigger texture when new brush-entities request it"
-        GameCfg = "Quake 3"
-      }
-      ClipTextureDef: =
-      {
-        Txt = "Default clip texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default clip texture when new brush-entities request it"
-        GameCfg = "Quake 3"
-      }
-      OriginTextureDef: =
-      {
-        Txt = "Default origin texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default origin texture when new brush-entities request it"
-        GameCfg = "Quake 3"
-      }
-      3DLight: =
-      {
-        Txt = "Game Light saturation"
-        Typ = "EF1"
-        Hint = "Currently only for the OpenGL viewer. Larger values make darker scenes."
-      }
-      sep:        = {Typ="S"}
-      sep:        = {Typ="S" Txt="---- Build Programs Execution Sequence ----"}
-      Console:    = {Typ="X" Txt="Run these build-programs..." Cap="in QuArK's console"}
-      BuildPgmsDir:={Typ="ED" Txt="Default directory of build-programs" Hint="This directory is searched to find a build-program,"$0D"if the build-program does not have an absolute path specified."}
-      GameBuildPgms=!
-    }
-    GameSTVEF:form =
-    {
-      Style = "3"
-      sep: = {Typ="S" Txt="---- Game Settings ----"}
+      Sep1: = {Typ="S"}    // separator
       Program: = {
         Typ = "C"     // combo box
-        Txt = "StarTrek Voyager Elite Force command-line"
-        Items = "StarTrek"
+        Txt = "Quake 3 command-line"
+        Items = "Quake3"
       }
-      Directory: =
-      {
-        Txt = "Directory of StarTrek Voyager Elite Force"
-        Typ = "ED"      // Edit Directory
-        Hint = "Path to the game executable"
-        CheckFile = "stvoy.EXE"
+      QBSP1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to Q3MAP"
+        DefExt = "exe"
       }
-      CD: =
-      {
-        Txt = "StarTrek Voyager Elite Force CD-ROM drive"
-        Typ = "ED"      // Edit Directory
-        Hint = "If you installed StarTrek minimally, this is the drive of the CD-ROM."
-        CheckFile = "SETUP\BASEEF\PAK0.PK3"
+      QBSPCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
       }
-      AddOns:tbbtn =       // button (don't forget :tbbtn for all the action buttons !)
-      {
-        Typ = "+"
-        Txt = "Installed Add-ons"
-        Cap = "Add-ons..."
-        Icon = $666008881111111866604441999799916660CCC1101111116660244404555548
-               $66602C2AA478887866602C4A24787F78666022AC48778878666022CC47888878
-               $666000407787877866608777777777784448444844487F785C77CF77CC487778
-               $5CC7C777CC488880055555555548870666608888888800666666666666666666
-        cmd:macro = {Typ="M" Msg="GAMb"}    // switches to StarTrek (cmd=GAM, game=b)
-        cmd:macro = {Typ="M" Msg="ADDO"}    // opens Add-ons configuration dialog box
+      VIS1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to Q3MAP w/vis"
+        DefExt = "exe"
       }
-      Outp:tbbtn =
-      {
-        Typ = "+"
-        Txt = "Paths and files to create"
-        Cap = "Output directories..."
-        Icon = $666660000066666666660232AA20666660003332ABA0206602303332ABB0
-               $FA0603303332ABB0FBA003303332AAB0FBB0033033222AA0FBB0033022AA
-               $A220FBB00322022AA2022AA002AA2022002AA2A00AAAA20022AAAA20602A
-               $0022002A200666002AAAA20006666666002A200666666666660006666666
-        cmd:macro = {Typ="M" Msg="GAMb"}    // switches to StarTrek (cmd=GAM, game=b)
-        cmd:macro = {Typ="M" Msg="OUTP"}    // opens "Output directories" dialog box
+      VISCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
       }
-      sep: = {Typ="S"}
-      sep: = {Typ="S" Txt="---- Map-editor Settings ----"}
+      LIGHT1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to Q3MAP w/light"
+        DefExt = "exe"
+      }
+      LIGHTCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      BSPC1: = {
+        Typ = "EP"    // edit path to file
+        Txt = "Path to bspc tool"
+        DefExt = "exe"
+      }
+      BSPCCmd: = {
+        Typ = "E"
+        Txt = "...command-line parameters"
+      }
+      Console: = {
+        Typ = "X"
+        Txt = "Run these programs..."
+        Cap = "in QuArK's console"
+      }
+      Sep2: = {Typ="S"}    // separator
       TextureDef: =
       {
         Txt = "Default texture"
         Typ = "ET"      // Edit Texture
         Hint = "Default texture when inserting polyhedrons in maps"
-        GameCfg = "STVEF"
+        GameCfg = "Quake 3"
       }
       TriggerTextureDef: =
       {
         Txt = "Default trigger texture"
         Typ = "ET"      // Edit Texture
         Hint = "Default trigger texture when new brush-entities request it"
-        GameCfg = "STVEF"
-      }
-      ClipTextureDef: =
-      {
-        Txt = "Default clip texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default clip texture when new brush-entities request it"
-        GameCfg = "STVEF"
+        GameCfg = "Quake 3"
       }
       3DLight: =
       {
@@ -2060,78 +1922,7 @@ QQRKSRC1
         Typ = "EF1"
         Hint = "Currently only for the OpenGL viewer. Larger values make darker scenes."
       }
-      sep:        = {Typ="S"}
-      sep:        = {Typ="S" Txt="---- Build Programs Execution Sequence ----"}
-      Console:    = {Typ="X" Txt="Run these build-programs..." Cap="in QuArK's console"}
-      BuildPgmsDir:={Typ="ED" Txt="Default directory of build-programs" Hint="This directory is searched to find a build-program,"$0D"if the build-program does not have an absolute path specified."}
-      GameBuildPgms=!
     }
-    GameCrystalSpace:form =
-    {
-      Style = "3"
-      sep: = {Typ="S" Txt="---- Game Settings ----"}
-      Program: =
-      {
-        Typ = "C"
-        Txt = "CrystalSpace command-line"
-        Items = "Walktest"
-      }
-      Directory: =
-      {
-        Txt = "Directory of CrystalSpace"
-        Typ = "ED"
-        Hint = "Path to the game executable"
-        CheckFile = "WALKTEST.EXE"
-      }
-      AddOns:tbbtn =
-      {
-        Typ = "+"
-        Txt = "Installed Add-ons"
-        Cap = "Add-ons..."
-        Icon = $666008881111111866604441999799916660CCC11011111166602444045555
-         $4866602C2AA478887866602C4A24787F78666022AC48778878666022CC4788887866
-         $6000407787877866608777777777784448444844487F785C77CF77CC4877785CC7C7
-         $77CC488880055555555548870666608888888800666666666666666666
-        cmd:macro = { Typ = "M" Msg = "GAMc" } // switches to CrystalSpace (cmd=GAM, game=c)
-        cmd:macro = { Typ = "M" Msg = "ADDO" } // opens Add-ons configuration dialog box
-      }
-      Outp:tbbtn =
-      {
-        Typ = "+"
-        Txt = "Paths and files to create"
-        Cap = "Output directories..."
-        Icon = $666660000066666666660232AA20666660003332ABA0206602303332ABB0FA
-         $0603303332ABB0FBA003303332AAB0FBB0033033222AA0FBB0033022AAA220FBB003
-         $22022AA2022AA002AA2022002AA2A00AAAA20022AAAA20602A0022002A200666002A
-         $AAA20006666666002A200666666666660006666666
-        cmd:macro = { Typ = "M" Msg = "GAMc" } // switches to CrystalSpace (cmd=GAM, game=c)
-        cmd:macro = { Typ = "M" Msg = "OUTP" } // opens "Output directories" dialog box
-      }
-      sep: = {Typ="S"}
-      sep: = {Typ="S" Txt="---- Map-editor Settings ----"}
-      TextureDef: =
-      {
-        Txt = "Default texture"
-        Typ = "ET"      // Edit Texture
-        Hint = "Default texture when inserting polyhedrons in maps"
-        GameCfg = "Crystal Space"
-      }
-      3DLight: =
-      {
-        Txt = "Game Light saturation"
-        Typ = "EF1"
-        Hint = "Currently only for the OpenGL viewer. Larger values make darker scenes."
-      }
-      sep:        = {Typ="S"}
-      sep:        = {Typ="S" Txt="---- Build Programs Execution Sequence ----"}
-      Console:    = {Typ="X" Txt="Run these build-programs..." Cap="in QuArK's console"}
-      BuildPgmsDir:={Typ="ED" Txt="Default directory of build-programs" Hint="This directory is searched to find a build-program,"$0D"if the build-program does not have an absolute path specified."}
-      GameBuildPgms=!
-    }
-
-
-
-
     MapColors:form =
     {
       Style = "7"       // gray form instead of white one
@@ -2355,7 +2146,6 @@ QQRKSRC1
            $0D"Zoom In rect. / sidestep"
            $0D"Zoom Out rect. / sidestep"
            $0D"Mouse Free Zoom"
-           $0D"Circle Strafe Selection"
       Values = ""
             $0D"RS"
             $0D"RST"
@@ -2365,7 +2155,6 @@ QQRKSRC1
             $0D"R+"
             $0D"R-"
             $0D"Z"
-            $0D"C"
     }
     MapMouse:form =
     {
@@ -2427,8 +2216,6 @@ QQRKSRC1
       MinUndo: = {Txt="Min. undo levels" Typ="EF1" Hint="Minimum number of consecutive undos allowed (warn if not enough memory for this number)"}
       UndoBufferSize: = {Txt="Size of undo buffer (MB)" Typ="EF1" Hint="Deletes older undo levels if it would take more memory than this"}
       GameBufferSize: = {Txt="Size of game buffer (MB)" Typ="EF1" Hint="Size of the memory buffer to allocate while loading files from Quake (e.g. textures)"}
-      CompressionLevel: = {Txt="Compression Level" Typ="EF1" Hint="Level of Compression to use for zip files (0 .. 9)"}
-      CompressionBufferSize: = {Txt="Size of compression buffer (KB)" Typ="EF1" Hint="Size of memory buffer to allocate when compressing files"}
     }
     externaledit:incl = {
       Typ = "EP"
@@ -2664,7 +2451,6 @@ QQRKSRC1
       IgnoreToBuild: = {Typ="X" Txt="   ``"                 Cap="Ignore groups marked so"}
       DisableEnhTex: = {Typ="X" Txt="   ``"                 Cap="Don't write //TX# in .map files"}
       DisableFPCoord: = {Typ="X" Txt="   ``"                 Cap="Don't write floating-point coords"}
-      EnableBrushBrim: = {Typ="X" Txt="   ``"                 Cap="Brush primitives in maps (Q3A only)"}
     }
     MapBuilding:form =
     {
@@ -2816,23 +2602,6 @@ QQRKSRC1
     {
       out: = {Txt="copy objects" Cap="outside" Typ="X" Hint="if checked, the duplicator or digger works with objects besides instead of only inside"}
     }
-    capdetails:form =
-    {
-      faceonly: = {Txt="&" Typ="X"
-               Hint = "if checked, only the top and bottom faces are produced, no inner curve"}
-      nofront = {Txt="&" Typ="X"
-               Hint = "if checked, front face is not produced"}
-      noback: = {Txt="&" Typ="X"
-               Hint = "if checked, back face is not produced"}
-      noinner = {Txt="&" Typ="X"
-               Hint = "if checked, inner face is not produced (thick bevels only)"}
-      noouter: = {Txt="&" Typ="X"
-               Hint = "if checked, outer face is not produced (thick bevels only)"}
-      leftside: = {Txt="&" Typ="X"
-               Hint = "if checked, left side is produced"}
-      rightside: = {Txt="&" Typ="X"
-               Hint = "if checked, right side is produced"}
-    }
     dup cap:form =
     {
       inverse: = {Txt="&" Typ="X"
@@ -2841,38 +2610,14 @@ QQRKSRC1
                Hint = "if checked, the whole thing is upside-down"}
       thick: = {Txt ="&" Typ="EF1"
                 Hint = "if a nonzero value is given, an enclosed curve with thickness is produced"}
-      subdivide: = {Txt ="&" Typ="EF1"
-                Hint = "integer value, generate n patches along each side of curve"}
       stretchtex: = {Txt="&" Typ="X"
                Hint = "if checked, texture on top/bottom is stretched to cover entire curved face." $0D "Otherwise complex things are done to make it easier to align the curve's texture with the sides."}
       open: = {Txt="&" Typ="X"
                Hint = "if checked, front and back are open"}
-      more: = {
-       Typ="B"
-       Txt="details"
-       Cap="Push"
-       Form="capdetails:form"
-       Hint="specifics for more detailed control over generation of patches"
-      }
+      faceonly: = {Txt="&" Typ="X"
+               Hint = "if checked, only the front and back faces are produced, no inner curve"}
       macro: = {Txt = "&" Typ = "ESR"
                  Hint = "This one is not for you, Saruman"}
-    }
-    beveldetails:form =
-    {
-      faceonly: = {Txt="&" Typ="X"
-               Hint = "if checked, only the top and bottom faces are produced, no inner curve"}
-      notop = {Txt="&" Typ="X"
-               Hint = "if checked, top face is not produced"}
-      nobottom: = {Txt="&" Typ="X"
-               Hint = "if checked, bottom face is not produced"}
-      noinner = {Txt="&" Typ="X"
-               Hint = "if checked, inner face is not produced (thick bevels only)"}
-      noouter: = {Txt="&" Typ="X"
-               Hint = "if checked, outer face is not produced (thick bevels only)"}
-      leftend: = {Txt="&" Typ="X"
-               Hint = "if checked, left end is produced"}
-      rightend: = {Txt="&" Typ="X"
-               Hint = "if checked, right end is produced"}
     }
     dup bevel:form =
     {
@@ -2882,19 +2627,12 @@ QQRKSRC1
                Hint = "if checked, curve goes from back to left side rather than back to right side"}
       thick: = {Txt ="&" Typ="EF1"
                 Hint = "if a nonzero value is given, an enclosed curve with thickness is produced"}
-      subdivide: = {Txt ="&" Typ="EF1"
-                Hint = "integer value, generate n patches along curve"}
       stretchtex: = {Txt="&" Typ="X"
                Hint = "if checked, texture on back is stretched to cover entire curved face." $0D "Otherwise complex things are done to make it easier to align the curve's texture with the sides."}
       open: = {Txt="&" Typ="X"
                Hint = "if checked, top and bottom are open"}
-      more: = {
-       Typ="B"
-       Txt="details"
-       Cap="Push"
-       Form="beveldetails:form"
-       Hint="specifics for more detailed control over generation of patches"
-      }
+      faceonly: = {Txt="&" Typ="X"
+               Hint = "if checked, only the top and bottom faces are produced, no inner curve"}
       macro: = {Txt = "&" Typ = "ESR"
                  Hint = "This one is not for you, Saruman"}
     }
@@ -2904,10 +2642,6 @@ QQRKSRC1
                Hint = "if checked, concave surface of curve is outer and has texture"}
       thick: = {Txt ="&" Typ="EF1"
                 Hint = "if a nonzero value is given, an enclosed curve with thickness is produced"}
-      subdivide: = {Txt ="&" Typ="EF1"
-                Hint = "integer value, generate n patches along curve"}
-      circle:= {Txt="&" Typ="X"
-               }
       stretchtex: = {Txt="&" Typ="X"
                Hint = "if checked, texture on back is stretched to cover entire column." $0D "Otherwise complex things are done so that if" $0D "the the texture on the back face is wrapped around the brush," $0D "this wrapping will also appear aroudn the column"}
       open: = {Txt="&" Typ="X"
@@ -2917,13 +2651,6 @@ QQRKSRC1
                        $0D " e.g. 0 1 for upward pointing cone"}
       bulge:= {Txt="&" Typ="EF002"
                Hint = "height, width of bulge, proportional, .5 1=straight"}
-      more: = {
-       Typ="B"
-       Txt="details"
-       Cap="Push"
-       Form="beveldetails:form"
-       Hint="specifics for more detailed control over generation of patches"
-      }
       macro: = {Txt = "&" Typ = "ESR"
                  Hint = "This one is not for you, Saruman"}
     }
@@ -2939,12 +2666,12 @@ QQRKSRC1
       }
       SourceDir: = {
         Txt = "Source directory"
-        Typ = "EDL" // "EDL" = Editfield-Directorypath-Lastfolderonly
+        Typ = "ED"
         Hint = "QuArK will look there for files like textures, 3D models, etc. Must be the name of a subdirectory directly the game path"
       }
       GameDir: = {
         Txt = "Game directory"
-        Typ = "EDL" // "EDL" = Editfield-Directorypath-Lastfolderonly
+        Typ = "ED"
         Hint = "QuArK will run the game with this as '-game' or '+set game' command-line parameter"
       }
     }
@@ -2987,83 +2714,122 @@ QQRKSRC1
           macro = "hello"
       }
     }
-
-        CustomBuildPgm:incl = {
-                Typ="X"
-                Txt="...execute build-program"
-                Cap="Yes"
-                Hint="Make this build-program execute, after the above ones,"
-                  $0D"only if no error have occured in previous build-program."
-                  $0D
-                  $0D"In the game's configuration section (QuArK Explorer->Games->"
-                  $0D"Options), you specify what this build-program is."
-        }
-        CustomBuildArgs:incl = {
-                Typ="C"
-                Txt="...additional arguments"
-                Hint="Put any additional command-line arguments for the"
-                  $0D"build-program here. They will be _additional_ to the"
-                  $0D"fixed arguments, which are specified in the game's"
-                  $0D"configuration section (QuArK Explorer->Games->Options)."
-                  $0D
-                  $0D"Use the following user-variables, which will be automatically"
-                  $0D"replaced at run-time. If at least one of these are used, QuArK"
-                  $0D"will _not_ append a '<path>/<mapfile>' to the command-line arg.,"
-                  $0D"so you better remember to do this yourself."
-                  $0D
-                  $0D"%file%    - Gives the map's path and filename without extension"
-                  $0D"%mappath% - Gives the map's path with ending backslash"
-                  $0D"%mapfile% - Gives the map's path and filename with .MAP extension"
-                  $0D
-                  $0D"Examples:"
-                  $0D"  BSPC.EXE -bps2aas %file%.BSP -output %mappath%"
-                  $0D"  VIS.EXE -fast %file%"
-                  $0D"  QRAD3.EXE -threads 4 %file%"
-        }
-
+    // this is the form used when SpecialCustomQuakeMenu is not set
     CustomQuakeMenu:form =    // "customize Quake menu" box
     {
-      Style = "5" // No-icons, No-extra-spacing
-
-      sep:           = {Typ="S" Txt="---- Menu Item / Output ----"}
-      Shortcut:      = {Typ="E" Txt="Keyboard shortcut" Hint="Keyboard shortcut as it appears in the menu (recommended: 'Ctrl+letter')"}
-      Pause:         = {Typ="X" Txt="When build has finished..." Cap="Console stay open" Hint="Don't automatically close the console where all build-program's output has been written"}
-      sep:           = {Typ="S"}
-      sep:           = {Typ="S" Txt="---- Before build / After build ----"}
-      ExportMapFile: = {Typ="X" Txt="First..."                  Cap="Export new .MAP file"    Hint=""}
-      Textures:      = {Typ="X" Txt="Then..."                   Cap="Prepare used textures"   Hint="Prepare all textures used in map and write"$0D"them to a place where the build-programs will find them"}
-      RunGame:       = {Typ="X" Txt="After successful build..." Cap[]="Run [::Game] with map" Hint="Run the game when the map has been rebuilt"}
-      sep:           = {Typ="S"}
-      sep:           = {Typ="S" Txt="---- Build Programs Enable/Disable Sequence ----"}
-      sep:           = {Typ="S" Txt[]="1st program '[::BuildPgm1]'"}
-      BuildPgm1:     = {CustomBuildPgm=!}
-      BuildArgs1:    = {CustomBuildArgs=!}
-      sep:           = {Typ="S" Txt[]="2nd program '[::BuildPgm2]'"}
-      BuildPgm2:     = {CustomBuildPgm=!}
-      BuildArgs2:    = {CustomBuildArgs=!}
-      sep:           = {Typ="S" Txt[]="3rd program '[::BuildPgm3]'"}
-      BuildPgm3:     = {CustomBuildPgm=!}
-      BuildArgs3:    = {CustomBuildArgs=!}
-      sep:           = {Typ="S" Txt[]="4th program '[::BuildPgm4]'"}
-      BuildPgm4:     = {CustomBuildPgm=!}
-      BuildArgs4:    = {CustomBuildArgs=!}
-      sep:           = {Typ="S" Txt[]="5th program '[::BuildPgm5]'"}
-      BuildPgm5:     = {CustomBuildPgm=!}
-      BuildArgs5:    = {CustomBuildArgs=!}
-      sep:           = {Typ="S" Txt[]="6th program '[::BuildPgm6]'"}
-      BuildPgm6:     = {CustomBuildPgm=!}
-      BuildArgs6:    = {CustomBuildArgs=!}
-      sep:           = {Typ="S" Txt[]="7th program '[::BuildPgm7]'"}
-      BuildPgm7:     = {CustomBuildPgm=!}
-      BuildArgs7:    = {CustomBuildArgs=!}
-      sep:           = {Typ="S" Txt[]="8th program '[::BuildPgm8]'"}
-      BuildPgm8:     = {CustomBuildPgm=!}
-      BuildArgs8:    = {CustomBuildArgs=!}
-      sep:           = {Typ="S" Txt[]="9th program '[::BuildPgm9]'"}
-      BuildPgm9:     = {CustomBuildPgm=!}
-      BuildArgs9:    = {CustomBuildArgs=!}
+      Style = "7"
+      Textures: = {Typ="X" Txt="first..." Cap="Prepare used textures" Hint="prepare all textures used in map and write them to a place where QBSP will find them"}
+      RunGame: = {Typ="X" Txt="finally..." Cap="Run the game" Hint="run the game when the map has been rebuilt"}
+      Pause: = {Typ="X" Cap="Console stay open" Hint="don't automatically close the console where all QBSP/VIS/LIGHT output has been written"}
+      sep: = {Typ="S"}
+      QBSP1: = {Typ="X" Txt="Rebuild the map" Cap="QBSP" Hint="this program builds the .bsp file from your map"}
+      QBSPCmd: = {
+        Typ="C"
+        Txt="...additionnal parameters"
+        Items="" $0D "-onlyents"
+        Hint="with -onlyents, read the previous version of the .bsp file and only update the entities"
+      }
+      sep: = {Typ="S"}
+      VIS1: = {Typ="X" Txt="Compute visibility list" Cap="VIS / QVIS3" Hint="required for large maps to run smoothly in Quake. For Quake 2, it is also required for QRAD3 to work properly"}
+      VISCmd: = {
+        Typ="C"
+        Txt="...additionnal parameters"
+        Items="" $0D "-fast" $0D "-level 0" $0D "-level 1" $0D "-level 2" $0D "-level 3" $0D "-level 4"
+        Hint="computation details, from fastest to compute to fastest in Quake"
+      }
+      sep: = {Typ="S"}
+      LIGHT1: = {Typ="X" Txt="Compute lights" Cap="LIGHT / QRAD3" Hint="computes lights and shadows from 'light' entities. Without this, your map looks full bright"}
+      LIGHTCmd: = {
+        Typ="C"
+        Txt="...additionnal parameters"
+        Items="" $0D "-extra"
+        Hint="-extra takes longer to compute but looks much better (it prevents 'stairsteps' between shadow and light)"
+      }
+      sep: = {Typ="S"}
+      Shortcut: = {Typ="E" Txt="Keyboard shortcut" Hint="Keyboard shortcut as it appears in the menu (recommended: 'Ctrl+letter')"}
     }
-
+    // this form is used for some games when SpecialCustomQuakeMenu is set to the forms name
+    CustomQuakeMenuQCSG:form =    // "customize Quake menu" box for Half-Life
+    {
+      Style = "7"
+      Textures: = {Typ="X" Txt="first..." Cap="Prepare used textures" Hint="prepare all textures used in map and write them to a place where QBSP will find them"}
+      RunGame: = {Typ="X" Txt="finally..." Cap="Run the game" Hint="run the game when the map has been rebuilt"}
+      Pause: = {Typ="X" Cap="Console stay open" Hint="don't automatically close the console where all QBSP/VIS/LIGHT output has been written"}
+      sep: = {Typ="S"}
+      QCSG1: = {Typ="X" Txt="Rebuild the map (1)" Cap="QCSG" Hint="this program prepares the build of the .bsp file from your map"}
+      QCSGCmd: = {
+        Typ="C"
+        Txt="...additionnal parameters"
+        Items="" $0D "-onlyents"
+        Hint="with -onlyents, read the previous version of the .bsp file and only update the entities"
+      }
+      QBSP1: = {Typ="X" Txt="Rebuild the map (2)" Cap="QBSP" Hint="this program builds the .bsp file from your map"}
+      QBSPCmd: = {
+        Typ="C"
+        Txt="...additionnal parameters"
+        Items=""
+      }
+      sep: = {Typ="S"}
+      VIS1: = {Typ="X" Txt="Compute visibility list" Cap="VIS / QVIS3" Hint="required for large maps to run smoothly in Quake. For Quake 2, it is also required for QRAD3 to work properly"}
+      VISCmd: = {
+        Typ="C"
+        Txt="...additionnal parameters"
+        Items="" $0D "-fast" $0D "-level 0" $0D "-level 1" $0D "-level 2" $0D "-level 3" $0D "-level 4"
+        Hint="computation details, from fastest to compute to fastest in Quake"
+      }
+      sep: = {Typ="S"}
+      LIGHT1: = {Typ="X" Txt="Compute lights" Cap="LIGHT / QRAD3" Hint="computes lights and shadows from 'light' entities. Without this, your map looks full bright"}
+      LIGHTCmd: = {
+        Typ="C"
+        Txt="...additionnal parameters"
+        Items="" $0D "-extra"
+        Hint="-extra takes longer to compute but looks much better (it prevents 'stairsteps' between shadow and light)"
+      }
+      sep: = {Typ="S"}
+      Shortcut: = {Typ="E" Txt="Keyboard shortcut" Hint="Keyboard shortcut as it appears in the menu (recommended: 'Ctrl+letter')"}
+    }
+    // this form is used for some games when SpecialCustomQuakeMenu is set to the forms name
+    CustomQuakeMenuBSPC:form =    // "customize Quake menu" box for games with bspc
+    {
+      Style = "7"
+      Textures: = {Typ="X" Txt="first..." Cap="Prepare used textures" Hint="prepare all textures used in map and write them to a place where QBSP will find them"}
+      RunGame: = {Typ="X" Txt="finally..." Cap="Run the game" Hint="run the game when the map has been rebuilt"}
+      Pause: = {Typ="X" Cap="Console stay open" Hint="don't automatically close the console where all QBSP/VIS/LIGHT output has been written"}
+      sep: = {Typ="S"}
+      QBSP1: = {Typ="X" Txt="Rebuild the map" Cap="QBSP" Hint="this program builds the .bsp file from your map"}
+      QBSPCmd: = {
+        Typ="C"
+        Txt="...additional parameters"
+        Items="" $0D "-onlyents"
+        Hint="with -onlyents, read the previous version of the .bsp file and only update the entities"
+      }
+      sep: = {Typ="S"}
+      VIS1: = {Typ="X" Txt="Compute visibility list" Cap="VIS / QVIS3" Hint="required for large maps to run smoothly in Quake. For Quake 2, it is also required for QRAD3 to work properly"}
+      VISCmd: = {
+        Typ="C"
+        Txt="...additional parameters"
+        Items="" $0D "-fast" $0D "-level 0" $0D "-level 1" $0D "-level 2" $0D "-level 3" $0D "-level 4"
+        Hint="computation details, from fastest to compute to fastest in Quake"
+      }
+      sep: = {Typ="S"}
+      LIGHT1: = {Typ="X" Txt="Compute lights" Cap="LIGHT / QRAD3" Hint="computes lights and shadows from 'light' entities. Without this, your map looks full bright"}
+      LIGHTCmd: = {
+        Typ="C"
+        Txt="...additional parameters"
+        Items="" $0D "-extra"
+        Hint="-extra takes longer to compute but looks much better (it prevents 'stairsteps' between shadow and light)"
+      }
+      sep: = {Typ="S"}
+      BSPC1: = {Typ="X" Txt="Build AAS file for Bots" Cap="BSPC" Hint="Only needed if you want to play this map with bots"}
+      BSPCCmd: = {
+        Typ="C"
+        Txt="...additional parameters"
+        Items="" $0D "-noverbose" $0D "-bsp2aas"
+        Hint="noverbose removes the lot of detail messages"
+      }
+      sep: = {Typ="S"}
+      Shortcut: = {Typ="E" Txt="Keyboard shortcut" Hint="Keyboard shortcut as it appears in the menu (recommended: 'Ctrl+letter')"}
+    }
     CustomQuakeMenuSep:form =    // separator in the Quake menu
     {
       Style = "3"
@@ -3103,25 +2869,6 @@ QQRKSRC1
       quark: = {
         Typ = "E R"    // Edit Read-only
         Txt = "Designed for QuArK version"
-      }
-    }
-    Skin:form =     // form on the polyhedrons page
-    {
-      Style = "1"
-      header: = {
-        Typ = "S"
-        Txt = "%s"   // caption text is found in the object put in the form
-        //Bold = "0"
-      }
-      triangles: = {
-        Typ = "E-R"      // edit, read only
-        Txt = "Triangles :"
-        Hint = "The number of triangle this component has|Number of triangles"
-      }
-      ownedby: = {
-        Typ = "E-R"
-        Txt = "Owned by :"
-        Hint = "The 'parent' component in the tree view"
       }
     }
   }
@@ -3172,42 +2919,150 @@ QQRKSRC1
         cube:p =
         {
           ;desc = "cube to put in the map and then resize and reshape"
-          east:f  = { v = '64 0 0 64 128 0 64 0 128' tex = "[auto]" }
-          west:f  = { v = '-64 0 0 -64 0 128 -64 128 0' tex = "[auto]" m = "1" }
-          north:f = { v = '0 64 0 0 64 128 128 64 0' tex = "[auto]" m = "1" }
-          south:f = { v = '0 -64 0 128 -64 0 0 -64 128' tex = "[auto]" }
-          up:f    = { v = '0 0 64 128 0 64 0 128 64' tex = "[auto]" }
-          down:f  = { v = '0 0 -64 0 128 -64 128 0 -64' tex = "[auto]" m = "1" }
+          east:f =
+          {
+            v = '64 0 0 64 128 0 64 0 128'
+            tex = "[auto]"
+          }
+          west:f =
+          {
+            v = '-64 0 0 -64 0 128 -64 128 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          north:f =
+          {
+            v = '0 64 0 0 64 128 128 64 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          south:f =
+          {
+            v = '0 -64 0 128 -64 0 0 -64 128'
+            tex = "[auto]"
+          }
+          up:f =
+          {
+            v = '0 0 64 128 0 64 0 128 64'
+            tex = "[auto]"
+          }
+          down:f =
+          {
+            v = '0 0 -64 0 128 -64 128 0 -64'
+            tex = "[auto]"
+            m = "1"
+          }
         }
         platform:p =
         {
           ;desc = "a flat cube for ground and ceiling"
-          face:f = { v = '-128 0 -32 -128 0 96 -128 128 -32' tex = "[auto]" m = "1" }
-          face:f = { v = '128 0 -32 128 128 -32 128 0 96' tex = "[auto]" }
-          face:f = { v = '0 -128 -32 128 -128 -32 0 -128 96' tex = "[auto]" }
-          face:f = { v = '0 128 -32 0 128 96 128 128 -32' tex = "[auto]" m = "1" }
-          face:f = { v = '0 0 -32 0 128 -32 128 0 -32' tex = "[auto]" m = "1" }
-          face:f = { v = '0 0 -16 128 0 -16 0 128 -16' tex = "[auto]" }
+          face:f =
+          {
+            v = '-128 0 -32 -128 0 96 -128 128 -32'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '128 0 -32 128 128 -32 128 0 96'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 -128 -32 128 -128 -32 0 -128 96'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 128 -32 0 128 96 128 128 -32'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 0 -32 0 128 -32 128 0 -32'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 0 -16 128 0 -16 0 128 -16'
+            tex = "[auto]"
+          }
         }
         wall:p =
         {
           ;desc = "a vertical wall in the X direction"
-          face:f = { v = '-128 0 0 -128 0 128 -128 128 0' tex = "[auto]" m = "1" }
-          face:f = { v = '128 0 0 128 128 0 128 0 128' tex = "[auto]" }
-          face:f = { v = '0 0 0 128 0 0 0 0 128' tex = "[auto]" }
-          face:f = { v = '0 16 0 0 16 128 128 16 0' tex = "[auto]" m = "1" }
-          face:f = { v = '0 0 -128 0 128 -128 128 0 -128' tex = "[auto]" m = "1" }
-          face:f = { v = '0 0 128 128 0 128 0 128 128' tex = "[auto]" }
+          face:f =
+          {
+            v = '-128 0 0 -128 0 128 -128 128 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '128 0 0 128 128 0 128 0 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 0 0 128 0 0 0 0 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 16 0 0 16 128 128 16 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 0 -128 0 128 -128 128 0 -128'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 0 128 128 0 128 0 128 128'
+            tex = "[auto]"
+          }
         }
         wall:p =
         {
           ;desc = "a vertical wall in the Y direction"
-          face:f = { v = '0 0 0 0 0 128 0 128 0' tex = "[auto]" m = "1" }
-          face:f = { v = '16 0 0 16 128 0 16 0 128' tex = "[auto]" }
-          face:f = { v = '0 -128 0 128 -128 0 0 -128 128' tex = "[auto]" }
-          face:f = { v = '0 128 0 0 128 128 128 128 0' tex = "[auto]" m = "1" }
-          face:f = { v = '0 0 -128 0 128 -128 128 0 -128' tex = "[auto]" m = "1" }
-          face:f = { v = '0 0 128 128 0 128 0 128 128' tex = "[auto]" }
+          face:f =
+          {
+            v = '0 0 0 0 0 128 0 128 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '16 0 0 16 128 0 16 0 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 -128 0 128 -128 0 0 -128 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 128 0 0 128 128 128 128 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 0 -128 0 128 -128 128 0 -128'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 0 128 128 0 128 0 128 128'
+            tex = "[auto]"
+          }
         }
       }
       Complex polyhedrons.qtxfolder =
@@ -3215,105 +3070,479 @@ QQRKSRC1
         prism, 6 sides:p =
         {
           ;desc = "a prism with a hexagonal base"
-          face:f = { v = '-0.00001 -128.00000 0 128 -128.00000 0 -0.00001 -128.00000 128' tex = "[auto]" }
-          face:f = { v = '-0.00001 128.00000 0 -0.00001 128.00000 128 128 128.00000 0' tex = "[auto]" m = "1" }
-          face:f = { v = '-0.00001 -0.00002 -128 -0.00001 128.00000 -128 128 -0.00002 -128' tex = "[auto]" m = "1" }
-          face:f = { v = '-0.00001 -0.00002 128 128 -0.00002 128 -0.00001 128.00000 128' tex = "[auto]" }
-          face:f = { v = '147.80160 -0.00002 0 221.70250 128.00000 0 147.80160 -0.00002 128' tex = "[auto]" }
-          face:f = { v = '-147.80170 -0.00002 0 -147.80170 -0.00002 128 -73.90089 128.00000 0' tex = "[auto]" m = "1" }
-          face:f = { v = '147.80170 -0.00002 0 73.90087 128.00000 0 147.80170 -0.00002 128' tex = "[auto]" }
-          face:f = { v = '-147.80170 -0.00002 0 -147.80170 -0.00002 128 -221.70250 128.00000 0' tex = "[auto]" m = "1" }
+          face:f =
+          {
+            v = '-0.00001 -128.00000 0 128 -128.00000 0 -0.00001 -128.00000 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '-0.00001 128.00000 0 -0.00001 128.00000 128 128 128.00000 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '-0.00001 -0.00002 -128 -0.00001 128.00000 -128 128 -0.00002 -128'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '-0.00001 -0.00002 128 128 -0.00002 128 -0.00001 128.00000 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '147.80160 -0.00002 0 221.70250 128.00000 0 147.80160 -0.00002
+              128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '-147.80170 -0.00002 0 -147.80170 -0.00002 128 -73.90089 128.00000
+              0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '147.80170 -0.00002 0 73.90087 128.00000 0 147.80170 -0.00002 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '-147.80170 -0.00002 0 -147.80170 -0.00002 128 -221.70250 128.00000
+              0'
+            tex = "[auto]"
+            m = "1"
+          }
         }
         prism, 8 sides:p =
         {
           ;desc = "a prism with an octogonal base"
-          face:f = { v = '-181.01930 0 0 -181.01930 0 128 -309.01930 128.00000 0' tex = "[auto]" m = "1" }
-          face:f = { v = '181.01920 0 0 53.01929 128.00000 0 181.01920 0 128' tex = "[auto]" }
-          face:f = { v = '789.01930 608 0 917.01930 736 0 789.01930 608 128' tex = "[auto]" }
-          face:f = { v = '426.98070 608 0 426.98070 608 128 554.98070 736 0' tex = "[auto]" m = "1" }
-          face:f = { v = '0 0 -128 0 128.00000 -128 128 0 -128' tex = "[auto]" m = "1" }
-          face:f = { v = '0 0 128 128 0 128 0 128.00000 128' tex = "[auto]" }
-          face:f = { v = '-128 0 0 -128 0 128 -128 128.00000 0' tex = "[auto]" m = "1" }
-          face:f = { v = '128 0 0 128 128.00000 0 128 0 128' tex = "[auto]" }
-          face:f = { v = '0 -128 0 128 -128 0 0 -128 128' tex = "[auto]" }
-          face:f = { v = '0 128.00000 0 0 128.00000 128 128 128.00000 0' tex = "[auto]" m = "1" }
+          face:f =
+          {
+            v = '-181.01930 0 0 -181.01930 0 128 -309.01930 128.00000 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '181.01920 0 0 53.01929 128.00000 0 181.01920 0 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '789.01930 608 0 917.01930 736 0 789.01930 608 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '426.98070 608 0 426.98070 608 128 554.98070 736 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 0 -128 0 128.00000 -128 128 0 -128'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 0 128 128 0 128 0 128.00000 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '-128 0 0 -128 0 128 -128 128.00000 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '128 0 0 128 128.00000 0 128 0 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 -128 0 128 -128 0 0 -128 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 128.00000 0 0 128.00000 128 128 128.00000 0'
+            tex = "[auto]"
+            m = "1"
+          }
         }
         prism, 10 sides:p =
         {
           ;desc = "a prism with a decagonal base"
-          face:f = { v = '0.00002 -128 0 128.00000 -128 0 0.00002 -128 128' tex = "[auto]" }
-          face:f = { v = '0.00002 128 0 0.00002 128 128 128.00000 128 0' tex = "[auto]" m = "1" }
-          face:f = { v = '0.00002 0 -128 0.00002 128 -128 128.00000 0 -128' tex = "[auto]" m = "1" }
-          face:f = { v = '0.00002 0 128 128.00000 0 128 0.00002 128 128' tex = "[auto]" }
-          face:f = { v = '0.00002 158.21670 0 0.00002 158.21670 128 128.00000 251.21410 0' tex = "[auto]" m = "1" }
-          face:f = { v = '0.00002 -158.21670 0 128.00000 -65.21923 0 0.00002 -158.21670 128' tex = "[auto]" }
-          face:f = { v = '-134.58710 0 0 -134.58710 0 128 -92.99741 128 0' tex = "[auto]" m = "1" }
-          face:f = { v = '134.58710 0 0 176.17680 128 0 134.58710 0 128' tex = "[auto]" }
-          face:f = { v = '134.58720 0 0 92.99746 128 0 134.58720 0 128' tex = "[auto]" }
-          face:f = { v = '-134.58710 0 0 -134.58710 0 128 -176.17680 128 0' tex = "[auto]" m = "1" }
-          face:f = { v = '0.00002 158.21670 0 0.00002 158.21670 128 128.00000 65.21912 0' tex = "[auto]" m = "1" }
-          face:f = { v = '0.00002 -158.21670 0 128.00000 -251.21410 0 0.00002 -158.21670 128' tex = "[auto]" }
+          face:f =
+          {
+            v = '0.00002 -128 0 128.00000 -128 0 0.00002 -128 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0.00002 128 0 0.00002 128 128 128.00000 128 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0.00002 0 -128 0.00002 128 -128 128.00000 0 -128'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0.00002 0 128 128.00000 0 128 0.00002 128 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0.00002 158.21670 0 0.00002 158.21670 128 128.00000 251.21410
+              0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0.00002 -158.21670 0 128.00000 -65.21923 0 0.00002 -158.21670
+              128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '-134.58710 0 0 -134.58710 0 128 -92.99741 128 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '134.58710 0 0 176.17680 128 0 134.58710 0 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '134.58720 0 0 92.99746 128 0 134.58720 0 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '-134.58710 0 0 -134.58710 0 128 -176.17680 128 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0.00002 158.21670 0 0.00002 158.21670 128 128.00000 65.21912 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0.00002 -158.21670 0 128.00000 -251.21410 0 0.00002 -158.21670
+              128'
+            tex = "[auto]"
+          }
         }
         cuboctahedron:p =
         {
           ;desc = "a kind of cube with cut corners"
-          face:f = { v = '-64 0 0 -64 0 128 -64 128 0' tex = "[auto]" m = "1" }
-          face:f = { v = '64 0 0 64 128 0 64 0 128' tex = "[auto]" }
-          face:f = { v = '0 -64 0 128 -64 0 0 -64 128' tex = "[auto]" }
-          face:f = { v = '0 64 0 0 64 128 128 64 0' tex = "[auto]" m = "1" }
-          face:f = { v = '0 0 -64 0 128 -64 128 0 -64' tex = "[auto]" m = "1" }
-          face:f = { v = '0 0 64 128 0 64 0 128 64' tex = "[auto]" }
-          face:f = { v = '0 -1248 1376 128 -1248 1248 0 -1120 1248' tex = "[auto]" }
-          face:f = { v = '0 -1248 -1120 128 -1248 -1248 0 -1120 -992' tex = "[auto]" }
-          face:f = { v = '0 -1248 -1120 128 -1248 -992 0 -1120 -992' tex = "[auto]" }
-          face:f = { v = '0 -1248 1376 128 -1248 1504 0 -1120 1248' tex = "[auto]" }
-          face:f = { v = '0 -1248 -1376 0 -1120 -1248 128 -1248 -1504' tex = "[auto]" m = "1" }
-          face:f = { v = '0 -1248 -1376 0 -1120 -1248 128 -1248 -1248' tex = "[auto]" m = "1" }
-          face:f = { v = '0 -1248 1120 0 -1120 992 128 -1248 1248' tex = "[auto]" m = "1" }
-          face:f = { v = '0 -1248 1120 0 -1120 992 128 -1248 992' tex = "[auto]" m = "1" }
+          face:f =
+          {
+            v = '-64 0 0 -64 0 128 -64 128 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '64 0 0 64 128 0 64 0 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 -64 0 128 -64 0 0 -64 128'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 64 0 0 64 128 128 64 0'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 0 -64 0 128 -64 128 0 -64'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 0 64 128 0 64 0 128 64'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 -1248 1376 128 -1248 1248 0 -1120 1248'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 -1248 -1120 128 -1248 -1248 0 -1120 -992'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 -1248 -1120 128 -1248 -992 0 -1120 -992'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 -1248 1376 128 -1248 1504 0 -1120 1248'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 -1248 -1376 0 -1120 -1248 128 -1248 -1504'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 -1248 -1376 0 -1120 -1248 128 -1248 -1248'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 -1248 1120 0 -1120 992 128 -1248 1248'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 -1248 1120 0 -1120 992 128 -1248 992'
+            tex = "[auto]"
+            m = "1"
+          }
         }
         rombobicuboctahedron:p =
         {
           ;desc = "a rough sphere"
-          face:f = { v = '-136 0 -0.00001 -136 0 128.00000 -136 128 -0.00001' tex = "[auto]" m = "1" }
-          face:f = { v = '136 0 -0.00001 136 128 -0.00001 136 0 128.00000' tex = "[auto]" }
-          face:f = { v = '0 -136 -0.00001 128 -136 -0.00001 0 -136 128.00000' tex = "[auto]" }
-          face:f = { v = '0 136 -0.00001 0 136 128.00000 128 136 -0.00001' tex = "[auto]" m = "1" }
-          face:f = { v = '0 0 -136.00000 0 128 -136.00000 128 0 -136.00000' tex = "[auto]" m = "1" }
-          face:f = { v = '0 0 136.00000 128 0 136.00000 0 128 136.00000' tex = "[auto]" }
-          face:f = { v = '0 247.45350 -0.00001 0 120.70240 128.00000 128 119.45350 -0.00001' tex = "[auto]" m = "1" }
-          face:f = { v = '0 247.45360 -0.00001 0 120.70250 128.00000 128 375.45360 -0.00001' tex = "[auto]" m = "1" }
-          face:f = { v = '-247.45360 0 -0.00001 -120.70250 0 128.00000 -375.45370 128 -0.00001' tex = "[auto]" m = "1" }
-          face:f = { v = '535.45360 288 -0.00001 663.45360 416 -0.00001 408.70250 288 128.00000' tex = "[auto]" }
-          face:f = { v = '535.45360 288 -0.00001 663.45360 416 -0.00001 662.20470 288 128.00000' tex = "[auto]" }
-          face:f = { v = '40.54627 288 -0.00001 -86.20483 288 128.00000 168.54630 416 -0.00001' tex = "[auto]" m = "1" }
-          face:f = { v = '-247.45370 0 -0.00001 -374.20480 0 128.00000 -375.45370 128 -0.00001' tex = "[auto]" m = "1" }
-          face:f = { v = '-288 -1024 480 -160 -1024 352 -288 -896 480' tex = "[auto]" }
-          face:f = { v = '0 -1024 1216 128 -1024 1216 0 -896 1088' tex = "[auto]" }
-          face:f = { v = '0 0 192.00000 128 0 320 0 128 192.00000' tex = "[auto]" }
-          face:f = { v = '0 0 192.00000 128 0 192.00000 0 128 320' tex = "[auto]" }
-          face:f = { v = '-480 288 -0.00001 -480 288 128.00000 -608 416 -0.00001' tex = "[auto]" m = "1" }
-          face:f = { v = '480 288 -0.00001 608 416 -0.00001 480 288 128.00000' tex = "[auto]" }
-          face:f = { v = '-96 288 -0.00001 -224 416 -0.00001 -96 288 128.00000' tex = "[auto]" }
-          face:f = { v = '96 288 -0.00001 96 288 128.00000 224 416 -0.00001' tex = "[auto]" m = "1" }
-          face:f = { v = '-288 -1024 95.99998 -288 -896 95.99998 -160 -1024 -32.00002' tex = "[auto]" m = "1" }
-          face:f = { v = '0 -1024 832 0 -896 704 128 -1024 832' tex = "[auto]" m = "1" }
-          face:f = { v = '-288 -1024 -480 -288 -896 -480 -160 -1024 -352' tex = "[auto]" m = "1" }
-          face:f = { v = '0 -1024 -1216 0 -896 -1088 128 -1024 -1216' tex = "[auto]" m = "1" }
-          face:f = { v = '-288 535.45350 -0.00001 -288 662.20460 128.00000 -160 407.45360 -0.00001' tex = "[auto]" m = "1" }
+          face:f =
+          {
+            v = '-136 0 -0.00001 -136 0 128.00000 -136 128 -0.00001'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '136 0 -0.00001 136 128 -0.00001 136 0 128.00000'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 -136 -0.00001 128 -136 -0.00001 0 -136 128.00000'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 136 -0.00001 0 136 128.00000 128 136 -0.00001'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 0 -136.00000 0 128 -136.00000 128 0 -136.00000'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 0 136.00000 128 0 136.00000 0 128 136.00000'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 247.45350 -0.00001 0 120.70240 128.00000 128 119.45350 -0.00001'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 247.45360 -0.00001 0 120.70250 128.00000 128 375.45360 -0.00001'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '-247.45360 0 -0.00001 -120.70250 0 128.00000 -375.45370 128 -0.00001'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '535.45360 288 -0.00001 663.45360 416 -0.00001 408.70250 288 128.00000'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '535.45360 288 -0.00001 663.45360 416 -0.00001 662.20470 288 128.00000'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '40.54627 288 -0.00001 -86.20483 288 128.00000 168.54630 416 -0.00001'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '-247.45370 0 -0.00001 -374.20480 0 128.00000 -375.45370 128 -0.00001'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '-288 -1024 480 -160 -1024 352 -288 -896 480'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 -1024 1216 128 -1024 1216 0 -896 1088'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 0 192.00000 128 0 320 0 128 192.00000'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '0 0 192.00000 128 0 192.00000 0 128 320'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '-480 288 -0.00001 -480 288 128.00000 -608 416 -0.00001'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '480 288 -0.00001 608 416 -0.00001 480 288 128.00000'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '-96 288 -0.00001 -224 416 -0.00001 -96 288 128.00000'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '96 288 -0.00001 96 288 128.00000 224 416 -0.00001'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '-288 -1024 95.99998 -288 -896 95.99998 -160 -1024 -32.00002'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 -1024 832 0 -896 704 128 -1024 832'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '-288 -1024 -480 -288 -896 -480 -160 -1024 -352'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '0 -1024 -1216 0 -896 -1088 128 -1024 -1216'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '-288 535.45350 -0.00001 -288 662.20460 128.00000 -160 407.45360
+              -0.00001'
+            tex = "[auto]"
+            m = "1"
+          }
         }
         cone, 8 sides:p =
         {
           ;desc = "a cone with an octogonal base"
-          face:f = { v = '-480.00020 375.48830 -25.59972 -352.00020 247.48830 -25.59972 -480.00020 479.99990 102.40030' tex = "[auto]" }
-          face:f = { v = '-480.00020 584.51160 -25.59972 -480.00020 480.00000 102.40030 -352.00020 456.51170 -25.59972' tex = "[auto]" m = "1" }
-          face:f = { v = '584.51110 479.99980 -25.59972 712.51110 607.99980 -25.59972 479.99960 479.99980 102.40030' tex = "[auto]" }
-          face:f = { v = '-0.00015 104.51130 -25.59972 -0.00015 -0.00034 102.40030 127.99980 232.51130 -25.59972' tex = "[auto]" m = "1" }
-          face:f = { v = '-0.00015 -0.00021 -25.59972 -0.00015 127.99980 -25.59972 127.99980 -0.00021 -25.59972' tex = "[auto]" m = "1" }
-          face:f = { v = '-73.90103 -0.00021 -25.59972 -0.00015 -0.00021 102.40030 -73.90103 127.99980 -25.59972' tex = "[auto]" m = "1" }
-          face:f = { v = '73.90060 -0.00021 -25.59972 73.90060 127.99980 -25.59972 -0.00015 -0.00021 102.40030' tex = "[auto]" }
-          face:f = { v = '-0.00015 -73.90097 -25.59972 127.99980 -73.90097 -25.59972 -0.00015 -0.00021 102.40030' tex = "[auto]" }
-          face:f = { v = '-0.00015 73.90067 -25.59972 -0.00015 -0.00021 102.40030 127.99980 73.90067 -25.59972' tex = "[auto]" m = "1" }
+          face:f =
+          {
+            v = '-480.00020 375.48830 -25.59972 -352.00020 247.48830 -25.59972
+              -480.00020 479.99990 102.40030'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '-480.00020 584.51160 -25.59972 -480.00020 480.00000 102.40030
+              -352.00020 456.51170 -25.59972'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '584.51110 479.99980 -25.59972 712.51110 607.99980 -25.59972 479.99960
+              479.99980 102.40030'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '-0.00015 104.51130 -25.59972 -0.00015 -0.00034 102.40030 127.99980
+              232.51130 -25.59972'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '-0.00015 -0.00021 -25.59972 -0.00015 127.99980 -25.59972 127.99980
+              -0.00021 -25.59972'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '-73.90103 -0.00021 -25.59972 -0.00015 -0.00021 102.40030 -73.90103
+              127.99980 -25.59972'
+            tex = "[auto]"
+            m = "1"
+          }
+          face:f =
+          {
+            v = '73.90060 -0.00021 -25.59972 73.90060 127.99980 -25.59972 -0.00015
+              -0.00021 102.40030'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '-0.00015 -73.90097 -25.59972 127.99980 -73.90097 -25.59972 -0.00015
+              -0.00021 102.40030'
+            tex = "[auto]"
+          }
+          face:f =
+          {
+            v = '-0.00015 73.90067 -25.59972 -0.00015 -0.00021 102.40030 127.99980
+              73.90067 -25.59972'
+            tex = "[auto]"
+            m = "1"
+          }
         }
       }
       Duplicators & misc.qtxfolder =

@@ -26,11 +26,8 @@ QQRKSRC1
 //$Header$
 // ----------- REVISION HISTORY ------------
 //$Log$
-//Revision 1.16  2000/09/24 23:59:24  alexander
-//committed tiglaris texture name fix
-//
-//Revision 1.15  2000/09/01 00:20:30  alexander
-//merged in 1.14.2.1 to 1.14.2.3 from rel6_1 branch (Maleficus' fixes)
+//Revision 1.14.2.4  2000/09/21 08:34:09  tiglari
+//fixed reversed slash in ggrate8_b texture
 //
 //Revision 1.14.2.3  2000/08/08 23:23:07  alexander
 //corrected history :)
@@ -1611,9 +1608,9 @@ QQRKSRC1
       Base_Button.txlist =
       {
         base_button/shootme2.wl    = { t_q3shader_base_button=! }
-	}
+      }
       Base_Door.txlist =
-	{
+      {
 	base_door/shinymetaldoor.wl               = { t_q3shader_base_door=! }
 	base_door/shinymetaldoor_outside.wl       = { t_q3shader_base_door=! }
 	base_door/shinymetaldoor_outside3a2.wl    = { t_q3shader_base_door=! }
@@ -2298,10 +2295,10 @@ QQRKSRC1
         info_notnull:e =
         {
           origin = "0 0 0"
-	  // Maleficus: Comment fixed
-	  ;desc = "Used as a positional target for entities that use directional pointing. Can also use target_position"
+          // Maleficus: Comment fixed
+          ;desc = "Used as a positional target for entities that use directional pointing. Can also use target_position"
         }
-      }
+       }
       Weapons & Ammo.qtxfolder =
       {
         weapon_gauntlet:e =
@@ -2314,7 +2311,7 @@ QQRKSRC1
         {
           origin = "0 0 0"
           wait = "10"
-	  ;desc = "A weak multiple rounds fired weapon. Uses ammo_bullets. Model is broken, don't use."
+          ;desc = "A weak multiple rounds fired weapon. Uses ammo_bullets. Model is broken, don't use."
         }
         weapon_shotgun:e =
         {
@@ -2362,7 +2359,7 @@ QQRKSRC1
         {
           origin = "0 0 0"
           wait = "10"
-	  ;desc = "Pully and wire used for propelling oneself to higher elevation. Not used in game."
+          ;desc = "Pully and wire used for propelling oneself to higher elevation. Not used in game."
         }
         ammo_bullets:e =
         {
@@ -2406,21 +2403,21 @@ QQRKSRC1
         }
       }
 // Maleficus: A new folder for the missing Q3 Bot entities.     
-	Bot Entites.qtxfolder =
+        Bot Entites.qtxfolder =
       {
         info_camp:e =
-	{
-	origin = "0 0 0"
-	;desc = "This atttracts bots which have a camping preference in their AI characteristics. It should be placed at least 32 units away from any brush surface."
-	}
-	item_botroam:e =
-	{
-	origin = "0 0 0"
-	;desc = "An invisible entity which attracts a bot to it. Good for making bots visit a part of a map."  
-	}
+        {
+        origin = "0 0 0"
+        ;desc = "This atttracts bots which have a camping preference in their AI characteristics. It should be placed at least 32 units away from any brush surface."
+        }
+        item_botroam:e =
+        {
+        origin = "0 0 0"
+        ;desc = "An invisible entity which attracts a bot to it. Good for making bots visit a part of a map."  
+        }
       }
 
-      Misc Entities.qtxfolder =
+     Misc Entities.qtxfolder =
       {
         misc_portal_camera:e =
         {
@@ -2438,12 +2435,12 @@ QQRKSRC1
           targetname = "[auto]"
           ;desc = "Point of teleportation. Is targeted by a trigger_teleporter."
         }
-	// Maleficus: This is more logical in "Misc" Folder
-	misc_model:e =
-	{
-	  origin = "0 0 0"
-	  ;desc = "This can be used to place models in a map."
-	}
+        // Maleficus: This is more logical in "Misc" Folder
+        misc_model:e =
+        {
+          origin = "0 0 0"
+          ;desc = "This can be used to place models in a map."
+        }
       }
       Func Entities.qtxfolder =
       {
@@ -2464,12 +2461,12 @@ QQRKSRC1
           ;desc = "A standard door"
         }
 // Maleficus: this entity is not in the game.
-//	func_door_rotating:b =
-//	{
-//	  angle = "360"
-//	  ;incl = "defpoly"
-//	  ;desc = "A standard rotating door"
-//	}
+//      func_door_rotating:b =
+//      {
+//        angle = "360"
+//        ;incl = "defpoly"
+//        ;desc = "A standard rotating door"
+//      }
 // QuArK already has this functionality in its tree-view
 //        func_group:e =
 //        {
@@ -2478,12 +2475,12 @@ QQRKSRC1
         func_plat:b =
         {
           ;incl = "defpoly"
-	  ;desc = "Used to lift the player in the air with a brush. Bots don't use well!"
+          ;desc = "Used to lift the player in the air with a brush. Bots don't use well!"
         }
         func_static:b =
         {
           ;incl = "defpoly"
-	  ;desc = "Static non-solid bspmodel. Can be used for conditional walls and models."
+          ;desc = "Static non-solid bspmodel. Can be used for conditional walls and models."
         }
         func_timer:e =
         {
@@ -2544,12 +2541,12 @@ QQRKSRC1
         item_enviro:e =
         {
           origin = "0 0 0"
-	  ;desc = "Battle Suit power-up."
+          ;desc = "Battle Suit power-up."
         }
         item_flight:e =
         {
           origin = "0 0 0"
-	  ;desc = "Flight power-up. Bots can't use this."
+          ;desc = "Flight power-up. Bots can't use this."
         }
         item_haste:e =
         {
@@ -2630,18 +2627,18 @@ QQRKSRC1
         target_give:e =
         {
           origin = "0 0 0"
-	  ;desc = "This gives automatically a player an item."
-	}
-//Maleficus: for some reason this was missing.
-	target_kill:e =
-	{
-	  origin = "0 0 0"
-	  ;desc = "This kills the player that activates this."
+          ;desc = "This gives automatically a player an item."
         }
+//Maleficus: for some reason this was missing.
+        target_kill:e =
+        {
+          origin = "0 0 0"
+          ;desc = "This kills the player that activates this."
+        }       
         target_location:e =
         {
           origin = "0 0 0"
-	  ;desc = "Location markers used by teammates."
+          ;desc = "Location markers used by teammates."
         }
         target_position:e =
         {
@@ -2653,12 +2650,12 @@ QQRKSRC1
           origin = "0 0 0"
           ;desc = "Prints a message to the players screen."
         }
-//Maleficus: though its kinda broke, no reason to leave it out.	
-	target_push:e =
-	{
-	  origin = "0 0 0"
-	  ;desc = "Can be used to make launch ramps. Not recommended: is not client-side predicted."
-	}
+//Maleficus: though its kinda broke, no reason to leave it out. 
+        target_push:e =
+        {
+          origin = "0 0 0"
+          ;desc = "Can be used to make launch ramps. Not recommended: is not client-side predicted."
+        }
         target_relay:e =
         {
           origin = "0 0 0"
@@ -2669,21 +2666,21 @@ QQRKSRC1
           origin = "0 0 0"
           ;desc = "Removes all player items from the player."
         }
-	target_score:e =
-	{
-	  origin = "0 0 0"
-	  ;desc = "This is used to automatically give frag points to the player who activates this."
-	}
+        target_score:e =
+        {
+          origin = "0 0 0"
+          ;desc = "This is used to automatically give frag points to the player who activates this."
+        }
         target_speaker:e =
         {
           origin = "0 0 0"
           ;desc = "Plays a wav file in the map."
         }
-	target_teleporter:e =
-	{
-	  origin = "0 0 0"
-	  ;desc = "Activating this will teleport players to the location of the targeted misc_teleporter_dest entity. Unlike trigger_teleport, this entity must be activated by a trigger and does NOT allow client prediction of events."
-	}
+        target_teleporter:e =
+        {
+          origin = "0 0 0"
+          ;desc = "Activating this will teleport players to the location of the targeted misc_teleporter_dest entity. Unlike trigger_teleport, this entity must be activated by a trigger and does NOT allow client prediction of events."
+        }
       }
       Team Entities.qtxfolder =
       {
@@ -2776,16 +2773,16 @@ QQRKSRC1
         form ="t_models_form:form"
         hint ="Available .MD3 files"
       }
-    }
+}
 // Maleficus: Maybe I am just a lame newbie, but I don't know of a way to have quark use
 // "model2" for func_* brushes, so I created t_model2. If there is a better way to do this,
 // please let me know.
     t_model2:incl = {
       model2: = { Txt = " "
-	Typ = "B"
-	Cap = "models..."
-	form ="t_models2_form:form"
-	hint ="Available .MD3 files"
+        Typ = "B"
+        Cap = "models..."
+        form ="t_models2_form:form"
+        hint ="Available .MD3 files"
       }
 }
 	t_noise:incl =
@@ -4037,7 +4034,7 @@ QQRKSRC1
 		"/sound/world/drones/amb1.wav"
 	}
 }
-    t_models_form:form =
+t_models_form:form =
     {
       model: = { typ="C" txt="Ammo"
       items=
@@ -4855,824 +4852,824 @@ QQRKSRC1
         "/models/weapons2/shotgun/shotgun_flash.md3"$0D
         "/models/weapons2/shotgun/shotgun_hand.md3"
       }
-    }
+   }
     t_models2_form:form =
-      {
+    {
       model2: = { typ="C" txt="Ammo"
       items=
-	"grenade1.md3"$0D
-	"rocket/rocket.md3"
+        "grenade1.md3"$0D
+        "rocket/rocket.md3"
       values=
-	"/models/ammo/grenade1.md3"$0D
-	"/models/ammo/rocket/rocket.md3"
+        "/models/ammo/grenade1.md3"$0D
+        "/models/ammo/rocket/rocket.md3"
       }
 
       model2: = { typ="C" txt="Flags"
       items=
-	"b_flag.md3"$0D
-	"r_flag.md3"
+        "b_flag.md3"$0D
+        "r_flag.md3"
       values=
-	"/models/flags/b_flag.md3"$0D
-	"/models/flags/r_flag.md3"
+        "/models/flags/b_flag.md3"$0D
+        "/models/flags/r_flag.md3"
       }
 
       model2: = { typ="C" txt="Gibs"
       items=
-	"abdomen.md3"$0D
-	"arm.md3"$0D
-	"brain.md3"$0D
-	"chest.md3"$0D
-	"fist.md3"$0D
-	"foot.md3"$0D
-	"forearm.md3"$0D
-	"intestine.md3"$0D
-	"leg.md3"$0D
-	"skull.md3"
+        "abdomen.md3"$0D
+        "arm.md3"$0D
+        "brain.md3"$0D
+        "chest.md3"$0D
+        "fist.md3"$0D
+        "foot.md3"$0D
+        "forearm.md3"$0D
+        "intestine.md3"$0D
+        "leg.md3"$0D
+        "skull.md3"
       values=
-	"/models/gibs/abdomen.md3"$0D
-	"/models/gibs/arm.md3"$0D
-	"/models/gibs/brain.md3"$0D
-	"/models/gibs/chest.md3"$0D
-	"/models/gibs/fist.md3"$0D
-	"/models/gibs/foot.md3"$0D
-	"/models/gibs/forearm.md3"$0D
-	"/models/gibs/intestine.md3"$0D
-	"/models/gibs/leg.md3"$0D
-	"/models/gibs/skull.md3"
+        "/models/gibs/abdomen.md3"$0D
+        "/models/gibs/arm.md3"$0D
+        "/models/gibs/brain.md3"$0D
+        "/models/gibs/chest.md3"$0D
+        "/models/gibs/fist.md3"$0D
+        "/models/gibs/foot.md3"$0D
+        "/models/gibs/forearm.md3"$0D
+        "/models/gibs/intestine.md3"$0D
+        "/models/gibs/leg.md3"$0D
+        "/models/gibs/skull.md3"
       }
 
       model2: = { typ="C" txt="MapObjects"
       items=
-	"banner/banner5.md3"$0D
-	"baph/baphomet_gold.md3"$0D
-	"baph/lil_baphomet.md3"$0D
-	"bitch/fembot.md3"$0D
-	"bitch/fembotbig.md3"$0D
-	"corpse/corpse.md3"$0D
-	"corpse/torso.md3"$0D
-	"gargoyle1.md3"$0D
-	"gratelamp/gratelamp.md3"$0D
-	"gratelamp/gratetorch.md3"$0D
-	"gratelamp/gratetorchbig.md3"$0D
-	"jesus/jesus.md3"$0D
-	"jets/jets01.md3"$0D
-	"jets/jets01.md3"$0D
-	"kmlamp1.md3"$0D
-	"lamps/bot_lamp2.md3"$0D
-	"pipe/pipe02.md3"$0D
-	"pipe/pipe02b.md3"$0D
-	"podium/podium4.md3"$0D
-	"portal_2/portal_2.md3"$0D
-	"skel/skel01.md3"$0D
-	"skel/skel02mid.md3"$0D
-	"skel/skel_ribs.md3"$0D
-	"skel/xray.md3"$0D
-	"skel/xraybig.md3"$0D
-	"skull/monkeyface.md3"$0D
-	"skull/skull.md3"$0D
-	"skull/skull_tilt1.md3"$0D
-	"spotlamp/spotlamp.md3"$0D
-	"statue_major.md3"$0D
-	"storch/storch.md3"$0D
-	"storch/storchx.md3"$0D
-	"storch/tall_torch.md3"$0D
-	"teleporter/teleporter.md3"$0D
-	"timlamp/timlamp.md3"$0D
-	"visor_posed.md3"$0D
-	"wallhead/femhead.md3"$0D
-	"wallhead/lion.md3"$0D
-	"wallhead/wallhead02.md3"$0D
-	"walllamp3.md3"
+        "banner/banner5.md3"$0D
+        "baph/baphomet_gold.md3"$0D
+        "baph/lil_baphomet.md3"$0D
+        "bitch/fembot.md3"$0D
+        "bitch/fembotbig.md3"$0D
+        "corpse/corpse.md3"$0D
+        "corpse/torso.md3"$0D
+        "gargoyle1.md3"$0D
+        "gratelamp/gratelamp.md3"$0D
+        "gratelamp/gratetorch.md3"$0D
+        "gratelamp/gratetorchbig.md3"$0D
+        "jesus/jesus.md3"$0D
+        "jets/jets01.md3"$0D
+        "jets/jets01.md3"$0D
+        "kmlamp1.md3"$0D
+        "lamps/bot_lamp2.md3"$0D
+        "pipe/pipe02.md3"$0D
+        "pipe/pipe02b.md3"$0D
+        "podium/podium4.md3"$0D
+        "portal_2/portal_2.md3"$0D
+        "skel/skel01.md3"$0D
+        "skel/skel02mid.md3"$0D
+        "skel/skel_ribs.md3"$0D
+        "skel/xray.md3"$0D
+        "skel/xraybig.md3"$0D
+        "skull/monkeyface.md3"$0D
+        "skull/skull.md3"$0D
+        "skull/skull_tilt1.md3"$0D
+        "spotlamp/spotlamp.md3"$0D
+        "statue_major.md3"$0D
+        "storch/storch.md3"$0D
+        "storch/storchx.md3"$0D
+        "storch/tall_torch.md3"$0D
+        "teleporter/teleporter.md3"$0D
+        "timlamp/timlamp.md3"$0D
+        "visor_posed.md3"$0D
+        "wallhead/femhead.md3"$0D
+        "wallhead/lion.md3"$0D
+        "wallhead/wallhead02.md3"$0D
+        "walllamp3.md3"
       values=
-	"/models/mapobjects/banner/banner5.md3"$0D
-	"/models/mapobjects/baph/baphomet_gold.md3"$0D
-	"/models/mapobjects/baph/lil_baphomet.md3"$0D
-	"/models/mapobjects/bitch/fembot.md3"$0D
-	"/models/mapobjects/bitch/fembotbig.md3"$0D
-	"/models/mapobjects/corpse/corpse.md3"$0D
-	"/models/mapobjects/corpse/torso.md3"$0D
-	"/models/mapobjects/gargoyle1.md3"$0D
-	"/models/mapobjects/gratelamp/gratelamp.md3"$0D
-	"/models/mapobjects/gratelamp/gratetorch.md3"$0D
-	"/models/mapobjects/gratelamp/gratetorchbig.md3"$0D
-	"/models/mapobjects/jesus/jesus.md3"$0D
-	"/models/mapobjects/jets/jets01.md3"$0D
-	"/models/mapobjects/jets/jets01.md3"$0D
-	"/models/mapobjects/kmlamp1.md3"$0D
-	"/models/mapobjects/lamps/bot_lamp2.md3"$0D
-	"/models/mapobjects/pipe/pipe02.md3"$0D
-	"/models/mapobjects/pipe/pipe02b.md3"$0D
-	"/models/mapobjects/podium/podium4.md3"$0D
-	"/models/mapobjects/portal_2/portal_2.md3"$0D
-	"/models/mapobjects/skel/skel01.md3"$0D
-	"/models/mapobjects/skel/skel02mid.md3"$0D
-	"/models/mapobjects/skel/skel_ribs.md3"$0D
-	"/models/mapobjects/skel/xray.md3"$0D
-	"/models/mapobjects/skel/xraybig.md3"$0D
-	"/models/mapobjects/skull/monkeyface.md3"$0D
-	"/models/mapobjects/skull/skull.md3"$0D
-	"/models/mapobjects/skull/skull_tilt1.md3"$0D
-	"/models/mapobjects/spotlamp/spotlamp.md3"$0D
-	"/models/mapobjects/statue_major.md3"$0D
-	"/models/mapobjects/storch/storch.md3"$0D
-	"/models/mapobjects/storch/storchx.md3"$0D
-	"/models/mapobjects/storch/tall_torch.md3"$0D
-	"/models/mapobjects/teleporter/teleporter.md3"$0D
-	"/models/mapobjects/timlamp/timlamp.md3"$0D
-	"/models/mapobjects/visor_posed.md3"$0D
-	"/models/mapobjects/wallhead/femhead.md3"$0D
-	"/models/mapobjects/wallhead/lion.md3"$0D
-	"/models/mapobjects/wallhead/wallhead02.md3"$0D
-	"/models/mapobjects/walllamp3.md3"
+        "/models/mapobjects/banner/banner5.md3"$0D
+        "/models/mapobjects/baph/baphomet_gold.md3"$0D
+        "/models/mapobjects/baph/lil_baphomet.md3"$0D
+        "/models/mapobjects/bitch/fembot.md3"$0D
+        "/models/mapobjects/bitch/fembotbig.md3"$0D
+        "/models/mapobjects/corpse/corpse.md3"$0D
+        "/models/mapobjects/corpse/torso.md3"$0D
+        "/models/mapobjects/gargoyle1.md3"$0D
+        "/models/mapobjects/gratelamp/gratelamp.md3"$0D
+        "/models/mapobjects/gratelamp/gratetorch.md3"$0D
+        "/models/mapobjects/gratelamp/gratetorchbig.md3"$0D
+        "/models/mapobjects/jesus/jesus.md3"$0D
+        "/models/mapobjects/jets/jets01.md3"$0D
+        "/models/mapobjects/jets/jets01.md3"$0D
+        "/models/mapobjects/kmlamp1.md3"$0D
+        "/models/mapobjects/lamps/bot_lamp2.md3"$0D
+        "/models/mapobjects/pipe/pipe02.md3"$0D
+        "/models/mapobjects/pipe/pipe02b.md3"$0D
+        "/models/mapobjects/podium/podium4.md3"$0D
+        "/models/mapobjects/portal_2/portal_2.md3"$0D
+        "/models/mapobjects/skel/skel01.md3"$0D
+        "/models/mapobjects/skel/skel02mid.md3"$0D
+        "/models/mapobjects/skel/skel_ribs.md3"$0D
+        "/models/mapobjects/skel/xray.md3"$0D
+        "/models/mapobjects/skel/xraybig.md3"$0D
+        "/models/mapobjects/skull/monkeyface.md3"$0D
+        "/models/mapobjects/skull/skull.md3"$0D
+        "/models/mapobjects/skull/skull_tilt1.md3"$0D
+        "/models/mapobjects/spotlamp/spotlamp.md3"$0D
+        "/models/mapobjects/statue_major.md3"$0D
+        "/models/mapobjects/storch/storch.md3"$0D
+        "/models/mapobjects/storch/storchx.md3"$0D
+        "/models/mapobjects/storch/tall_torch.md3"$0D
+        "/models/mapobjects/teleporter/teleporter.md3"$0D
+        "/models/mapobjects/timlamp/timlamp.md3"$0D
+        "/models/mapobjects/visor_posed.md3"$0D
+        "/models/mapobjects/wallhead/femhead.md3"$0D
+        "/models/mapobjects/wallhead/lion.md3"$0D
+        "/models/mapobjects/wallhead/wallhead02.md3"$0D
+        "/models/mapobjects/walllamp3.md3"
       }
 
       model2: = { typ="C" txt="Misc"
       items=
-	"telep.md3"
+        "telep.md3"
       values=
-	"/models/misc/telep.md3"
+        "/models/misc/telep.md3"
       }
 
       model2: = { typ="C" txt="Players"
       items=
-	"anarki/head.md3"$0D
-	"anarki/head_1.md3"$0D
-	"anarki/head_2.md3"$0D
-	"anarki/lower.md3"$0D
-	"anarki/lower_1.md3"$0D
-	"anarki/lower_2.md3"$0D
-	"anarki/upper.md3"$0D
-	"anarki/upper_1.md3"$0D
-	"anarki/upper_2.md3"$0D
-	"biker/head.md3"$0D
-	"biker/head_1.md3"$0D
-	"biker/head_2.md3"$0D
-	"biker/lower.md3"$0D
-	"biker/lower_1.md3"$0D
-	"biker/lower_2.md3"$0D
-	"biker/upper.md3"$0D
-	"biker/upper_1.md3"$0D
-	"biker/upper_2.md3"$0D
-	"bitterman/head.md3"$0D
-	"bitterman/head_1.md3"$0D
-	"bitterman/head_2.md3"$0D
-	"bitterman/lower.md3"$0D
-	"bitterman/lower_1.md3"$0D
-	"bitterman/lower_2.md3"$0D
-	"bitterman/upper.md3"$0D
-	"bitterman/upper_1.md3"$0D
-	"bitterman/upper_2.md3"$0D
-	"bones/head.md3"$0D
-	"bones/head_1.md3"$0D
-	"bones/lower.md3"$0D
-	"bones/lower_1.md3"$0D
-	"bones/upper.md3"$0D
-	"bones/upper_1.md3"$0D
-	"crash/head.md3"$0D
-	"crash/head_1.md3"$0D
-	"crash/head_2.md3"$0D
-	"crash/lower.md3"$0D
-	"crash/lower_1.md3"$0D
-	"crash/lower_2.md3"$0D
-	"crash/upper.md3"$0D
-	"crash/upper_1.md3"$0D
-	"crash/upper_2.md3"$0D
-	"doom/head.md3"$0D
-	"doom/head_1.md3"$0D
-	"doom/head_2.md3"$0D
-	"doom/lower.md3"$0D
-	"doom/lower_1.md3"$0D
-	"doom/lower_2.md3"$0D
-	"doom/upper.md3"$0D
-	"doom/upper_1.md3"$0D
-	"doom/upper_2.md3"$0D
-	"grunt/head.md3"$0D
-	"grunt/head_1.md3"$0D
-	"grunt/head_2.md3"$0D
-	"grunt/lower.md3"$0D
-	"grunt/lower_1.md3"$0D
-	"grunt/lower_2.md3"$0D
-	"grunt/upper.md3"$0D
-	"grunt/upper_1.md3"$0D
-	"grunt/upper_2.md3"$0D
-	"hunter/head.md3"$0D
-	"hunter/head_1.md3"$0D
-	"hunter/head_2.md3"$0D
-	"hunter/lower.md3"$0D
-	"hunter/lower_1.md3"$0D
-	"hunter/lower_2.md3"$0D
-	"hunter/upper.md3"$0D
-	"hunter/upper_1.md3"$0D
-	"hunter/upper_2.md3"$0D
-	"keel/head.md3"$0D
-	"keel/head_1.md3"$0D
-	"keel/head_2.md3"$0D
-	"keel/lower.md3"$0D
-	"keel/lower_1.md3"$0D
-	"keel/lower_2.md3"$0D
-	"keel/upper.md3"$0D
-	"keel/upper_1.md3"$0D
-	"keel/upper_2.md3"$0D
-	"klesk/head.md3"$0D
-	"klesk/head_1.md3"$0D
-	"klesk/head_2.md3"$0D
-	"klesk/lower.md3"$0D
-	"klesk/lower_1.md3"$0D
-	"klesk/lower_2.md3"$0D
-	"klesk/upper.md3"$0D
-	"klesk/upper_1.md3"$0D
-	"klesk/upper_2.md3"$0D
-	"lucy/head.md3"$0D
-	"lucy/head_1.md3"$0D
-	"lucy/head_2.md3"$0D
-	"lucy/lower.md3"$0D
-	"lucy/lower_1.md3"$0D
-	"lucy/lower_2.md3"$0D
-	"lucy/upper.md3"$0D
-	"lucy/upper_1.md3"$0D
-	"lucy/upper_2.md3"$0D
-	"major/head.md3"$0D
-	"major/head_1.md3"$0D
-	"major/head_2.md3"$0D
-	"major/lower.md3"$0D
-	"major/lower_1.md3"$0D
-	"major/lower_2.md3"$0D
-	"major/upper.md3"$0D
-	"major/upper_1.md3"$0D
-	"major/upper_2.md3"$0D
-	"mynx/head.md3"$0D
-	"mynx/head_1.md3"$0D
-	"mynx/head_2.md3"$0D
-	"mynx/lower.md3"$0D
-	"mynx/lower_1.md3"$0D
-	"mynx/lower_2.md3"$0D
-	"mynx/upper.md3"$0D
-	"mynx/upper_1.md3"$0D
-	"mynx/upper_2.md3"$0D
-	"orbb/head.md3"$0D
-	"orbb/head_1.md3"$0D
-	"orbb/head_2.md3"$0D
-	"orbb/lower.md3"$0D
-	"orbb/lower_1.md3"$0D
-	"orbb/lower_2.md3"$0D
-	"orbb/upper.md3"$0D
-	"orbb/upper_1.md3"$0D
-	"orbb/upper_2.md3"$0D
-	"ranger/head.md3"$0D
-	"ranger/head_1.md3"$0D
-	"ranger/head_2.md3"$0D
-	"ranger/lower.md3"$0D
-	"ranger/lower_1.md3"$0D
-	"ranger/lower_2.md3"$0D
-	"ranger/upper.md3"$0D
-	"ranger/upper_1.md3"$0D
-	"ranger/upper_2.md3"$0D
-	"razor/head.md3"$0D
-	"razor/head_1.md3"$0D
-	"razor/head_2.md3"$0D
-	"razor/lower.md3"$0D
-	"razor/lower_1.md3"$0D
-	"razor/lower_2.md3"$0D
-	"razor/upper.md3"$0D
-	"razor/upper_1.md3"$0D
-	"razor/upper_2.md3"$0D
-	"sarge/head.md3"$0D
-	"sarge/head_1.md3"$0D
-	"sarge/head_2.md3"$0D
-	"sarge/lower.md3"$0D
-	"sarge/lower_1.md3"$0D
-	"sarge/lower_2.md3"$0D
-	"sarge/upper.md3"$0D
-	"sarge/upper_1.md3"$0D
-	"sarge/upper_2.md3"$0D
-	"slash/head.md3"$0D
-	"slash/head_1.md3"$0D
-	"slash/head_2.md3"$0D
-	"slash/lower.md3"$0D
-	"slash/lower_1.md3"$0D
-	"slash/lower_2.md3"$0D
-	"slash/upper.md3"$0D
-	"slash/upper_1.md3"$0D
-	"slash/upper_2.md3"$0D
-	"sorlag/head.md3"$0D
-	"sorlag/head_1.md3"$0D
-	"sorlag/head_2.md3"$0D
-	"sorlag/lower.md3"$0D
-	"sorlag/lower_1.md3"$0D
-	"sorlag/lower_2.md3"$0D
-	"sorlag/upper.md3"$0D
-	"sorlag/upper_1.md3"$0D
-	"sorlag/upper_2.md3"$0D
-	"tankjr/head.md3"$0D
-	"tankjr/head_1.md3"$0D
-	"tankjr/head_2.md3"$0D
-	"tankjr/lower.md3"$0D
-	"tankjr/lower_1.md3"$0D
-	"tankjr/lower_2.md3"$0D
-	"tankjr/upper.md3"$0D
-	"tankjr/upper_1.md3"$0D
-	"tankjr/upper_2.md3"$0D
-	"uriel/head.md3"$0D
-	"uriel/head_1.md3"$0D
-	"uriel/head_2.md3"$0D
-	"uriel/lower.md3"$0D
-	"uriel/lower_1.md3"$0D
-	"uriel/lower_2.md3"$0D
-	"uriel/upper.md3"$0D
-	"uriel/upper_1.md3"$0D
-	"uriel/upper_2.md3"$0D
-	"visor/head.md3"$0D
-	"visor/head_1.md3"$0D
-	"visor/head_2.md3"$0D
-	"visor/lower.md3"$0D
-	"visor/lower_1.md3"$0D
-	"visor/lower_2.md3"$0D
-	"visor/upper.md3"$0D
-	"visor/upper_1.md3"$0D
-	"visor/upper_2.md3"$0D
-	"xaero/head.md3"$0D
-	"xaero/head_1.md3"$0D
-	"xaero/head_2.md3"$0D
-	"xaero/lower.md3"$0D
-	"xaero/lower_1.md3"$0D
-	"xaero/lower_2.md3"$0D
-	"xaero/upper.md3"$0D
-	"xaero/upper_1.md3"$0D
-	"xaero/upper_2.md3"
+        "anarki/head.md3"$0D
+        "anarki/head_1.md3"$0D
+        "anarki/head_2.md3"$0D
+        "anarki/lower.md3"$0D
+        "anarki/lower_1.md3"$0D
+        "anarki/lower_2.md3"$0D
+        "anarki/upper.md3"$0D
+        "anarki/upper_1.md3"$0D
+        "anarki/upper_2.md3"$0D
+        "biker/head.md3"$0D
+        "biker/head_1.md3"$0D
+        "biker/head_2.md3"$0D
+        "biker/lower.md3"$0D
+        "biker/lower_1.md3"$0D
+        "biker/lower_2.md3"$0D
+        "biker/upper.md3"$0D
+        "biker/upper_1.md3"$0D
+        "biker/upper_2.md3"$0D
+        "bitterman/head.md3"$0D
+        "bitterman/head_1.md3"$0D
+        "bitterman/head_2.md3"$0D
+        "bitterman/lower.md3"$0D
+        "bitterman/lower_1.md3"$0D
+        "bitterman/lower_2.md3"$0D
+        "bitterman/upper.md3"$0D
+        "bitterman/upper_1.md3"$0D
+        "bitterman/upper_2.md3"$0D
+        "bones/head.md3"$0D
+        "bones/head_1.md3"$0D
+        "bones/lower.md3"$0D
+        "bones/lower_1.md3"$0D
+        "bones/upper.md3"$0D
+        "bones/upper_1.md3"$0D
+        "crash/head.md3"$0D
+        "crash/head_1.md3"$0D
+        "crash/head_2.md3"$0D
+        "crash/lower.md3"$0D
+        "crash/lower_1.md3"$0D
+        "crash/lower_2.md3"$0D
+        "crash/upper.md3"$0D
+        "crash/upper_1.md3"$0D
+        "crash/upper_2.md3"$0D
+        "doom/head.md3"$0D
+        "doom/head_1.md3"$0D
+        "doom/head_2.md3"$0D
+        "doom/lower.md3"$0D
+        "doom/lower_1.md3"$0D
+        "doom/lower_2.md3"$0D
+        "doom/upper.md3"$0D
+        "doom/upper_1.md3"$0D
+        "doom/upper_2.md3"$0D
+        "grunt/head.md3"$0D
+        "grunt/head_1.md3"$0D
+        "grunt/head_2.md3"$0D
+        "grunt/lower.md3"$0D
+        "grunt/lower_1.md3"$0D
+        "grunt/lower_2.md3"$0D
+        "grunt/upper.md3"$0D
+        "grunt/upper_1.md3"$0D
+        "grunt/upper_2.md3"$0D
+        "hunter/head.md3"$0D
+        "hunter/head_1.md3"$0D
+        "hunter/head_2.md3"$0D
+        "hunter/lower.md3"$0D
+        "hunter/lower_1.md3"$0D
+        "hunter/lower_2.md3"$0D
+        "hunter/upper.md3"$0D
+        "hunter/upper_1.md3"$0D
+        "hunter/upper_2.md3"$0D
+        "keel/head.md3"$0D
+        "keel/head_1.md3"$0D
+        "keel/head_2.md3"$0D
+        "keel/lower.md3"$0D
+        "keel/lower_1.md3"$0D
+        "keel/lower_2.md3"$0D
+        "keel/upper.md3"$0D
+        "keel/upper_1.md3"$0D
+        "keel/upper_2.md3"$0D
+        "klesk/head.md3"$0D
+        "klesk/head_1.md3"$0D
+        "klesk/head_2.md3"$0D
+        "klesk/lower.md3"$0D
+        "klesk/lower_1.md3"$0D
+        "klesk/lower_2.md3"$0D
+        "klesk/upper.md3"$0D
+        "klesk/upper_1.md3"$0D
+        "klesk/upper_2.md3"$0D
+        "lucy/head.md3"$0D
+        "lucy/head_1.md3"$0D
+        "lucy/head_2.md3"$0D
+        "lucy/lower.md3"$0D
+        "lucy/lower_1.md3"$0D
+        "lucy/lower_2.md3"$0D
+        "lucy/upper.md3"$0D
+        "lucy/upper_1.md3"$0D
+        "lucy/upper_2.md3"$0D
+        "major/head.md3"$0D
+        "major/head_1.md3"$0D
+        "major/head_2.md3"$0D
+        "major/lower.md3"$0D
+        "major/lower_1.md3"$0D
+        "major/lower_2.md3"$0D
+        "major/upper.md3"$0D
+        "major/upper_1.md3"$0D
+        "major/upper_2.md3"$0D
+        "mynx/head.md3"$0D
+        "mynx/head_1.md3"$0D
+        "mynx/head_2.md3"$0D
+        "mynx/lower.md3"$0D
+        "mynx/lower_1.md3"$0D
+        "mynx/lower_2.md3"$0D
+        "mynx/upper.md3"$0D
+        "mynx/upper_1.md3"$0D
+        "mynx/upper_2.md3"$0D
+        "orbb/head.md3"$0D
+        "orbb/head_1.md3"$0D
+        "orbb/head_2.md3"$0D
+        "orbb/lower.md3"$0D
+        "orbb/lower_1.md3"$0D
+        "orbb/lower_2.md3"$0D
+        "orbb/upper.md3"$0D
+        "orbb/upper_1.md3"$0D
+        "orbb/upper_2.md3"$0D
+        "ranger/head.md3"$0D
+        "ranger/head_1.md3"$0D
+        "ranger/head_2.md3"$0D
+        "ranger/lower.md3"$0D
+        "ranger/lower_1.md3"$0D
+        "ranger/lower_2.md3"$0D
+        "ranger/upper.md3"$0D
+        "ranger/upper_1.md3"$0D
+        "ranger/upper_2.md3"$0D
+        "razor/head.md3"$0D
+        "razor/head_1.md3"$0D
+        "razor/head_2.md3"$0D
+        "razor/lower.md3"$0D
+        "razor/lower_1.md3"$0D
+        "razor/lower_2.md3"$0D
+        "razor/upper.md3"$0D
+        "razor/upper_1.md3"$0D
+        "razor/upper_2.md3"$0D
+        "sarge/head.md3"$0D
+        "sarge/head_1.md3"$0D
+        "sarge/head_2.md3"$0D
+        "sarge/lower.md3"$0D
+        "sarge/lower_1.md3"$0D
+        "sarge/lower_2.md3"$0D
+        "sarge/upper.md3"$0D
+        "sarge/upper_1.md3"$0D
+        "sarge/upper_2.md3"$0D
+        "slash/head.md3"$0D
+        "slash/head_1.md3"$0D
+        "slash/head_2.md3"$0D
+        "slash/lower.md3"$0D
+        "slash/lower_1.md3"$0D
+        "slash/lower_2.md3"$0D
+        "slash/upper.md3"$0D
+        "slash/upper_1.md3"$0D
+        "slash/upper_2.md3"$0D
+        "sorlag/head.md3"$0D
+        "sorlag/head_1.md3"$0D
+        "sorlag/head_2.md3"$0D
+        "sorlag/lower.md3"$0D
+        "sorlag/lower_1.md3"$0D
+        "sorlag/lower_2.md3"$0D
+        "sorlag/upper.md3"$0D
+        "sorlag/upper_1.md3"$0D
+        "sorlag/upper_2.md3"$0D
+        "tankjr/head.md3"$0D
+        "tankjr/head_1.md3"$0D
+        "tankjr/head_2.md3"$0D
+        "tankjr/lower.md3"$0D
+        "tankjr/lower_1.md3"$0D
+        "tankjr/lower_2.md3"$0D
+        "tankjr/upper.md3"$0D
+        "tankjr/upper_1.md3"$0D
+        "tankjr/upper_2.md3"$0D
+        "uriel/head.md3"$0D
+        "uriel/head_1.md3"$0D
+        "uriel/head_2.md3"$0D
+        "uriel/lower.md3"$0D
+        "uriel/lower_1.md3"$0D
+        "uriel/lower_2.md3"$0D
+        "uriel/upper.md3"$0D
+        "uriel/upper_1.md3"$0D
+        "uriel/upper_2.md3"$0D
+        "visor/head.md3"$0D
+        "visor/head_1.md3"$0D
+        "visor/head_2.md3"$0D
+        "visor/lower.md3"$0D
+        "visor/lower_1.md3"$0D
+        "visor/lower_2.md3"$0D
+        "visor/upper.md3"$0D
+        "visor/upper_1.md3"$0D
+        "visor/upper_2.md3"$0D
+        "xaero/head.md3"$0D
+        "xaero/head_1.md3"$0D
+        "xaero/head_2.md3"$0D
+        "xaero/lower.md3"$0D
+        "xaero/lower_1.md3"$0D
+        "xaero/lower_2.md3"$0D
+        "xaero/upper.md3"$0D
+        "xaero/upper_1.md3"$0D
+        "xaero/upper_2.md3"
       values=
-	"/models/players/anarki/head.md3"$0D
-	"/models/players/anarki/head_1.md3"$0D
-	"/models/players/anarki/head_2.md3"$0D
-	"/models/players/anarki/lower.md3"$0D
-	"/models/players/anarki/lower_1.md3"$0D
-	"/models/players/anarki/lower_2.md3"$0D
-	"/models/players/anarki/upper.md3"$0D
-	"/models/players/anarki/upper_1.md3"$0D
-	"/models/players/anarki/upper_2.md3"$0D
-	"/models/players/biker/head.md3"$0D
-	"/models/players/biker/head_1.md3"$0D
-	"/models/players/biker/head_2.md3"$0D
-	"/models/players/biker/lower.md3"$0D
-	"/models/players/biker/lower_1.md3"$0D
-	"/models/players/biker/lower_2.md3"$0D
-	"/models/players/biker/upper.md3"$0D
-	"/models/players/biker/upper_1.md3"$0D
-	"/models/players/biker/upper_2.md3"$0D
-	"/models/players/bitterman/head.md3"$0D
-	"/models/players/bitterman/head_1.md3"$0D
-	"/models/players/bitterman/head_2.md3"$0D
-	"/models/players/bitterman/lower.md3"$0D
-	"/models/players/bitterman/lower_1.md3"$0D
-	"/models/players/bitterman/lower_2.md3"$0D
-	"/models/players/bitterman/upper.md3"$0D
-	"/models/players/bitterman/upper_1.md3"$0D
-	"/models/players/bitterman/upper_2.md3"$0D
-	"/models/players/bones/head.md3"$0D
-	"/models/players/bones/head_1.md3"$0D
-	"/models/players/bones/lower.md3"$0D
-	"/models/players/bones/lower_1.md3"$0D
-	"/models/players/bones/upper.md3"$0D
-	"/models/players/bones/upper_1.md3"$0D
-	"/models/players/crash/head.md3"$0D
-	"/models/players/crash/head_1.md3"$0D
-	"/models/players/crash/head_2.md3"$0D
-	"/models/players/crash/lower.md3"$0D
-	"/models/players/crash/lower_1.md3"$0D
-	"/models/players/crash/lower_2.md3"$0D
-	"/models/players/crash/upper.md3"$0D
-	"/models/players/crash/upper_1.md3"$0D
-	"/models/players/crash/upper_2.md3"$0D
-	"/models/players/doom/head.md3"$0D
-	"/models/players/doom/head_1.md3"$0D
-	"/models/players/doom/head_2.md3"$0D
-	"/models/players/doom/lower.md3"$0D
-	"/models/players/doom/lower_1.md3"$0D
-	"/models/players/doom/lower_2.md3"$0D
-	"/models/players/doom/upper.md3"$0D
-	"/models/players/doom/upper_1.md3"$0D
-	"/models/players/doom/upper_2.md3"$0D
-	"/models/players/grunt/head.md3"$0D
-	"/models/players/grunt/head_1.md3"$0D
-	"/models/players/grunt/head_2.md3"$0D
-	"/models/players/grunt/lower.md3"$0D
-	"/models/players/grunt/lower_1.md3"$0D
-	"/models/players/grunt/lower_2.md3"$0D
-	"/models/players/grunt/upper.md3"$0D
-	"/models/players/grunt/upper_1.md3"$0D
-	"/models/players/grunt/upper_2.md3"$0D
-	"/models/players/hunter/head.md3"$0D
-	"/models/players/hunter/head_1.md3"$0D
-	"/models/players/hunter/head_2.md3"$0D
-	"/models/players/hunter/lower.md3"$0D
-	"/models/players/hunter/lower_1.md3"$0D
-	"/models/players/hunter/lower_2.md3"$0D
-	"/models/players/hunter/upper.md3"$0D
-	"/models/players/hunter/upper_1.md3"$0D
-	"/models/players/hunter/upper_2.md3"$0D
-	"/models/players/keel/head.md3"$0D
-	"/models/players/keel/head_1.md3"$0D
-	"/models/players/keel/head_2.md3"$0D
-	"/models/players/keel/lower.md3"$0D
-	"/models/players/keel/lower_1.md3"$0D
-	"/models/players/keel/lower_2.md3"$0D
-	"/models/players/keel/upper.md3"$0D
-	"/models/players/keel/upper_1.md3"$0D
-	"/models/players/keel/upper_2.md3"$0D
-	"/models/players/klesk/head.md3"$0D
-	"/models/players/klesk/head_1.md3"$0D
-	"/models/players/klesk/head_2.md3"$0D
-	"/models/players/klesk/lower.md3"$0D
-	"/models/players/klesk/lower_1.md3"$0D
-	"/models/players/klesk/lower_2.md3"$0D
-	"/models/players/klesk/upper.md3"$0D
-	"/models/players/klesk/upper_1.md3"$0D
-	"/models/players/klesk/upper_2.md3"$0D
-	"/models/players/lucy/head.md3"$0D
-	"/models/players/lucy/head_1.md3"$0D
-	"/models/players/lucy/head_2.md3"$0D
-	"/models/players/lucy/lower.md3"$0D
-	"/models/players/lucy/lower_1.md3"$0D
-	"/models/players/lucy/lower_2.md3"$0D
-	"/models/players/lucy/upper.md3"$0D
-	"/models/players/lucy/upper_1.md3"$0D
-	"/models/players/lucy/upper_2.md3"$0D
-	"/models/players/major/head.md3"$0D
-	"/models/players/major/head_1.md3"$0D
-	"/models/players/major/head_2.md3"$0D
-	"/models/players/major/lower.md3"$0D
-	"/models/players/major/lower_1.md3"$0D
-	"/models/players/major/lower_2.md3"$0D
-	"/models/players/major/upper.md3"$0D
-	"/models/players/major/upper_1.md3"$0D
-	"/models/players/major/upper_2.md3"$0D
-	"/models/players/mynx/head.md3"$0D
-	"/models/players/mynx/head_1.md3"$0D
-	"/models/players/mynx/head_2.md3"$0D
-	"/models/players/mynx/lower.md3"$0D
-	"/models/players/mynx/lower_1.md3"$0D
-	"/models/players/mynx/lower_2.md3"$0D
-	"/models/players/mynx/upper.md3"$0D
-	"/models/players/mynx/upper_1.md3"$0D
-	"/models/players/mynx/upper_2.md3"$0D
-	"/models/players/orbb/head.md3"$0D
-	"/models/players/orbb/head_1.md3"$0D
-	"/models/players/orbb/head_2.md3"$0D
-	"/models/players/orbb/lower.md3"$0D
-	"/models/players/orbb/lower_1.md3"$0D
-	"/models/players/orbb/lower_2.md3"$0D
-	"/models/players/orbb/upper.md3"$0D
-	"/models/players/orbb/upper_1.md3"$0D
-	"/models/players/orbb/upper_2.md3"$0D
-	"/models/players/ranger/head.md3"$0D
-	"/models/players/ranger/head_1.md3"$0D
-	"/models/players/ranger/head_2.md3"$0D
-	"/models/players/ranger/lower.md3"$0D
-	"/models/players/ranger/lower_1.md3"$0D
-	"/models/players/ranger/lower_2.md3"$0D
-	"/models/players/ranger/upper.md3"$0D
-	"/models/players/ranger/upper_1.md3"$0D
-	"/models/players/ranger/upper_2.md3"$0D
-	"/models/players/razor/head.md3"$0D
-	"/models/players/razor/head_1.md3"$0D
-	"/models/players/razor/head_2.md3"$0D
-	"/models/players/razor/lower.md3"$0D
-	"/models/players/razor/lower_1.md3"$0D
-	"/models/players/razor/lower_2.md3"$0D
-	"/models/players/razor/upper.md3"$0D
-	"/models/players/razor/upper_1.md3"$0D
-	"/models/players/razor/upper_2.md3"$0D
-	"/models/players/sarge/head.md3"$0D
-	"/models/players/sarge/head_1.md3"$0D
-	"/models/players/sarge/head_2.md3"$0D
-	"/models/players/sarge/lower.md3"$0D
-	"/models/players/sarge/lower_1.md3"$0D
-	"/models/players/sarge/lower_2.md3"$0D
-	"/models/players/sarge/upper.md3"$0D
-	"/models/players/sarge/upper_1.md3"$0D
-	"/models/players/sarge/upper_2.md3"$0D
-	"/models/players/slash/head.md3"$0D
-	"/models/players/slash/head_1.md3"$0D
-	"/models/players/slash/head_2.md3"$0D
-	"/models/players/slash/lower.md3"$0D
-	"/models/players/slash/lower_1.md3"$0D
-	"/models/players/slash/lower_2.md3"$0D
-	"/models/players/slash/upper.md3"$0D
-	"/models/players/slash/upper_1.md3"$0D
-	"/models/players/slash/upper_2.md3"$0D
-	"/models/players/sorlag/head.md3"$0D
-	"/models/players/sorlag/head_1.md3"$0D
-	"/models/players/sorlag/head_2.md3"$0D
-	"/models/players/sorlag/lower.md3"$0D
-	"/models/players/sorlag/lower_1.md3"$0D
-	"/models/players/sorlag/lower_2.md3"$0D
-	"/models/players/sorlag/upper.md3"$0D
-	"/models/players/sorlag/upper_1.md3"$0D
-	"/models/players/sorlag/upper_2.md3"$0D
-	"/models/players/tankjr/head.md3"$0D
-	"/models/players/tankjr/head_1.md3"$0D
-	"/models/players/tankjr/head_2.md3"$0D
-	"/models/players/tankjr/lower.md3"$0D
-	"/models/players/tankjr/lower_1.md3"$0D
-	"/models/players/tankjr/lower_2.md3"$0D
-	"/models/players/tankjr/upper.md3"$0D
-	"/models/players/tankjr/upper_1.md3"$0D
-	"/models/players/tankjr/upper_2.md3"$0D
-	"/models/players/uriel/head.md3"$0D
-	"/models/players/uriel/head_1.md3"$0D
-	"/models/players/uriel/head_2.md3"$0D
-	"/models/players/uriel/lower.md3"$0D
-	"/models/players/uriel/lower_1.md3"$0D
-	"/models/players/uriel/lower_2.md3"$0D
-	"/models/players/uriel/upper.md3"$0D
-	"/models/players/uriel/upper_1.md3"$0D
-	"/models/players/uriel/upper_2.md3"$0D
-	"/models/players/visor/head.md3"$0D
-	"/models/players/visor/head_1.md3"$0D
-	"/models/players/visor/head_2.md3"$0D
-	"/models/players/visor/lower.md3"$0D
-	"/models/players/visor/lower_1.md3"$0D
-	"/models/players/visor/lower_2.md3"$0D
-	"/models/players/visor/upper.md3"$0D
-	"/models/players/visor/upper_1.md3"$0D
-	"/models/players/visor/upper_2.md3"$0D
-	"/models/players/xaero/head.md3"$0D
-	"/models/players/xaero/head_1.md3"$0D
-	"/models/players/xaero/head_2.md3"$0D
-	"/models/players/xaero/lower.md3"$0D
-	"/models/players/xaero/lower_1.md3"$0D
-	"/models/players/xaero/lower_2.md3"$0D
-	"/models/players/xaero/upper.md3"$0D
-	"/models/players/xaero/upper_1.md3"$0D
-	"/models/players/xaero/upper_2.md3"
+        "/models/players/anarki/head.md3"$0D
+        "/models/players/anarki/head_1.md3"$0D
+        "/models/players/anarki/head_2.md3"$0D
+        "/models/players/anarki/lower.md3"$0D
+        "/models/players/anarki/lower_1.md3"$0D
+        "/models/players/anarki/lower_2.md3"$0D
+        "/models/players/anarki/upper.md3"$0D
+        "/models/players/anarki/upper_1.md3"$0D
+        "/models/players/anarki/upper_2.md3"$0D
+        "/models/players/biker/head.md3"$0D
+        "/models/players/biker/head_1.md3"$0D
+        "/models/players/biker/head_2.md3"$0D
+        "/models/players/biker/lower.md3"$0D
+        "/models/players/biker/lower_1.md3"$0D
+        "/models/players/biker/lower_2.md3"$0D
+        "/models/players/biker/upper.md3"$0D
+        "/models/players/biker/upper_1.md3"$0D
+        "/models/players/biker/upper_2.md3"$0D
+        "/models/players/bitterman/head.md3"$0D
+        "/models/players/bitterman/head_1.md3"$0D
+        "/models/players/bitterman/head_2.md3"$0D
+        "/models/players/bitterman/lower.md3"$0D
+        "/models/players/bitterman/lower_1.md3"$0D
+        "/models/players/bitterman/lower_2.md3"$0D
+        "/models/players/bitterman/upper.md3"$0D
+        "/models/players/bitterman/upper_1.md3"$0D
+        "/models/players/bitterman/upper_2.md3"$0D
+        "/models/players/bones/head.md3"$0D
+        "/models/players/bones/head_1.md3"$0D
+        "/models/players/bones/lower.md3"$0D
+        "/models/players/bones/lower_1.md3"$0D
+        "/models/players/bones/upper.md3"$0D
+        "/models/players/bones/upper_1.md3"$0D
+        "/models/players/crash/head.md3"$0D
+        "/models/players/crash/head_1.md3"$0D
+        "/models/players/crash/head_2.md3"$0D
+        "/models/players/crash/lower.md3"$0D
+        "/models/players/crash/lower_1.md3"$0D
+        "/models/players/crash/lower_2.md3"$0D
+        "/models/players/crash/upper.md3"$0D
+        "/models/players/crash/upper_1.md3"$0D
+        "/models/players/crash/upper_2.md3"$0D
+        "/models/players/doom/head.md3"$0D
+        "/models/players/doom/head_1.md3"$0D
+        "/models/players/doom/head_2.md3"$0D
+        "/models/players/doom/lower.md3"$0D
+        "/models/players/doom/lower_1.md3"$0D
+        "/models/players/doom/lower_2.md3"$0D
+        "/models/players/doom/upper.md3"$0D
+        "/models/players/doom/upper_1.md3"$0D
+        "/models/players/doom/upper_2.md3"$0D
+        "/models/players/grunt/head.md3"$0D
+        "/models/players/grunt/head_1.md3"$0D
+        "/models/players/grunt/head_2.md3"$0D
+        "/models/players/grunt/lower.md3"$0D
+        "/models/players/grunt/lower_1.md3"$0D
+        "/models/players/grunt/lower_2.md3"$0D
+        "/models/players/grunt/upper.md3"$0D
+        "/models/players/grunt/upper_1.md3"$0D
+        "/models/players/grunt/upper_2.md3"$0D
+        "/models/players/hunter/head.md3"$0D
+        "/models/players/hunter/head_1.md3"$0D
+        "/models/players/hunter/head_2.md3"$0D
+        "/models/players/hunter/lower.md3"$0D
+        "/models/players/hunter/lower_1.md3"$0D
+        "/models/players/hunter/lower_2.md3"$0D
+        "/models/players/hunter/upper.md3"$0D
+        "/models/players/hunter/upper_1.md3"$0D
+        "/models/players/hunter/upper_2.md3"$0D
+        "/models/players/keel/head.md3"$0D
+        "/models/players/keel/head_1.md3"$0D
+        "/models/players/keel/head_2.md3"$0D
+        "/models/players/keel/lower.md3"$0D
+        "/models/players/keel/lower_1.md3"$0D
+        "/models/players/keel/lower_2.md3"$0D
+        "/models/players/keel/upper.md3"$0D
+        "/models/players/keel/upper_1.md3"$0D
+        "/models/players/keel/upper_2.md3"$0D
+        "/models/players/klesk/head.md3"$0D
+        "/models/players/klesk/head_1.md3"$0D
+        "/models/players/klesk/head_2.md3"$0D
+        "/models/players/klesk/lower.md3"$0D
+        "/models/players/klesk/lower_1.md3"$0D
+        "/models/players/klesk/lower_2.md3"$0D
+        "/models/players/klesk/upper.md3"$0D
+        "/models/players/klesk/upper_1.md3"$0D
+        "/models/players/klesk/upper_2.md3"$0D
+        "/models/players/lucy/head.md3"$0D
+        "/models/players/lucy/head_1.md3"$0D
+        "/models/players/lucy/head_2.md3"$0D
+        "/models/players/lucy/lower.md3"$0D
+        "/models/players/lucy/lower_1.md3"$0D
+        "/models/players/lucy/lower_2.md3"$0D
+        "/models/players/lucy/upper.md3"$0D
+        "/models/players/lucy/upper_1.md3"$0D
+        "/models/players/lucy/upper_2.md3"$0D
+        "/models/players/major/head.md3"$0D
+        "/models/players/major/head_1.md3"$0D
+        "/models/players/major/head_2.md3"$0D
+        "/models/players/major/lower.md3"$0D
+        "/models/players/major/lower_1.md3"$0D
+        "/models/players/major/lower_2.md3"$0D
+        "/models/players/major/upper.md3"$0D
+        "/models/players/major/upper_1.md3"$0D
+        "/models/players/major/upper_2.md3"$0D
+        "/models/players/mynx/head.md3"$0D
+        "/models/players/mynx/head_1.md3"$0D
+        "/models/players/mynx/head_2.md3"$0D
+        "/models/players/mynx/lower.md3"$0D
+        "/models/players/mynx/lower_1.md3"$0D
+        "/models/players/mynx/lower_2.md3"$0D
+        "/models/players/mynx/upper.md3"$0D
+        "/models/players/mynx/upper_1.md3"$0D
+        "/models/players/mynx/upper_2.md3"$0D
+        "/models/players/orbb/head.md3"$0D
+        "/models/players/orbb/head_1.md3"$0D
+        "/models/players/orbb/head_2.md3"$0D
+        "/models/players/orbb/lower.md3"$0D
+        "/models/players/orbb/lower_1.md3"$0D
+        "/models/players/orbb/lower_2.md3"$0D
+        "/models/players/orbb/upper.md3"$0D
+        "/models/players/orbb/upper_1.md3"$0D
+        "/models/players/orbb/upper_2.md3"$0D
+        "/models/players/ranger/head.md3"$0D
+        "/models/players/ranger/head_1.md3"$0D
+        "/models/players/ranger/head_2.md3"$0D
+        "/models/players/ranger/lower.md3"$0D
+        "/models/players/ranger/lower_1.md3"$0D
+        "/models/players/ranger/lower_2.md3"$0D
+        "/models/players/ranger/upper.md3"$0D
+        "/models/players/ranger/upper_1.md3"$0D
+        "/models/players/ranger/upper_2.md3"$0D
+        "/models/players/razor/head.md3"$0D
+        "/models/players/razor/head_1.md3"$0D
+        "/models/players/razor/head_2.md3"$0D
+        "/models/players/razor/lower.md3"$0D
+        "/models/players/razor/lower_1.md3"$0D
+        "/models/players/razor/lower_2.md3"$0D
+        "/models/players/razor/upper.md3"$0D
+        "/models/players/razor/upper_1.md3"$0D
+        "/models/players/razor/upper_2.md3"$0D
+        "/models/players/sarge/head.md3"$0D
+        "/models/players/sarge/head_1.md3"$0D
+        "/models/players/sarge/head_2.md3"$0D
+        "/models/players/sarge/lower.md3"$0D
+        "/models/players/sarge/lower_1.md3"$0D
+        "/models/players/sarge/lower_2.md3"$0D
+        "/models/players/sarge/upper.md3"$0D
+        "/models/players/sarge/upper_1.md3"$0D
+        "/models/players/sarge/upper_2.md3"$0D
+        "/models/players/slash/head.md3"$0D
+        "/models/players/slash/head_1.md3"$0D
+        "/models/players/slash/head_2.md3"$0D
+        "/models/players/slash/lower.md3"$0D
+        "/models/players/slash/lower_1.md3"$0D
+        "/models/players/slash/lower_2.md3"$0D
+        "/models/players/slash/upper.md3"$0D
+        "/models/players/slash/upper_1.md3"$0D
+        "/models/players/slash/upper_2.md3"$0D
+        "/models/players/sorlag/head.md3"$0D
+        "/models/players/sorlag/head_1.md3"$0D
+        "/models/players/sorlag/head_2.md3"$0D
+        "/models/players/sorlag/lower.md3"$0D
+        "/models/players/sorlag/lower_1.md3"$0D
+        "/models/players/sorlag/lower_2.md3"$0D
+        "/models/players/sorlag/upper.md3"$0D
+        "/models/players/sorlag/upper_1.md3"$0D
+        "/models/players/sorlag/upper_2.md3"$0D
+        "/models/players/tankjr/head.md3"$0D
+        "/models/players/tankjr/head_1.md3"$0D
+        "/models/players/tankjr/head_2.md3"$0D
+        "/models/players/tankjr/lower.md3"$0D
+        "/models/players/tankjr/lower_1.md3"$0D
+        "/models/players/tankjr/lower_2.md3"$0D
+        "/models/players/tankjr/upper.md3"$0D
+        "/models/players/tankjr/upper_1.md3"$0D
+        "/models/players/tankjr/upper_2.md3"$0D
+        "/models/players/uriel/head.md3"$0D
+        "/models/players/uriel/head_1.md3"$0D
+        "/models/players/uriel/head_2.md3"$0D
+        "/models/players/uriel/lower.md3"$0D
+        "/models/players/uriel/lower_1.md3"$0D
+        "/models/players/uriel/lower_2.md3"$0D
+        "/models/players/uriel/upper.md3"$0D
+        "/models/players/uriel/upper_1.md3"$0D
+        "/models/players/uriel/upper_2.md3"$0D
+        "/models/players/visor/head.md3"$0D
+        "/models/players/visor/head_1.md3"$0D
+        "/models/players/visor/head_2.md3"$0D
+        "/models/players/visor/lower.md3"$0D
+        "/models/players/visor/lower_1.md3"$0D
+        "/models/players/visor/lower_2.md3"$0D
+        "/models/players/visor/upper.md3"$0D
+        "/models/players/visor/upper_1.md3"$0D
+        "/models/players/visor/upper_2.md3"$0D
+        "/models/players/xaero/head.md3"$0D
+        "/models/players/xaero/head_1.md3"$0D
+        "/models/players/xaero/head_2.md3"$0D
+        "/models/players/xaero/lower.md3"$0D
+        "/models/players/xaero/lower_1.md3"$0D
+        "/models/players/xaero/lower_2.md3"$0D
+        "/models/players/xaero/upper.md3"$0D
+        "/models/players/xaero/upper_1.md3"$0D
+        "/models/players/xaero/upper_2.md3"
       }
 
       model2: = { typ="C" txt="Powerups"
       items=
-	"ammo/bfgam.md3"$0D
-	"ammo/bfgam_1.md3"$0D
-	"ammo/grenadeam.md3"$0D
-	"ammo/grenadeam_1.md3"$0D
-	"ammo/lightningam.md3"$0D
-	"ammo/lightningam_1.md3"$0D
-	"ammo/machinegunam.md3"$0D
-	"ammo/machinegunam_1.md3"$0D
-	"ammo/plasmaam.md3"$0D
-	"ammo/plasmaam_1.md3"$0D
-	"ammo/railgunam.md3"$0D
-	"ammo/railgunam_1.md3"$0D
-	"ammo/rocketam.md3"$0D
-	"ammo/rocketam_1.md3"$0D
-	"ammo/shotgunam.md3"$0D
-	"ammo/shotgunam_1.md3"$0D
-	"armor/armor_red.md3"$0D
-	"armor/armor_red_1.md3"$0D
-	"armor/armor_red_2.md3"$0D
-	"armor/armor_yel.md3"$0D
-	"armor/armor_yel_1.md3"$0D
-	"armor/armor_yel_2.md3"$0D
-	"armor/shard.md3"$0D
-	"armor/shard_sphere.md3"$0D
-	"health/large_cross.md3"$0D
-	"health/large_sphere.md3"$0D
-	"health/large_sphere_1.md3"$0D
-	"health/large_sphere_2.md3"$0D
-	"health/medium_cross.md3"$0D
-	"health/medium_sphere.md3"$0D
-	"health/medium_sphere_1.md3"$0D
-	"health/medium_sphere_2.md3"$0D
-	"health/mega_cross.md3"$0D
-	"health/mega_sphere.md3"$0D
-	"health/mega_sphere_1.md3"$0D
-	"health/mega_sphere_2.md3"$0D
-	"health/small_cross.md3"$0D
-	"health/small_sphere.md3"$0D
-	"health/small_sphere_1.md3"$0D
-	"health/small_sphere_2.md3"$0D
-	"holdable/medkit.md3"$0D
-	"holdable/medkit_1.md3"$0D
-	"holdable/teleporter.md3"$0D
-	"holdable/teleporter_1.md3"$0D
-	"instant/enviro.md3"$0D
-	"instant/enviro_1.md3"$0D
-	"instant/enviro_ring.md3"$0D
-	"instant/enviro_ring_1.md3"$0D
-	"instant/flight.md3"$0D
-	"instant/flight_1.md3"$0D
-	"instant/flight_ring.md3"$0D
-	"instant/flight_ring_1.md3"$0D
-	"instant/haste.md3"$0D
-	"instant/haste_1.md3"$0D
-	"instant/haste_ring.md3"$0D
-	"instant/haste_ring_1.md3"$0D
-	"instant/invis.md3"$0D
-	"instant/invis_1.md3"$0D
-	"instant/invis_ring.md3"$0D
-	"instant/invis_ring_1.md3"$0D
-	"instant/quad.md3"$0D
-	"instant/quad_1.md3"$0D
-	"instant/quad_ring.md3"$0D
-	"instant/quad_ring_1.md3"$0D
-	"instant/regen.md3"$0D
-	"instant/regen_1.md3"$0D
-	"instant/regen_ring.md3"$0D
-	"instant/regen_ring_1.md3"
+        "ammo/bfgam.md3"$0D
+        "ammo/bfgam_1.md3"$0D
+        "ammo/grenadeam.md3"$0D
+        "ammo/grenadeam_1.md3"$0D
+        "ammo/lightningam.md3"$0D
+        "ammo/lightningam_1.md3"$0D
+        "ammo/machinegunam.md3"$0D
+        "ammo/machinegunam_1.md3"$0D
+        "ammo/plasmaam.md3"$0D
+        "ammo/plasmaam_1.md3"$0D
+        "ammo/railgunam.md3"$0D
+        "ammo/railgunam_1.md3"$0D
+        "ammo/rocketam.md3"$0D
+        "ammo/rocketam_1.md3"$0D
+        "ammo/shotgunam.md3"$0D
+        "ammo/shotgunam_1.md3"$0D
+        "armor/armor_red.md3"$0D
+        "armor/armor_red_1.md3"$0D
+        "armor/armor_red_2.md3"$0D
+        "armor/armor_yel.md3"$0D
+        "armor/armor_yel_1.md3"$0D
+        "armor/armor_yel_2.md3"$0D
+        "armor/shard.md3"$0D
+        "armor/shard_sphere.md3"$0D
+        "health/large_cross.md3"$0D
+        "health/large_sphere.md3"$0D
+        "health/large_sphere_1.md3"$0D
+        "health/large_sphere_2.md3"$0D
+        "health/medium_cross.md3"$0D
+        "health/medium_sphere.md3"$0D
+        "health/medium_sphere_1.md3"$0D
+        "health/medium_sphere_2.md3"$0D
+        "health/mega_cross.md3"$0D
+        "health/mega_sphere.md3"$0D
+        "health/mega_sphere_1.md3"$0D
+        "health/mega_sphere_2.md3"$0D
+        "health/small_cross.md3"$0D
+        "health/small_sphere.md3"$0D
+        "health/small_sphere_1.md3"$0D
+        "health/small_sphere_2.md3"$0D
+        "holdable/medkit.md3"$0D
+        "holdable/medkit_1.md3"$0D
+        "holdable/teleporter.md3"$0D
+        "holdable/teleporter_1.md3"$0D
+        "instant/enviro.md3"$0D
+        "instant/enviro_1.md3"$0D
+        "instant/enviro_ring.md3"$0D
+        "instant/enviro_ring_1.md3"$0D
+        "instant/flight.md3"$0D
+        "instant/flight_1.md3"$0D
+        "instant/flight_ring.md3"$0D
+        "instant/flight_ring_1.md3"$0D
+        "instant/haste.md3"$0D
+        "instant/haste_1.md3"$0D
+        "instant/haste_ring.md3"$0D
+        "instant/haste_ring_1.md3"$0D
+        "instant/invis.md3"$0D
+        "instant/invis_1.md3"$0D
+        "instant/invis_ring.md3"$0D
+        "instant/invis_ring_1.md3"$0D
+        "instant/quad.md3"$0D
+        "instant/quad_1.md3"$0D
+        "instant/quad_ring.md3"$0D
+        "instant/quad_ring_1.md3"$0D
+        "instant/regen.md3"$0D
+        "instant/regen_1.md3"$0D
+        "instant/regen_ring.md3"$0D
+        "instant/regen_ring_1.md3"
       values=
-	"/models/powerups/ammo/bfgam.md3"$0D
-	"/models/powerups/ammo/bfgam_1.md3"$0D
-	"/models/powerups/ammo/grenadeam.md3"$0D
-	"/models/powerups/ammo/grenadeam_1.md3"$0D
-	"/models/powerups/ammo/lightningam.md3"$0D
-	"/models/powerups/ammo/lightningam_1.md3"$0D
-	"/models/powerups/ammo/machinegunam.md3"$0D
-	"/models/powerups/ammo/machinegunam_1.md3"$0D
-	"/models/powerups/ammo/plasmaam.md3"$0D
-	"/models/powerups/ammo/plasmaam_1.md3"$0D
-	"/models/powerups/ammo/railgunam.md3"$0D
-	"/models/powerups/ammo/railgunam_1.md3"$0D
-	"/models/powerups/ammo/rocketam.md3"$0D
-	"/models/powerups/ammo/rocketam_1.md3"$0D
-	"/models/powerups/ammo/shotgunam.md3"$0D
-	"/models/powerups/ammo/shotgunam_1.md3"$0D
-	"/models/powerups/armor/armor_red.md3"$0D
-	"/models/powerups/armor/armor_red_1.md3"$0D
-	"/models/powerups/armor/armor_red_2.md3"$0D
-	"/models/powerups/armor/armor_yel.md3"$0D
-	"/models/powerups/armor/armor_yel_1.md3"$0D
-	"/models/powerups/armor/armor_yel_2.md3"$0D
-	"/models/powerups/armor/shard.md3"$0D
-	"/models/powerups/armor/shard_sphere.md3"$0D
-	"/models/powerups/health/large_cross.md3"$0D
-	"/models/powerups/health/large_sphere.md3"$0D
-	"/models/powerups/health/large_sphere_1.md3"$0D
-	"/models/powerups/health/large_sphere_2.md3"$0D
-	"/models/powerups/health/medium_cross.md3"$0D
-	"/models/powerups/health/medium_sphere.md3"$0D
-	"/models/powerups/health/medium_sphere_1.md3"$0D
-	"/models/powerups/health/medium_sphere_2.md3"$0D
-	"/models/powerups/health/mega_cross.md3"$0D
-	"/models/powerups/health/mega_sphere.md3"$0D
-	"/models/powerups/health/mega_sphere_1.md3"$0D
-	"/models/powerups/health/mega_sphere_2.md3"$0D
-	"/models/powerups/health/small_cross.md3"$0D
-	"/models/powerups/health/small_sphere.md3"$0D
-	"/models/powerups/health/small_sphere_1.md3"$0D
-	"/models/powerups/health/small_sphere_2.md3"$0D
-	"/models/powerups/holdable/medkit.md3"$0D
-	"/models/powerups/holdable/medkit_1.md3"$0D
-	"/models/powerups/holdable/teleporter.md3"$0D
-	"/models/powerups/holdable/teleporter_1.md3"$0D
-	"/models/powerups/instant/enviro.md3"$0D
-	"/models/powerups/instant/enviro_1.md3"$0D
-	"/models/powerups/instant/enviro_ring.md3"$0D
-	"/models/powerups/instant/enviro_ring_1.md3"$0D
-	"/models/powerups/instant/flight.md3"$0D
-	"/models/powerups/instant/flight_1.md3"$0D
-	"/models/powerups/instant/flight_ring.md3"$0D
-	"/models/powerups/instant/flight_ring_1.md3"$0D
-	"/models/powerups/instant/haste.md3"$0D
-	"/models/powerups/instant/haste_1.md3"$0D
-	"/models/powerups/instant/haste_ring.md3"$0D
-	"/models/powerups/instant/haste_ring_1.md3"$0D
-	"/models/powerups/instant/invis.md3"$0D
-	"/models/powerups/instant/invis_1.md3"$0D
-	"/models/powerups/instant/invis_ring.md3"$0D
-	"/models/powerups/instant/invis_ring_1.md3"$0D
-	"/models/powerups/instant/quad.md3"$0D
-	"/models/powerups/instant/quad_1.md3"$0D
-	"/models/powerups/instant/quad_ring.md3"$0D
-	"/models/powerups/instant/quad_ring_1.md3"$0D
-	"/models/powerups/instant/regen.md3"$0D
-	"/models/powerups/instant/regen_1.md3"$0D
-	"/models/powerups/instant/regen_ring.md3"$0D
-	"/models/powerups/instant/regen_ring_1.md3"
+        "/models/powerups/ammo/bfgam.md3"$0D
+        "/models/powerups/ammo/bfgam_1.md3"$0D
+        "/models/powerups/ammo/grenadeam.md3"$0D
+        "/models/powerups/ammo/grenadeam_1.md3"$0D
+        "/models/powerups/ammo/lightningam.md3"$0D
+        "/models/powerups/ammo/lightningam_1.md3"$0D
+        "/models/powerups/ammo/machinegunam.md3"$0D
+        "/models/powerups/ammo/machinegunam_1.md3"$0D
+        "/models/powerups/ammo/plasmaam.md3"$0D
+        "/models/powerups/ammo/plasmaam_1.md3"$0D
+        "/models/powerups/ammo/railgunam.md3"$0D
+        "/models/powerups/ammo/railgunam_1.md3"$0D
+        "/models/powerups/ammo/rocketam.md3"$0D
+        "/models/powerups/ammo/rocketam_1.md3"$0D
+        "/models/powerups/ammo/shotgunam.md3"$0D
+        "/models/powerups/ammo/shotgunam_1.md3"$0D
+        "/models/powerups/armor/armor_red.md3"$0D
+        "/models/powerups/armor/armor_red_1.md3"$0D
+        "/models/powerups/armor/armor_red_2.md3"$0D
+        "/models/powerups/armor/armor_yel.md3"$0D
+        "/models/powerups/armor/armor_yel_1.md3"$0D
+        "/models/powerups/armor/armor_yel_2.md3"$0D
+        "/models/powerups/armor/shard.md3"$0D
+        "/models/powerups/armor/shard_sphere.md3"$0D
+        "/models/powerups/health/large_cross.md3"$0D
+        "/models/powerups/health/large_sphere.md3"$0D
+        "/models/powerups/health/large_sphere_1.md3"$0D
+        "/models/powerups/health/large_sphere_2.md3"$0D
+        "/models/powerups/health/medium_cross.md3"$0D
+        "/models/powerups/health/medium_sphere.md3"$0D
+        "/models/powerups/health/medium_sphere_1.md3"$0D
+        "/models/powerups/health/medium_sphere_2.md3"$0D
+        "/models/powerups/health/mega_cross.md3"$0D
+        "/models/powerups/health/mega_sphere.md3"$0D
+        "/models/powerups/health/mega_sphere_1.md3"$0D
+        "/models/powerups/health/mega_sphere_2.md3"$0D
+        "/models/powerups/health/small_cross.md3"$0D
+        "/models/powerups/health/small_sphere.md3"$0D
+        "/models/powerups/health/small_sphere_1.md3"$0D
+        "/models/powerups/health/small_sphere_2.md3"$0D
+        "/models/powerups/holdable/medkit.md3"$0D
+        "/models/powerups/holdable/medkit_1.md3"$0D
+        "/models/powerups/holdable/teleporter.md3"$0D
+        "/models/powerups/holdable/teleporter_1.md3"$0D
+        "/models/powerups/instant/enviro.md3"$0D
+        "/models/powerups/instant/enviro_1.md3"$0D
+        "/models/powerups/instant/enviro_ring.md3"$0D
+        "/models/powerups/instant/enviro_ring_1.md3"$0D
+        "/models/powerups/instant/flight.md3"$0D
+        "/models/powerups/instant/flight_1.md3"$0D
+        "/models/powerups/instant/flight_ring.md3"$0D
+        "/models/powerups/instant/flight_ring_1.md3"$0D
+        "/models/powerups/instant/haste.md3"$0D
+        "/models/powerups/instant/haste_1.md3"$0D
+        "/models/powerups/instant/haste_ring.md3"$0D
+        "/models/powerups/instant/haste_ring_1.md3"$0D
+        "/models/powerups/instant/invis.md3"$0D
+        "/models/powerups/instant/invis_1.md3"$0D
+        "/models/powerups/instant/invis_ring.md3"$0D
+        "/models/powerups/instant/invis_ring_1.md3"$0D
+        "/models/powerups/instant/quad.md3"$0D
+        "/models/powerups/instant/quad_1.md3"$0D
+        "/models/powerups/instant/quad_ring.md3"$0D
+        "/models/powerups/instant/quad_ring_1.md3"$0D
+        "/models/powerups/instant/regen.md3"$0D
+        "/models/powerups/instant/regen_1.md3"$0D
+        "/models/powerups/instant/regen_ring.md3"$0D
+        "/models/powerups/instant/regen_ring_1.md3"
       }
 
       model2: = { typ="C" txt="WeapHits"
       items=
-	"bfg.md3"$0D
-	"boom01.md3"$0D
-	"bullet.md3"$0D
-	"crackle.md3"$0D
-	"ring02.md3"
+        "bfg.md3"$0D
+        "boom01.md3"$0D
+        "bullet.md3"$0D
+        "crackle.md3"$0D
+        "ring02.md3"
       values=
-	"/models/weaphits/bfg.md3"$0D
-	"/models/weaphits/boom01.md3"$0D
-	"/models/weaphits/bullet.md3"$0D
-	"/models/weaphits/crackle.md3"$0D
-	"/models/weaphits/ring02.md3"
+        "/models/weaphits/bfg.md3"$0D
+        "/models/weaphits/boom01.md3"$0D
+        "/models/weaphits/bullet.md3"$0D
+        "/models/weaphits/crackle.md3"$0D
+        "/models/weaphits/ring02.md3"
       }
 
       model2: = { typ="C" txt="Weapons2"
       items=
-	"bfg/bfg.md3"$0D
-	"bfg/bfg_1.md3"$0D
-	"bfg/bfg_2.md3"$0D
-	"bfg/bfg_barrel.md3"$0D
-	"bfg/bfg_flash.md3"$0D
-	"bfg/bfg_hand.md3"$0D
-	"gauntlet/gauntlet.md3"$0D
-	"gauntlet/gauntlet_barrel.md3"$0D
-	"gauntlet/gauntlet_flash.md3"$0D
-	"gauntlet/gauntlet_hand.md3"$0D
-	"grapple/grapple.md3"$0D
-	"grapple/grapple_1.md3"$0D
-	"grapple/grapple_2.md3"$0D
-	"grapple/grapple_flash.md3"$0D
-	"grapple/grapple_hand.md3"$0D
-	"grenadel/grenadel.md3"$0D
-	"grenadel/grenadel_1.md3"$0D
-	"grenadel/grenadel_2.md3"$0D
-	"grenadel/grenadel_flash.md3"$0D
-	"grenadel/grenadel_hand.md3"$0D
-	"lightning/lightning.md3"$0D
-	"lightning/lightning_1.md3"$0D
-	"lightning/lightning_2.md3"$0D
-	"lightning/lightning_flash.md3"$0D
-	"lightning/lightning_hand.md3"$0D
-	"machinegun/machinegun.md3"$0D
-	"machinegun/machinegun_1.md3"$0D
-	"machinegun/machinegun_2.md3"$0D
-	"machinegun/machinegun_barrel.md3"$0D
-	"machinegun/machinegun_barrel_1.md3"$0D
-	"machinegun/machinegun_barrel_2.md3"$0D
-	"machinegun/machinegun_flash.md3"$0D
-	"machinegun/machinegun_hand.md3"$0D
-	"plasma/plasma.md3"$0D
-	"plasma/plasma_1.md3"$0D
-	"plasma/plasma_2.md3"$0D
-	"plasma/plasma_flash.md3"$0D
-	"plasma/plasma_hand.md3"$0D
-	"railgun/railgun.md3"$0D
-	"railgun/railgun_flash.md3"$0D
-	"railgun/railgun_hand.md3"$0D
-	"rocketl/rocketl.md3"$0D
-	"rocketl/rocketl_1.md3"$0D
-	"rocketl/rocketl_2.md3"$0D
-	"rocketl/rocketl_flash.md3"$0D
-	"rocketl/rocketl_hand.md3"$0D
-	"shells/m_shell.md3"$0D
-	"shells/m_shell_1.md3"$0D
-	"shells/s_shell.md3"$0D
-	"shotgun/shotgun.md3"$0D
-	"shotgun/shotgun_1.md3"$0D
-	"shotgun/shotgun_2.md3"$0D
-	"shotgun/shotgun_flash.md3"$0D
-	"shotgun/shotgun_hand.md3"
+        "bfg/bfg.md3"$0D
+        "bfg/bfg_1.md3"$0D
+        "bfg/bfg_2.md3"$0D
+        "bfg/bfg_barrel.md3"$0D
+        "bfg/bfg_flash.md3"$0D
+        "bfg/bfg_hand.md3"$0D
+        "gauntlet/gauntlet.md3"$0D
+        "gauntlet/gauntlet_barrel.md3"$0D
+        "gauntlet/gauntlet_flash.md3"$0D
+        "gauntlet/gauntlet_hand.md3"$0D
+        "grapple/grapple.md3"$0D
+        "grapple/grapple_1.md3"$0D
+        "grapple/grapple_2.md3"$0D
+        "grapple/grapple_flash.md3"$0D
+        "grapple/grapple_hand.md3"$0D
+        "grenadel/grenadel.md3"$0D
+        "grenadel/grenadel_1.md3"$0D
+        "grenadel/grenadel_2.md3"$0D
+        "grenadel/grenadel_flash.md3"$0D
+        "grenadel/grenadel_hand.md3"$0D
+        "lightning/lightning.md3"$0D
+        "lightning/lightning_1.md3"$0D
+        "lightning/lightning_2.md3"$0D
+        "lightning/lightning_flash.md3"$0D
+        "lightning/lightning_hand.md3"$0D
+        "machinegun/machinegun.md3"$0D
+        "machinegun/machinegun_1.md3"$0D
+        "machinegun/machinegun_2.md3"$0D
+        "machinegun/machinegun_barrel.md3"$0D
+        "machinegun/machinegun_barrel_1.md3"$0D
+        "machinegun/machinegun_barrel_2.md3"$0D
+        "machinegun/machinegun_flash.md3"$0D
+        "machinegun/machinegun_hand.md3"$0D
+        "plasma/plasma.md3"$0D
+        "plasma/plasma_1.md3"$0D
+        "plasma/plasma_2.md3"$0D
+        "plasma/plasma_flash.md3"$0D
+        "plasma/plasma_hand.md3"$0D
+        "railgun/railgun.md3"$0D
+        "railgun/railgun_flash.md3"$0D
+        "railgun/railgun_hand.md3"$0D
+        "rocketl/rocketl.md3"$0D
+        "rocketl/rocketl_1.md3"$0D
+        "rocketl/rocketl_2.md3"$0D
+        "rocketl/rocketl_flash.md3"$0D
+        "rocketl/rocketl_hand.md3"$0D
+        "shells/m_shell.md3"$0D
+        "shells/m_shell_1.md3"$0D
+        "shells/s_shell.md3"$0D
+        "shotgun/shotgun.md3"$0D
+        "shotgun/shotgun_1.md3"$0D
+        "shotgun/shotgun_2.md3"$0D
+        "shotgun/shotgun_flash.md3"$0D
+        "shotgun/shotgun_hand.md3"
       values=
-	"/models/weapons2/bfg/bfg.md3"$0D
-	"/models/weapons2/bfg/bfg_1.md3"$0D
-	"/models/weapons2/bfg/bfg_2.md3"$0D
-	"/models/weapons2/bfg/bfg_barrel.md3"$0D
-	"/models/weapons2/bfg/bfg_flash.md3"$0D
-	"/models/weapons2/bfg/bfg_hand.md3"$0D
-	"/models/weapons2/gauntlet/gauntlet.md3"$0D
-	"/models/weapons2/gauntlet/gauntlet_barrel.md3"$0D
-	"/models/weapons2/gauntlet/gauntlet_flash.md3"$0D
-	"/models/weapons2/gauntlet/gauntlet_hand.md3"$0D
-	"/models/weapons2/grapple/grapple.md3"$0D
-	"/models/weapons2/grapple/grapple_1.md3"$0D
-	"/models/weapons2/grapple/grapple_2.md3"$0D
-	"/models/weapons2/grapple/grapple_flash.md3"$0D
-	"/models/weapons2/grapple/grapple_hand.md3"$0D
-	"/models/weapons2/grenadel/grenadel.md3"$0D
-	"/models/weapons2/grenadel/grenadel_1.md3"$0D
-	"/models/weapons2/grenadel/grenadel_2.md3"$0D
-	"/models/weapons2/grenadel/grenadel_flash.md3"$0D
-	"/models/weapons2/grenadel/grenadel_hand.md3"$0D
-	"/models/weapons2/lightning/lightning.md3"$0D
-	"/models/weapons2/lightning/lightning_1.md3"$0D
-	"/models/weapons2/lightning/lightning_2.md3"$0D
-	"/models/weapons2/lightning/lightning_flash.md3"$0D
-	"/models/weapons2/lightning/lightning_hand.md3"$0D
-	"/models/weapons2/machinegun/machinegun.md3"$0D
-	"/models/weapons2/machinegun/machinegun_1.md3"$0D
-	"/models/weapons2/machinegun/machinegun_2.md3"$0D
-	"/models/weapons2/machinegun/machinegun_barrel.md3"$0D
-	"/models/weapons2/machinegun/machinegun_barrel_1.md3"$0D
-	"/models/weapons2/machinegun/machinegun_barrel_2.md3"$0D
-	"/models/weapons2/machinegun/machinegun_flash.md3"$0D
-	"/models/weapons2/machinegun/machinegun_hand.md3"$0D
-	"/models/weapons2/plasma/plasma.md3"$0D
-	"/models/weapons2/plasma/plasma_1.md3"$0D
-	"/models/weapons2/plasma/plasma_2.md3"$0D
-	"/models/weapons2/plasma/plasma_flash.md3"$0D
-	"/models/weapons2/plasma/plasma_hand.md3"$0D
-	"/models/weapons2/railgun/railgun.md3"$0D
-	"/models/weapons2/railgun/railgun_flash.md3"$0D
-	"/models/weapons2/railgun/railgun_hand.md3"$0D
-	"/models/weapons2/rocketl/rocketl.md3"$0D
-	"/models/weapons2/rocketl/rocketl_1.md3"$0D
-	"/models/weapons2/rocketl/rocketl_2.md3"$0D
-	"/models/weapons2/rocketl/rocketl_flash.md3"$0D
-	"/models/weapons2/rocketl/rocketl_hand.md3"$0D
-	"/models/weapons2/shells/m_shell.md3"$0D
-	"/models/weapons2/shells/m_shell_1.md3"$0D
-	"/models/weapons2/shells/s_shell.md3"$0D
-	"/models/weapons2/shotgun/shotgun.md3"$0D
-	"/models/weapons2/shotgun/shotgun_1.md3"$0D
-	"/models/weapons2/shotgun/shotgun_2.md3"$0D
-	"/models/weapons2/shotgun/shotgun_flash.md3"$0D
-	"/models/weapons2/shotgun/shotgun_hand.md3"
+        "/models/weapons2/bfg/bfg.md3"$0D
+        "/models/weapons2/bfg/bfg_1.md3"$0D
+        "/models/weapons2/bfg/bfg_2.md3"$0D
+        "/models/weapons2/bfg/bfg_barrel.md3"$0D
+        "/models/weapons2/bfg/bfg_flash.md3"$0D
+        "/models/weapons2/bfg/bfg_hand.md3"$0D
+        "/models/weapons2/gauntlet/gauntlet.md3"$0D
+        "/models/weapons2/gauntlet/gauntlet_barrel.md3"$0D
+        "/models/weapons2/gauntlet/gauntlet_flash.md3"$0D
+        "/models/weapons2/gauntlet/gauntlet_hand.md3"$0D
+        "/models/weapons2/grapple/grapple.md3"$0D
+        "/models/weapons2/grapple/grapple_1.md3"$0D
+        "/models/weapons2/grapple/grapple_2.md3"$0D
+        "/models/weapons2/grapple/grapple_flash.md3"$0D
+        "/models/weapons2/grapple/grapple_hand.md3"$0D
+        "/models/weapons2/grenadel/grenadel.md3"$0D
+        "/models/weapons2/grenadel/grenadel_1.md3"$0D
+        "/models/weapons2/grenadel/grenadel_2.md3"$0D
+        "/models/weapons2/grenadel/grenadel_flash.md3"$0D
+        "/models/weapons2/grenadel/grenadel_hand.md3"$0D
+        "/models/weapons2/lightning/lightning.md3"$0D
+        "/models/weapons2/lightning/lightning_1.md3"$0D
+        "/models/weapons2/lightning/lightning_2.md3"$0D
+        "/models/weapons2/lightning/lightning_flash.md3"$0D
+        "/models/weapons2/lightning/lightning_hand.md3"$0D
+        "/models/weapons2/machinegun/machinegun.md3"$0D
+        "/models/weapons2/machinegun/machinegun_1.md3"$0D
+        "/models/weapons2/machinegun/machinegun_2.md3"$0D
+        "/models/weapons2/machinegun/machinegun_barrel.md3"$0D
+        "/models/weapons2/machinegun/machinegun_barrel_1.md3"$0D
+        "/models/weapons2/machinegun/machinegun_barrel_2.md3"$0D
+        "/models/weapons2/machinegun/machinegun_flash.md3"$0D
+        "/models/weapons2/machinegun/machinegun_hand.md3"$0D
+        "/models/weapons2/plasma/plasma.md3"$0D
+        "/models/weapons2/plasma/plasma_1.md3"$0D
+        "/models/weapons2/plasma/plasma_2.md3"$0D
+        "/models/weapons2/plasma/plasma_flash.md3"$0D
+        "/models/weapons2/plasma/plasma_hand.md3"$0D
+        "/models/weapons2/railgun/railgun.md3"$0D
+        "/models/weapons2/railgun/railgun_flash.md3"$0D
+        "/models/weapons2/railgun/railgun_hand.md3"$0D
+        "/models/weapons2/rocketl/rocketl.md3"$0D
+        "/models/weapons2/rocketl/rocketl_1.md3"$0D
+        "/models/weapons2/rocketl/rocketl_2.md3"$0D
+        "/models/weapons2/rocketl/rocketl_flash.md3"$0D
+        "/models/weapons2/rocketl/rocketl_hand.md3"$0D
+        "/models/weapons2/shells/m_shell.md3"$0D
+        "/models/weapons2/shells/m_shell_1.md3"$0D
+        "/models/weapons2/shells/s_shell.md3"$0D
+        "/models/weapons2/shotgun/shotgun.md3"$0D
+        "/models/weapons2/shotgun/shotgun_1.md3"$0D
+        "/models/weapons2/shotgun/shotgun_2.md3"$0D
+        "/models/weapons2/shotgun/shotgun_flash.md3"$0D
+        "/models/weapons2/shotgun/shotgun_hand.md3"
       }
 }
     ammo_bfg:form =
@@ -5682,61 +5679,61 @@ QQRKSRC1
       mdl = "models/powerups/ammo/bfgam.md3"
       wait: =
       {
-	Txt = "&"
-	Hint = "Time that the item waits to respawn.(Default is 40, -1 never respawns)"
+        Txt = "&"
+        Hint = "Time that the item waits to respawn.(Default is 40, -1 never respawns)"
       }
       random: =
       {
-	Txt = "&"
-	Hint = "The integer used to multiply or divide the wait value to the respawn."
+        Txt = "&"
+        Hint = "The integer used to multiply or divide the wait value to the respawn."
       }
       team: =
       {
-	Txt = "&"
+        Txt = "&"
 	Hint = "Set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notfree: =
       {
-	Txt = "&"
-	Hint = "This item will not spawn in a Free for All or Tournament game Default value is 0."
+        Txt = "&"
+        Hint = "This item will not spawn in a Free for All or Tournament game Default value is 0."
       }
       notteam: =
       {
-	Txt = "&"
-	Hint = "This item will not spawn in a Teamplay or CTF game Default value is 0."
+        Txt = "&"
+        Hint = "This item will not spawn in a Teamplay or CTF game Default value is 0."
       }
 // Maleficus: here is the missing ammo specifics, now in place for ALL the ammo.
       count: =
       {
-	Txt = "&"
-	Hint = "This is how much ammo it will give the player. (Default: 15)"
+        Txt = "&"
+        Hint = "This is how much ammo it will give the player. (Default: 15)"
       }
-	target: =
-	{
-	  Txt = "&"
-	  Hint = "picking up the item will trigger the entity this points to."
-	}
-	targetname: =
-	{
-	  Txt = "&"
-	  Hint = "A target_give entity can point to this for respawn freebies."
-	}
-	notsingle: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
-	}
-	notbot: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, bots will ignore this item."
-	}
-	spawnflags: =
+        target: =
+        {
+          Txt = "&"
+          Hint = "picking up the item will trigger the entity this points to."
+        }
+        targetname: =
+        {
+          Txt = "&"
+          Hint = "A target_give entity can point to this for respawn freebies."
+        }
+        notsingle: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+        }
+        notbot: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, bots will ignore this item."
+        }
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X1"
-	Cap = "NO_DROP"
-	Hint = "This will not drop to the floor when checked."
+        Txt = "&"
+        Typ = "X1"
+        Cap = "NO_DROP"
+        Hint = "This will not drop to the floor when checked."
       }
     }
     ammo_bullets:form =
@@ -5746,59 +5743,59 @@ QQRKSRC1
       mdl = "models/powerups/ammo/machinegunam.md3"
       wait: =
       {
-	Txt = "&"
-	Hint = "Time that the item waits to respawn.(Default is 40, -1 never respawns)"
+        Txt = "&"
+        Hint = "Time that the item waits to respawn.(Default is 40, -1 never respawns)"
       }
       random: =
       {
-	Txt = "&"
-	Hint = "The integer used to multiply or divide the wait value to the respawn."
+        Txt = "&"
+        Hint = "The integer used to multiply or divide the wait value to the respawn."
       }
       team: =
       {
-	Txt = "&"
+        Txt = "&"
 	Hint = "Set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notfree: =
       {
-	Txt = "&"
-	Hint = "This item will not spawn in a Free for All or Tournament game Default value is 0."
+        Txt = "&"
+        Hint = "This item will not spawn in a Free for All or Tournament game Default value is 0."
       }
       notteam: =
       {
-	Txt = "&"
-	Hint = "This item will not spawn in a Teamplay or CTF game Default value is 0."
+        Txt = "&"
+        Hint = "This item will not spawn in a Teamplay or CTF game Default value is 0."
       }
-	count: =
+        count: =
       {
-	Txt = "&"
-	Hint = "This is how much ammo it will give the player. (Default: 50)"
+        Txt = "&"
+        Hint = "This is how much ammo it will give the player. (Default: 50)"
       }
-	target: =
-	{
-	  Txt = "&"
-	  Hint = "picking up the item will trigger the entity this points to."
-	}
-	targetname: =
-	{
-	  Txt = "&"
-	  Hint = "A target_give entity can point to this for respawn freebies."
-	}
-	notsingle: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
-	}
-	notbot: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, bots will ignore this item."
-	}
-	spawnflags: =
+        target: =
+        {
+          Txt = "&"
+          Hint = "picking up the item will trigger the entity this points to."
+        }
+        targetname: =
+        {
+          Txt = "&"
+          Hint = "A target_give entity can point to this for respawn freebies."
+        }
+        notsingle: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+        }
+        notbot: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, bots will ignore this item."
+        }
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X1"
-	Cap = "NO_DROP"
+        Txt = "&"
+        Typ = "X1"
+        Cap = "NO_DROP"
         Hint = "This will not drop to the floor when checked."
       }
     }
@@ -5833,31 +5830,31 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not spawn in a Teamplay or CTF game Default value is 0."
       }
-	count: =
+        count: =
       {
-	Txt = "&"
-	Hint = "This is how much ammo it will give the player. (Default: 30)"
+        Txt = "&"
+        Hint = "This is how much ammo it will give the player. (Default: 30)"
       }
-	target: =
-	{
-	  Txt = "&"
-	  Hint = "picking up the item will trigger the entity this points to."
-	}
-	targetname: =
-	{
-	  Txt = "&"
-	  Hint = "A target_give entity can point to this for respawn freebies."
-	}
-	notsingle: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
-	}
-	notbot: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, bots will ignore this item."
-	}
+        target: =
+        {
+          Txt = "&"
+          Hint = "picking up the item will trigger the entity this points to."
+        }
+        targetname: =
+        {
+          Txt = "&"
+          Hint = "A target_give entity can point to this for respawn freebies."
+        }
+        notsingle: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+        }
+        notbot: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, bots will ignore this item."
+        }
       spawnflags: =
       {
         Txt = "&"
@@ -5896,31 +5893,31 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not spawn in a Teamplay or CTF game Default value is 0."
       }
-	count: =
+        count: =
       {
-	Txt = "&"
-	Hint = "This is how much ammo it will give the player. (Default: 5)"
+        Txt = "&"
+        Hint = "This is how much ammo it will give the player. (Default: 5)"
       }
-	target: =
-	{
-	  Txt = "&"
-	  Hint = "picking up the item will trigger the entity this points to."
-	}
-	targetname: =
-	{
-	  Txt = "&"
-	  Hint = "A target_give entity can point to this for respawn freebies."
-	}
-	notsingle: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
-	}
-	notbot: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, bots will ignore this item."
-	}
+        target: =
+        {
+          Txt = "&"
+          Hint = "picking up the item will trigger the entity this points to."
+        }
+        targetname: =
+        {
+          Txt = "&"
+          Hint = "A target_give entity can point to this for respawn freebies."
+        }
+        notsingle: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+        }
+        notbot: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, bots will ignore this item."
+        }
       spawnflags: =
       {
         Txt = "&"
@@ -5959,31 +5956,31 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not spawn in a Teamplay or CTF game Default value is 0."
       }
-	count: =
+        count: =
       {
-	Txt = "&"
-	Hint = "This is how much ammo it will give the player. (Default: 60)"
+        Txt = "&"
+        Hint = "This is how much ammo it will give the player. (Default: 60)"
       }
-	target: =
-	{
-	  Txt = "&"
-	  Hint = "picking up the item will trigger the entity this points to."
-	}
-	targetname: =
-	{
-	  Txt = "&"
-	  Hint = "A target_give entity can point to this for respawn freebies."
-	}
-	notsingle: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
-	}
-	notbot: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, bots will ignore this item."
-	}
+        target: =
+        {
+          Txt = "&"
+          Hint = "picking up the item will trigger the entity this points to."
+        }
+        targetname: =
+        {
+          Txt = "&"
+          Hint = "A target_give entity can point to this for respawn freebies."
+        }
+        notsingle: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+        }
+        notbot: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, bots will ignore this item."
+        }
       spawnflags: =
       {
         Txt = "&"
@@ -6022,31 +6019,31 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not spawn in a Teamplay or CTF game Default value is 0."
       }
-	count: =
+        count: =
       {
-	Txt = "&"
-	Hint = "This is how much ammo it will give the player. (Default: 5)"
+        Txt = "&"
+        Hint = "This is how much ammo it will give the player. (Default: 5)"
       }
-	target: =
-	{
-	  Txt = "&"
-	  Hint = "picking up the item will trigger the entity this points to."
-	}
-	targetname: =
-	{
-	  Txt = "&"
-	  Hint = "A target_give entity can point to this for respawn freebies."
-	}
-	notsingle: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
-	}
-	notbot: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, bots will ignore this item."
-	}
+        target: =
+        {
+          Txt = "&"
+          Hint = "picking up the item will trigger the entity this points to."
+        }
+        targetname: =
+        {
+          Txt = "&"
+          Hint = "A target_give entity can point to this for respawn freebies."
+        }
+        notsingle: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+        }
+        notbot: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, bots will ignore this item."
+        }
       spawnflags: =
       {
         Txt = "&"
@@ -6085,31 +6082,31 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not spawn in a Teamplay or CTF game Default value is 0."
       }
-	count: =
+        count: =
       {
-	Txt = "&"
-	Hint = "This is how much ammo it will give the player. (Default: 10)"
+        Txt = "&"
+        Hint = "This is how much ammo it will give the player. (Default: 10)"
       }
-	target: =
-	{
-	  Txt = "&"
-	  Hint = "picking up the item will trigger the entity this points to."
-	}
-	targetname: =
-	{
-	  Txt = "&"
-	  Hint = "A target_give entity can point to this for respawn freebies."
-	}
-	notsingle: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
-	}
-	notbot: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, bots will ignore this item."
-	}
+        target: =
+        {
+          Txt = "&"
+          Hint = "picking up the item will trigger the entity this points to."
+        }
+        targetname: =
+        {
+          Txt = "&"
+          Hint = "A target_give entity can point to this for respawn freebies."
+        }
+        notsingle: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+        }
+        notbot: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, bots will ignore this item."
+        }
       spawnflags: =
       {
         Txt = "&"
@@ -6148,32 +6145,32 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not spawn in a Teamplay or CTF game Default value is 0."
       }
-	count: =
+        count: =
       {
-	Txt = "&"
-	Hint = "This is how much ammo it will give the player. (Default: 10)"
+        Txt = "&"
+        Hint = "This is how much ammo it will give the player. (Default: 10)"
       }
-	target: =
-	{
-	  Txt = "&"
-	  Hint = "picking up the item will trigger the entity this points to."
-	}
-	targetname: =
-	{
-	  Txt = "&"
-	  Hint = "A target_give entity can point to this for respawn freebies."
-	}
-	notsingle: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
-	}
-	notbot: =
-	{
-	  Txt = "&"
-	  Hint = "When set to 1, bots will ignore this item."
-	}
-      spawnflags: =
+        target: =
+        {
+          Txt = "&"
+          Hint = "picking up the item will trigger the entity this points to."
+        }
+        targetname: =
+        {
+          Txt = "&"
+          Hint = "A target_give entity can point to this for respawn freebies."
+        }
+        notsingle: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+        }
+        notbot: =
+        {
+          Txt = "&"
+          Hint = "When set to 1, bots will ignore this item."
+        }
+        spawnflags: =
       {
         Txt = "&"
         Typ = "X1"
@@ -6197,7 +6194,7 @@ QQRKSRC1
       phase: =
       {
         Txt = "&"
-	Hint = "sets the start offset of the oscillation cycle. Values must be 0 < phase < 1. Any integer phase value is the same as no offset (default 0)."
+        Hint = "sets the start offset of the oscillation cycle. Values must be 0 < phase < 1. Any integer phase value is the same as no offset (default 0)."
       }
       model2: =
       {
@@ -6225,27 +6222,27 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not spawn in a Teamplay or CTF game.(Default value is 0)"
       }
-// Maleficus: the missing entities of the func_* group. Now in ALL func_*.	
-	light: =
-	{
-	Txt = "&"
-	Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
-	}
-	color: =
-	{
-	Txt = "&"
-	Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, will not spawn in single player (bot play) mode."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
+// Maleficus: the missing entities of the func_* group. Now in ALL func_*.      
+        light: =
+        {
+        Txt = "&"
+        Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
+        }
+        color: =
+        {
+        Txt = "&"
+        Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, will not spawn in single player (bot play) mode."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
       spawnflags: =
       {
         Txt = "&"
@@ -6302,39 +6299,39 @@ QQRKSRC1
       notteam: =
       {
         Txt = "&"
-	Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
+        Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-      model2: =
+        model2: =
       {
         Txt = "&"
-	Hint = "Path and name of a model."
+        Hint = "Path and name of a model."
       }
       t_model2 = !
       origin: =
       {
         Txt = "&"
-	Hint = "Way to set the XYZ origin.(Default is the center of the brush)"
+        Hint = "Way to set the XYZ origin.(Default is the center of the brush)"
       }
-	light: =
-      {
+        light: =
+        {
         Txt = "&"
-	Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
-      }
-	color: =
-      {
+        Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
+        }
+        color: =
+        {
         Txt = "&"
-	Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
-      }
-	notsingle: =
-      {
+        Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
+        }
+        notsingle: =
+        {
         Txt = "&"
-	Hint = "If set to 1, will not spawn in single player (bot play) mode."
-      }
-	notbot: =
-      {
+        Hint = "If set to 1, will not spawn in single player (bot play) mode."
+        }
+        notbot: =
+        {
         Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-      }
+        Hint = "If set to 1, bots will ignore this."
+        }
     }
     func_door:form =
     {
@@ -6342,7 +6339,7 @@ QQRKSRC1
       angle: =
       {
         Txt = "&"
-	Hint = "Direction this brush moves.(-1 is up, -2 is down)"
+        Hint = "Direction this brush moves.(-1 is up, -2 is down)"
       }
       targetname: =
       {
@@ -6352,18 +6349,18 @@ QQRKSRC1
       speed: =
       {
         Txt = "&"
-	Hint = "Speed at which door moves.(Default is 100)"
+        Hint = "Speed at which door moves.(Default is 100)"
       }
       wait: =
       {
         Txt = "&"
-	Hint = "Wait time till it resets.(Default is 3, -1 returns immediately)"
+        Hint = "Wait time till it resets.(Default is 3, -1 returns immediately)"
       }
 
       lip: =
       {
         Txt = "&"
-	Hint = "Remaining edge left.(Default is 8)"
+        Hint = "Remaining edge left.(Default is 8)"
       }
       health: =
       {
@@ -6373,12 +6370,12 @@ QQRKSRC1
       dmg: =
       {
         Txt = "&"
-	Hint = "Damage it will inflict when it closes on a player.(Default is 4)"
+        Hint = "Damage it will inflict when it closes on a player.(Default is 4)"
       }
       team: =
       {
         Txt = "&"
-	Hint = "Assign the same team name to multiple doors that should operate together."
+        Hint = "Assign the same team name to multiple doors that should operate together."
       }
       model2: =
       {
@@ -6401,39 +6398,39 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	light: =
+        light: =
+        {
+        Txt = "&"
+        Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
+        }
+        color: =
+        {
+        Txt = "&"
+        Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, will not spawn in single player (bot play) mode."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+      spawnflags: =
       {
         Txt = "&"
-	Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
-      }
-	color: =
-      {
-        Txt = "&"
-	Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
-      }
-	notsingle: =
-      {
-        Txt = "&"
-	Hint = "If set to 1, will not spawn in single player (bot play) mode."
-      }
-	notbot: =
-      {
-        Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
+        Typ = "X1"
+        Cap = "START_OPEN"
+        Hint = "This door will start open."
       }
       spawnflags: =
       {
         Txt = "&"
-	Typ = "X1"
-	Cap = "START_OPEN"
-	Hint = "This door will start open."
-      }
-      spawnflags: =
-      {
-        Txt = "&"
-	Typ = "X2"
-	Cap = "CRUSHER"
-	Hint = "This will crush the player."
+        Typ = "X2"
+        Cap = "CRUSHER"
+        Hint = "This will crush the player."
       }
     }
     func_pendulum:form =
@@ -6444,12 +6441,12 @@ QQRKSRC1
         Txt = "&"
         Hint = "This is the angle at which it rotates."
       }
-	noise: =
+        noise: =
       {
-	Txt = "&"
-	Hint = "name of looping .wav file to play."
+        Txt = "&"
+        Hint = "name of looping .wav file to play."
       }      
-      speed: =
+        speed: =
       {
         Txt = "&"
         Hint = "This is the speed at which it swings."
@@ -6457,7 +6454,7 @@ QQRKSRC1
       phase: =
       {
         Txt = "&"
-	Hint = "the 0.0 to 1.0 offset in the cycle to start at."
+        Hint = "the 0.0 to 1.0 offset in the cycle to start at."
       }
       dmg: =
       {
@@ -6479,32 +6476,32 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	model2: =
+        model2: =
       {
-	Txt = "&"
-	Hint = "Path and name of a model to use."
+        Txt = "&"
+        Hint = "Path and name of a model to use."
       }
       t_model2 = !
-	light: =
-	{
-	Txt = "&"
-	Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
-	}
-	color: =
-	{
-	Txt = "&"
-	Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, will not spawn in single player (bot play) mode."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
+        light: =
+        {
+        Txt = "&"
+        Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
+        }
+        color: =
+        {
+        Txt = "&"
+        Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, will not spawn in single player (bot play) mode."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
     }
     func_plat:form =
     {
@@ -6514,10 +6511,10 @@ QQRKSRC1
         Txt = "&"
         Hint = "This is the speed at which it swings."
       }
-	origin: =
+        origin: =
       {
-	Txt = "&"
-	Hint = "Way of setting XYZ coordinates."
+        Txt = "&"
+        Hint = "Way of setting XYZ coordinates."
       }
       lip: =
       {
@@ -6549,32 +6546,32 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	model2: =
+        model2: =
       {
-	Txt = "&"
-	Hint = "Path and name of a model to use."
+        Txt = "&"
+        Hint = "Path and name of a model to use."
       }
       t_model2 = !
-	light: =
-	{
-	Txt = "&"
-	Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
-	}
-	color: =
-	{
-	Txt = "&"
-	Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, will not spawn in single player (bot play) mode."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
+        light: =
+        {
+        Txt = "&"
+        Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
+        }
+        color: =
+        {
+        Txt = "&"
+        Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, will not spawn in single player (bot play) mode."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
     }
     func_rotating:form =
     {
@@ -6584,47 +6581,47 @@ QQRKSRC1
         Txt = "&"
         Hint = "This is the speed at which it rotates."
       }
-	noise: =
+        noise: =
       {
-	Txt = "&"
-	Hint = "Name of looping .wav file to play."
+        Txt = "&"
+        Hint = "Name of looping .wav file to play."
       }
       model2: =
       {
         Txt = "&"
         Hint = "This is the path and name of a model to use with this func."
       }
- 	t_model2 = !     
-      origin: =
+        t_model2 = !     
+        origin: =
       {
         Txt = "&"
         Hint = "Way of setting XYZ coordinates."
       }
-	dmg: =
-	{
-	Txt = "&"
-	Hint = "Damage to inflict if player gets in way."
-	}
-	light: =
-	{
-	Txt = "&"
-	Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
-	}
-	color: =
-	{
-	Txt = "&"
-	Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, will not spawn in single player (bot play) mode."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
+        dmg: =
+        {
+        Txt = "&"
+        Hint = "Damage to inflict if player gets in way."
+        }
+        light: =
+        {
+        Txt = "&"
+        Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
+        }
+        color: =
+        {
+        Txt = "&"
+        Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, will not spawn in single player (bot play) mode."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
       notfree: =
       {
         Txt = "&"
@@ -6683,11 +6680,11 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, will not spawn in single player (bot play) mode."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, will not spawn in single player (bot play) mode."
+        }
       spawnflags: =
       {
         Txt = "&"
@@ -6730,38 +6727,38 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	model2: =
+        model2: =
       {
-	Txt = "&"
-	Hint = "This is the path and name of a model to use with this func."
+        Txt = "&"
+        Hint = "This is the path and name of a model to use with this func."
       }
- 	t_model2 = !     
-	origin: =
+        t_model2 = !     
+        origin: =
       {
-	Txt = "&"
-	Hint = "Way of setting XYZ coordinates."
+        Txt = "&"
+        Hint = "Way of setting XYZ coordinates."
       }
-	light: =
-	{
-	Txt = "&"
-	Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
-	}
-	color: =
-	{
-	Txt = "&"
-	Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, will not spawn in single player (bot play) mode."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}      
-      spawnflags: =
+        light: =
+        {
+        Txt = "&"
+        Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
+        }
+        color: =
+        {
+        Txt = "&"
+        Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, will not spawn in single player (bot play) mode."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }      
+        spawnflags: =
       {
         Txt = "&"
         Typ = "X1"
@@ -6786,31 +6783,31 @@ QQRKSRC1
     func_static:form =
     {
       Help = "This is the disappering wall trick."
-	model2: =
+        model2: =
       {
-	Txt = "&"
-	Hint = "This is the path and name of a model to use with this func."
+        Txt = "&"
+        Hint = "This is the path and name of a model to use with this func."
       }
- 	t_model2 = !     
-	origin: =
+        t_model2 = !     
+        origin: =
       {
-	Txt = "&"
-	Hint = "Way of setting XYZ coordinates."
+        Txt = "&"
+        Hint = "Way of setting XYZ coordinates."
       }
-	light: =
-	{
-	Txt = "&"
-	Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
-	}
-	color: =
-	{
-	Txt = "&"
-	Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
-	}
+        light: =
+        {
+        Txt = "&"
+        Hint = "constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0)."
+        }
+        color: =
+        {
+        Txt = "&"
+        Hint = "constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1)."  
+        }
       targetname: =
       {
         Txt = "&"
-	Hint = "This is its target name"
+        Hint = "This is its target name"
       }
       notfree: =
       {
@@ -6822,17 +6819,17 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-      {
+        notsingle: =
+        {
         Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-      }
-	notbot: =
-      {
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
         Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-      }
-    }
+        Hint = "If set to 1, bots will ignore this."
+        }
+     }
     holdable_medkit:form =
     {
       Help = "This gives the player 100 health when used."
@@ -6848,20 +6845,20 @@ QQRKSRC1
         Hint = "The integer used to multiply or divide the wait value to the respawn."
       }
 
-	 target: =
-      {
-	Txt = "&"
-	Hint = "picking up item will trigger entity this points to."
-      }
-	 targetname: =
-      {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
-      }      
-      team: =
+         target: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
+        Hint = "picking up item will trigger entity this points to."
+      }
+         targetname: =
+      {
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
+      }      
+        team: =
+      {
+        Txt = "&"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notfree: =
       {
@@ -6873,16 +6870,16 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
       spawnflags: =
       {
         Txt = "&"
@@ -6906,20 +6903,20 @@ QQRKSRC1
         Hint = "The integer used to multiply or divide the wait value to the respawn."
       }
 
-	 target: =
-      {
-	Txt = "&"
-	Hint = "picking up item will trigger entity this points to."
-      }
-	 targetname: =
-      {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
-      }      
-      team: =
+         target: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
+        Hint = "picking up item will trigger entity this points to."
+      }
+         targetname: =
+      {
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
+      }      
+        team: =
+      {
+        Txt = "&"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notfree: =
       {
@@ -6931,16 +6928,16 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
       spawnflags: =
       {
         Txt = "&"
@@ -6949,53 +6946,53 @@ QQRKSRC1
         Hint = "This will not drop to the floor when checked."
       }
     }
-	info_camp:form =
-    {
-	Help = "This atttracts bots which have a camping preference in their AI characteristics. It should be placed at least 32 units away from any brush surface. Examples of bots which have a high camping preference are: Razor, Tank Jr., Grunt, Patriot and Doom. Examples of bots which have a low camping preference are: Klesk, Mynx, Sarge, Keel and Xaero."
-      t_player_size = !
-	range: =
-	{
-	Txt = "&"
-	Hint = "number of units that the bot can move away from camp entity while camping on it."
-	}
-	weight: =
-	{
-	Txt = "&"
-	Hint = "number that is compared against the weight assigned to all the other camp spots in the map to determine if a bot chooses to camp there."		
-	}
-    }
-	item_botroam:form =
-    {
-	Help = "Game Function: An invisible entity which attracts a bot to it. Use to move bots to parts of a map that might otherwise not be used."
-      t_player_size = !
-	weight: =
-	{
-	Txt = "&"
-	Hint = "non-zero floating point value, most often in the range 0 to 400."
-	}
-	notfree: =
+        info_camp:form =
+        {
+        Help = "This atttracts bots which have a camping preference in their AI characteristics. It should be placed at least 32 units away from any brush surface. Examples of bots which have a high camping preference are: Razor, Tank Jr., Grunt, Patriot and Doom. Examples of bots which have a low camping preference are: Klesk, Mynx, Sarge, Keel and Xaero."
+        t_player_size = !
+        range: =
+        {
+        Txt = "&"
+        Hint = "number of units that the bot can move away from camp entity while camping on it."
+        }
+        weight: =
+        {
+        Txt = "&"
+        Hint = "number that is compared against the weight assigned to all the other camp spots in the map to determine if a bot chooses to camp there."                
+        }
+}
+        item_botroam:form =
+        {
+        Help = "Game Function: An invisible entity which attracts a bot to it. Use to move bots to parts of a map that might otherwise not be used."
+        t_player_size = !
+        weight: =
+        {
+        Txt = "&"
+        Hint = "non-zero floating point value, most often in the range 0 to 400."
+        }
+        notfree: =
       {
-	Txt = "&"
-	Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
+        Txt = "&"
+        Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
       notteam: =
       {
-	Txt = "&"
-	Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
+        Txt = "&"
+        Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	spawnflags: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X1"
-	Cap = "NO_DROP"
-	Hint = "This will not drop to the floor when checked."
-    }
-    }
+        Txt = "&"
+        Typ = "X1"
+        Cap = "NO_DROP"
+        Hint = "This will not drop to the floor when checked."
+      } 
+}
     info_notnull:form =
     {
       Help = "This used as a postional target for entities."
@@ -7014,11 +7011,11 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, this will not spawn in single player mode."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, this will not spawn in single player mode."
+        }
     }
     info_null:form =
     {
@@ -7038,11 +7035,11 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, this will not spawn in single player mode."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, this will not spawn in single player mode."
+        }
     }
     info_player_deathmatch:form =
     {
@@ -7051,7 +7048,7 @@ QQRKSRC1
       target: =
       {
         Txt = "&"
-	Hint = "this can point at a target_give entity for respawn freebies."
+        Hint = "this can point at a target_give entity for respawn freebies."
       }
       notfree: =
       {
@@ -7063,28 +7060,28 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	nobots: =
+        nobots: =
       {
-	Txt = "&"
-	Hint = "when set to 1, bots will never use this spawn point to respawn in the game."
+        Txt = "&"
+        Hint = "when set to 1, bots will never use this spawn point to respawn in the game."
       }
-	nohumans: =
+        nohumans: =
       {
-	Txt = "&"
-	Hint = "when set to 1, human players will never use this spawn point to respawn in the game."
+        Txt = "&"
+        Hint = "when set to 1, human players will never use this spawn point to respawn in the game."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, this will not spawn in single player mode."
-	}
-	spawnflags: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, this will not spawn in single player mode."
+        }
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X1"
-	Cap = "INTIAL"
-	Hint = "makes the spawnpoint the initial place for the player to spawn at the beginning of the game."
-      }	
+        Txt = "&"
+        Typ = "X1"
+        Cap = "INTIAL"
+        Hint = "makes the spawnpoint the initial place for the player to spawn at the beginning of the game."
+      } 
     }
     info_player_intermission:form =
     {
@@ -7095,25 +7092,25 @@ QQRKSRC1
         Txt = "&"
         Hint = "Entities with same targetname will trigger with this."
       }
-	angles: =
-	{
-	Txt = "&"
-	Hint = "alternate pitch, yaw, roll angles method of aiming intermission camera (default 0 0 0)."
-	}
+        angles: =
+        {
+        Txt = "&"
+        Hint = "alternate pitch, yaw, roll angles method of aiming intermission camera (default 0 0 0)."
+        }
     }
     info_player_start:form =
     {
       Help = "This is where a player spawns into the game at. Not used in game. Use info_player_deathmatch instead."
       t_player_size = !
-	angle: =
+        angle: =
+        {
+        Txt = "&"
+        Hint = "direction in which player will look when spawning in the game."
+        }
+      target: =
       {
         Txt = "&"
-	Hint = "direction in which player will look when spawning in the game."
-      }
-      target: =
-    {
-	Txt = "&"
-	Hint = "this can point at a target_give entity for respawn freebies."
+        Hint = "this can point at a target_give entity for respawn freebies."
       }
     }
     item_armor_body:form =
@@ -7133,27 +7130,27 @@ QQRKSRC1
       team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
       notfree: =
       {
@@ -7187,30 +7184,30 @@ QQRKSRC1
         Txt = "&"
         Hint = "The integer used to multiply or divide the wait value to the respawn."
       }
-      team: =
+        team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
       notfree: =
       {
@@ -7247,27 +7244,27 @@ QQRKSRC1
       team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
       notfree: =
       {
@@ -7304,33 +7301,33 @@ QQRKSRC1
       team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
-	count: =
-	{
-	Txt = "&"
-	Hint = "time in seconds power-up will last when picked up (default 30)."
-      }
+        count: =
+        {
+        Txt = "&"
+        Hint = "time in seconds power-up will last when picked up (default 30)."
+        }
       notfree: =
       {
         Txt = "&"
@@ -7366,33 +7363,33 @@ QQRKSRC1
       team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
-	count: =
-	{
-	Txt = "&"
-	Hint = "time in seconds power-up will last when picked up (default 60)."
-      }
+        count: =
+        {
+        Txt = "&"
+        Hint = "time in seconds power-up will last when picked up (default 60)."
+        }
       notfree: =
       {
         Txt = "&"
@@ -7428,33 +7425,33 @@ QQRKSRC1
       team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
-	count: =
-	{
-	Txt = "&"
-	Hint = "time in seconds power-up will last when picked up (default 30)."
-      }
+        count: =
+        {
+        Txt = "&"
+        Hint = "time in seconds power-up will last when picked up (default 30)."
+        }
       notfree: =
       {
         Txt = "&"
@@ -7490,33 +7487,33 @@ QQRKSRC1
       team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
-	count: =
-	{
-	Txt = "&"
-	Hint = "amount of health to give to player (default 25)."
-      }
+        count: =
+        {
+        Txt = "&"
+        Hint = "amount of health to give to player (default 25)."
+        }
       notfree: =
       {
         Txt = "&"
@@ -7552,33 +7549,33 @@ QQRKSRC1
       team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
-	count: =
-	{
-	Txt = "&"
-	Hint = "amount of health to give to player (default 50)."
-      }
+        count: =
+        {
+        Txt = "&"
+        Hint = "amount of health to give to player (default 50)."
+        }
       notfree: =
       {
         Txt = "&"
@@ -7614,33 +7611,33 @@ QQRKSRC1
       team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
-	count: =
-	{
-	Txt = "&"
-	Hint = "amount of health to give to player (default 25)."
-      }
+        count: =
+        {
+        Txt = "&"
+        Hint = "amount of health to give to player (default 25)."
+        }
       notfree: =
       {
         Txt = "&"
@@ -7676,33 +7673,33 @@ QQRKSRC1
       team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
-	count: =
-	{
-	Txt = "&"
-	Hint = "amount of health to give to player (default 5)."
-      }
+        count: =
+        {
+        Txt = "&"
+        Hint = "amount of health to give to player (default 5)."
+        }
       notfree: =
       {
         Txt = "&"
@@ -7739,33 +7736,33 @@ QQRKSRC1
       team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
-	count: =
-	{
-	Txt = "&"
-	Hint = "how long the powerup will last after being picked up (default 30)."
-      }
+        count: =
+        {
+        Txt = "&"
+        Hint = "how long the powerup will last after being picked up (default 30)."
+        }
       notfree: =
       {
         Txt = "&"
@@ -7791,43 +7788,43 @@ QQRKSRC1
       wait: =
       {
         Txt = "&"
-	Hint = "Wait time till it resets."
+        Hint = "Wait time till it resets."
       }
       random: =
       {
-	Txt = "&"
-	Hint = "The integer used to multiply or divide the wait value to the respawn."
+        Txt = "&"
+        Hint = "The integer used to multiply or divide the wait value to the respawn."
       }
       team: =
       {
-	Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Txt = "&"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
         Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
-	count: =
-      {
+        count: =
+        {
         Txt = "&"
-	Hint = "how long powerup will last after being picked up (default 30)."
-      }
+        Hint = "how long powerup will last after being picked up (default 30)."
+        }
       notfree: =
       {
         Txt = "&"
@@ -7863,33 +7860,33 @@ QQRKSRC1
       team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "If set to 1, bots will ignore this."
-	}
-	target: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "If set to 1, bots will ignore this."
+        }
+        target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "a target_give entity can point to this for respawn freebies."
+        Txt = "&"
+        Hint = "a target_give entity can point to this for respawn freebies."
       }
-	count: =
-	{
-	Txt = "&"
-	Hint = "how long powerup will last after being picked up (default 30)."
-      }
+        count: =
+        {
+        Txt = "&"
+        Hint = "how long powerup will last after being picked up (default 30)."
+        }
       notfree: =
       {
         Txt = "&"
@@ -7934,23 +7931,23 @@ QQRKSRC1
         Txt = "&"
         Hint = "The radius for the cone of a spot light."
       }
-	spawnflags: =
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X1"
-	Cap = "LINEAR"
-	Hint = "light falloff will be linear instead of inverse square of distance from source."
+        Txt = "&"
+        Typ = "X1"
+        Cap = "LINEAR"
+        Hint = "light falloff will be linear instead of inverse square of distance from source."
       }
     }
     misc_model:form =
     {
       Help = "This is placable model for your map."
       bbox = '-16 -16 -32 16 16 32'
-	angle: =
-	{
-	Txt = "&"
-	Hint = "direction in which model will be oriented."
-	}
+        angle: =
+        {
+        Txt = "&"
+        Hint = "direction in which model will be oriented."
+        }
       model: =
       {
         Txt = "&"
@@ -7961,11 +7958,11 @@ QQRKSRC1
     misc_portal_camera:form =
     {
       Help = "This is used to porject a view of the portal on the brushs surface."
-	angles: =
-	{
-	Txt = "&"
-	Hint = "this sets the pitch and yaw aiming angles of the portal camera (default 0 0). Use roll key to set roll angle."
-	}
+        angles: =
+        {
+        Txt = "&"
+        Hint = "this sets the pitch and yaw aiming angles of the portal camera (default 0 0). Use roll key to set roll angle."
+        }
       target: =
       {
         Txt = "&"
@@ -7979,7 +7976,7 @@ QQRKSRC1
       roll:form =
       {
         Txt = "&"
-	Hint = "This is tilt of the camera. A value of 0 is upside down and 180 is the same as the player's view."
+        Hint = "This is tilt of the camera. A value of 0 is upside down and 180 is the same as the player's view."
       }
       notfree: =
       {
@@ -7991,24 +7988,24 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	spawnflags: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X1"
-	Cap = "SLOWROTATE"
-	Hint = " makes the portal camera rotate slowly along the roll axis."
+        Txt = "&"
+        Typ = "X1"
+        Cap = "SLOWROTATE"
+        Hint = " makes the portal camera rotate slowly along the roll axis."
       }
-	spawnflags: =
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X2"
-	Cap = "FASTROTATE"
-	Hint = " makes the portal camera rotate quickly along the roll axis."
+        Txt = "&"
+        Typ = "X2"
+        Cap = "FASTROTATE"
+        Hint = " makes the portal camera rotate quickly along the roll axis."
       }
     }
     misc_portal_surface:form =
@@ -8024,11 +8021,11 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
       notteam: =
       {
         Txt = "&"
@@ -8039,11 +8036,11 @@ QQRKSRC1
     {
       Help = "This is the dest of the trigger_teleport."
       t_teleport_size = !
-	angle: =
-	{
-	Txt = "&"
-	Hint = "direction in which player will look when teleported."
-	}
+        angle: =
+        {
+        Txt = "&"
+        Hint = "direction in which player will look when teleported."
+        }
       targetname: =
       {
         Txt = "&"
@@ -8059,11 +8056,11 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
     }
     path_corner:form =
     {
@@ -8078,17 +8075,17 @@ QQRKSRC1
         Txt = "&"
         Hint = "This path_corners name."
       }
-	speed: =
-	{
-	Txt = "&"
-	Hint = "speed of func_train while moving to the next path corner. This will override the speed value of the train."
-	}
-	wait: =
-      {
+        speed: =
+        {
         Txt = "&"
-	Hint = "number of seconds func_train will pause on path corner before moving to next path corner (default 0)"
-      }
-      notfree: =
+        Hint = "speed of func_train while moving to the next path corner. This will override the speed value of the train."
+        }
+        wait: =
+        {
+        Txt = "&"
+        Hint = "number of seconds func_train will pause on path corner before moving to next path corner (default 0)"
+        }
+        notfree: =
       {
         Txt = "&"
         Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
@@ -8098,11 +8095,11 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
     }
     shooter_grenade:form =
     {
@@ -8115,7 +8112,7 @@ QQRKSRC1
       targetname: =
       {
         Txt = "&"
-	Hint = "this points to a target_position entity for aiming"
+        Hint = "this points to a target_position entity for aiming"
       }
       wait: =
       {
@@ -8125,23 +8122,23 @@ QQRKSRC1
       random: =
       {
         Txt = "&"
-	Hint = "random aiming variance in degrees from the straight line to the targeted entity (default 0)"
+        Hint = "random aiming variance in degrees from the straight line to the targeted entity (default 0)"
       }
       angles: =
       {
         Txt = "&"
-	Hint = "this sets the pitch and yaw aiming angles of shooter (default 0 0). The roll angle does not apply."
+        Hint = "this sets the pitch and yaw aiming angles of shooter (default 0 0). The roll angle does not apply."
       }
       notfree: =
       {
         Txt = "&"
         Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
       notteam: =
       {
         Txt = "&"
@@ -8159,33 +8156,33 @@ QQRKSRC1
       targetname: =
       {
         Txt = "&"
-	Hint = "this points to a target_position entity for aiming"
+        Hint = "this points to a target_position entity for aiming"
       }
       wait: =
       {
         Txt = "&"
         Hint = "Wait time till it resets."
       }
-      random: =
+     random: =
       {
         Txt = "&"
-	Hint = "random aiming variance in degrees from the straight line to the targeted entity (default 0)"
+        Hint = "random aiming variance in degrees from the straight line to the targeted entity (default 0)"
       }
       angles: =
       {
         Txt = "&"
-	Hint = "this sets the pitch and yaw aiming angles of shooter (default 0 0). The roll angle does not apply."
+        Hint = "this sets the pitch and yaw aiming angles of shooter (default 0 0). The roll angle does not apply."
       }
       notfree: =
       {
         Txt = "&"
         Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
       notteam: =
       {
         Txt = "&"
@@ -8203,7 +8200,7 @@ QQRKSRC1
       targetname: =
       {
         Txt = "&"
-	Hint = "this points to a target_position entity for aiming"
+        Hint = "this points to a target_position entity for aiming"
       }
       wait: =
       {
@@ -8213,23 +8210,23 @@ QQRKSRC1
       random: =
       {
         Txt = "&"
-	Hint = "random aiming variance in degrees from the straight line to the targeted entity (default 0)"
+        Hint = "random aiming variance in degrees from the straight line to the targeted entity (default 0)"
       }
       angles: =
       {
         Txt = "&"
-	Hint = "this sets the pitch and yaw aiming angles of shooter (default 0 0). The roll angle does not apply."
+        Hint = "this sets the pitch and yaw aiming angles of shooter (default 0 0). The roll angle does not apply."
       }
       notfree: =
       {
         Txt = "&"
         Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
       notteam: =
       {
         Txt = "&"
@@ -8274,11 +8271,11 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
     }
     target_give:form =
     {
@@ -8303,48 +8300,19 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
     }
-	target_kill:form =
+        target_kill:form =
     {
       Help = "This will kill the player who activates the trigger that fires this target."
       targetname: =
       {
-	Txt = "&"
-	Hint = "This is its target name for the target argument."
-      }
-      notfree: =
-      {
-	Txt = "&"
-	Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
-      }
-      notteam: =
-      {
-	Txt = "&"
-	Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
-      }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-    }
-    target_location:form =
-    {
-      Help = "Location marker in Teamplay games. Color values:   0: white (default) 1: red 2: green 3: yellow 4: blue 5: cyan 6: magenta"
-      message: =
-      {
         Txt = "&"
-	Hint = "name of the location (text string). Displayed in parentheses in front of all team chat and order messages."
-      }
-	color: =
-	{
-	Txt = "&"
-	Hint = "Color of text that appears."
+        Hint = "This is its target name for the target argument."
       }
       notfree: =
       {
@@ -8356,11 +8324,40 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+}
+    target_location:form =
+    {
+      Help = "Location marker in Teamplay games. Color values:   0: white (default) 1: red 2: green 3: yellow 4: blue 5: cyan 6: magenta"
+      message: =
+      {
+        Txt = "&"
+        Hint = "name of the location (text string). Displayed in parentheses in front of all team chat and order messages."
+      }
+        color: =
+        {
+        Txt = "&"
+        Hint = "Color of text that appears."
+        }     
+         notfree: =
+      {
+        Txt = "&"
+        Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
+      }
+      notteam: =
+      {
+        Txt = "&"
+        Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
+      }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
     }
     target_position:form =
     {
@@ -8380,11 +8377,11 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
     }
     target_print:form =
     {
@@ -8409,72 +8406,72 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	spawnflags: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X1"
-	Cap = "REDTEAM"
-	Hint = "only the red team players will see the message."
+        Txt = "&"
+        Typ = "X1"
+        Cap = "REDTEAM"
+        Hint = "only the red team players will see the message."
       }
-	spawnflags: =
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X2"
-	Cap = "BLUETEAM"
-	Hint = "only the blue team players will see the message."
+        Txt = "&"
+        Typ = "X2"
+        Cap = "BLUETEAM"
+        Hint = "only the blue team players will see the message."
       }
-	spawnflags: =
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X4"
-	Cap = "PRIVATE"
-	Hint = "only the player that activates the target will see the message."
+        Txt = "&"
+        Typ = "X4"
+        Cap = "PRIVATE"
+        Hint = "only the player that activates the target will see the message."
       }
     }
-	target_push:form =
+        target_push:form =
     {
       Help = "This can be used to create jump pads and launch ramps."
       target: =
       {
 
        Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Hint = "Entities with same targetname will trigger with this."
       }
       targetname: =
       {
-	Txt = "&"
-	Hint = "This is its target name for the target argument."
+        Txt = "&"
+        Hint = "This is its target name for the target argument."
       }
       notfree: =
       {
-	Txt = "&"
-	Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
+        Txt = "&"
+        Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
       notteam: =
       {
-	Txt = "&"
-	Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
+        Txt = "&"
+        Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	speed: =
-	{
-	Txt = "&"
-	Hint = "speed of push (default 1000). Has no effect if entity targets an aiming entity."
-	}
-	angles: =
-	{
-	Txt = "&"
-	Hint = "this sets the pitch and yaw aiming angles of push entity (default 0 0). The roll angle does not apply."
-	}
+        speed: =
+        {
+        Txt = "&"
+        Hint = "speed of push (default 1000). Has no effect if entity targets an aiming entity."
+        }
+        angles: =
+        {
+        Txt = "&"
+        Hint = "this sets the pitch and yaw aiming angles of push entity (default 0 0). The roll angle does not apply."
+        }
     }
     target_relay:form =
     {
@@ -8495,36 +8492,36 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
       notteam: =
       {
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
-	spawnflags: =
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X1"
-	Cap = "RED_ONLY"
-	Hint = "only red team players can activate trigger."
+        Txt = "&"
+        Typ = "X1"
+        Cap = "RED_ONLY"
+        Hint = "only red team players can activate trigger."
       }
-	spawnflags: =
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X2"
-	Cap = "BLUE_ONLY"
-	Hint = "only blue team players can activate trigger."
+        Txt = "&"
+        Typ = "X2"
+        Cap = "BLUE_ONLY"
+        Hint = "only blue team players can activate trigger."
       }
-	spawnflags: =
+        spawnflags: =
       {
-	Txt = "&"
-	Typ = "X4"
-	Cap = "RANDOM"
-	Hint = "one of the targeted entities will be triggered at random."
+        Txt = "&"
+        Typ = "X4"
+        Cap = "RANDOM"
+        Hint = "one of the targeted entities will be triggered at random."
       }
     }
     target_remove_powerups:form =
@@ -8540,15 +8537,15 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
       notteam: =
       {
-	Txt = "&"
-	Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
+        Txt = "&"
+        Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
     }
       target_score:form =
@@ -8556,29 +8553,29 @@ QQRKSRC1
       Help = "This is used to automatically give frag points to the player."
       targetname: =
       {
-	Txt = "&"
-	Hint = "This is its target name for the target argument."
+        Txt = "&"
+        Hint = "This is its target name for the target argument."
       }
-	count: =
-	{
-	Txt = "&"
-	Hint = "number of frag points to give to player (default 1)."
-	}
+        count: =
+        {
+        Txt = "&"
+        Hint = "number of frag points to give to player (default 1)."
+        }
       notfree: =
       {
-	Txt = "&"
-	Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
+        Txt = "&"
+        Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "bots will not use this"
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "bots will not use this"
+        }
       notteam: =
       {
         Txt = "&"
@@ -8619,11 +8616,11 @@ QQRKSRC1
         Txt = "&"
         Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
       notteam: =
       {
         Txt = "&"
@@ -8634,58 +8631,58 @@ QQRKSRC1
         Txt = "&"
         Typ = "X1"
         Cap = "LOOPED_ON"
-	Hint = "sound will loop and initially start on in level"
+        Hint = "sound will loop and initially start on in level"
       }
       spawnflags: =
       {
         Txt = "&"
         Typ = "X2"
         Cap = "LOOPED_OFF"
-	Hint = "sound will loop and initially start off in level"
+        Hint = "sound will loop and initially start off in level"
       }
       spawnflags: =
       {
         Txt = "&"
         Typ = "X4"
-	Cap = "GLOBAL"
-	Hint = "This will be heard all over the map."
+        Cap = "GLOBAL"
+        Hint = "This will be heard all over the map."
       }
       spawnflags: =
       {
 
        Txt = "&"
         Typ = "X8"
-	Cap = "ACTIVATOR"
-	Hint = "sound will play only for the player that activated the target."
+        Cap = "ACTIVATOR"
+        Hint = "sound will play only for the player that activated the target."
       }
     }
-	target_teleporter:form =
+        target_teleporter:form =
     {
       Help = "This is used to automatically give frag points to the player."
       target: =
       {
-	Txt = "&"
-	Hint = "this must point to a misc_teleporter_dest entity."
+        Txt = "&"
+        Hint = "this must point to a misc_teleporter_dest entity."
       }
-	targetname: =
-	{
-	Txt = "&"
-	Hint = "activating trigger points to this."
-	}
+        targetname: =
+        {
+        Txt = "&"
+        Hint = "activating trigger points to this."
+        }
       notfree: =
       {
-	Txt = "&"
-	Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
+        Txt = "&"
+        Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
       notteam: =
       {
-	Txt = "&"
-	Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
+        Txt = "&"
+        Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
     }
     team_CTF_blueflag:form =
@@ -8700,7 +8697,7 @@ QQRKSRC1
       target: =
       {
         Txt = "&"
-	Hint = "this can point at a target_give entity for respawn freebies."
+        Hint = "this can point at a target_give entity for respawn freebies."
       }
     }
     team_CTF_bluespawn:form =
@@ -8710,7 +8707,7 @@ QQRKSRC1
       target: =
       {
         Txt = "&"
-	Hint = "this can point at a target_give entity for respawn freebies."
+        Hint = "this can point at a target_give entity for respawn freebies."
       }
     }
     team_CTF_redflag:form =
@@ -8725,7 +8722,7 @@ QQRKSRC1
       target: =
       {
         Txt = "&"
-	Hint = "this can point at a target_give entity for respawn freebies."
+        Hint = "this can point at a target_give entity for respawn freebies."
       }
     }
     team_CTF_redspawn:form =
@@ -8735,7 +8732,7 @@ QQRKSRC1
       target: =
       {
         Txt = "&"
-	Hint = "this can point at a target_give entity for respawn freebies."
+        Hint = "this can point at a target_give entity for respawn freebies."
       }
     }
     trigger_always:form =
@@ -8752,11 +8749,11 @@ QQRKSRC1
         Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
       notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}	
-      notteam: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }       
+        notteam: =
       {
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
@@ -8771,43 +8768,43 @@ QQRKSRC1
         Hint = "Damage this causes to the player."
       }
       notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
       notfree: =
       {
         Txt = "&"
         Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-      {
+        notsingle: =
+        {
         Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-      }
+        Hint = "This item will not spawn in a single player game."
+        }
       notteam: =
       {
         Txt = "&"
-	Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
+        Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
       }
       spawnflags: =
       {
         Txt = "&"
-	Typ = "X4"
+        Typ = "X4"
         Cap = "SILENT"
         Hint = "Cant hear the sizzling sound from the player getting hurt."
       }
       spawnflags: =
       {
         Txt = "&"
-	Typ = "X8"
+        Typ = "X8"
         Cap = "NO_PROTECTION"
         Hint = "Player will be hurt no matter what he is carrying."
       }
       spawnflags: =
       {
         Txt = "&"
-	Typ = "X16"
+        Typ = "X16"
         Cap = "SLOW"
         Hint = "Changes the dmg to once pre sec."
       }
@@ -8825,26 +8822,26 @@ QQRKSRC1
         Txt = "&"
         Hint = "This is its target name for the target argument."
       }
-	random: =
+        random: =
       {
-	Txt = "&"
-	Hint = "random time variance in seconds added or subtracted from wait delay (default 0)"
+        Txt = "&"
+        Hint = "random time variance in seconds added or subtracted from wait delay (default 0)"
       }
       wait: =
       {
         Txt = "&"
         Hint = "Wait time till it resets."
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
       notfree: =
       {
         Txt = "&"
@@ -8864,22 +8861,22 @@ QQRKSRC1
         Txt = "&"
         Hint = "Entities with same targetname will trigger with this."
       }
-	notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
+        notbot: =
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
       notfree: =
       {
         Txt = "&"
         Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-      notteam: =
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        notteam: =
       {
         Txt = "&"
         Hint = "This item will not work in a Teamplay or CTF game.(Default value is 0)"
@@ -8894,20 +8891,20 @@ QQRKSRC1
         Hint = "Entities with same targetname will trigger with this."
       }
       notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
       notfree: =
       {
         Txt = "&"
         Hint = "This item will not work in a Free for All or Tournament game.(Default value is 0)"
       }
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
       notteam: =
       {
         Txt = "&"
@@ -8918,45 +8915,45 @@ QQRKSRC1
     {
       Help = "This needs no explaination."
       t_weapon_size = !
-	target: =
+        target: =
       {
         Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Hint = "Entities with same targetname will trigger with this."
       }
-	targetname: =
+        targetname: =
       {
         Txt = "&"
-	Hint = "This is its target name for the target argument."
+        Hint = "This is its target name for the target argument."
       }
-      team: =
+        team: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	count: =
-	{
-	Txt = "&"
-	Hint = "sets the amount of ammo given to the player when weapon is picked up"
-	}
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        count: =
+        {
+        Txt = "&"
+        Hint = "sets the amount of ammo given to the player when weapon is picked up"
+        }
       wait: =
       {
-	Txt = "&"
-	Hint = "Wait time till it resets."
+        Txt = "&"
+        Hint = "Wait time till it resets."
       }
       random: =
       {
-	Txt = "&"
-	Hint = "The integer used to multiply or divide the wait value to the respawn."
+        Txt = "&"
+        Hint = "The integer used to multiply or divide the wait value to the respawn."
       }
       notfree: =
       {
@@ -8992,34 +8989,34 @@ QQRKSRC1
       }
       target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
-	targetname: =
-      {
-	Txt = "&"
-	Hint = "This is its target name for the target argument."
-      }
-      team: =
+        targetname: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
+        Hint = "This is its target name for the target argument."
+      }
+        team: =
+      {
+        Txt = "&"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	count: =
-	{
-	Txt = "&"
-	Hint = "sets the amount of ammo given to the player when weapon is picked up"
-      }
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        count: =
+        {
+        Txt = "&"
+        Hint = "sets the amount of ammo given to the player when weapon is picked up"
+        }
       notfree: =
       {
         Txt = "&"
@@ -9054,34 +9051,34 @@ QQRKSRC1
       }
       target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
-	targetname: =
-      {
-	Txt = "&"
-	Hint = "This is its target name for the target argument."
-      }
-      team: =
+        targetname: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
+        Hint = "This is its target name for the target argument."
+      }
+        team: =
+      {
+        Txt = "&"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	count: =
-	{
-	Txt = "&"
-	Hint = "sets the amount of ammo given to the player when weapon is picked up"
-      }
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        count: =
+        {
+        Txt = "&"
+        Hint = "sets the amount of ammo given to the player when weapon is picked up"
+        }
       notfree: =
       {
         Txt = "&"
@@ -9116,34 +9113,34 @@ QQRKSRC1
       }
       target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
-	targetname: =
-      {
-	Txt = "&"
-	Hint = "This is its target name for the target argument."
-      }
-      team: =
+        targetname: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
+        Hint = "This is its target name for the target argument."
+      }
+        team: =
+      {
+        Txt = "&"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	count: =
-	{
-	Txt = "&"
-	Hint = "sets the amount of ammo given to the player when weapon is picked up"
-      }
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        count: =
+        {
+        Txt = "&"
+        Hint = "sets the amount of ammo given to the player when weapon is picked up"
+        }
       notfree: =
       {
         Txt = "&"
@@ -9178,34 +9175,34 @@ QQRKSRC1
       }
       target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
-	targetname: =
-      {
-	Txt = "&"
-	Hint = "This is its target name for the target argument."
-      }
-      team: =
+        targetname: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
+        Hint = "This is its target name for the target argument."
+      }
+        team: =
+      {
+        Txt = "&"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	count: =
-	{
-	Txt = "&"
-	Hint = "sets the amount of ammo given to the player when weapon is picked up"
-      }
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        count: =
+        {
+        Txt = "&"
+        Hint = "sets the amount of ammo given to the player when weapon is picked up"
+        }
       notfree: =
       {
         Txt = "&"
@@ -9240,34 +9237,34 @@ QQRKSRC1
       }
       target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
-	targetname: =
-      {
-	Txt = "&"
-	Hint = "This is its target name for the target argument."
-      }
-      team: =
+        targetname: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
+        Hint = "This is its target name for the target argument."
+      }
+        team: =
+      {
+        Txt = "&"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	count: =
-	{
-	Txt = "&"
-	Hint = "sets the amount of ammo given to the player when weapon is picked up"
-      }
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        count: =
+        {
+        Txt = "&"
+        Hint = "sets the amount of ammo given to the player when weapon is picked up"
+        }
       notfree: =
       {
         Txt = "&"
@@ -9302,34 +9299,34 @@ QQRKSRC1
       }
       target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
-	targetname: =
-      {
-	Txt = "&"
-	Hint = "This is its target name for the target argument."
-      }
-      team: =
+        targetname: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
+        Hint = "This is its target name for the target argument."
+      }
+        team: =
+      {
+        Txt = "&"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	count: =
-	{
-	Txt = "&"
-	Hint = "sets the amount of ammo given to the player when weapon is picked up"
-      }
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        count: =
+        {
+        Txt = "&"
+        Hint = "sets the amount of ammo given to the player when weapon is picked up"
+        }
       notfree: =
       {
         Txt = "&"
@@ -9364,34 +9361,34 @@ QQRKSRC1
       }
       target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
-	targetname: =
-      {
-	Txt = "&"
-	Hint = "This is its target name for the target argument."
-      }
-      team: =
+        targetname: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
+        Hint = "This is its target name for the target argument."
+      }
+        team: =
+      {
+        Txt = "&"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	count: =
-	{
-	Txt = "&"
-	Hint = "sets the amount of ammo given to the player when weapon is picked up"
-      }
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        count: =
+        {
+        Txt = "&"
+        Hint = "sets the amount of ammo given to the player when weapon is picked up"
+        }
       notfree: =
       {
         Txt = "&"
@@ -9426,34 +9423,34 @@ QQRKSRC1
       }
       target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
-	targetname: =
-      {
-	Txt = "&"
-	Hint = "This is its target name for the target argument."
-      }
-      team: =
+        targetname: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
+        Hint = "This is its target name for the target argument."
+      }
+        team: =
+      {
+        Txt = "&"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	count: =
-	{
-	Txt = "&"
-	Hint = "sets the amount of ammo given to the player when weapon is picked up"
-      }
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        count: =
+        {
+        Txt = "&"
+        Hint = "sets the amount of ammo given to the player when weapon is picked up"
+        }
       notfree: =
       {
         Txt = "&"
@@ -9488,34 +9485,34 @@ QQRKSRC1
       }
       target: =
       {
-	Txt = "&"
-	Hint = "Entities with same targetname will trigger with this."
+        Txt = "&"
+        Hint = "Entities with same targetname will trigger with this."
       }
-	targetname: =
-      {
-	Txt = "&"
-	Hint = "This is its target name for the target argument."
-      }
-      team: =
+        targetname: =
       {
         Txt = "&"
-	Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
+        Hint = "This is its target name for the target argument."
+      }
+        team: =
+      {
+        Txt = "&"
+        Hint = "set this to team items. Teamed items will respawn randomly after team master is picked up"
       }
       notbot: =
-	{
-	Txt = "&"
-	Hint = "Bots will not trigger this"
-	}
-	notsingle: =
-	{
-	Txt = "&"
-	Hint = "This item will not spawn in a single player game."
-	}
-	count: =
-	{
-	Txt = "&"
-	Hint = "sets the amount of ammo given to the player when weapon is picked up"
-      }
+        {
+        Txt = "&"
+        Hint = "Bots will not trigger this"
+        }
+        notsingle: =
+        {
+        Txt = "&"
+        Hint = "This item will not spawn in a single player game."
+        }
+        count: =
+        {
+        Txt = "&"
+        Hint = "sets the amount of ammo given to the player when weapon is picked up"
+        }
       notfree: =
       {
         Txt = "&"

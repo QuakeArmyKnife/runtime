@@ -25,7 +25,6 @@ import qtoolbar
 import qmenu
 from mdlutils import *
 import mdltools
-import mdlhandles
 from qbasemgr import BaseLayout
 from qbasemgr import MPPage
 
@@ -36,11 +35,11 @@ class ModelLayout(BaseLayout):
     MODE = SS_MODEL
     MAXAUTOZOOM = 10.0
 
-    def clearrefs(self):
-        BaseLayout.clearrefs(self)
-        self.skinform = None
-        self.skinview = None
+    #def clearrefs(self):
+    #    BaseLayout.clearrefs(self)
     #    self.dataform = None
+    #    self.polyform = None
+    #    self.polyview = None
     #    self.faceform = None
     #    self.faceview = None
     #    self.faceflags = None
@@ -49,25 +48,11 @@ class ModelLayout(BaseLayout):
     def readtoolbars(self, config):
         readtoolbars(mdltools.toolbars, self, self.editor.form, config)
 
-    def bs_skinform(self, panel):
-        fp = panel.newpanel()
-        tp = fp.newtoppanel(124)
-        self.skinform = tp.newdataform()
-        self.skinform.header = 0
-        self.skinform.sep = -79
-        self.skinform.setdata([], quarkx.getqctxlist(':form', "Skin")[-1])
-#        self.skinform.onchange = self.skinformchange
-        self.skinview = fp.newmapview()
-#        self.skinview.color = NOCOLOR
-#        self.skinview.ondraw = self.skinviewdraw
-#        self.skinview.onmouse = self.skinviewmouse
-        return fp
+
 
     def bs_additionalpages(self, panel):
         "Builds additional pages for the multi-pages panel."
-        skin = qtoolbar.button(self.fillskinform, "Parameters about the selected skin", ico_objects, iiPcx)
-        skin.pc = [self.bs_skinform(panel)]
-        return [skin], mppages
+        return [ ], mppages
 
     def bs_userobjects(self, panel):
         "A panel with user-defined model objects."
@@ -78,6 +63,8 @@ class ModelLayout(BaseLayout):
         #
         MdlUserDataPanel(panel, "Drop your most commonly used Model parts to this panel", "MdlObjPanel.qrk",
           "UserData.qrk")
+
+
 
     def actionmpp(self):
         "Switch the multi-pages-panel for the current selection."
@@ -102,42 +89,19 @@ class ModelLayout(BaseLayout):
             if obj.type == ':mc':
                 return obj
 
-    def fillskinform(self, reserved):
-        self.skinview.handles = []
-        self.skinview.ondraw = None
-        self.skinview.color = NOCOLOR
-        self.skinview.invalidate(1)
-        mdlhandles.buildskinvertices(self.editor, self.skinview, self.editor.Root.currentcomponent)
-        q = quarkx.newobj(':')   # internal object
-        if self.editor.Root.currentcomponent is not None:
-          q["header"] = "Selected Skin"
-          q["triangles"] = str(len(self.editor.Root.currentcomponent.triangles))
-          q["ownedby"] = self.editor.Root.currentcomponent.shortname
-        self.skinform.setdata(q, self.skinform.form)
-
-    def selectcomponent(self, comp):
-        self.editor.Root.setcomponent(comp)
-        self.editor.invalidateviews(1)
-
-    def selectcgroup(self, group):
-        comp = self.componentof(group)
-        if comp is not None:
-          self.selectcomponent(comp)
 
     def selectframe(self, frame):
         c = self.componentof(frame)
         if c is not None and frame is not c.currentframe:
-            self.selectcomponent(c)
             c.setframe(frame)
             self.editor.invalidateviews(1)
-            c.setparentframes(frame)
 
     def selectskin(self, skin):
         c = self.componentof(skin)
         if c is not None and skin is not c.currentskin:
-            self.selectcomponent(c)
             c.currentskin = skin
             self.editor.invalidatetexviews()
+
 
     def selchange(self):
         #if self.faceflags is not None:
@@ -146,24 +110,16 @@ class ModelLayout(BaseLayout):
         
         fs = self.explorer.uniquesel
         if fs is not None:
-            if fs.type == ':mf':       # frame
+            if fs.type == ':mf':
                 self.selectframe(fs)
-            elif fs.type == ':fg':     # frame group
-                self.selectcgroup(fs)
-            elif fs.type == ':sg':     # skin group
-                self.selectcgroup(fs)
-            elif fs.type == ':bg':     # bone group
-                self.selectcgroup(fs)
-            elif fs.type == ':mc':     # component
-                self.selectcomponent(fs)
-            elif fs.type == '.pcx':    # skin
-                self.selectskin(fs)
-            elif fs.type == '.jpg':    # skin
+            elif fs.type == '.pcx':
                 self.selectskin(fs)
 
 
     def NewItem1Click(self, m):
-        pass
+        #quarkx.opentoolbox("New map items...")
+        pass#...
+
 
 
 #
@@ -184,11 +140,5 @@ mppages = []
 #
 #
 #$Log$
-#Revision 1.4  2000/08/21 21:33:04  aiv
-#Misc. Changes / bugfixes
-#
-#Revision 1.2  2000/06/02 16:00:22  alexander
-#added cvs headers
-#
 #
 #
