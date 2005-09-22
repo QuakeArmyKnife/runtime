@@ -1085,6 +1085,9 @@ quarkpy.mapoptions.items.append(mennosel)
 #
 #
 # $Log$
+# Revision 1.32  2005/09/22 11:25:12  peter-b
+# Resolve merge conflicts (3nd try)
+#
 # Revision 1.31  2005/09/22 11:10:40  peter-b
 # Resolve merge conflicts
 #

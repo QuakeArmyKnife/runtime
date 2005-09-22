@@ -2890,6 +2890,9 @@ def ExtrudeClick(btn):
 
 
 #$Log$
+#Revision 1.20  2005/09/22 11:25:12  peter-b
+#Resolve merge conflicts (3nd try)
+#
 #Revision 1.19  2005/09/22 11:11:33  peter-b
 #Resolve merge conflicts (2nd try)
 #

@@ -978,6 +978,9 @@ Strings = {
 #
 #
 #$Log$
+#Revision 1.72  2005/09/21 15:42:59  peter-b
+#More useful error message for core exceptions
+#
 #Revision 1.71  2005/08/15 21:18:53  cdunde
 #update version to QuArK 6.5.0 alpha 1
 #

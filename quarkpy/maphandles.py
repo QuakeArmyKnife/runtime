@@ -1918,6 +1918,10 @@ class UserCenterHandle(CenterHandle):
 # ----------- REVISION HISTORY ------------
 #
 #$Log$
+#Revision 1.45  2005/09/21 22:42:25  cdunde
+#To comment out else statement causing error after
+#commenting out print statement previously.
+#
 #Revision 1.44  2005/09/21 21:33:36  cdunde
 #To comment out print statement
 #

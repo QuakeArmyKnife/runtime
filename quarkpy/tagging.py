@@ -318,6 +318,9 @@ BaseEditor.finishdrawing = _tagfinishdrawing
 # CVS log - make no changes below this line
 #
 #$Log$
+#Revision 1.4  2005/09/22 11:25:12  peter-b
+#Resolve merge conflicts (3nd try)
+#
 #Revision 1.3.2.4  2005/09/22 10:41:28  peter-b
 #Change order of arguments to tagdrawfunc() to match tagchangefunc()
 #
