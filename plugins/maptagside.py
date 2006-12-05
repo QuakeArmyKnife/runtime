@@ -1938,13 +1938,6 @@ for menitem, keytag in [(menselecttagged, "Select Tagged Faces")]:
 
 # ----------- REVISION HISTORY ------------
 #$Log$
-#Revision 1.39  2006/11/29 06:58:35  cdunde
-#To merge all runtime files that had changes from DanielPharos branch
-#to HEAD for QuArK 6.5.0 Beta 1.
-#
-#Revision 1.37.2.2  2006/11/07 17:34:45  cdunde
-#To stop console error when Alt+S is pressed with cursor outside of any view.
-#
 #Revision 1.37.2.1  2006/11/03 23:48:46  cdunde
 #To fix this function. Old way never replaced with new keyword.
 #

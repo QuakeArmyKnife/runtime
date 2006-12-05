@@ -257,9 +257,8 @@ class BaseLayout:
     ### rotation is based on the center of the editor view or the model (0,0,0).
     ### But only for the Model Editor, so we first test for that.
         if isinstance(self.editor, quarkpy.mdleditor.ModelEditor):
-            view.viewtype = "editor"
             quarkpy.qhandles.flat3Dview(view, self)
-            del view.info["noclick"]
+            del view.info["noclick"] 
 
         setprojmode(view)
         self.editor.setupview(view)
@@ -587,17 +586,6 @@ class MPPage:
 #
 #
 #$Log$
-#Revision 1.23  2006/11/30 01:19:34  cdunde
-#To fix for filtering purposes, we do NOT want to use capital letters for cvs.
-#
-#Revision 1.22  2006/11/29 07:00:28  cdunde
-#To merge all runtime files that had changes from DanielPharos branch
-#to HEAD for QuArK 6.5.0 Beta 1.
-#
-#Revision 1.21.2.8  2006/11/04 00:52:59  cdunde
-#To navigate with the mouse just like it does
-#in the Map Editor and the Model Editor 3D views.
-#
 #Revision 1.21.2.7  2006/11/03 23:38:09  cdunde
 #Updates to accept Python 2.4.4 by eliminating the
 #Depreciation warning messages in the console.

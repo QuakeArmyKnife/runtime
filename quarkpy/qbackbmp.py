@@ -153,6 +153,9 @@ class BackBmpDlg(qmacro.dialogbox):
 #
 #
 #$Log$
+#Revision 1.8  2006/05/19 17:10:03  cdunde
+#To add new transparent poly options for viewing background image.
+#
 #Revision 1.7  2005/10/15 00:47:57  cdunde
 #To reinstate headers and history
 #

@@ -148,14 +148,6 @@ nt.tagdrawfunc(_B2CP_dcb, B2CP)
 # log - make no changes below this line
 #
 # $Log$
-# Revision 1.7  2006/11/29 06:58:35  cdunde
-# To merge all runtime files that had changes from DanielPharos branch
-# to HEAD for QuArK 6.5.0 Beta 1.
-#
-# Revision 1.6.2.1  2006/11/03 23:38:11  cdunde
-# Updates to accept Python 2.4.4 by eliminating the
-# Depreciation warning messages in the console.
-#
 # Revision 1.6  2005/10/16 18:48:04  cdunde
 # To remove letters referring to depository folders that
 #  made filtering them out for distribution harder to do

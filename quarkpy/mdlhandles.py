@@ -630,6 +630,8 @@ def MouseClicked(self, view, x, y, s, handle):
 #
 #
 #$Log$
+#Revision 1.12.2.15  2006/11/30 07:35:45  cdunde
+#
 #Revision 1.15  2006/11/30 07:36:19  cdunde
 #Temporary fix for view axis icons being lost when vertex on Skin-view is moved.
 #

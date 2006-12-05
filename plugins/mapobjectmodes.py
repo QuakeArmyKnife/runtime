@@ -11,7 +11,6 @@ Mouse drag Object modes
 #$Header$
 
 
-
 Info = {
    "plug-in":       "Object Drag Modes",
    "desc":          "Creates objects by mouse dragging",
@@ -4928,14 +4927,6 @@ quarkpy.maptools.toolbars["tb_objmodes"] = ObjectModesBar
 # ----------- REVISION HISTORY ------------
 #
 # $Log$
-# Revision 1.10  2006/11/29 06:58:35  cdunde
-# To merge all runtime files that had changes from DanielPharos branch
-# to HEAD for QuArK 6.5.0 Beta 1.
-#
-# Revision 1.9.2.2  2006/11/09 23:00:02  cdunde
-# Updates to accept Python 2.4.4 by eliminating the
-# Depreciation warning messages in the console.
-#
 # Revision 1.9.2.1  2006/11/01 22:22:42  danielpharos
 # BackUp 1 November 2006
 # Mainly reduce OpenGL memory leak

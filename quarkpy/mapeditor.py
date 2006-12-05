@@ -363,13 +363,6 @@ def autosave(editor):
 #
 #
 #$Log$
-#Revision 1.9  2006/11/29 07:00:26  cdunde
-#To merge all runtime files that had changes from DanielPharos branch
-#to HEAD for QuArK 6.5.0 Beta 1.
-#
-#Revision 1.8.2.2  2006/11/24 20:43:49  cdunde
-#To fix Python string function coding missed when Python bundling was done.
-#
 #Revision 1.8.2.1  2006/11/03 23:38:10  cdunde
 #Updates to accept Python 2.4.4 by eliminating the
 #Depreciation warning messages in the console.

@@ -4,6 +4,9 @@ QQRKSRC1
 //$Header$
 // ----------- REVISION HISTORY ------------
 //$Log$
+//Revision 1.17  2006/09/08 15:41:00  cdunde
+//Minor description update.
+//
 //Revision 1.16  2005/10/15 23:30:38  cdunde
 //Removed hard coded textures and pointed path to pick
 //up textures in actual textures folders and pak files

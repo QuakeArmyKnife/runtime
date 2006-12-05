@@ -5,6 +5,12 @@ QQRKSRC1
 //$Header$
 // ----------- REVISION HISTORY ------------
 //$Log$
+//Revision 1.8  2006/10/23 00:52:58  cdunde
+//Final update to add all Help and Hint data as well as
+//entity Specifics missed during its creation.
+//
+//Revision 1.4.2.2  2006/10/19 22:57:07  danielpharos
+//BackUp 20 October 2006
 //Revision 1.7  2006/10/12 07:14:04  cdunde
 //To arrange entities in alphabetical order.
 //
