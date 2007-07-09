@@ -61,6 +61,10 @@ toolbars = {"tb_display": DisplayBar, "tb_movepal": qmovepal.ToolMoveBar}
 #
 #
 #$Log$
+#Revision 1.3  2007/04/22 22:44:47  cdunde
+#Renamed the file mdltools.py to mdltoolbars.py to clarify the files use and avoid
+#confliction with future mdltools.py file to be created for actual tools for the Editor.
+#
 #Revision 1.9  2006/11/30 01:19:34  cdunde
 #To fix for filtering purposes, we do NOT want to use capital letters for cvs.
 #
